@@ -2,86 +2,118 @@
 
 How to use git successfully even with a little background knowledge.
 
-`2021 Mar 15, Jaroslav Langer`
+`2021 Apr 11, Jaroslav Langer, 610 lines.`
 
 ## Contents
 
 <!-- TOC GFM -->
 
-* [TODO](#todo)
-* [Basic information](#basic-information)
-* [Git Basics](#git-basics)
+* [To Do](#to-do)
+* [Basic Information](#basic-information)
+* [Git Installation and Setup](#git-installation-and-setup)
+    * [Create a Git Account](#create-a-git-account)
+    * [Basic Git Configuration](#basic-git-configuration)
+* [Basic Commands](#basic-commands)
     * [Git --help](#git---help)
-    * [Git installation and setup](#git-installation-and-setup)
-    * [Create git account](#create-git-account)
-    * [Create a project](#create-a-project)
-    * [Create repository from scratch](#create-repository-from-scratch)
-    * [Create repository from existing folder](#create-repository-from-existing-folder)
-    * [Start to work on someones repository (fork)](#start-to-work-on-someones-repository-fork)
-* [Contribute to a project](#contribute-to-a-project)
-    * [Contribute to someones repository (with push rights)](#contribute-to-someones-repository-with-push-rights)
-    * [Update the content from remote](#update-the-content-from-remote)
-    * [Develop the code as a new branch](#develop-the-code-as-a-new-branch)
-    * [Contribute without the rights to push - fork](#contribute-without-the-rights-to-push---fork)
-* [Branching](#branching)
-    * [Show files status (untracked/modified/added/deleted)](#show-files-status-untrackedmodifiedaddeddeleted)
-    * [File differences](#file-differences)
-    * [Add files to or remove from the index](#add-files-to-or-remove-from-the-index)
-    * [Ignore files from the git structure](#ignore-files-from-the-git-structure)
-* [Committing](#committing)
-    * [Show changes and commits](#show-changes-and-commits)
-* [Merging](#merging)
-    * [Change file in every commit](#change-file-in-every-commit)
-    * [Test a new branch before the merge](#test-a-new-branch-before-the-merge)
-* [Remote repositories - remotes](#remote-repositories---remotes)
-    * [Push and Pull](#push-and-pull)
-    * [Stash](#stash)
-    * [Remove unwanted staging of many files](#remove-unwanted-staging-of-many-files)
-    * [Remove changes after commit](#remove-changes-after-commit)
-    * [Remove changes after push](#remove-changes-after-push)
-    * [Create the pull request](#create-the-pull-request)
-    * [Move repository form one GITSITE_OLD to another GITSITE_NEW](#move-repository-form-one-gitsite_old-to-another-gitsite_new)
-    * [Duplicate a repository](#duplicate-a-repository)
-    * [Add submodule](#add-submodule)
+    * [Create a Project (git clone, git init, git fork)](#create-a-project-git-clone-git-init-git-fork)
+    * [See Status of the Index (git status)](#see-status-of-the-index-git-status)
+    * [File Changes (Differences) (git diff)](#file-changes-differences-git-diff)
+    * [Stage Changes to the Index (git add, git rm, git mv)](#stage-changes-to-the-index-git-add-git-rm-git-mv)
+    * [Commit Changes (git commit)](#commit-changes-git-commit)
+    * [Push Commits to the Remote Repository (git push)](#push-commits-to-the-remote-repository-git-push)
+* [Ignore Files from the Git Structure (.gitignore)](#ignore-files-from-the-git-structure-gitignore)
+* [Advanced Commands](#advanced-commands)
+    * [See Commits, Diffs and Messages (git log, git diff, git show)](#see-commits-diffs-and-messages-git-log-git-diff-git-show)
+    * [Branching (git branch, git checkout)](#branching-git-branch-git-checkout)
+    * [Merging (git merge)](#merging-git-merge)
+    * [Remote Repositories (git remote)](#remote-repositories-git-remote)
+    * [Download Remote Branch and Test It (git fetch, git checkout)](#download-remote-branch-and-test-it-git-fetch-git-checkout)
+    * [Pulling - Download from Remote and Merge (git pull)](#pulling---download-from-remote-and-merge-git-pull)
+    * [Get Information About git Files (git ls-files)](#get-information-about-git-files-git-ls-files)
+    * [Clean the Working Tree (git stash)](#clean-the-working-tree-git-stash)
+    * [Reset the Current Branch (HEAD) to Specific State (commit) (git reset)](#reset-the-current-branch-head-to-specific-state-commit-git-reset)
+    * [Remove (Revert) Changes After Push (git reset, git push, git revert)](#remove-revert-changes-after-push-git-reset-git-push-git-revert)
+* [Common Scenarios](#common-scenarios)
+    * [Duplicate a Repository](#duplicate-a-repository)
+    * [Move Repository form One Git Site to Another](#move-repository-form-one-git-site-to-another)
+    * [Change File (history) in Every Commit](#change-file-history-in-every-commit)
+* [Contribute to a Project](#contribute-to-a-project)
+    * [Contribute to Someone's Repository (with push rights)](#contribute-to-someones-repository-with-push-rights)
+    * [Contribute Without the Rights to Push (fork)](#contribute-without-the-rights-to-push-fork)
+* [Submodules](#submodules)
+* [Customizing Git](#customizing-git)
+    * [Git Editor and Diff Tool](#git-editor-and-diff-tool)
 
 <!-- /TOC -->
 
-## TODO
+## To Do
 
 * [How To: Merge a Git submodule into its main repository](https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c)
 * [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 * [Splitting a subfolder out into a new repository](https://docs.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
 * [How to split and merge multiple git repositories while keeping the history](https://dev.to/itminds/how-to-split-and-merge-multiple-git-repositories-and-keep-the-history-2938)
 * [Undo git filter-branch](https://stackoverflow.com/questions/14542326/undo-git-filter-branch)
-* [git config --global core.editor "vim"](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
-* `git config --list --show-origin`
 * https://git-scm.com/docs/git-ls-tree
 
-## Basic information
+## Basic Information
 
-Git is a version control system. Probably the best way to learn it is just to read the [documentation](https://git-scm.com/doc).
-In case you do not have much time and just need to jump on the train, this document helps you to understand the basics fast.
+Git is a version control system. Probably the best way to learn it is just to read the [documentation](https://git-scm.com/doc). In case you do not have much time and just need to jump on the train, this document helps you to understand the basics fast.
 
-Git keeps the versions as a snapshots on your local machine. 
-It enables you to work completely offline and synchronize the code with the remote repository when it suits you.
+Git keeps the versions as a snapshots on your local machine. It enables you to work completely offline and synchronize the code with the remote repository when it suits you.
 
-In the git repository, every file can be in three states:
-1) modified - the file is changed but you don't want the change to be recorded in the next version (snapshot)
-2) staged - the file is changed and the change will be recorded with the next commit (~ the change is added to the index)
-3) committed - the change is safely stored in the local git database
+**There are four levels in the git hierarchy**
 
-## Git Basics
+| Git Levels        | Description                                                        |
+| ---               | ---                                                                |
+| Working Tree      | The actual files in the local directory managed by git.            |
+| Index             | Git structure of the files. Not in index - does not exist for git. |
+| Committed         | There is a snapshot version of the files. It can be shared.        |
+| Remote Repository | The commit (snapshot) was shared through push or pull with others. |
 
-| command  | Description                                                      |
-| ---      | ---                                                              |
-| clone    | Clones remote git repository to your machine as local git repository. |
-| branch   | Branch is simply a pointer to specific snapshot (version).       |
-| HEAD     | Special pointer which point at the branch you are currently on.  |
-| checkout | Changes branch at which the HEAD is pointing and updates the local files to match with that branch (switch branches). |
-| push     | Pushes local repository to the remote one.                       |
-| fetch    | Downloads content from remote git repository.                    |
-| merge    | Incorporates changes from given named branch to current branch.  |
-| pull     | Does git fetch and git merge.                                    |
+**In terms of files, they can be in one of three states**
+
+1) Modified: Changes not staged for commit.
+    - Some files are either untracked, modified or deleted.
+2) Staged: Changes to be committed (recorded in the index).
+    - The file changes (e.g. modified, renamed, new file, deleted) are staged for the next commit.
+3) Committed: Nothing to commit, working tree clean.
+    - Files in the working tree and files in the last commit identical.
+
+## Git Installation and Setup
+
+### Create a Git Account
+
+First step is to create account on some git site such as GitHub, GitLab etc.
+
+* [GitHub - Where the world builds software](https://github.com/)
+* [GitLab is the open DevOps platform](https://about.gitlab.com/)
+
+Once you have it, add your public SSH key to it.
+
+### Basic Git Configuration
+
+After the git installation, there is a need of some configurations.
+
+```sh
+git config --global user.name "Name Surname"
+git config --global user.email "username@email.com"
+```
+
+## Basic Commands
+
+| Git Command  | Description                                                |
+| ---          | ---                                                        |
+| git init     | Create an empty Git repository or reinitialize an existing one. |
+| git clone    | Clones remote git repository to your machine as local git repository. |
+| git add      | Add file contents to the index.                            |
+| git commit   | Record changes to the repository.                          |
+| git push     | Pushes local repository to the remote one.                 |
+| git fetch    | Downloads content from remote git repository.              |
+| git merge    | Incorporates changes from given named branch to current branch. |
+| git pull     | Does git fetch and git merge.                              |
+| git branch   | Branch is simply a pointer to specific snapshot (version). |
+| HEAD         | Special pointer which point at the branch you are currently on. |
+| git checkout | Changes branch at which the HEAD is pointing and updates the local files to match with that branch (switch branches). |
 
 ### Git --help
 
@@ -92,26 +124,11 @@ Git has a beautifully done manual, so adding `--help` after any command is usual
 git rm --help
 ```
 
-### Git installation and setup
-
-After the git installation, there is a need of some configurations.
-
-```sh
-git config --global user.name "Name Surname"
-git config --global user.email "username@email.com"
-```
-
-### Create git account
-
-First step is to create account on some git site such as GitHub, GitLab etc.
-
-Once you have it, add your public SSH key to it.
-
-### Create a project
+### Create a Project (git clone, git init, git fork)
 
 It is either possible to create a new repository (project) or to find some already existing.
 
-### Create repository from scratch
+**Create repository from scratch**
 
 On your GITSITE create a new repository and get its URL under button "clone" (e.g. https://github.com/USERNAME/PROJECT.git)
 
@@ -121,102 +138,156 @@ git clone git@YOUR_PROJECT_PATH.git
 
 # Create README.md about your project
 echo "# REPOSITORY_NAME" >> README.md #touch README.md
-
-# Add the README.md to the index
-git add README.md
-
-# Record changes to the repository with comment
-git commit -m "Initial commit, readme created"
-
-# Pushes the local commit to the remote site, the clone have set origin to git@YOUR_PROJECT_PATH.git
-git push -u origin master
 ```
 
-* [From gitlab.com](https://about.gitlab.com/)
-
-### Create repository from existing folder
+**Create repository from existing directory**
 
 ```sh
-cd EXISTING_FOLDER
+cd EXISTING_DIRECTORY
 echo "# REPOSITORY_NAME" >> README.md #touch README.md
 
 # Create an empty Git repository or reinitialize an existing one
 git init
 
-# Add the local things for next commit
-git add . # git add README.md # git add --all
-
-# Commits the added content
-git commit -m "First commit"
-
 # Add remote site git@GITSITE:USER/REPOSITORY.git as origin
 git remote add origin git@GITSITE.com:USER_NAME/REPOSITORY_NAME.git
-
-# Push the local content to master branch of origin
-git push -u origin master
 ```
 
 * [From github.com](https://github.com/)
 
-### Start to work on someones repository (fork)
+**Create a repository from an existing repository**
 
-There is an option to use an existing project as your starting point by making a copy.
-It is called a fork, by doing so you will have your own copy of the whole project.
-Then you can just git clone and start doing stuff.
+There is an option to use an existing project as your starting point by making a copy. It is called a fork, by doing so you will have your own copy of the whole project. Then you can just git clone and start doing stuff.
 
-## Contribute to a project
+### See Status of the Index (git status)
 
-### Contribute to someones repository (with push rights)
+Files can be either untracked, added, modified or deleted.
 
 ```sh
-# Clone the repository
-git clone git@GITSITE.com:PROJECT_PATH.git
-```
-
-### Update the content from remote
-
-If there is a time lag between cloning and the time you want to work on the repository, the remote repository may have changed.
-Then it is reasonable to update the local content from the remote i.e. pull the changes.
-
-```sh
-git checkout master
-# Git pull fetches the last version from the origin (GITSITE:repo) and merges it with the local content
-git pull # git pull origin 
-```
-
-### Develop the code as a new branch
-
-Instead of modifying master, and pushing to the origin/master.
-Create a development branch and make the changes there. Don't merge the branch with master.
-Push the development branch to remote and let the owner know about it, i.e. let him merge it himself.
-
-```bash
-# Create your development branch
-git branch BRANCH_NAME
-
-# Check out the branch
-git checkout BRANCH_NAME
-
-# Record the changes to be commited 
-git add PATH_TO_FILE, PATH_TO_FILE_1
-
-# Check if everything is git added or git deleted
+# Show status of git files, which where not added, which were deleted but added etc.
 git status
-
-# Commit the changes
-git commit -m "Meaningful description of the changes"
-
-# Push the local changes to the branch BRANCH_NAME of remote site
-git push -u origin BRANCH_NAME
 ```
 
-### Contribute without the rights to push - fork
+### File Changes (Differences) (git diff)
 
-Fork the repository. Clone it and treat it as your own.
+```sh
+# Show changes between staged file and file in the working tree.
+git diff path/to/file
+```
 
-Once you are happy with your changes, create a pull request on the GITSITE. 
+### Stage Changes to the Index (git add, git rm, git mv)
 
-## Branching
+Stage files to the index for the next commit.
+
+```sh
+# Add the one file (README.md) to the index (will be commited).
+git add README.md
+
+# Add all the files from current directory.
+git add .
+
+# Add all files to the index.
+git add -A          # git add --all
+```
+
+**Remove Files from the Index**
+
+```sh
+# Remove files from the working tree and from the index (File is deleted and will not be commited).
+git rm FILE
+# Delete directory (option recursive).
+git rm -r DIR
+# Remove FILE only from index (file will not be commited) it doesn't delete it locally.
+git rm --cached FILE
+# Forced remove - the file is deleted from index and working tree even when it has local modifications.
+git rm -f FILE
+```
+
+**Rename or move files**
+
+```sh
+# Move or rename files.
+git mv file/path new/file/path
+```
+
+* [git mv (git-scm.com)](https://git-scm.com/docs/git-mv)
+
+**Discard Local Changes**
+
+```
+# Discard changes in working directory.
+git checkout -- FILENAME
+```
+
+### Commit Changes (git commit)
+
+```sh
+# Commit (record) the changes with a meaningful message.
+git commit -m "Initial commit, README.md created."
+
+# Write commit message in advance to a file and then use it for commit.
+git commit -eF commit_message.txt
+
+# Redo last commit with new changes
+git commit --amend
+```
+
+* [Preparing a git commit message before committing? (stackoverflow.com)](https://stackoverflow.com/questions/20438293/preparing-a-git-commit-message-before-committing)
+
+### Push Commits to the Remote Repository (git push)
+
+```
+# Pushes the current branch to the remote repository called origin.
+git push -u origin
+
+# Pushes local master branch to the remote repository called origin.
+git push -u origin master
+
+# Pushes local master branch to remote repository origin's branch dev_master.
+git push origin master:dev_master
+
+# Forcing push if necessary (rewriting commits history perhaps).
+git push -f
+```
+
+## Ignore Files from the Git Structure (.gitignore)
+
+`.gitignore` file specifies intentionally untracked files to be ignored.
+
+```.gitignore
+# Ignore all .ipynb checkpoints
+.ipynb_checkpoints
+# Ignore knapsack instances directory
+./knapsack/instances
+```
+
+* [gitignore (git-scm.com)](https://git-scm.com/docs/gitignore)
+* [How to git ignore ipython notebook checkpoints anywhere in repository (stackoverflow.com)](https://stackoverflow.com/questions/35916658/how-to-git-ignore-ipython-notebook-checkpoints-anywhere-in-repository)
+
+## Advanced Commands
+
+### See Commits, Diffs and Messages (git log, git diff, git show)
+
+```sh
+# Show all commits of the current branch.
+git log
+
+# Show all commits that are fetched, graphically.
+git log --all --graph
+
+# Show commits affecting the a specific file (--oneline makes message and commit's hash shorter).
+git log --oneline path/to/file.sth
+
+# Diff file with it's version from given commit (commit's hash taken from git log).
+git diff 0a42637 path/to/file.sh
+
+# Show information about given commit, tag, etc.
+git show 0a42637
+```
+
+* [git diff file against its last change (stackoverflow.com)](https://stackoverflow.com/questions/10176601/git-diff-file-against-its-last-change)
+
+### Branching (git branch, git checkout)
 
 The default branch (and usually the main one) is called "master".
 It is handy to create a new branch once you want to create new feature.
@@ -225,7 +296,7 @@ It is handy to create a new branch once you want to create new feature.
 # Show branches - the current is marked with asterix
 git branch
 
-# List all branches, also the remote ones 
+# List all branches, also the remote ones
 git branch -a
 
 # Create branch
@@ -247,90 +318,7 @@ git branch -d BRANCH_NAME
 git branch -m NEW_BRANCH_NAME
 ```
 
-### Show files status (untracked/modified/added/deleted)
-
-```sh
-# Show status of git files, which where not added, which were deleted but added etc.
-git status
-```
-
-### File differences
-
-```sh
-# Show file last change (difference between the file and it's index representation)
-git diff path/to/file.sth
-```
-
-### Add files to or remove from the index
-
-```sh
-# Add file contents to the index (file will be commited)
-git add NAME_OF_FILE
-# Add everything to the index (everything will be commited)
-git add -A # git add --all
-
-# Discard changes in working directory
-git checkout -- FILENAME
-
-# Remove files from the working tree and from the index (File is deleted and will not be commited)
-git rm FILE
-git rm -r DIR # Recursive (directory) option
-git rm --cached FILE # Remove FILE only from index (will not be commited) dont delete it locally.
-git rm -f FILE # Force the removal - remove file from index and directory even when it has local modifications
-
-# Move or rename files
-git mv file/path new/file/path
-```
-
-* [How to fix “modified content, untracked content” in git? (stackoverflow.com)](https://stackoverflow.com/questions/50167969/how-to-fix-modified-content-untracked-content-in-git)
-* [git mv (git-scm.com)](https://git-scm.com/docs/git-mv)
-
-### Ignore files from the git structure
-
-`.gitignore` file specifies intentionally untracked files to be ignored.
-
-```.gitignore
-# Ignore all .ipynb checkpoints
-.ipynb_checkpoints
-# Ignore knapsack instances directory
-./knapsack/instances
-```
-
-* [gitignore (git-scm.com)](https://git-scm.com/docs/gitignore)
-* [How to git ignore ipython notebook checkpoints anywhere in repository (stackoverflow.com)](https://stackoverflow.com/questions/35916658/how-to-git-ignore-ipython-notebook-checkpoints-anywhere-in-repository)
-
-## Committing
-
-```sh
-# Commit added things
-git commit -m "Meaningful comment"
-
-# Write commit message first and then use it for commit
-git commit -eF commit_message.txt
-```
-
-* [Preparing a git commit message before committing? (stackoverflow.com)](https://stackoverflow.com/questions/20438293/preparing-a-git-commit-message-before-committing)
-
-### Show changes and commits
-
-```sh
-# Show changes between last merge and last commit
-git show
-
-# Show all commits
-git log
-
-# Show commits affecting the a specific file
-git log --oneline path/to/file.sth
-
-# File difference to specific commit from the previous step
-git diff 0a42637 path/to/file.sht
-```
-
-* [git diff file against its last change (stackoverflow.com)](https://stackoverflow.com/questions/10176601/git-diff-file-against-its-last-change)
-
-
-## Merging
+### Merging (git merge)
 
 Merge the NEW_BRANCH to master.
 
@@ -348,32 +336,7 @@ git merge --no-ff BRANCH_NAME
 
 * [No fast-foreward - A successful Git branching model (nvie.com)](https://nvie.com/posts/a-successful-git-branching-model/).
 
-### Change file in every commit
-
-```
-# Delete file from every commit
-git filter-branch --index-filter 'git rm --cached --ignore-unmatch path/to/file' HEAD
-
-# Move (rename) file through all history
-git filter-branch -f --tree-filter 'if [ -d path/to/dir ]; then mkdir -p path/to/new/dir && git mv path/to/dir path/to/new/dir; fi' HEAD
-```
-
-* [git filter-branch (git-scm.com)](https://git-scm.com/docs/git-filter-branch)
-* [Is it possible to move/rename files in Git and maintain their history?](https://stackoverflow.com/questions/2314652/is-it-possible-to-move-rename-files-in-git-and-maintain-their-history)
-
-### Test a new branch before the merge
-
-```sh
-# Fetch files from origin (remote site)
-git fetch origin
-
-# Create the desired BRANCH_NAME from origin and change to it 
-git checkout -b BRANCH_NAME origin/BRANCH_NAME
-
-git merge master
-```
-
-## Remote repositories - remotes
+### Remote Repositories (git remote)
 
 Once you clone a repository, it sets a remote for the repository under the origin.
 Thanks to that you can push your code to origin (the remote repository) or to pull code from the repository.
@@ -395,108 +358,253 @@ git remote remove NAME URL
 git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 ```
 
-### Push and Pull
+### Download Remote Branch and Test It (git fetch, git checkout)
 
 ```sh
-# Pushes the code to the origin
-git push -u origin
-# Forcing push if necessary
-git push -f
+# Fetch files from origin( remote site).
+git fetch origin
 
-# Git pull - equivalent to git fetch and git merge
+# Create the desired BRANCH_NAME from origin and change to it.
+git checkout -b BRANCH_NAME origin/BRANCH_NAME
+```
+
+### Pulling - Download from Remote and Merge (git pull)
+
+```sh
+# Git pull - equivalent to git fetch and git merge.
 git pull
 
+# Fetch origin branch from remote origin( and merge it with local branch origin).
+git pull origin master
+```
+
+**Git pull using git fetch and git merge.**
+
+```sh
 # Downloads content from a remote repository and write to .git/FETCH_HEAD
-git fetch 
-# Merges the FETCH_HEAD to local repo
+git fetch
+# Merges the FETCH_HEAD to the current branch.
 git merge FETCH_HEAD
 ```
 
-### Stash
+**Create the pull request**
+
+In case you do not have the push rights in order to merge your changes to the remote repository you need to create Pull Request at the git site, so the owner can pull your changes.
+
+* [Create a pull request](#https://git-scm.com/docs/git-request-pull)
+
+### Get Information About git Files (git ls-files)
+
+```sh
+# Show information about files in the index and the working tree
+git ls-files
+```
+
+### Clean the Working Tree (git stash)
 
 Save the changes from the last commit on and clean them
 
 So the working directory is at the stage of last commit.
 
 ```sh
-# Saves all differences from last commit away and clean them off
+# Saves all differences from last commit away and clean them off (equivalent to git stash push).
 git stash
 
-# List the stashes
+# Shows list of stashes.
 git stash list
 
-# See the most recent stash
-git stash show -p # git stash show -p stash@{0}
+# Restored changes from the last stash.
+git stash apply
+
+# See the most recent stash (equivalent to git stash show -p stash@{0}).
+git stash show -p
 
 # See older stash
 git stash show -p stash@{1}
 
-# Drop the stash
+# Drop the last stash.
 git stash drop
 ```
 
-### Remove unwanted staging of many files
+### Reset the Current Branch (HEAD) to Specific State (commit) (git reset)
+
+**Undo stuff before commit, i.e. reset the Index and Working Tree or the Index only.**
 
 ```sh
+# Removes unwanted staging of many files - resets the index only.
 git reset
+
+# Deletes all changes from the last commit - resets index and the working tree.
+git reset --hard
 ```
 
-### Remove changes after commit
+**Remove changes after commit i.e. reset to the specific commit.**
 
-Reset current head to the specific state (commit).
-
-```sh
-# Reset the HEAD to the given commit, files are untouched but not marked for commit
-git reset HASH_OF_COMMIT #~ git reset --mixed HASH_OF_COMMIT
-
-# Reset the index and the working direcotry - leaves everything at the stage of the commit
-git reset --hard HASH_OF_COMMIT
-
-# Reset only the HEAD, but the working directory and index are the same
+```
+# Resets branch (HEAD) to given commit, but the working tree and index stay the same.
 git reset --soft HASH_OF_COMMIT
+
+# Resets branch (HEAD) and index to the given commit, files (working tree) stays untouched.
+git reset --mixed HASH_OF_COMMIT
+
+# Resets the index and the working tree, everything is reseted to the given commit.
+git reset --hard HASH_OF_COMMIT
 ```
 
 * [git-reset (git-scm.com)](#https://git-scm.com/docs/git-reset)
 
-### Remove changes after push
+### Remove (Revert) Changes After Push (git reset, git push, git revert)
+
+**Remove changes and keep history**
 
 ```sh
 # Revert some existing commits (Requires no local modifications from the HEAD commit)
 git revert
 ```
 
-### Create the pull request
-
-* [Create the pull request](#https://git-scm.com/docs/git-request-pull)
-
-### Move repository form one GITSITE_OLD to another GITSITE_NEW
+**Remove changes without history**
 
 ```sh
-git clone git@GITSITE_OLD.com:USER/PROJECT.git # cd existing_git_repo
-git remote rename origin old-origin
-git remote add origin git@GITSITE_NEW.com:USER/PROJECT.git
-git push -u origin --all
-git push -u origin --tags
+# Move HEAD to the second latest commit
+git reset HEAD^
+
+# Do the modifications
+# Commit the changes
+
+# Forcefully push the changes (to rewrite the history)
+git push -f
 ```
 
-### Duplicate a repository
+## Common Scenarios
+
+### Duplicate a Repository
 
 ```sh
 git clone --bare https://githost.org/OLD_REPOSITORY.git
 
-cd OLD_REPOSITORY.git
+cd OLD_REPOSITORY
 
 git push --mirror https://github.com/NEW_REPOSITORY.git
-
-cd ..
-
-rm -rf NEW_REPOSITORY.git
 ```
 
-* [source](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
+* [Duplicating a repository (docs.github.com)](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
 
-### Add submodule
+### Move Repository form One Git Site to Another
 
 ```sh
+# Clone the repository from the old site.
+git clone git@GITSITE_OLD.com:USER/PROJECT.git
+
+# Go to the repo directory.
+cd PROJECT
+
+# Rename remote origin to old-origin
+git remote rename origin old-origin
+
+# Add new remote and call it origin
+git remote add origin git@GITSITE_NEW.com:USER/PROJECT.git
+
+# Push everything to the new origin
+git push -u origin --all
+git push -u origin --tags
+```
+
+### Change File (history) in Every Commit
+
+```
+# Delete file from every commit
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch path/to/file' HEAD
+
+# Move (rename) file through all history
+git filter-branch -f --tree-filter 'if [ -d path/to/dir ]; then mkdir -p path/to/new/dir && git mv path/to/dir path/to/new/dir; fi' HEAD
+```
+
+* [git filter-branch (git-scm.com)](https://git-scm.com/docs/git-filter-branch)
+* [Is it possible to move/rename files in Git and maintain their history?](https://stackoverflow.com/questions/2314652/is-it-possible-to-move-rename-files-in-git-and-maintain-their-history)
+
+## Contribute to a Project
+
+### Contribute to Someone's Repository (with push rights)
+
+```sh
+# Clone the repository
+git clone git@GITSITE.com:PROJECT_PATH.git
+```
+
+**Update the Content from Remote**
+
+If there is a time lag between cloning and the time you want to work on the repository, the remote repository may have changed.
+Then it is reasonable to update the local content from the remote i.e. pull the changes.
+
+```sh
+git checkout master
+# Git pull fetches the last version from the origin (GITSITE:repo) and merges it with the local content
+git pull # git pull origin
+```
+
+**Develop the Code as a New Branch**
+
+Instead of modifying master, and pushing to the origin/master.
+Create a development branch and make the changes there. Don't merge the branch with master.
+Push the development branch to remote and let the owner know about it, i.e. let him merge it himself.
+
+```bash
+# Create your development branch
+git branch BRANCH_NAME
+
+# Check out the branch
+git checkout BRANCH_NAME
+
+# Record the changes to be commited
+git add PATH_TO_FILE, PATH_TO_FILE_1
+
+# Check if everything is git added or git deleted
+git status
+
+# Commit the changes
+git commit -m "Meaningful description of the changes"
+
+# Push the local changes to the branch BRANCH_NAME of remote site
+git push -u origin BRANCH_NAME
+```
+
+### Contribute Without the Rights to Push (fork)
+
+Fork the repository. Clone it and treat it as your own.
+
+Once you are happy with your changes, create a pull request on the GITSITE.
+
+## Submodules
+
+[How To: Merge a Git submodule into its main repository](https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c)
+
+```sh
+# Add submodule
 git submodule add https://github.com/NEW_REPOSITORY.git REPO_NAME
 ```
+
+## Customizing Git
+
+```sh
+# List all git configurations with specified origin
+git config --list --show-origin
+```
+
+### Git Editor and Diff Tool
+
+```sh
+# Set vim as your default git editor.
+git config --global core.editor "vim"
+```
+
+* [How do I make Git use the editor of my choice for commits? (stackoverflow)](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
+
+```sh
+# Set vimdiff as your difftool
+git config --global diff.tool vimdiff
+
+# Diff changes with a diff tool of your choice
+git difftool
+```
+
+* [Configure Git To Use Vimdiff (programster.org)](https://blog.programster.org/configure-git-to-use-vimdiff)

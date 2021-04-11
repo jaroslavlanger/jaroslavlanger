@@ -9,26 +9,29 @@ Neovim - a Vim taken a step further.
 <!-- TOC GFM -->
 
 * [Introduction](#introduction)
+* [References](#references)
 * [Installation](#installation)
-    * [Install neovim](#install-neovim)
-    * [Create config file](#create-config-file)
-    * [Create space for plugins](#create-space-for-plugins)
-    * [Install vim-plug plugin manager](#install-vim-plug-plugin-manager)
-    * [Plugins](#plugins)
-        * [neoclide/coc.nvim](#neoclidecocnvim)
-        * [morhetz/gruvbox](#morhetzgruvbox)
-    * [Modify the config file](#modify-the-config-file)
-    * [How to Configure Vim like VSCode (benawad)](#how-to-configure-vim-like-vscode-benawad)
+* [Create Config File](#create-config-file)
+* [Create Space for Plugins](#create-space-for-plugins)
+* [Install vim-plug Plugin Manager](#install-vim-plug-plugin-manager)
+* [Plugins](#plugins)
+    * [Conquer of Completition](#conquer-of-completition)
+    * [Gruvbox Scheme](#gruvbox-scheme)
+* [Add Plugins in the Config File](#add-plugins-in-the-config-file)
+* [Neovim Diff](#neovim-diff)
 
 <!-- /TOC -->
 
 ## Introduction
 
-- [Meet Neovim (vimcasts.org)](http://vimcasts.org/episodes/meet-neovim/)
+* [Meet Neovim (vimcasts.org)](http://vimcasts.org/episodes/meet-neovim/)
+
+## References
+
+* [How to Configure Vim like VSCode (benawad)](https://www.youtube.com/watch?v=gnupOrSEikQ)
+  + [init.vim file from Ben Awad](https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f)
 
 ## Installation
-
-### Install neovim
 
 ```sh
 sudo add-apt-repository ppa:neovim-ppa/stable       # version 0.4.4
@@ -37,9 +40,9 @@ sudo apt-get update
 sudo apt-get install neovim
 ```
 
-- [Install neovim ubuntu/linux mint](https://vi.stackexchange.com/questions/25192/how-to-install-stable-version-of-neovim-on-ubuntu-18-04)
+* [Install neovim ubuntu/linux mint](https://vi.stackexchange.com/questions/25192/how-to-install-stable-version-of-neovim-on-ubuntu-18-04)
 
-### Create config file
+## Create Config File
 
 ```sh
 # Do this only if the file does not exist already!
@@ -54,23 +57,25 @@ set list
 " > ~/.config/nvim/init.vim
 ```
 
-### Create space for plugins
+## Create Space for Plugins
 
 ```sh
 mkdir -p ~/.vim/plugins
 ```
 
-### Install vim-plug plugin manager
+## Install vim-plug Plugin Manager
 
 ```sh
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-- [Install vim-plugin manager](https://www.linode.com/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/)
+* [Install vim-plugin manager](https://www.linode.com/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/)
 
-### Plugins
+## Plugins
 
-#### [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+### Conquer of Completition
+
+* [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
 
 Install nodejs >= 10.12:
 
@@ -78,9 +83,11 @@ Install nodejs >= 10.12:
 curl -sL install-node.now.sh/lts | bash
 ```
 
-#### [morhetz/gruvbox](https://github.com/morhetz/gruvbox)
+### Gruvbox Scheme
 
-### Modify the config file
+* [morhetz/gruvbox](https://github.com/morhetz/gruvbox)
+
+## Add Plugins in the Config File
 
 Usually this is the very first lines of the init.vim file.
 
@@ -95,15 +102,8 @@ call plug#end()
 
 Restart nvim and run `:PlugInstall`.
 
-### [How to Configure Vim like VSCode (benawad)](https://www.youtube.com/watch?v=gnupOrSEikQ)
+## Neovim Diff
 
-- [init.vim file from Ben Awad](https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f)
-
-<!--
 ```sh
-echo "\
-\" Use release branch (recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" | cat - ~/.config/nvim/init.vim > tmp && mv tmp ~/.config/nvim/init.vim
+nvim -d file_1 file_2
 ```
--->

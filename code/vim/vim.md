@@ -2,255 +2,361 @@
 
 Vi improved - visual text editor for life.
 
-`2021 Feb 02, Jaroslav Langer`
+`2021 Apr 10, Jaroslav Langer`
 
 ## Contents
 
 <!-- TOC GFM -->
 
+* [To Do](#to-do)
 * [Introduction](#introduction)
-    * [Where to learn vim](#where-to-learn-vim)
-    * [Vim modes](#vim-modes)
-        * [Normal mode](#normal-mode)
-        * [Insert mode](#insert-mode)
-        * [Visual mode](#visual-mode)
-        * [Command mode](#command-mode)
+    * [Where to Learn Vim](#where-to-learn-vim)
+    * [Vim Modes](#vim-modes)
 * [Basics](#basics)
-    * [Basic movement](#basic-movement)
-    * [Basic editing](#basic-editing)
-        * [Insert mode editing](#insert-mode-editing)
-    * [Basic operations](#basic-operations)
-    * [Basic commands](#basic-commands)
-    * [Search for pattern](#search-for-pattern)
-    * [Copy from and past to clipboard](#copy-from-and-past-to-clipboard)
+    * [Basic Commands](#basic-commands)
+    * [Normal Mode Movement](#normal-mode-movement)
+    * [Single-stroke Editing Actions](#single-stroke-editing-actions)
+    * [Composed Editing Actions](#composed-editing-actions)
+    * [Composed Editing Example](#composed-editing-example)
+    * [Basic Operations](#basic-operations)
+    * [Search for Pattern](#search-for-pattern)
+    * [Copy from and Paste to Clipboard](#copy-from-and-paste-to-clipboard)
     * [Autocomplete](#autocomplete)
 * [Advanced](#advanced)
-    * [Advanced movement](#advanced-movement)
-    * [Editing movement combination](#editing-movement-combination)
-    * [Visual modes](#visual-modes)
-    * [Change view](#change-view)
-    * [Replace pattern](#replace-pattern)
-    * [Other movements](#other-movements)
+    * [Advanced Movement](#advanced-movement)
+    * [Move to Desired Character](#move-to-desired-character)
+    * [Visual Modes](#visual-modes)
+    * [Visual Mode Actions](#visual-mode-actions)
+    * [Change View](#change-view)
+    * [Replace by Pattern](#replace-by-pattern)
+    * [Mark Movements](#mark-movements)
     * [Commands](#commands)
-    * [Settings](#settings)
-    * [Check spelling](#check-spelling)
-* [Rest of the previous Czech version (something duplicated)](#rest-of-the-previous-czech-version-something-duplicated)
-    * [Cut](#cut)
-    * [Copy](#copy)
-    * [Paste](#paste)
-    * [General](#general)
-    * [Find Character](#find-character)
-    * [Find Pattern](#find-pattern)
-    * [Commands](#commands-1)
-    * [Visual mode](#visual-mode-1)
-    * [More files](#more-files)
-* [Configuration file](#configuration-file)
+* [More Files](#more-files)
+    * [Tabs](#tabs)
+* [Features](#features)
+    * [Spell Checking](#spell-checking)
+    * [Auto Increment](#auto-increment)
+* [Settings](#settings)
+    * [Configuration File](#configuration-file)
+* [Terminal](#terminal)
+* [Netrw](#netrw)
+* [Vimdiff](#vimdiff)
 
 <!-- /TOC -->
+
+## To Do
+
+* [Vim registers: The basics and beyond `:reg` (brianstorti.com)](https://www.brianstorti.com/vim-registers/)
+* [Vim tips: Using tabs (linux.com)](https://www.linux.com/training-tutorials/vim-tips-using-tabs/)
+* [Why I love Vim: It’s the lesser-known features that make it so amazing (freecodecamp.org)](https://www.freecodecamp.org/news/learn-linux-vim-basic-features-19134461ab85/)
+* [Vim: you don't need NERDtree or (maybe) netrw](https://shapeshed.com/vim-netrw/)
 
 ## Introduction
 
 * [What Are The Differences Between Vi And Vim? (shell-tips.com)](https://www.shell-tips.com/linux/vi-vs-vim/)
 
-### Where to learn vim
+### Where to Learn Vim
 
 1) Inside the vim editor.
    - `:Tutor` - start tutorial.
-2) [vim tutor by Luke Smith](https://www.youtube.com/watch?v=d8XtNXutVto)
-3) [learn by playing a game (vim adventures)](https://vim-adventures.com/)
-4) [Basic Vi Commands (Colorado State University)](https://www.cs.colostate.edu/helpdocs/vi.html)
+1) [vim tutor by Luke Smith](https://www.youtube.com/watch?v=d8XtNXutVto)
+1) [Vim documentation: help (cs.auckland.ac.nz)](https://www.cs.auckland.ac.nz/references/gnu/vim/)
+1) [learn by playing a game (vim adventures)](https://vim-adventures.com/)
+1) [Basic Vi Commands (Colorado State University)](https://www.cs.colostate.edu/helpdocs/vi.html)
 
-### Vim modes
+### Vim Modes
 
-#### Normal mode
+**Normal mode**
 
 * Every vim session starts in normal mode.
 * In normal mode keys do not write down their letters, they all have special actions.
 
-#### Insert mode
+**Insert mode**
 
 * Insert mode works the same as normal text editor.
     * If you type "b" the "b" appears on the screen.
-* To enter the insert mode press `i`.
-* Press `esc` to exit the insert mode.
+* To enter the insert mode press `[i]`.
+* Press `[esc]` to exit the insert mode.
 
-#### Visual mode
+**Visual mode**
 
 * Visual mode enables to visually select the text and apply editing to the selection.
 * To enter the visual mode press `v`.
-* Press `esc` to exit the visual mode.
+* Press `[esc]` to exit the visual mode.
 
-#### Command mode
+**Command mode**
 
 * Command mode allows you to use advanced commands such as replacing text with regex.
     * It also allows you to set up the editor e.g. set search to be case insensitive.
 * To enter the command mode press `:`.
-* Use `backspace` to exit the command mode.
+* Use `[backspace]` to exit the command mode.
 
 ## Basics
 
-### Basic movement
+```sh
+# Open file example.txt if exists otherwise create a new one.
+vim example.txt
+```
 
-| Shortcut   | Action                  |
-| :---:      | ---                     |
-| j          | Move down.              |
-| k          | Move up.                |
-| h          | Move right.             |
-| l          | Move left.              |
-| gg         | Move to the first line. |
-| shift+g    | Move to the last line.  |
-| 12+shift+g | Move to the 12th line.  |
-| :12        | Move to the line 12.    |
-| ctrl+u     | Move half page up.      |
-| ctrl+d     | Move half page down.    |
+### Basic Commands
 
-### Basic editing
+| Keystrokes           | Action                                                  | Alternatives |
+| :---:                | ---                                                     | ---          |
+| `[i]`                | Act like other text editors (insert mode).              |              |
+| `[esc]`              | Return to the "Normal Mode" (necessary for exiting).    |              |
+| `[i][h][i][esc]`     | Start editing write "hi" and end editing.               |              |
+| `[shift-Z][shift-Q]` | Quit vim without saving (form Normal mode).             | `[:][q][!][enter]` |
+| `[:][w][enter]`      | Save file (write the changes to the file).              |              |
+| `[shift-Z][shift-Z]` | Save and quit.                                          | `[:][x][enter]`; `[:][w][q][enter]` |
+| `[:][q][enter]`      | Safely quit vim (will not happen if file is not saved). |              |
 
-| Shortcut | Action                                                         |
-| :---:    | ---                                                            |
-| dd       | Delete current line.                                           |
-| yy       | Yank (copy) current line.                                      |
-| p        | Paste deleted or yanked line below the cursor.                 |
-| x        | Delete character under the cursor.                             |
-| r8       | Replace the cursor character with number 8.                    |
-| shift+r  | Start replacing all characters (like insert mode) until `esc`. |
-| shift+j  | Delete current line's newline.                                 |
+### Normal Mode Movement
 
-#### Insert mode editing
+| Keystrokes  | Action                  |
+| :---:       | ---                     |
+| `[j]`       | Move down.              |
+| `[k]`       | Move up.                |
+| `[h]`       | Move right.             |
+| `[l]`       | Move left.              |
+| `[8][j]`    | Move 8 lines down.      |
+| `[g][g]`    | Move to the first line. |
+| `[shift-G]` | Move to the last line.  |
 
-| shift+x  | Delete character before the cursor (backspace).               |
-| i        | Start insert mode right before the cursor.                    |
-| shift+i  | Start insert mode at the beginning of the line.               |
-| a        | Start insert mode right after the cursor.                     |
-| shift+a  | Start insert mode at the end of the line.                     |
-| esc      | Exit insert mode = start normal mode.                         |
-| o        | Create paragraph bellow the cursor and enter the insert mode. |
-| shift+o  | Create paragraph above the cursor and enter the insert mode.  |
+### Single-stroke Editing Actions
 
-### Basic operations
+| Keystrokes  | Action                                                           |
+| ---         | ---                                                              |
+| `[x]`       | Delete character under the cursor.                               |
+| `[p]`       | Paste deleted or yanked content (e.g. the deleted character).    |
+| `[r][8]`    | Replace character under the cursor with number "9".              |
+| `[i]`       | Start insert mode right before the cursor.                       |
+| `[a]`       | Start insert mode right after the cursor.                        |
+| `[o]`       | Create paragraph bellow the cursor and enter the insert mode.    |
+| `[shift-X]` | Delete character before the cursor (backspace).                  |
+| `[shift-P]` | Paste deleted or yanked content before the cursor.               |
+| `[shift-R]` | Start replacing all characters (like insert mode) until `[esc]`. |
+| `[shift-I]` | Start insert mode at the beginning of the line.                  |
+| `[shift-A]` | Start insert mode at the end of the line.                        |
+| `[shift-O]` | Create paragraph above the cursor and enter the insert mode.     |
+| `[shift-J]` | Delete current line's newline.                                   |
 
-| Shortcut        | Action              |
-| :---:           | ---                 |
-| u               | Undo action.        |
-| ctrl+r          | Redo action.        |
-| .               | Repeat last action. |
+### Composed Editing Actions
 
-### Basic commands
+| Keystrokes  | Action                                                         |
+| :---:       | ---                                                            |
+| `[d][d]`    | Delete current line.                                           |
+| `[y][y]`    | Yank (copy) current line.                                      |
+| `[c][c]`    | Delete current line and enter the insert mode.                 |
 
-| Keystrokes | Action                                               | Alternatives |
-| ---        | ---                                                  |              |
-| :q         | Quit vim.                                            |              |
-| shift+zq   | Quit even though the file was changed.               | :q!          |
-| :w         | Save file (write the changes to the file).           |              |
-| shift+zz   | Save and quit.                                       | :x :wq       |
-| :w !sh     | Execute like a shell script (write buffer to shell). | :w !bash     |
+### Composed Editing Example
 
-* [Execute current buffer as bash script from vim (stackexchange.com)](https://vi.stackexchange.com/questions/10209/execute-current-buffer-as-bash-script-from-vim)
+The editing actions all behave similarly. Follows example of delete action, however the modifiers works the same for copying, replacing etc.
+Delete action store the deleted text to the buffer, co it act as a "Cut" (`[ctrl-X]`) in other editors.
 
-### Search for pattern
+| Keystrokes  | Action                                                | Alternatives |
+| ---         | ---                                                   | ---          |
+| `[d][d]`    | Delete current line.                                  |              |
+| `[9][d][d]` | Delete nine line down.                                |              |
+| `[d][$]`    | Delete characters to the end of the line.             | `[shift-D]`  |
+| `[d][0]`    | Delete characters to the beginning of the line.       |              |
+| `[d][^]`    | Delete to the line's first not white-space character. |              |
+| `[d][w]`    | Delete characters to the end of the word.             |              |
+| `[d][i][w]` | Delete word under the cursor.                         |              |
+| `[d][i][(]` | Delete content in `(` parentheses.                    |              |
+| `[d][a][[]` | Delete content in `[` parentheses.                    |              |
+| `[d][i]["]` | Delete content in `"` double quotes.                  |              |
+| `[d][a][w]` | Delete word under the cursor with space around.       |              |
+| `[d][i][p]` | Delete paragraph (content between empty lines).       |              |
+| `[d][i][p]` | Delete paragraph and space around.                    |              |
 
-| Keystrokes | Action                                              |
-| :---:      | ---                                                 |
-| /something | Search for "something" and go to the first match.   |
-| n          | Go the next match.                                  |
-| shift+n    | Go to the previous match.                           |
-| *          | Search for the cursor word.                         |
-| :noh       | Abbreviation for :nohlsearch (no highlight search). |
+### Basic Operations
 
-### Copy from and past to clipboard
+| Keystrokes | Action              |
+| :---:      | ---                 |
+| `[u]`      | Undo action.        |
+| `[ctrl-r]` | Redo action.        |
+| `[.]`      | Repeat last action. |
+
+### Search for Pattern
+
+| Keystrokes  | Action                                                       |
+| :---:       | ---                                                          |
+| `[/][8]`    | Search for regex pattern `\8\` and go to the first match.    |
+| `[n]`       | Go the next match.                                           |
+| `[shift-N]` | Go to the previous match.                                    |
+| `[*]`       | Search for the word under the cursor.                        |
+| `:noh`      | Abbreviation for :nohlsearch (no highlight search).          |
+| `[?][8]`    | Search for regex pattern `\8\` and go to the previous match. |
+
+### Copy from and Paste to Clipboard
 
 Use the `y` and `p` the same way, only type `"+` before the action.
 * e.g use `"+p` to paste the content from the clipboard or use `"+yy` to copy the current line.
 
 ### Autocomplete
 
-| Shortcut | Action                         |
-| :---:    | ---                            |
-| ctrl+n   | Go to next recommendation.     |
-| ctrl+p   | Go to previous recommendation. |
+| Shortcut   | Action                         |
+| :---:      | ---                            |
+| `[ctrl-n]` | Go to next recommendation.     |
+| `[ctrl-p]` | Go to previous recommendation. |
 
 ## Advanced
 
-### Advanced movement
+### Advanced Movement
 
-| Shortcut | Action                                        |
-| :---:    | ---                                           |
-| w        | Move to the beginning of the next word.       |
-| shift+w  | Move one position after next whitespace.      |
-| b        | Move to the beginning of the previous word.   |
-| shift+b  | Move one position before previous whitespace. |
-| e        | Move to the end of the next word.             |
-| shift+e  | Move at the position before next whitespace.  |
-| ge       | Move to the end of the previous word.         |
-| $        | Move to the end of the line.                  |
-| 0        | Move to the beginning of the line.            |
-| ^        | Move to the beginning of the first word.      |
-| {        | Move to the previous empty line (paragraph).  |
-| }        | Move to the next empty line (paragraph).      |
-| (        | Move to the previous sentence.                |
-| )        | Move to the next sentence.                    |
-| %        | Move to the matching  parentheses.            |
+| Shortcut           | Action                                        |
+| :---:              | ---                                           |
+| `[w]`              | Move to the beginning of the next word.       |
+| `[shift-W]`        | Move one position after next whitespace.      |
+| `[b]`              | Move to the beginning of the previous word.   |
+| `[shift+B]`        | Move one position before previous whitespace. |
+| `[e]`              | Move to the end of the next word.             |
+| `[shift+E]`        | Move at the position before next whitespace.  |
+| `[g][e]`           | Move to the end of the previous word.         |
+| `[$]`              | Move to the end of the line.                  |
+| `[0]`              | Move to the beginning of the line.            |
+| `[^]`              | Move to the beginning of the first word.      |
+| `[{]`              | Move to the previous empty line (paragraph).  |
+| `[}]`              | Move to the next empty line (paragraph).      |
+| `[(]`              | Move to the previous sentence.                |
+| `[)]`              | Move to the next sentence.                    |
+| `[%]`              | Move to the matching  parentheses.            |
+| `[1][1][shift-G]`  | Move to the 11th line.                        |
+| `[:][1][1][enter]` | Move to the line 11.                          |
+| `[ctrl+g]`         | Show current line of the file and percentage. |
+| `[2][0][%]`        | Move to the 20% of the document.              |
+| `[ctrl-d]`         | Move half page down.                          |
+| `[ctrl-u]`         | Move half page up.                            |
+| `[ctrl-f]`         | Move page down.                               |
+| `[ctrl-b]`         | Move page up.                                 |
 
-### Editing movement combination
+### Move to Desired Character
 
-dw - delete to the end of the word
-shift+d d$ - delete to the end of the line
+| Keystrokes | Action                                                         |
+| ---        | ---                                                            |
+| `[f][8]`   | Move to the next `8` on the current line.                      |
+| `[F][8]`   | Move to the previous `8` on the current line.                  |
+| `[t][8]`   | Move one character before the next `8` on the current line.    |
+| `[T][8]`   | Move one character after the previous `8` on the current line. |
+| `[;]`      | Repeat the action of `[f]` `[F]` `[t]` `[T]`.                  |
+| `[,]`      | Repeat the action in the oposite direction.                    |
 
-daw dap da( da"
-diw dip di( di"
+### Visual Modes
 
-4k - Every action may start with number of repetition.
+| Keystrokes  | Action                      |
+| ---         | ---                         |
+| `[v]`       | Triggers visual mode.       |
+| `[shift-V]` | Triggers line visual mode.  |
+| `[ctrl+v]`  | Triggers block visual mode. |
 
-c - delete and trigger insert mode.
-shift+c c$ - delete rest of the line and trigger insert mode.I
+### Visual Mode Actions
 
-yap yaw
+| Keystrokes | Action                                                   |
+| ---        | ---                                                      |
+| `[d]`      | Deletes highlighted characters.                          |
+| `[y]`      | Yanks highlighted characters.                            |
+| `[c]`      | Changes highlighted characters.                          |
+| `:norm`    | Apply normal mode commands to every highlighted line.    |
+| `:norm I#` | Add hashtag before first word on every highlighted line. |
 
-### Visual modes
+### Change View
 
-v - triggers visual mode.
-shift+v - triggers line visual mode.
-ctrl+v - triggers block visual mode.
+| Keystrokes | Action                          |
+| ---        | ---                             |
+| `[z][t]`   | Move current line to the top.   |
+| `[z][z]`   | Move cursor line to the middle. |
+| `[z][b]`   | Move cursor line to the bottom. |
 
-:norm 02wyl$p - example: go to the first character of second word and past it at the end.
+### Replace by Pattern
 
-### Change view
+| Command                      | Action                                                 |
+| ---                          | ---                                                    |
+| `:s/pattern/substituent/`    | Substitute one match (sed syntax).                     |
+| `:s/pattern/substituent/g`   | Substitute all matches (on the same line).             |
+| `:%s/pattern/substituent/g`  | Substitute all matches (all lines).                    |
+| `:%s/pattern/substituent/gc` | Confirm all substitutions for all matches (all lines). |
 
-zt - move current line to the top.
-zz - move cursor line to the middle.
-zb - move cursor line to the bottom.
+* [Search_and_replace (vim.fandom.com)](https://vim.fandom.com/wiki/Search_and_replace)
 
-### Replace pattern
+### Mark Movements
 
-:/what_to_replace/with_what/ - replace one match
-:/what_to_replace/with_what/g - g for replacing every match
+| Keystrokes      | Action                                       |
+| ---             | ---                                          |
+| `[m][a]`        | Set mark `a` to the current cursor location. |
+| `['][a]`        | Jump to the beginning of line with mark `a`. |
+| `[backtick][a]` | Jump to the line and column of mark `a`.     |
+| `['][']`        | Jump to location before last jump.           |
 
-### Other movements
-
-ctrl+g - show current line of the file and percentage.
-20% - move to the 20% of the document.
-'' - go to the previous location
+* [Using_marks (vim.fandom.com)](https://vim.fandom.com/wiki/Using_marks)
 
 ### Commands
 
 Command mode starts with press of the key `:`.
 
-| Command | Example usage | Description                             |
-| :---:   | ---           | ---                                     |
-| retab   | :retab        | Convert tabs to spaces.                 |
-| !       | :!            | Runs any terminal command.              |
-| w       | :w filename   | Write as a filename.                    |
-| r       | :r filename   | Open file.                              |
-| e       | :e filename   | Open new file.                          |
-| qa      | :qa           | Quit all files.                         |
-| sort    | :sort         |                                         |
-| earlier | :earlier 15m  |                                         |
-| later   | :later 10m    |                                         |
-| source  | :so %         | Read file and treat it as a vim script. |
+| Command   | Example usage  | Description                                          | Alternatives |
+| :---:     | ---            | ---                                                  | ---          |
+| `e`       | `:e filename`  | Open file for editing.                               |              |
+| `r`       | `:r filename`  | Open file for reading.                               |              |
+| `!`       | `:! ls`        | Runs any terminal command.                           |              |
+| `w`       | `:w filename`  | Write as a filename.                                 |              |
+| `w`       | `:w !sh`       | Execute like a shell script (write buffer to shell). | `:w !bash`   |
+| `source`  | `:so %`        | Read file and treat it as a vim script.              |              |
+| `retab`   | `:retab`       | Convert tabs to spaces.                              |              |
+| `qa`      | `:qa`          | Quit all files.                                      |              |
+| `sort`    | `:sort`        |                                                      |              |
+| `earlier` | `:earlier 15m` |                                                      |              |
+| `later`   | `:later 10m`   |                                                      |              |
 
 * [https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim (superuser.com)](https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim)
+* [Execute current buffer as bash script from vim (stackexchange.com)](https://vi.stackexchange.com/questions/10209/execute-current-buffer-as-bash-script-from-vim)
 
-### Settings
+## More Files
+
+```bash
+# Open files horizontally split windows
+vi -o file1 file2
+# Open files vertically split windows
+vi -O file1 file2
+```
+
+| Keystrokes         | Action                                 | Alternatives |
+| ---                | ---                                    | ---          |
+| `:split`           | Horizontally split vim window in half. | `:sp`        |
+| `:vsplit`          | Vertically split vim window in half.   | `:vs`        |
+| `:botright vs`     | Vertically split open in right window. |              |
+| `[ctrl-w][ctrl-w]` | Switch to the next window.             |              |
+| `[ctrl-w][ctrl-k]` | Switch to upper window, options: hjkl. |              |
+
+### Tabs
+
+| Keystrokes     | Action                  |
+| ---            | ---                     |
+| `:tabnew FILE` | Open FILE in new tab.   |
+| `[g][t]`       | Go to the next tab.     |
+| `[g][shift-T]` | Go to the previous tab. |
+| `[8][g][t]`    | Go to the 8th tab.      |
+
+## Features
+
+### Spell Checking
+
+| Keystrokes                         | Action                                            |
+| ---                                | ---                                               |
+| `:set spell! spelllang=en_us`      | Turn on spell checking.                           |
+| `:setlocal spell! spelllang=en_us` | Turn spell checking only for the current file.    |
+| `:set nospell`                     | Turn off spell checking.                          |
+| `[z][=]`                           | Get the dictionary to choose from.                |
+| `[]][s]`                           | Go to the next misspelled word.                   |
+| `[z][g]`                           | Add the word under cursor to the dictionary.      |
+| `[z][u][w]`                        | Remove the word under cursor from the dictionary. |
+
+### Auto Increment
+
+| Keystrokes | Action                                      |
+| ---        | ---                                         |
+| `[ctrl-a]` | Auto increment the next number on the line. |
+
+## Settings
 
 | Command            | Action                                         |
 | ---                | ---                                            |
@@ -262,109 +368,33 @@ Command mode starts with press of the key `:`.
 | :set smarttab      |                                                |
 | :set ignorecase    | also `set ic` search will be case insensitive  |
 
-### Check spelling
-
-| :setlocal spell! spelllang=en_us |                                    |
-| :setlocal spell!                 |                                    |
-| z                                | Get the dictionary to choose from. |
-| ]s                               | Go to next missspelled word.       |
-
-## Rest of the previous Czech version (something duplicated)
-
-### Cut
-
-| Shortkey | Action |
-| ---      | --- |
-| dd       | aktualni radek (5dd aktualni + 4 dalsi) |
-| dw       | znaky od kurzoru do konce slova |
-| d$       | znaky od kurzoru do konce radky |
-| d^       | znaky od kurzoru do zacatku radky |
-
-### Copy
-
-| Shortkey | Action |
-| ---      | --- |
-| yy       | aktualni radek (5yy aktualni + 4 dalsi)
-| yw       |
-| y$       |
-| y^       |
-
-### Paste
-
-| Shortkey | Action |
-| ---      | --- |
-| p        | vlozi data z buffer za aktualni radek |
-| P        | vlozi data z buffer pred aktualni radek |
-
-### General
-
-| Shortkey | Action |
-| ---      | --- |
-| .        | opakuje posledni prikaz |
-| u        | undo |
-| Ctrl+r   | redo |
-
-### Find Character
-
-| Character | Action |
-| ---       | --- |
-| f [char]  | vyhleda zadany znak na aktualnim radku v oblasti za kurzorem
-| F [char]  | vyhleda zadany znak na aktualnim radku v oblasti pred kurzorem
-| t [char]  | vyhleda a skoci pred zadany znak na aktualnim radku v oblasti za kurzorem
-| T [char]  | vyhleda a skoci za zadany znak na aktualnim radku v oblasti pred kurzorem
-| ;         | najde dalsi vyskyt znaku
-| ,         | najde dalsi vyskyt znaku v opacnem smeru
-
-### Find Pattern
-
-| Pattern     | Action |
-| ---         | --- |
-| / [pattern] | vyhleda vzor v oblasti za kurzorem |
-| ? [pattern] | vyhleda vzor v oblasti pred kurzorem |
-| n           | najde dalsi vyskyt vzoru |
-| N           | najde dalsi vyskyt vzoru v opacnem smeru |
-
-### Commands
-
-| Command          | Action |
-| ---              | --- |
-| :s               | substituce (v zakladu stejna syntaxe jako sed)
-| :%s/Line/line/g  | rozsah celeho souboru
-| :%s/Line/line/gc | potvrzeni nahrady (y - ano, n - ne, a - ano a vsechny nasledujici, q - ukonci, l - ano a ukonci)
-
-
-| Command  | Action |
-| ---      | --- |
-| :split   | rozdeli okno horizontalne
-| :vsplit  | rozdeli okno vertikalne
-
-### Visual mode
-
-| Shortkey | Action |
-| ---      | --- |
-| v        | volny vyber oblasti |
-| V        | radkovy vyber oblasti |
-| Ctrl+v   | blokovy vyber oblasti |
-
-- na vybranou oblast lze aplikovat prikazy d y c
-- prikaz c smaze vybranou oblast a prejde do INSERT MODE
-- ukonci se ESC ESC
-
-### More files
-
-```bash
-# otevre soubory v horizontalne rozdelenem okne
-vi -o file1 file2
-# otevre soubory ve vertikalne rozdelenem okne
-vi -O file1 file2
-```
-
-| Shortkey          | Action |
-| ---               | --- |
-| Ctrl + w + w      | prepnuti mezi okny
-| Ctrl + w + [hjkl] | prepnuti do sousedniho okna v danem smeru
-
-## Configuration file
+### Configuration File
 
 * [How to configuration](https://www.linode.com/docs/guides/introduction-to-vim-customization/)
 
+## Terminal
+
+| Keystrokes         | Action                      |
+| ---                | ---                         |
+| `:term`            | Opens terminal in vim.      |
+| `[ctrl-\][ctrl-n]` | Returns to the normal mode. |
+
+## Netrw
+
+| Keystrokes | Action           |
+| ---        | ---              |
+| `[%]`      | Create new file. |
+| `[t]`      | Open in new tab. |
+
+## Vimdiff
+
+`vimdiff file_1 file_2`
+
+| Keystrokes        | Action                                |
+| ---               | ---                                   |
+| `[]][c]`          | Go to the next change.                |
+| `[[][c]`          | Go to the previous change.            |
+| `[d][p]`          | Apply this change to the second file. |
+| `[d][o]`          | Apply change from the other file.     |
+| `:windo diffthis` | Start diff mode from windows split.   |
+| `:diffoff`        | Turn off the diff mode.               |

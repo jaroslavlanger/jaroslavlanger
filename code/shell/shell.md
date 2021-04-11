@@ -2,21 +2,22 @@
 
 Command line interface you become addicted to.
 
-`2021 Mar 15, Jaroslav Langer`
+`2021 Apr 11, Jaroslav Langer`
 
 ## Contents
 
 <!-- TOC GFM -->
 
-* [TODO](#todo)
+* [To Do](#to-do)
 * [Introduction](#introduction)
 * [Basics - shell, terminal, commands](#basics---shell-terminal-commands)
     * [Shell principle - commands and keywords](#shell-principle---commands-and-keywords)
     * [Comments - tell shell to ignore it](#comments---tell-shell-to-ignore-it)
     * [Command Arguments and Options](#command-arguments-and-options)
+    * [USE TAB AUTOCOMPLETION](#use-tab-autocompletion)
+    * [USE SHELL HISTORY](#use-shell-history)
     * [Command Types](#command-types)
     * [More information about commands](#more-information-about-commands)
-    * [USE TAB AUTOCOMPLETION](#use-tab-autocompletion)
     * [Expansions and suppressions](#expansions-and-suppressions)
 * [Files and directories](#files-and-directories)
     * [Paths](#paths)
@@ -24,7 +25,7 @@ Command line interface you become addicted to.
     * [Information about files, directories](#information-about-files-directories)
     * [Compression and decompression](#compression-and-decompression)
     * [Links](#links)
-    * [Wildcards - symbols with special meaning](#wildcards---symbols-with-special-meaning)
+    * [Globbing and Wildcards](#globbing-and-wildcards)
     * [Find anything](#find-anything)
         * [locate](#locate)
         * [find](#find)
@@ -115,7 +116,7 @@ Command line interface you become addicted to.
 
 <!-- /TOC -->
 
-## TODO
+## To Do
 
 - [Displey cursore under the prompt](https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell)
 
@@ -228,6 +229,18 @@ It is common there are two types of options.
 
 So the command structure look like this `command [-o | --options] [arguments]`.
 
+### USE TAB AUTOCOMPLETION
+
+Whenever, you press tab, the terminal autocomplete the word you are writing. If there is more than one posibility, nothing happens. Until you press tab twice.  Than it shows you the all the possible completions.
+
+**It's unbelievable great feature**.
+
+### USE SHELL HISTORY
+
+It is a huge mistake to write commands more than once. Shell remembers what commands you have written, so you can just call them from the history. In case you used it as the previous command, press `[arrow up]`. In case you wrote it some commands ago, press `[ctrl-r]` and start typing, if the result is not what you want, you either press `[ctrl-r]` again for next match, or `[ecs]` to end the search.
+
+* [Search for a previous command with the prefix I just typed (unix.stackexchange.com)](https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed)
+
 ### Command Types
 
 There are several command types:
@@ -282,12 +295,6 @@ unalias
 ```
 man -k
 ```
-
-### USE TAB AUTOCOMPLETION
-
-Whenever, you press tab, the terminal autocomplete the word you are writing. If there is more than one posibility, nothing happens. Until you press tab twice.  Than it shows you the all the possible completions.
-
-**It's unbelievable great feature**.
 
 ### Expansions and suppressions
 
@@ -414,7 +421,10 @@ wc -l FILE_NAME
 du ./path/to/the/directory 
 # Show size of the DIRECTORY and its direct children (2 ~ levels down etc.) 
 du -d 1 ./path/to/the/DIRECTORY
-du -hs FILE_NAME # Display info in human readable form (-h) only for the top folder (-s)
+# Display info in human readable form (-h) only for the top folder (-s)
+du -hs FILE_NAME
+# Display all file and directory sizes
+du -a
 
 # show file statistics
 stat file1
@@ -503,28 +513,33 @@ ln FILENAME LINKNAME
 cp -l FILENAME LINKNAME
 ```
 
-### Wildcards - symbols with special meaning
+### Globbing and Wildcards
 
-Especially useful when we don't know the name exactly or we perhaps want to use more than one exact name.
+Glob patterns specify sets of filenames with wildcard characters. Wildcards are symbols with special meaning. It is especially useful when we don't know the exact name or if we perhaps want to use more than one name to do something.
 
 ```sh
-* # Anything
+# Question Mark
+? # Matches one character within one directory.
 
-? # One character
+# Single Asterisk
+* # Matches zero or more characters within one directory.
 
-# Not containing anything from bracket
-[! ] # [^ ] # Equivalent in RegEx
+## Double Asterisk
+** # Matches matches zero or more characters across multiple directories.
 
-# Ranges
-[a-dsu]
+# Square Brackets Range
+[a-dsu] # Matches one character from the range i.e. a,b,c,d,s,u
 [3-7a-g]
 
-# Groups
-[:digit:]
-[:alpha:]
-[:alnum:]
-[:upper:]
-[:lower:]
+# Square Brackets Group
+[:digit:] # Equals to [0-9]
+[:alpha:] # Equals to [a-zA-Z]
+[:alnum:] # Equals to [0-9a-zA-Z]
+[:upper:] # Equals to [A-Z]
+[:lower:] # Equals to [a-z]
+
+# Not containing anything from bracket
+[!a] # Matches one character that is not letter a. Equivalent of [^ ] in RegEx.
 
 # Examples
 ls ?[[:digit:]]*
@@ -532,6 +547,7 @@ ls ?[4-6]
 ```
 
 * [More information](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm)
+* [What do double-asterisk wildcards mean?](https://stackoverflow.com/questions/28176590/what-do-double-asterisk-wildcards-mean)
 
 ### Find anything
 
