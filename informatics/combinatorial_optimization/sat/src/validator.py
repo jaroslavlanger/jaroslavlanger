@@ -4,13 +4,9 @@
 (x1 + ¬x3 + x4).(¬x1 + x2 + ¬x3).(x3 + x4).(x1 + x2 + ¬x3 + ¬x4).(¬x2 + x3).(¬x2' + ¬x4')
 """
 import numpy as np
-import itertools
 from logging import basicConfig, debug, info, INFO
 
-basicConfig(level=INFO)
-
 WEIGHTS = np.array([2, 4, 1, 6])
-debug(f'{WEIGHTS=}')
 
 VARIABLES = np.array([
     [1, 0, 1, 1],
@@ -21,7 +17,6 @@ VARIABLES = np.array([
     [0, 1, 0, 1],
 ],
                      dtype=bool)
-debug(f'{VARIABLES=}')
 
 NEGATIONS = np.array([
     [0, 0, 1, 0],
@@ -32,20 +27,18 @@ NEGATIONS = np.array([
     [0, 1, 0, 1],
 ],
                      dtype=bool)
-debug(f'{NEGATIONS=}')
 
-COMBINATIONS = [
+VALUE_VECTORS = [
+    np.array([0, 0, 0, 0], dtype=bool),
     np.array([0, 0, 0, 1], dtype=bool),
     np.array([1, 0, 0, 1], dtype=bool),
     np.array([1, 1, 1, 0], dtype=bool),
 ]
-debug(f'{COMBINATIONS=}')
-
 
 def compute_satisfied_x_variables_x_weights(value_vector,
-                                            weight_vector=WEIGHTS,
-                                            variable_matrix=VARIABLES,
-                                            negation_matrix=NEGATIONS):
+                                            weight_vector,
+                                            variable_matrix,
+                                            negation_matrix):
     debug(f'{value_vector=}')
 
     assigned_matrix = variable_matrix * value_vector
@@ -64,12 +57,16 @@ def compute_satisfied_x_variables_x_weights(value_vector,
     debug(f'{weight_sum=}')
 
     result = satisfied * weight_sum
-    info(f'{result=}')
+    if result != 0:
+        info(f'{result} {value_vector.astype(int)}')
 
-    return result
+    return result, sum(columns_or_vector) - variable_matrix.shape[0]
 
-
-combinations = (np.array(c) for c in itertools.product([0, 1], repeat=4))
-
-values_max = max(combinations, key=compute_satisfied_x_variables_x_weights)
-info(f'{values_max=}')
+if __name__ == '__main__':
+    basicConfig(level=INFO)
+    for value_vector in VALUE_VECTORS:
+        res = compute_satisfied_x_variables_x_weights(value_vector=value_vector,
+                                                      weight_vector=WEIGHTS,
+                                                      variable_matrix=VARIABLES,
+                                                      negation_matrix=NEGATIONS)
+        info(res)
