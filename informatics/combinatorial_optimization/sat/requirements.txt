@@ -1,3 +1,7 @@
-pip
+jupyterlab
+matplotlib
 numpy
+pandas
+pip
+seaborn
 yapf

@@ -39,28 +39,28 @@ def compute_satisfied_x_variables_x_weights(value_vector,
                                             weight_vector,
                                             variable_matrix,
                                             negation_matrix):
-    debug(f'{value_vector=}')
+    # debug(f'{value_vector=}')
 
     assigned_matrix = variable_matrix * value_vector
-    debug(f'{assigned_matrix=}')
+    # debug(f'{assigned_matrix=}')
 
     negated_matrix = np.logical_xor(assigned_matrix, negation_matrix)
-    debug(f'{negated_matrix=}')
+    # debug(f'{negated_matrix=}')
 
     columns_or_vector = np.logical_or.reduce(negated_matrix, 1)
-    debug(f'{columns_or_vector=}')
+    # debug(f'{columns_or_vector=}')
 
     satisfied = np.logical_and.reduce(columns_or_vector)
-    debug(f'{satisfied=}')
+    # debug(f'{satisfied=}')
 
     weight_sum = weight_vector.dot(value_vector)
-    debug(f'{weight_sum=}')
+    # debug(f'{weight_sum=}')
 
     result = satisfied * weight_sum
-    if result != 0:
-        info(f'{result} {value_vector.astype(int)}')
+    # if result != 0:
+    #     debug(f'{result} {value_vector.astype(int)}')
 
-    return result, sum(columns_or_vector) - variable_matrix.shape[0]
+    return result, columns_or_vector.sum()
 
 if __name__ == '__main__':
     basicConfig(level=INFO)

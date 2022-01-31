@@ -50,9 +50,10 @@ def parse_mwcnf(lines: list):
     return weight_vector, variable_matrix, negation_matrix
 
 
-def write_results(results_file, problem_name, value, value_vector, times_file, time_elapsed):
-    variables = " ".join(str(i) for i, value in enumerate(value_vector, start=1) if value)
-    results_file.write(f'{problem_name} {value[0]} {variables}\n')
+def write_results(results_file, problem_name, milestone_values, value_vector, times_file, time_elapsed):
+    values = ' '.join(str(value[0]) for value in milestone_values)
+    variables = ' '.join(str(i) if value else str(-i) for i, value in enumerate(value_vector, start=1))
+    results_file.write(f'{problem_name} {values} {variables}\n')
     times_file.write(f'{problem_name} {time_elapsed}\n')
 
 if __name__ == '__main__':

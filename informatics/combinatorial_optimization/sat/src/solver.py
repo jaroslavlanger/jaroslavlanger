@@ -1,5 +1,6 @@
 import itertools
 from functools import partial
+import math
 from logging import DEBUG, INFO, info, basicConfig
 
 import numpy as np
@@ -18,7 +19,12 @@ def tabu(weight_vector, variable_matrix, negation_matrix):
     assignment_next = generator.choice([0,1], size=variable_count)
     assignment_best = assignment_next.copy()
     value_next = value_best = value_function(assignment_next)
-    for t in range(variable_count * 10):
+
+    functions = [lambda x: 1, math.log2, lambda x: x, lambda x: x*x]
+    milestones = [math.ceil(f(variable_count)) for f in functions]
+    milestone_values = []
+
+    for t in range(1, max(milestones) + 1):
         if value_next > value_best:
             value_best = value_next
             assignment_best = assignment_next.copy()
@@ -35,7 +41,9 @@ def tabu(weight_vector, variable_matrix, negation_matrix):
                     value_next = value_try
                     assignment_next = assignment_vector.copy()
             assignment_vector[i] = before_swap
-    return value_best, assignment_best
+        if t in milestones:
+            milestone_values.append(value_best)
+    return milestone_values, assignment_best
 
 def try_all_permutations(weight_vector, variable_matrix, negation_matrix):
     n = len(weight_vector)
