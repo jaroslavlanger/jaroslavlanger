@@ -1,3 +1,5 @@
+**/venv
+**/data
 # Ignore commit message file
 commit_message.txt
 # Ignored file types
