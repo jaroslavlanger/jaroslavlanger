@@ -9,7 +9,7 @@ from solver import tabu
 from traverser import yield_name_lines_file
 
 basicConfig(format='%(asctime)s | %(levelname)s | %(message)s',
-            datefmt='%Y-%m-%d %I:%M:%S',
+            datefmt='%Y-%m-%d %H:%M:%S',
             level=INFO)
 
 pr = cProfile.Profile()
@@ -17,7 +17,7 @@ pr.enable()
 
 # breakpoint()
 max_iterations = ['n', 'nlogn', 'nn', 'nnn']
-for problem_name, lines, results_path in yield_name_lines_file(max_instances=1):
+for problem_name, lines, results_path in yield_name_lines_file(max_instances=34):
     weights, variables, negations = parse_mwcnf(lines)
     for neighbors, tenure, reinits in product(['all', 'logn', 'logn_weighted'],
                                               ['n', 'nlogn', 'nn', 'infinity'],

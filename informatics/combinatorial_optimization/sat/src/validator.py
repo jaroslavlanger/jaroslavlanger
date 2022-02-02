@@ -41,7 +41,8 @@ def compute_satisfied_x_variables_x_weights(value_vector,
                                             negation_matrix):
     # debug(f'{value_vector=}')
 
-    assigned_matrix = variable_matrix * value_vector
+    # assigned_matrix = variable_matrix * value_vector
+    assigned_matrix = value_vector[variable_matrix]
     # debug(f'{assigned_matrix=}')
 
     negated_matrix = np.logical_xor(assigned_matrix, negation_matrix)

@@ -4,7 +4,7 @@ import sys
 import numpy as np
 from logging import debug
 
-def parse_variable_and_negation(shape, lines):
+def parse_variable_and_negation_full(shape, lines):
     variable_matrix = np.zeros(shape, dtype=bool)
     negation_matrix = np.zeros(shape, dtype=bool)
     clauses = [[int(c) for c in row.split()] for row in lines]
@@ -22,9 +22,24 @@ def parse_variable_and_negation(shape, lines):
                 negation_matrix[clause_index][variable_index] = True
     return variable_matrix, negation_matrix
 
+def parse_variable_and_negation(shape, lines):
+    variable_matrix = np.zeros((shape[0],3), dtype=bool)
+    negation_matrix = np.zeros((shape[0],3), dtype=bool)
+    clauses = [[int(c) for c in row.split()] for row in lines]
+
+    debug(f'{len(clauses)=}, {shape[0]=}')
+    assert len(clauses) == shape[0]
+    assert all(clause[-1] == 0 for clause in clauses)
+    assert all((0 < number <= shape[1] for number in clause) for clause in clauses)
+
+    variable_matrix = np.array([clause[:-1] for clause in clauses])
+    negation_matrix = variable_matrix < 0
+    variable_matrix = abs(variable_matrix) - np.ones(variable_matrix.shape)
+    return variable_matrix.astype(int), negation_matrix
+
 def output_check(variable_count, clause_count, weight_vector, variable_matrix, negation_matrix):
     assert len(weight_vector) == variable_count
-    assert variable_matrix.shape == negation_matrix.shape == (clause_count, variable_count)
+    assert variable_matrix.shape[0] == negation_matrix.shape[0] == clause_count
 
 def parse_mwcnf(lines: list):
     for line_number, line in enumerate(lines):

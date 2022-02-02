@@ -24,6 +24,9 @@ def get_optima_path(group):
 def generate_results_path(group):
     return RESULTS_PATH / f'{group}-res{EXTENSION}'
 
+def generate_results_path_black_box(group):
+    return RESULTS_PATH / f'{group}-res-black-box{EXTENSION}'
+
 def generate_times_path(group):
     return str(RESULTS_PATH / f'{group}-time{EXTENSION}')
 
@@ -36,7 +39,7 @@ def iterate_group_optima_results_times():
 
 def yield_name_lines_file(max_instances=float('inf'), reversed_=False):
     for group in sorted(yield_groups(), reverse=reversed_):
-        results_path = generate_results_path(group)
+        results_path = generate_results_path_black_box(group)
         results_path.unlink(missing_ok=True)
 
         with open(get_optima_path(group)) as optima_file:
