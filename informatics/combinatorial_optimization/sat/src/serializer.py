@@ -28,7 +28,7 @@ def output_check(variable_count, clause_count, weight_vector, variable_matrix, n
 
 def parse_mwcnf(lines: list):
     for line_number, line in enumerate(lines):
-        debug(line, end='')
+        debug(line)
         segments = line.split()
         if (first := segments[0]) == 'c':
             continue
@@ -44,17 +44,23 @@ def parse_mwcnf(lines: list):
                                             lines[line_number:]))
             break
     output_check(variable_count, clause_count, weight_vector, variable_matrix, negation_matrix)
-    debug(f'{weight_vector=}')
-    debug(f'{variable_matrix=}')
-    debug(f'{negation_matrix=}')
+    debug('weight_vector=%s', weight_vector)
+    debug('variable_matrix=%s', variable_matrix)
+    debug('negation_matrix=%s', negation_matrix)
     return weight_vector, variable_matrix, negation_matrix
 
 
-def write_results(results_file, problem_name, milestone_values, value_vector, times_file, time_elapsed):
-    values = ' '.join(str(value[0]) for value in milestone_values)
-    variables = ' '.join(str(i) if value else str(-i) for i, value in enumerate(value_vector, start=1))
-    results_file.write(f'{problem_name} {values} {variables}\n')
-    times_file.write(f'{problem_name} {time_elapsed}\n')
+def write_results(results_path, problem_name, measurements, max_iterations, *args):
+    lines = []
+    for measurement, max_iteration in zip(measurements, max_iterations):
+        variables = (str(i) if value else str(-i)
+                     for i, value in enumerate(measurement.best_assignment, start=1))
+        lines.append(' '.join([problem_name, max_iteration, *args,
+                               str(measurement.time),
+                               str(measurement.best_value[0]), *variables]))
+
+    with open(results_path, 'a') as results_file:
+        print(*lines, sep='\n', file=results_file)
 
 if __name__ == '__main__':
     with open(sys.argv[1]) as problem_file:

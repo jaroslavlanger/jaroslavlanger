@@ -1,4 +1,6 @@
+ipdb
 jupyterlab
+jupyterlab_vim
 matplotlib
 numpy
 pandas

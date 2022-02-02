@@ -22,7 +22,7 @@ def get_optima_path(group):
     return files[0]
 
 def generate_results_path(group):
-    return str(RESULTS_PATH / f'{group}-res{EXTENSION}')
+    return RESULTS_PATH / f'{group}-res{EXTENSION}'
 
 def generate_times_path(group):
     return str(RESULTS_PATH / f'{group}-time{EXTENSION}')
@@ -34,30 +34,28 @@ def iterate_group_optima_results_times():
         times_path = generate_times_path(group)
         yield group, optima_path, results_path, times_path
 
-def iterate_problem_quadruples(last_index=None):
-    for group in sorted(yield_groups(), reverse=False):
-        results = generate_results_path(group)
-        times = generate_times_path(group)
-        files = list(yield_group_problems(group))
-        if last_index is None:
-            last_index = len(files) - 1
+def yield_name_lines_file(max_instances=float('inf'), reversed_=False):
+    for group in sorted(yield_groups(), reverse=reversed_):
+        results_path = generate_results_path(group)
+        results_path.unlink(missing_ok=True)
 
         with open(get_optima_path(group)) as optima_file:
             problem_names = [line.split()[0] for line in optima_file.readlines()]
+        files = list(yield_group_problems(group))
 
-        with open(results, 'w') as results_file, open(times, 'w') as times_file:
-            for file_index, problem_path in enumerate(sorted(files)):
-                if file_index > last_index:
-                    break
+        instance_count = 0
+        for problem_path in sorted(files):
+            problem_name = Path(problem_path).stem.removeprefix('w').removesuffix('-A')
+            if problem_name not in problem_names:
+                continue
 
-                problem_name = Path(problem_path).stem.removeprefix('w').removesuffix('-A')
-                if problem_name not in problem_names:
-                    continue
+            instance_count += 1
+            with open(problem_path) as problem_file:
+                info(f'{group}\t{problem_name}\t({instance_count}/{max_instances})')
+                yield problem_name, problem_file.readlines(), str(results_path)
 
-                with open(problem_path) as problem_file:
-                    info(f'{group}\t{problem_name}\t({file_index+1}/{last_index+1})')
-                    yield problem_name, problem_file, results_file, times_file
-
+            if instance_count >= max_instances:
+                break
 
 if __name__ == '__main__':
     for group in sorted(yield_groups()):

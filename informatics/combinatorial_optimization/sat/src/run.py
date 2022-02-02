@@ -1,4 +1,4 @@
-import time
+from itertools import product
 from logging import basicConfig, INFO
 
 import cProfile, pstats, io
@@ -6,8 +6,7 @@ from pstats import SortKey
 
 from serializer import parse_mwcnf, write_results
 from solver import tabu
-from traverser import iterate_problem_quadruples
-
+from traverser import yield_name_lines_file
 
 basicConfig(format='%(asctime)s | %(levelname)s | %(message)s',
             datefmt='%Y-%m-%d %I:%M:%S',
@@ -16,12 +15,18 @@ basicConfig(format='%(asctime)s | %(levelname)s | %(message)s',
 pr = cProfile.Profile()
 pr.enable()
 
-for problem_name, problem_file, results_file, times_file in iterate_problem_quadruples():
-    weights, variables, negations = parse_mwcnf(problem_file.readlines())
-    time_start = time.process_time()
-    values, assigned_values = tabu(weights, variables, negations)
-    time_elapsed_cpu = time.process_time() - time_start
-    write_results(results_file, problem_name, values, assigned_values, times_file, time_elapsed_cpu)
+# breakpoint()
+max_iterations = ['n', 'nlogn', 'nn', 'nnn']
+for problem_name, lines, results_path in yield_name_lines_file(max_instances=1):
+    weights, variables, negations = parse_mwcnf(lines)
+    for neighbors, tenure, reinits in product(['all', 'logn', 'logn_weighted'],
+                                              ['n', 'nlogn', 'nn', 'infinity'],
+                                              ['0', '1', 'n']):
+        measurements = tabu(weights, variables, negations,
+                            max_iterations=max_iterations, neighbors=neighbors,
+                            tenure=tenure, reinits=reinits)
+        write_results(results_path, problem_name, measurements, max_iterations,
+                      neighbors, tenure, reinits)
 
 pr.disable()
 s = io.StringIO()
