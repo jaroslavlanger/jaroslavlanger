@@ -2,8 +2,6 @@
 
 How to use git successfully even with a little background knowledge.
 
-`2021 Apr 11, Jaroslav Langer, 610 lines.`
-
 ## Contents
 
 <!-- TOC GFM -->
@@ -52,8 +50,10 @@ How to use git successfully even with a little background knowledge.
 * [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 * [Splitting a subfolder out into a new repository](https://docs.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
 * [How to split and merge multiple git repositories while keeping the history](https://dev.to/itminds/how-to-split-and-merge-multiple-git-repositories-and-keep-the-history-2938)
+* [Merging Two Git Repositories Into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
 * [Undo git filter-branch](https://stackoverflow.com/questions/14542326/undo-git-filter-branch)
 * https://git-scm.com/docs/git-ls-tree
+* [Learn the workings of Git, not just the commands (IBM)](https://developer.ibm.com/tutorials/d-learn-workings-git/)
 
 ## Basic Information
 
@@ -320,18 +320,21 @@ git branch -m NEW_BRANCH_NAME
 
 ### Merging (git merge)
 
-Merge the NEW_BRANCH to master.
+Merge the ANOTHER_BRANCH to master.
 
 ```sh
 git checkout master
 
-git merge NEW_BRANCH
+git merge ANOTHER_BRANCH
 
 # Merge the local content with BRANCH_NAME of REMOTE_NAME
 git merge --allow-unrelated-histories REMOTE_NAME/BRANCH_NAME
 
 # No fast-foreward (--no-ff)
-git merge --no-ff BRANCH_NAME
+git merge --no-ff ANOTHER_BRANCH
+
+# Apply all changes from another branch (then it can be commited in one commit).
+git merge --squash ANOTHER_BRANCH
 ```
 
 * [No fast-foreward - A successful Git branching model (nvie.com)](https://nvie.com/posts/a-successful-git-branching-model/).
