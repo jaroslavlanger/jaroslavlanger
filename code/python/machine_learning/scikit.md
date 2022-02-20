@@ -1,34 +1,47 @@
-# Sklearn
+# scikit-learn
 
-scikit-learn
+Machine Learning in Python
+
+<!-- TOC GFM -->
+
+* [Dataset](#dataset)
+    * [Split dataset into train set and test set](#split-dataset-into-train-set-and-test-set)
+    * [Data Preprocessing](#data-preprocessing)
+    * [Discretize High Cardinality Features](#discretize-high-cardinality-features)
+* [Classifiers](#classifiers)
+    * [Decision Tree](#decision-tree)
+    * [Clustering Methods](#clustering-methods)
+    * [K-Means](#k-means)
+    * [k-Nearest Neighbors (KNN)](#k-nearest-neighbors-knn)
+    * [Naive Bayes](#naive-bayes)
+    * [Linear Regression](#linear-regression)
+    * [Logistic Regression](#logistic-regression)
+    * [Neural Networks](#neural-networks)
+        * [Multilayer Perceptron](#multilayer-perceptron)
+    * [Support Vector Machine](#support-vector-machine)
+    * [Parameters and Training](#parameters-and-training)
+* [Metrics](#metrics)
+    * [Accuracy](#accuracy)
+    * [Confusion Matrix](#confusion-matrix)
+    * [Balanced Accuracy](#balanced-accuracy)
+    * [Precision, Recall, F-measures](#precision-recall-f-measures)
+        * [Precision](#precision)
+        * [Recall](#recall)
+        * [F-measure](#f-measure)
+    * [ROC AUC](#roc-auc)
+    * [F1 Score](#f1-score)
+    * [Log loss (Cross entropy loss)](#log-loss-cross-entropy-loss)
+* [Regression metrics](#regression-metrics)
+    * [Preprocessing](#preprocessing)
+    * [Scalers](#scalers)
+    * [Feature selection](#feature-selection)
+    * [Dimensionality reduction](#dimensionality-reduction)
+
+<!-- /TOC -->
 
 ```py
 import sklearn as skit
 ```
-
-## Contents <!-- omit in toc -->
-- [Dataset](#dataset)
-  - [Split dataset into train set and test set](#split-dataset-into-train-set-and-test-set)
-  - [Data Preprocessing](#data-preprocessing)
-  - [Discretize High Cardinality Features](#discretize-high-cardinality-features)
-- [Classifiers](#classifiers)
-  - [Decision Tree](#decision-tree)
-  - [Clustering Methods](#clustering-methods)
-  - [K-Means](#k-means)
-  - [k-Nearest Neighbors (KNN)](#k-nearest-neighbors-knn)
-  - [Naive Bayes](#naive-bayes)
-  - [Linear Regression](#linear-regression)
-  - [Logistic Regression](#logistic-regression)
-  - [Neural Networks](#neural-networks)
-  - [Support Vector Machine](#support-vector-machine)
-  - [Get and Set Parameters](#get-and-set-parameters)
-- [Metrics](#metrics)
-  - [Accuracy](#accuracy)
-  - [Confusion Matrix](#confusion-matrix)
-  - [Balanced Accuracy](#balanced-accuracy)
-  - [Precision, Recall, F-measures](#precision-recall-f-measures)
-  - [ROC AUC](#roc-auc)
-  - [F1 Score](#f1-score)
 
 ## Dataset
 
@@ -154,9 +167,13 @@ y_pred_svc = svc.fit(train_ds.X, train_ds.y).predict(test_ds.X)
 
 - [SVM (Scikit learn documentation)](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
 
-### Get and Set Parameters
+### Parameters and Training
 
 ```py
+# Exhaustive search over specified parameters optimized by Cross Validation.
+searcher = GridSearchCV(estimator, parameters)
+searcher.fit(train.X, train.y)
+
 # Get parameters
 params_dict = estimator.get_params()
 
@@ -165,6 +182,7 @@ estimator.set_params(alpha=1)
 estimator.set_params(**params_dict)
 ```
 
+- [Exhaustive search over specified parameter values](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 - [scikit tools api and description](https://scikit-learn.org/stable/developers/develop.html)
 
 ## Metrics
