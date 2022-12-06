@@ -15,6 +15,10 @@
 
 <!-- /TOC -->
 
+## References
+
+* [Getting started with the web - Dealing with files (mozilla.org)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files)
+
 ## Domain Name System
 
 * [Domain Name System (wikipedia.org)](https://en.wikipedia.org/wiki/Domain_Name_System)
