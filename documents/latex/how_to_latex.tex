@@ -1,0 +1,121 @@
+\documentclass[12pt, a4paper]{article} % 12pt font, a4paper size.
+\usepackage{minted} % Necessary for code blocks.
+\usepackage{hyperref} % Required for web links.
+\usepackage{amsmath} % Needed for multiline math.
+\usepackage[section]{placeins} % Keeps listings in the right sections.
+\hypersetup{
+     colorlinks=true, % Otherwise the links are in color boxes.
+     linkcolor=black, % E.g. hyperlinks in table of contents.
+     urlcolor=blue, % Classical blue web links.
+     }
+\title{How to \LaTeX}
+\author{Jaroslav Langer}
+% To specify a date use: \date{February 4, 2021}
+
+\begin{document} % The document begins here.
+\maketitle % Inserts a title with name and date.
+
+\begin{abstract}
+\noindent All the information one needs to use \href{https://www.latex-project.org/about/}{Latex} instead of \href{https://daringfireball.net/projects/markdown/}{Markdown}.
+\end{abstract}
+
+\tableofcontents % Inserts a table of contents.
+
+\section{Getting Started} % \section is equivalent to heading 1.
+
+\begin{listing}[h] % [h] is required for the figure to be "here", not floating.
+    \caption{Latex installation.} % Text from \caption{} will be put under.
+    \begin{minted}{shell}
+    sudo apt install texlive-full
+    \end{minted}
+\end{listing}
+
+\begin{listing}[h]
+    \caption{First latex document.}
+    \begin{minted}{latex}
+
+    \documentclass{article}
+    \begin{document}
+    Hello \LaTeX!
+    \end{document}
+
+    \end{minted}
+\end{listing}
+
+
+
+\begin{listing}[h]
+    \caption{Generating PDF from first.tex.}
+    \begin{minted}{shell}
+    pdflatex first.tex
+    # If you use minted package, add -shell-escape flag.
+    pdflatex -shell-escape first.tex
+    \end{minted}
+\end{listing}
+
+\begin{itemize} % Unordered list.
+    \item \textbf{For details see the source of this file.}
+\end{itemize}
+
+\subsection*{Mathematics}
+
+Inline $\sum^{n}_{i}$ math example.\par
+\bigskip % Inserts an empty line.
+\noindent Multiline math example:
+
+\begin{multline} \\
+    8x - 3y = 5\\
+    2x + 5y = 7\\
+\end{multline}
+
+\noindent Number for each equation:
+
+\begin{align}
+    \mathbf{x}(t) = \mathbf{A}(t)\mathbf{x}(t) + \mathbf{B}(t)\mathbf{u}(t)\\
+    \mathbf{y}(t) = \mathbf{C}(t)\mathbf{x}(t) + \mathbf{D}(t)\mathbf{u}(t)
+\end{align}
+
+\subsection*{Non-ASCII Characters} % The star hides it from the contents.
+
+Est-il possible d'utiliser des caractères français? \par
+% To create a new paragraph either use blank line or put \par at the end.
+\noindent A co takhle psaní v češtině?
+% Every paragraph (except the first one) is indented without \noindent.
+
+\subsection*{Tables}
+
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+    \hline
+    x & o & x\\
+    \hline
+    o & x & o\\
+    \hline
+    x & x & o\\
+    \hline
+
+\end{tabular}
+\end{center}
+
+\subsection*{Code}
+
+\begin{listing}[!h]
+    \caption{Python code example.}
+    \begin{minted}[linenos=true, breaklines=true]{python}
+    from datetime import datetime
+
+    def show_time(formats: list[str]) -> None:
+        """Prints current time in all given formats."""
+        for format_ in formats:
+            assert(isinstance(format_, str)) # Just for sure.
+            print(datetime.now().strftime(format_))
+    \end{minted}
+\end{listing}
+
+\section{References}
+
+\begin{enumerate}
+    \item \url{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}
+\end{enumerate}
+
+\end{document}

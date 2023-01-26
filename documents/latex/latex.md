@@ -1,37 +1,19 @@
-# $\LaTeX$
+$\LaTeX$
+========
 
-`2021 Feb 04, Jaroslav Langer`
+To learn the absolute Latex basics see `how_to_latex.pdf`.
 
-## Contents
+If you are familiar with writing markdowns, see [pandoc](https://pandoc.org/demos.html) tool.
+It allows you to create latex files from markdowns effortlessly.
 
-<!-- TOC GFM -->
+## TeX vs LaTeX
 
-* [TeX vs LaTeX](#tex-vs-latex)
-* [Install latex compiler](#install-latex-compiler)
-* [Most basic latex you are good to go with](#most-basic-latex-you-are-good-to-go-with)
-* [Compile .tex into pdf](#compile-tex-into-pdf)
-* [Document class](#document-class)
-* [Other TeXs](#other-texs)
-* [XeLatex](#xelatex)
-
-<!-- /TOC -->
-
-## TeX vs LaTeX 
-
-TeX is both a program (which does the typesetting, tex-core) and format (a set of macros that the engine uses, plain-tex). 
+TeX is both a program (which does the typesetting, tex-core) and format (a set of macros that the engine uses, plain-tex).
 LaTeX is a generalised set of macros to let you do many things. Most people don't want to have to program TeX, especially to set up things like sections, title pages, bibliographies and so on. LaTeX provides all of that: these are the 'macros' that it is made up of.
 
 * [what-is-the-difference-between-tex-and-latex (stackexchange)](https://tex.stackexchange.com/questions/49/what-is-the-difference-between-tex-and-latex)
 
-## Install latex compiler
-
-```sh
-sudo apt-get install texlive-latex-base
-```
-
-* [Choosing_a_LaTeX_Compiler (overleaf.com)](https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler)
-
-## Most basic latex you are good to go with
+## Some mathematical symbols
 
 * [LaTeX_mathematical_symbols (oeis.org)](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
 
@@ -76,14 +58,7 @@ sudo apt-get install texlive-latex-base
 * [Big O and related notations in LaTeX (texblog.com)](https://texblog.org/2014/06/24/big-o-and-related-notations-in-latex/)
 * [Fractions and Roots (maths.tdc.ie/~dwilkins)](https://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/FractsRoots.html)
 
-
-## Compile .tex into pdf
-
-```sh
-pdflatex hello_tex.tex
-```
-
-## Document class
+## Document classes
 
 | class | usage |
 | --- | --- |
@@ -108,3 +83,6 @@ pdflatex hello_tex.tex
 [tex to pdf](https://tug.org/pipermail/xetex/2009-November/014991.html)
 * [xetex in vs code](https://stackoverflow.com/questions/56109128/enable-xelatex-in-latex-workshops-for-visual-studio-code)
 
+# Katex
+
+* [Supported functions](https://katex.org/docs/supported.html)
