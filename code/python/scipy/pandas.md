@@ -58,6 +58,7 @@
     * [Group by](#group-by)
 * [Poltting the data](#poltting-the-data)
     * [Plot the data](#plot-the-data)
+* [Computational Tools](#computational-tools)
 * [Advanced features](#advanced-features)
     * [MultiIndex](#multiindex)
 
@@ -576,7 +577,7 @@ df = df.drop_duplicates(subset=['dataset', 'n', 'idx'])
 df = df.replace('?', np.nan)
 
 # Sort rows or columns # only kind='mergesort' is stable
-df.sort_values(by, axis=0, ascending=True, inplace=True, kind='quicksort')
+df.sort_values(by='date', axis=0, ascending=True, inplace=True, kind='quicksort')
 ```
 
 * [drop_duplicates (pandas.pydata.org)](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop_duplicates.html)
@@ -962,6 +963,21 @@ data2.Age.plot.hist(ax = graph1)
 
 - [area link ](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.area.html)
 - [area plot](https://stackoverflow.com/questions/55214249/how-to-create-an-area-plot-in-seaborn)
+
+## Computational Tools
+
+[Computational tools Pandas User Guide](https://pandas-docs.github.io/pandas-docs-travis/user_guide/computation.html)
+
+```py
+# Compute percent change over a given number of periods (1 by default).
+series.pct_change()
+
+# Rolling window, multiple functions may be applied such as mean, max, var, etc.
+series.rolling(window=7).mean()
+
+# Extending Exponentially Weighted Window calculations.
+series.ewm(alpha=0.9, adjust=False).mean()
+```
 
 ## Advanced features
 

@@ -9,3 +9,4 @@ SciPy (pronounced “Sigh Pie”) is a Python-based ecosystem of open-source sof
 - SymPy
 - pandas
 
+* [Scientific computing tools for Python (scipy.org)](https://projects.scipy.org/)
