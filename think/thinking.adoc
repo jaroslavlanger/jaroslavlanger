@@ -1,0 +1,40 @@
+= Thinking
+:keywords: philosophy, first-principle, meaning
+:hide-uri-scheme:
+:toc:
+:homepage: https://jaroslavlanger.com
+
+== Meanings
+
+Definition:: of a _term_ is a sentence giving a clear explanation of what the _term_ means.
+Axiom:: is a sentence assumed to be true over defined terms.
+Theorem:: is a sentence that has been proven to be true.
+Proof:: are sentences that explain why a sentence over defined terms is true given axioms and other theorems.
+
+== Proofs
+
+Direct:: ({a, a in Axioms or a in Theorems} -> sentence) is true.
+Contraposition:: (not sentence -> not {a, a in Axioms or a in Theorems}) is true.
+
+https://en.wikipedia.org/wiki/Mathematical_proof
+
+== Agent Cycle
+
+[cols="1,1,1"]
+|===
+| Activity
+| Unconscious
+| Conscious
+
+| Sensing - something is happening to me
+| Low oxygen level
+| Sight
+
+| Processing - what is happening to me?
+| Need to breath
+| Is it Peter?
+
+| Acting
+| Breathing
+| Talking to a friend
+|===
