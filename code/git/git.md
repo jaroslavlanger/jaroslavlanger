@@ -237,14 +237,14 @@ git commit --amend
 ### Push Commits to the Remote Repository (git push)
 
 ```
-# Pushes the current branch to the remote repository called origin.
+# Pushes the current branch to the remote repository called "origin".
 git push -u origin
 
-# Pushes local master branch to the remote repository called origin.
-git push -u origin master
+# Pushes local "main" branch to the remote repository called "origin".
+git push -u origin main
 
-# Pushes local master branch to remote repository origin's branch dev_master.
-git push origin master:dev_master
+# Pushes local "main" branch to the "dev" branch of remote repository "origin".
+git push origin main:dev
 
 # Forcing push if necessary (rewriting commits history perhaps).
 git push -f
@@ -289,8 +289,9 @@ git show 0a42637
 
 ### Branching (git branch, git checkout)
 
-The default branch (and usually the main one) is called "master".
-It is handy to create a new branch once you want to create new feature.
+The main branch is by default called "main".
+In the past, it was often called "master".
+Good practise is to create a separate branch for development.
 
 ```sh
 # Show branches - the current is marked with asterix
@@ -305,8 +306,8 @@ git branch BRANCH_NAME
 # Change to a branch
 git checkout BRANCH_NAME
 
-# Change the current branch to master
-git checkout master
+# Change the current branch to main
+git checkout main
 
 # Crate branch and check out to it in one step
 git checkout -b BRANCH_NAME
@@ -320,10 +321,10 @@ git branch -m NEW_BRANCH_NAME
 
 ### Merging (git merge)
 
-Merge the ANOTHER_BRANCH to master.
+Merge the ANOTHER_BRANCH to main.
 
 ```sh
-git checkout master
+git checkout main
 
 git merge ANOTHER_BRANCH
 
@@ -378,7 +379,7 @@ git checkout -b BRANCH_NAME origin/BRANCH_NAME
 git pull
 
 # Fetch origin branch from remote origin( and merge it with local branch origin).
-git pull origin master
+git pull origin main
 ```
 
 **Git pull using git fetch and git merge.**
@@ -540,16 +541,17 @@ If there is a time lag between cloning and the time you want to work on the repo
 Then it is reasonable to update the local content from the remote i.e. pull the changes.
 
 ```sh
-git checkout master
+git checkout main
 # Git pull fetches the last version from the origin (GITSITE:repo) and merges it with the local content
 git pull # git pull origin
 ```
 
 **Develop the Code as a New Branch**
 
-Instead of modifying master, and pushing to the origin/master.
-Create a development branch and make the changes there. Don't merge the branch with master.
-Push the development branch to remote and let the owner know about it, i.e. let him merge it himself.
+Instead of modifying the main, and pushing to the origin/main.
+Create a development branch and make the changes there.
+Don't merge the branch with main.
+Push the development branch to remote and create a pull request.
 
 ```bash
 # Create your development branch
