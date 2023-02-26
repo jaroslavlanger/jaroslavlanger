@@ -1,22 +1,17 @@
-# Code
+# Software Tools
 
-How to code, programming languages, tools and approaches.
+## Overview
 
-`2021 Feb 21, Jaroslav Langer`
-
-## Contents
-
-<!-- TOC GFM -->
-
-* [How to code](#how-to-code)
-* [Terminal management - tmux](#terminal-management---tmux)
-* [Code editor - nvim](#code-editor---nvim)
-
-<!-- /TOC -->
-
-## How to code
-
-Always test every little thing, the tests are small, easy and quick. Assuming the code behaviour to be intuitive is the worst codding practice in history of all codding practices maybe ever!
+1. Operating system (linux, mac os, windows)
+1. Desktop environment (gnome, xfce, kde)
+1. Internet browser (chromium)
+1. Terminal emulator (xterm, cygwin, kitty, putty)
+1. Shell (sh, bash, zsh)
+1. Text Editor (vim, neovim, vs code, sublime text)
+1. Text Specification, see [text](/text)
+1. Version control (git, github, gitlab)
+1. Programming language, see [code](/code)
+1. Other (make, jupyter notebook, docker)
 
 ## Terminal management - tmux
 

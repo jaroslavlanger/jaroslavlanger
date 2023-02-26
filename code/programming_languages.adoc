@@ -1,0 +1,6 @@
+= Programming languages
+:keywords: programming, programming-languages, python, shell
+:hide-uri-scheme:
+:toc:
+
+General purpose programming languages.
