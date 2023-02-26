@@ -16,6 +16,24 @@ Good specification of text format has many use cases.
 | Pattern matching | regex
 |===
 
+== Encoding
+
+=== BOM
+
+    The byte order mark (BOM) is a particular usage of the special Unicode character, U+FEFF BYTE ORDER MARK
+
+quoted from: https://en.wikipedia.org/wiki/Byte_order_mark
+
+.UTF-8 BOM
+----
+0xEF,0xBB,0xBF
+----
+
+.UTF-16 BOM
+----
+U+FEFF
+----
+
 == Conversion Between Formats
 
 Good format specification has many advantages.
