@@ -315,6 +315,11 @@ git checkout -b BRANCH_NAME
 # Delete branch
 git branch -d BRANCH_NAME
 
+# Remove branches deleted on the remote
+git fetch --prune origin
+# or
+git remote prune origin
+
 # Rename branch
 git branch -m NEW_BRANCH_NAME
 ```
