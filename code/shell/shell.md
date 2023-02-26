@@ -1784,9 +1784,11 @@ IFS=$OLDIFS
 
 ### Printf
 
+{% raw %}
 ```bash
 printf "{%s: %s}\n" "$m_key" "$m_name"
 ```
+{% endraw %}
 
 ### Exit status
 
