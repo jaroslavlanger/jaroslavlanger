@@ -1,9 +1,17 @@
 = Docsify
 :keywords: web, docsify, navigation, side-bar, sidebar, tree, directories, files
 :hide-uri-scheme:
+:source-highlighter: highlight.js
 :toc:
 
 https://docsify.js.org/#/[A magical documentation site generator]
+
+Following index.html transforms a GitHub repository into a single page application.
+
+[,html]
+----
+include::./index.html[]
+----
 
 *How to automatically generate sidebar with a file tree structure?*
 
