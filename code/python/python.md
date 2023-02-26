@@ -348,10 +348,12 @@ r'In this string, the \n character will stay as \n. It will not be expanded as n
 pathToNewFile = '{folder}{file}.{fileType}'.format(
     folder=download_folder, file=xlsName, fileType='xls')
 
-# Curly braces to remain
-string = "{{double curly braces will be formatted as one".format()
-# escaping does not work
-string = "\{ this will raise an ValueError".format()
+# In order to keep the curly brace after format, type it twice:
+"format removes the outer curly {{braces}}".format()
+# 'format removes the outer curly {braces}'
+
+# escaping does not work, because backslashes are removed when string is crated
+"this will raise \{a\} KeyError 'a\\'".format()
 
 # f string
 pathToNewFile = f'{download_folder}{xlsName}.{"xls"}'
