@@ -1,6 +1,54 @@
-= Programming languages
-:keywords: programming, programming-languages, python, shell
+= Programming Languages
+:keywords: programming, programming-languages, python, shell, oop, programming-paradigms
 :hide-uri-scheme:
-:toc:
+:toc: right
 
 General purpose programming languages.
+
+.TODO
+[%collapsible]
+====
+* https://dl.acm.org/doi/10.1145/358896.358899[Notation as a tool of thought by Kenneth E. Iverson]
+* https://youtube.com/playlist?list=PLVFrD1dmDdvdvWFK8brOVNL7bKHpE-9w0[Structure and Interpretation of Computer Programs - YouTube playlist by @code_report]
+* https://youtube.com/playlist?list=PLVFrD1dmDdvcjCQDPhExqP56jqxp0Ssn_[Category Theory for Programmers - YouTube playlist by @code_report]
+* First-class citizen
+* Programming or Scripting
+* Machine Code
+====
+
+== Start Programming
+
+If you are new to programming I would recommend you to start with Python or TypeScript.
+They are both multi-paradigm high-level languages.
+Which means you can do basically anything with them relatively easily.
+Also they are 2nd and 4th in https://octoverse.github.com/2022/top-programming-languages[GitHub's Top languages used in 2022] ranking.
+And 6th, 4th in the https://survey.stackoverflow.co/2022/#most-loved-dreaded-and-wanted-language-want[Stack Overflow's most loved language] ranking.
+
+== Introduction
+
+* Typing model: Strong or Weak, Static or Dynamic
+* Programming Paradigm
+** Object Oriented
+** Functional
+** Array
+* Compiled or Interpreted
+
+https://youtube.com/playlist?list=PLVFrD1dmDdvdv7trr5j9ir7qrFK5K80X0[Seven Languages in Seven Weeks - YouTube playlist by @code_report]
+
+== Languages Worth Mentioning
+
+Assembly language::
+First abstraction above machine code.
+C Language::
+One of the most successful languages of all time.
+I believe, most of the programming languages are written in the C language.
+Shell Script::
+The programming language of the terminal console.
+JavaScript::
+The programming language of the web.
+Python::
+Second most used programming language with very pleasant syntax.
+Rust::
+The most loved programming language, plus another language that made it to the Linux kernel source code.
+J Language::
+ASCII characters only array paradigm language by Kenneth E. Iverson.
