@@ -1,0 +1,105 @@
+= AsciiDoc
+:description:
+:keywords: adoc, asciidoc, asciidoctor
+:hide-uri-scheme:
+:sectlinks:
+:sectanchors:
+:source-highlighter: highlight.js
+:docinfo: shared-header
+:toc: right
+
+"AsciiDoc appears strikingly similar to Markdown, making way for an easy transition. Where AsciiDoc shines is in its depth. AsciiDoc provides all the essential elements in technical writing out of the box. No variants needed. Its syntax can be elaborated without having to fundamentally change the language, assuring users that it’s still standard AsciiDoc."
+-- https://asciidoc.org/
+
+Look at the link:asciidoc.adoc[source] to understand the magic.
+
+[sidebar]
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+== https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[AsciiDoc Syntax Quick Reference]
+
+.TODO
+[%collapsible]
+====
+* Styles e.g. `+:stylesheet: style.css+`
+** Custom stylesheet to style the included header to the left.
+* Preamble section.
+* `+[.lead]+`
+* https://docs.asciidoctor.org/asciidoc/latest/attributes/counters/[Counters e.g. (1) ... (2) ..]
+* Text styles e.g. `+[big]#text#+`
+* Generating multiple files at once: `+asciidoctor **/*.adoc+`
+====
+
+== Installation
+
+[source,shell]
+sudo apt install asciidoctor
+
+https://docs.asciidoctor.org/asciidoctor/latest/install/
+
+== Comments
+
+There are two types of comments *line* comment and *block* comment.
+Asciidoc does not support in-line comments.
+
+[source, adoc]
+----
+// This is a commented line.
+////
+This is a commented block.
+////
+----
+
+https://docs.asciidoctor.org/asciidoc/latest/comments/
+
+== https://docs.asciidoctor.org/asciidoc/latest/document/header/[Document Header]
+
+== https://docs.asciidoctor.org/asciidoc/latest/toc/[Table of Contents]
+
+== https://docs.asciidoctor.org/asciidoc/latest/blocks/blockquotes/[Block Quote]
+
+== Admonitions
+
+NOTE: AsciiDoc provides five basic admonitions:
+NOTE, TIP, IMPORTANT, CAUTION, WARNING.
+
+https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/
+
+== https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes-ref/[Document Attributes]
+
+== Links
+
+* Link an exact document (.pdf, .adoc, etc): link:directory/example.adoc[link].
+* Reference the future html using its .adoc: xref:./directory/example.adoc[xref].
+** `+xref+` requires relative path e.g. `+./something+`
+
+== https://docs.asciidoctor.org/asciidoc/latest/directives/include/[Include Documents]
+
+*This text is before the ``include`` line.*
+
+include::directory/example.adoc[]
+
+*This text is after the ``include`` line.*
+
+== https://docs.asciidoctor.org/reveal.js-converter/latest/converter/features/[Presentation with reveal.js]
+
+== Blocks
+
+=== Open Block
+
+[#name]
+--
+Block with id=name
+--
+
+== https://github.com/asciidoctor/asciidoctor-backends[Asciidoctor Backends (i.e. templates)]
+
+== Asciidoctor
+
+https://docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/
+
+=== https://docs.asciidoctor.org/[Asciidoctor Processors]
+* https://docs.asciidoctor.org/asciidoctor/latest/[Asciidoctor] - Ruby
+* https://docs.asciidoctor.org/asciidoctor.js/latest/[Asciidoctor.js] - JavaScript
+* https://docs.asciidoctor.org/asciidoctorj/latest/[AsciidoctorJ] - Java/JVM
