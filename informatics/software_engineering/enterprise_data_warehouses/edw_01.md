@@ -1,8 +1,3 @@
----
-title: Enterprise Data Warehouses
-tags: [data, database, data-warehouse, data-lake, EDW, business-intelligence, BI]
----
-
 Technologies
 * ETL Tool - pentaho
 * Database - PostgreSQL
