@@ -1,20 +1,45 @@
 = J Language
-:toc:
+:toc: right
 :source-language: ijs
 :source-highlighter: highlight.js
 
 .TODO
 [%collapsible]
 ====
-* Continue https://www.jsoftware.com/help/learning/07.htm#01[HERE]
-* https://code.jsoftware.com/wiki/Books/Beginners
-* https://www.jsoftware.com/help/dictionary/dict.htm
+----
+   -. 0 1 0.2
+1 0 0.8
+   not =: -.
+   not 0 1 0.2
+1 0 0.8
+----
+
+----
+   NB. n =: noun, v =: verb, a =: adverb, c =: conjunction
+   0 1 2 3          NB. n       = n
+
+   - 5              NB.   v n   = n
+   8 - 3            NB. n v n   = n
+
+   + /              NB. v a     = v
+   i. @ #           NB. v c v   = v
+   + / % #          NB. v a v v = v (fork)
+   # ~ 2 | i. @ #   NB. v v     = v (hook)
+----
 ====
 
 
 == Installation
 
 https://code.jsoftware.com/wiki/System/Installation/J9.4/Zips
+
+
+== Reference
+
+* https://code.jsoftware.com/wiki/NuVoc[NuVoc - The Accessible Dictionary by Ian Clark]
+* https://www.jsoftware.com/help/dictionary/contents.htm[J Dictionary by Roger K.W. Hui, Kenneth E. Iverson]
+* https://www.jsoftware.com/papers/APLDictionary.htm[A Dictionary of APL by Kenneth E. Iverson]
+* https://code.jsoftware.com/wiki/Books/Beginners[Books For Learning J]
 
 
 == https://www.jsoftware.com/help/learning/contents.htm[Learning J An Introduction to the J Programming Language by Roger Stokes]
@@ -301,36 +326,4 @@ where G is the monadic rank of g and LR is the vector of left and right ranks of
 
    ^ + / ^. v       NB. Natural Logarithm.
 192
-
 ----
-
-
-== https://youtu.be/gLULrFY2-fI[The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms]
-
-NOTE: https://youtu.be/gLULrFY2-fI?t=1123
-
-----
-   -. 0 1 0.2
-1 0 0.8
-   not =: -.
-   not 0 1 0.2
-1 0 0.8
-----
-
-
-----
-NB. Noun adjacency
-NB. n =: noun, v =: verb, a =: adverb, c =: conjunction
-
-   0 1 2 3      NB. n       = n
-
-   - 5          NB.   v n   = n
-   8 - 3        NB. n v n   = n
-
-   + /          NB. v a     = v
-   i. @ #       NB. v c v   = v
-
-----
-
-
-== https://www.jsoftware.com/papers/APLDictionary.htm[A Dictionary of APL by Kenneth E. Iverson]
