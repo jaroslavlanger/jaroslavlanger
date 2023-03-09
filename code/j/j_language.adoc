@@ -1,0 +1,336 @@
+= J Language
+:toc:
+:source-language: ijs
+:source-highlighter: highlight.js
+
+.TODO
+[%collapsible]
+====
+* Continue https://www.jsoftware.com/help/learning/07.htm#01[HERE]
+* https://code.jsoftware.com/wiki/Books/Beginners
+* https://www.jsoftware.com/help/dictionary/dict.htm
+====
+
+
+== Installation
+
+https://code.jsoftware.com/wiki/System/Installation/J9.4/Zips
+
+
+== https://www.jsoftware.com/help/learning/contents.htm[Learning J An Introduction to the J Programming Language by Roger Stokes]
+
+=== Chapter 1: Basics
+
+----
+   NB. Starts comment, comes from Latin's Nota bene = Note well.
+
+   3 % 4    NB. % verb is division.
+0.75
+
+   2 ^ 3    NB. ^ verb is power function.
+8
+
+   3 | 0 1 2 3 4 5 6 7  NB. | verb is "Residue" function.
+0 1 2 0 1 2 0 1
+
+   NB. in the absence of parentheses,
+   NB. the right argument of an arithmetic function is everything to the right.
+   3 * 2 + 1
+9
+
+   # 1 2 3 4    NB. # "Tally" verb gives length in the first dimension.
+4
+----
+
+=== Chapter 2: Lists and Tables
+
+[%collapsible]
+====
+
+----
+   5 $ 1        NB. $ verb creates vecotr/table/record of given shape and elements.
+1 1 1 1 1
+
+   $ 5 $ 1      NB. Monadic $ verb returns right noun's vector of dimensions lengths.
+
+   2 3 2 $ 9 8 7    NB. 2 sections, 3 rows, 2 columns of values 9 8 7
+9 8
+7 9
+8 7
+
+9 8
+7 9
+8 7
+
+   n_report =: 1 2 3 4 $ 0
+   n_report
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+   # $ n_report     NB. "Rank" of report (number of dimensions) is 4.
+4
+
+   NB. Boxing and Unboxing
+   < i. 3
+┌─────┐
+│0 1 2│
+└─────┘
+   > < i. 3
+0 1 2
+----
+
+====
+
+=== Chapter 3: Defining Functions
+
+Every verb belongs to one of four categories:
+
+* Monadic verb: n = v n
+* Dyadic verb:  n = n v n
+* Adverb:       v = v a
+* Conjunction:  v = v c n
+
+.Bonding
+....
+(f & k) y    means    y f k 
+(k & f) y    means    k f y 
+....
+
+.Composition of Functions
+[literal]
+(f @: g) y    means  f (g y)
+
+.Trains of Verbs
+--
+Sequence of verbs is called a "train".
+Train of length 2 is called a hook.
+
+If f is dyad, g is monad,
+....
+(f g) y       means   y f (g y)
+....
+
+Train of length 3 is called a "fork".
+If f is monad g is dyad, h is monad
+....
+(f g h) y     means   (f y) g (h y)
+....
+--
+
+[%collapsible]
+====
+
+----
+   'a' ,~ 'b'       NB. ~ "Commuting" adverb exchanges left and right arguments.
+ba
+   mod =: | ~
+   7 mod 3
+1
+
+   NB. & conjunction bonds one verb with one noun.
+   double =: * & 2  NB. (* & 2) y = (y * 2)
+   double 3
+6
+
+   L =: 3 5 7 9
+   sum =: + /
+   sum L
+24
+   # L
+4
+   sum L % # L
+6
+   mean =: sum % #  NB. fork
+   mean L
+6
+
+   range =: <. / , >. /         NB. Fork
+   range 2 4 5 _7 12 2 3 _3
+_7 12
+
+   ,. i. 4      NB. Monadic ,. verb "Ravel" makes 1-column table from vector
+0
+1
+2
+3
+
+   NB. Dyadic verb ,: "Laminate"
+   ('left';'right') ,: (,. ; (,. @: (2 & +))) i. 2
+┌────┬─────┐
+│left│right│
+├────┼─────┤
+│0   │2    │
+│1   │3    │
+└────┴─────┘
+----
+
+====
+
+=== Chapter 7: Ranks
+
+[%collapsible]
+====
+
+----
+   rep =: 2 3 4 $ i. 2*3*4
+   rep
+ 0  1  2  3
+ 4  5  6  7
+ 8  9 10 11
+
+12 13 14 15
+16 17 18 19
+20 21 22 23
+   $ rep            NB. Dimensions
+2 3 4
+   # $ rep          NB. Number of dimensions.
+3
+   +/ b. 0          NB. (v (b. 0)) shows inherent rank of verb v for monad, left, right.
+_ _ _
+   +/ rep
+   (+/ " _) rep
+   (+/ " 3) rep     NB. Applies +/ over the greatest axis counted inside out.
+12 14 16 18
+20 22 24 26
+28 30 32 34
+   (+/ " 2) rep     NB. Applies +/ over the second axis from inside.
+12 15 18 21
+48 51 54 57
+   (+/ " 1) rep     NB. Applies +/ over the first axis from inside.
+ 6 22 38
+54 70 86
+   (+/ " 0) rep     NB. Applies +/ over 0-th axis. Sum of a scalar is the scalar.
+ 0  1  2  3
+ 4  5  6  7
+ 8  9 10 11
+
+12 13 14 15
+16 17 18 19
+20 21 22 23
+
+
+
+   NB. "Rank" conjunction (v " n) e.g. (< " 0)
+   n_table =: 2 3 $ i. 6
+   (< " 0) n_table
+┌─┬─┬─┐
+│0│1│2│
+├─┼─┼─┤
+│3│4│5│
+└─┴─┴─┘
+----
+
+
+====
+
+=== Chapter 8: Composing Verbs
+
+.Ambivalent Compositions
+----
+When f is monad.
+              (f @: g) y    =    f (g y)
+            x (f @: g) y    =    f (x g y)
+
+When g is monad.
+              (f &: g) y    =    f (g y)
+            x (f &: g) y    =    (g x) f (g y)
+----
+
+.More on Composition: Monad Tracking Monad
+----
+Suppose that the monadic rank of g is G.
+   G =: 0 { (g b. 0)
+
+             (f @ g) y    means     (f @: g) " G   y
+----
+
+.Summary
+----
+Here is a summary of the 8 cases we have looked at so far.
+         @:       (f @: g) y  =  f (g y)
+         @:     x (f @: g) y  =  f (x g y)
+
+         &:       (f &: g) y  =  f (g y) 
+         &:     x (f &: g) y  =  (g x) f (g y)
+
+         @        (f @ g)  y  =  (f @: g) " G  y
+         @      x (f @ g)  y  =  x (f @: g) " LR y
+
+         &        (f & g)  y  =  (f @: g) " G  y
+         &      x (f & g)  y  =  (g x) (f " (G,G)) (g y)
+where G is the monadic rank of g and LR is the vector of left and right ranks of g.
+----
+
+=== Chapter 19: Numbers
+
+."Infinity"
+----
+   _    NB. Infinity
+----
+
+
+== https://dl.acm.org/doi/pdf/10.1145/358896.358899[Notation as a Tool of Thought]
+
+----
+   1 + i. 5         NB. Integers monadic
+1 2 3 4 5
+
+   + / 1 + i. 5     NB. Insert adverb
+15
+
+   + / \ 1 + i. 5   NB. Prefix scan
+1 3 6 10 15
+
+   |. 1 + i. 5      NB. Reversing
+5 4 3 2 1
+
+   5 $ 6            NB. Arrays
+6 6 6 6 6
+
+   ! 1 + i. 5       NB. Factorial
+1 2 6 24 120
+
+   v =: ? 5 $ 10    NB. Roll - random number
+   v
+8 6 1 2 2
+
+   ^ + / ^. v       NB. Natural Logarithm.
+192
+
+----
+
+
+== https://youtu.be/gLULrFY2-fI[The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms]
+
+NOTE: https://youtu.be/gLULrFY2-fI?t=1123
+
+----
+   -. 0 1 0.2
+1 0 0.8
+   not =: -.
+   not 0 1 0.2
+1 0 0.8
+----
+
+
+----
+NB. Noun adjacency
+NB. n =: noun, v =: verb, a =: adverb, c =: conjunction
+
+   0 1 2 3      NB. n       = n
+
+   - 5          NB.   v n   = n
+   8 - 3        NB. n v n   = n
+
+   + /          NB. v a     = v
+   i. @ #       NB. v c v   = v
+
+----
+
+
+== https://www.jsoftware.com/papers/APLDictionary.htm[A Dictionary of APL by Kenneth E. Iverson]
