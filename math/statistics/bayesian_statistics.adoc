@@ -1,0 +1,134 @@
+= Bayesian Statistics
+:toc: right
+
+== Definitions
+
+In Kolmogorov definition.
+
+Probability Space:: triple (Outcomes, Events, Probability).
+Events:: is a sigma-algebra on Outcomes. I.e. the pair (Outcomes, Events) is a measurable space. 
+Probability:: is a set function with image 0-1.
+
+[discrete]
+== Interpretations
+
+* Objectivists:: assigns numbers to some objective or physical state of affairs.
+** Most popular objectivist direction is Frequentism.
+* Subjectivists:: assigns numbers for subjective probability that is a degree of belief.
+** Most popular objectivist direction is Bayesian probability.
+
+.Contitional Probability
+----
+P( x | y ) <- P( x Intersection y )
+              / P( y )
+----
+
+----
+P( x | y ) * P( y ) = P( x Intersection y ) = P( y | x ) * P( x )
+----
+
+.Bayes Theorem
+----
+P( x | y ) = P( y | x ) * P( x )
+             / P( y )
+----
+
+.Law of total probability
+----
+P( x ) = Sum( Each y )( P( x Intersection y ) )
+    where Each y is disjunct and Set( Each y ) = Outcomes.
+----
+
+.Bayes Theorem with Law of Total Probability
+----
+P( x | y ) = P( y | x ) * P( x )
+             / Sum( Each x )( P( y | x ) * P( x ) )
+----
+
+[discrete]
+=== Exercise - Hemophilia
+
+[%collapsible]
+====
+Problem Introduction::
+Sex chromosome of men is XY, women have XX.
+Hemophilia is carried on the X chromosome.
+If man's X carries hemophilia he is ill.
+If one of woman's X carries hemophilia she is a carrier.
+For woman is lethal when both her X carries hemophilia.
+
+Question::
+Anna's brother has hemophilia. Her father is healthy. Is Anna a carrier?
+
+What is the probability of Anna being a carrier?::
+--
+Let's start by the analysis of the cases.
+
+.Diagram of How the chromosomes are inherited.
+----
+      Mom | Dad
+      X X | X Y
+----------+----
+Girl  X   | X
+Girl    X | X
+Boy   X   |   Y
+Boy     X |   Y
+----
+
+*Let's summarize what we know so far.*
+. Anna's brother has hemophilia, so one of her parents carries it.
+. Anna's father is healthy, so mom carries it.
+. For women is lethal to carries hemophilia on both chromosomes, so Anna's mom is a carrier.
+I.e. one of Anna's mom X carries hemophilia.
+
+----
+P(Carrier=True | Anna) =
+P(Carrier=True | Anna) = P(Carrier=True | brother=Ill, father=Healthy)
+
+                       = P(brother=Ill, father=Healthy | Carrier=True) * P(Carrier=True)
+                         / Sum(c)(P(brother=Ill, father=Healthy | Carrier=c) * P(Carrier=c)
+
+Dad is healthy so X=0, brother is ill, so either mom's X=1, not both.
+
+      Mom     | Dad
+      X=1 X=0 | X=0 Y
+or
+      Mom     | Dad
+      X=0 X=1 | X=0 Y
+
+So dads has no role in the probabilities.
+
+Mom is either 01, or 10, so daughter is either 10, or 00.
+
+                       = normalization * P(brother=Ill, father=Healthy | sister=10) * P(sister=10)
+                       = normalization * P(brother=Ill, father=Healthy, sister=10)
+
+P(Anna={1} | Mom={1, 0}) = 1/2
+----
+--
+
+What is the probability P(Anna={1} | Son={0})?::
+----
+P(Anna={1} | Son={0}) = normalization * P(Son={0} | Anna={1}) * P(Anna={1})
+                      = normalization * 1/2                   * 1/2
+P(Anna={0} | Son={0}) = normalization * P(Son={0} | Anna={0}) * P(Anna={0})
+                      = normalization * 1                     * 1/2
+----
+
+
+What is the probability P(Anna={1} | Son={0}, Son={0})?::
+----
+P(Anna={1} | Son={0}, Son={0}) = normalization * P(Son={0}, Son={0} | Anna={1}) * P(Anna={1})
+                               = normalization * P(Son={0} | Anna={1}) * P(Son={0} | Anna={1}) * P(Anna={1})
+                               = normalization * P(Son={0}, Son={0},  Anna={1})
+                               = normalization * P(Anna={1} | Son={0}, Son={0}) * P(Son={0}, Son={0})
+                               = normalization * P(Anna={1} | Son={0}, Son={0}) * P(Son={0}) * P(Son={0})
+
+P(S=0, S=0, A=1)
+
+
+                               = normalization * 1/2                   * 1/2
+P(Anna={0} | Son={0}) = normalization * P(Son={0} | Anna={0}) * P(Anna={0})
+                      = normalization * 1                     * 1/2
+----
+====
