@@ -404,10 +404,22 @@ In case you do not have the push rights in order to merge your changes to the re
 
 ### Get Information About git Files (git ls-files)
 
+* <https://git-scm.com/docs/git-ls-files>
+
 ```sh
 # Show information about files in the index and the working tree
 git ls-files
 ```
+
+For example, I got this error:
+```
+git fatal: no submodule mapping found in .gitmodules for path
+```
+I used this command to get staged files that git considers to be submodules (160000).
+```sh
+git ls-files --stage | grep 160000
+```
+* <https://stackoverflow.com/a/4185579>
 
 ### Clean the Working Tree (git stash)
 
