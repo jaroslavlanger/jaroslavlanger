@@ -1,0 +1,10 @@
+= Interactive Brokers
+:hide-uri-scheme:
+:keywords: stocks, money
+
+.TODO
+[%collapsible]
+====
+* https://www.ibkrguides.com/taxoptimizer/ibto/lotmatchingmethods.htm[Lot-Matching Methods at ibkrguides.com]
+* https://ibkr.info/node/925[Capital Gains and Losses: The Difference Between Short-term and Long-term Capital Gains at ibrk.info]
+====
