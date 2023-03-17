@@ -1,0 +1,18 @@
+= Haskell
+:keywords: functional, programming
+:hide-uri-scheme:
+:source-language: haskell
+:toc: right
+
+An advanced, purely functional programming language
+
+.TODO
+[%collapsible]
+====
+* `+main = do+`
+====
+
+== References
+
+* https://www.haskell.org/
+* http://learnyouahaskell.com/chapters
