@@ -1,0 +1,59 @@
+= AWK
+
+Programming language designed by Alfred **A**ho, Peter **W**einberger and Brian **K**ernighan.
+
+== Basics
+
+----
+awk [-options]  '{program}' filenames
+    -F :            print   $0, $1     "string"
+----
+
+=== Constants
+
+* `+FS=":"+` - File Separator.
+* `+OFS="/"+` - Output File Separator.
+* `+FIELDWIDTHS="4 4"+`
+* `+NF=""+` - Number of Fields.
+* `+FNR=+` - File Number Row.
+* `+NR=+` - Number of Row.
+
+----
+BEGIN {} {} END {}
+----
+
+----
+array["a"]=7
+----
+
+== Mathematics
+
+----
+sin(); sqrt(); rand(); int()
+----
+
+== Functions
+
+----
+lenght(); tolower(); toupper()
+----
+
+== Operators
+
+----
+~ !~ < > == !=
+----
+
+== Regular Expressions
+
+----
+~ /RE/  
+----
+
+== Control Flow Statements
+
+----
+do{}while()
+while(){}
+for(){}
+----
