@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>CSS: Cascading Style Sheets</title>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 
 * {
@@ -772,3 +781,352 @@ alrgn{
 }
 alrgn::after{content: ")";}
 */
+
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>CSS: Cascading Style Sheets</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_inspirations">Inspirations</a></li>
+<li><a href="#_selectors">Selectors</a>
+<ul class="sectlevel2">
+<li><a href="#_root_pseudo_class">:root pseudo-class</a></li>
+<li><a href="#_universal_selectors_style_properties">Universal_selectors <code>* { style properties }</code></a></li>
+</ul>
+</li>
+<li><a href="#_text">Text</a>
+<ul class="sectlevel2">
+<li><a href="#_font_size_property">font-size property</a></li>
+<li><a href="#_line_height_property">line-height property</a></li>
+<li><a href="#_color_property">color property</a></li>
+<li><a href="#_overflow_wrap_property">overflow-wrap property</a></li>
+<li><a href="#_word_break_property">word-break property</a></li>
+<li><a href="#_white_space_property">white-space property</a></li>
+</ul>
+</li>
+<li><a href="#_custom_properties_variables">Custom Properties (Variables)</a></li>
+<li><a href="#_margin_padding_border">Margin Padding Border</a></li>
+<li><a href="#_position_property">Position property</a></li>
+<li><a href="#_display_property">Display property</a></li>
+<li><a href="#_data_types">Data Types</a>
+<ul class="sectlevel2">
+<li><a href="#_length_data_type">&lt;length&gt; data type</a></li>
+</ul>
+</li>
+<li><a href="#_rules">Rules</a>
+<ul class="sectlevel2">
+<li><a href="#_import_rule">@import rule</a></li>
+<li><a href="#_media_rule">Media rule</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML).
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" class="bare">developer.mozilla.org/en-US/docs/Web/CSS</a>
+</div>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units" class="bare">developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/calc</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/clamp</a></p>
+</li>
+<li>
+<p><a href="https://www.fontawesome.com" class="bare">www.fontawesome.com</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust</a></p>
+</li>
+<li>
+<p>box-sizing: border-box;</p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/border-radius</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">.header{
+    backround: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("./big.jpeg")center/cover no-repeat fixed;
+}
+
+text-indent: 50px
+
+opacity
+backround-repeat: round
+
+static, relative, fixed, absolute
+
+::before
+::after
+p::before{ content: "hello "; display: block;}
+
+/* Descendent child selectors */
+div h1 {} | div &gt; h1 {}
+
+p::first-line {} | p::first-letter
+
+p:hover
+div:hover {
+    backround: coral;
+}
+
+Transform:transition()
+display: inline-block;
+transform: translate(px, px)
+transform: scale( $num, $num)
+transform: rotateX|Y|Z($(num)deg)
+transform: skew(40deg, 60deg)
+
+
+transition-property: backround;
+transition-duration: 4s;
+transition-delay: 4s;
+transition: {property} {lenght} {delay
+transition: all 4s function 5s;
+}
+
+transition-timig-function: ease | linear | ease-in | ease-out | ease-in-out
+
+@keyframes  move {
+    0%{
+        transform: translateX
+    }
+    50%{
+        transform: translateX
+    }
+}
+.div {
+    animation-name: move;
+    animation-duration: 10s;
+    animation-iteration-count: 2;
+    animation: move duration count;
+    animation: move 5s infinite;
+}
+
+animation-fill-mode: forwards;
+
+background-image: url("../pictures/industry-839254_1920.jpg");</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grid</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="bare">css-tricks.com/snippets/css/complete-guide-grid/</a></p>
+</li>
+<li>
+<p><a href="https://www.w3schools.com/css/css_grid.asp" class="bare">www.w3schools.com/css/css_grid.asp</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">display: grid;
+grid-template-columns: 3fr 1fr 6fr 1fr;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/text-transform</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action">touch-action</a></p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inspirations">Inspirations</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor/blob/main/src/stylesheets/asciidoctor.css" class="bare">github.com/asciidoctor/asciidoctor/blob/main/src/stylesheets/asciidoctor.css</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jgm/pandoc-templates/blob/master/default.html5" class="bare">github.com/jgm/pandoc-templates/blob/master/default.html5</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_selectors">Selectors</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_root_pseudo_class"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root pseudo-class</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_universal_selectors_style_properties"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors">Universal_selectors <code>* { style properties }</code></a></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_text">Text</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_font_size_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size">font-size property</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_line_height_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height property</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_color_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color property</a></h3>
+<div class="sect3">
+<h4 id="_hwb_hue_whiteness_blackness_functional_notation"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb">hwb (hue whiteness blackness) functional notation</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_angle_data_type"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/angle">&lt;angle&gt; data type</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_overflow_wrap_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap">overflow-wrap property</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_word_break_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/word-break">word-break property</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_white_space_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space">white-space property</a></h3>
+<div class="listingblock">
+<div class="title">Import Google Font</div>
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">@import url('https://fonts.googleapis.com/css2?family=Lexend&amp;display=swap');
+
+body {
+    font-family: 'Lexend', sans-serif;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://fonts.google.com" class="bare">fonts.google.com</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_properties_variables"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">Custom Properties (Variables)</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_margin_padding_border">Margin Padding Border</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+This property can be used to set a margin on all four sides of an element. Margins create extra space around an element, unlike padding, which creates extra space within an element.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin" class="bare">developer.mozilla.org/en-US/docs/Web/CSS/margin</a>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin shorthand property</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding shorthand property</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border shorthand property</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_position_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">Position property</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_display_property"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">Display property</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_types">Data Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_length_data_type"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt; data type</a></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rules">Rules</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_import_rule"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">@import rule</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_media_rule"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">Media rule</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">@media screen and (min-aspect-ratio: 1/1) {
+    ...
+}
+@media (orientation: portrait) {
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-03-18 19:53:15 +0100
+</div>
+</div>
+</body>
+</html>

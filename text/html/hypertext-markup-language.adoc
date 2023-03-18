@@ -1,0 +1,107 @@
+= HTML: HyperText Markup Language
+:toc:
+:hide-uri-scheme:
+:source-language: html
+:source-highlighter: highlight.js
+
+"HTML (HyperText Markup Language) is the most basic building block of the Web."
+-- https://developer.mozilla.org/en-US/docs/Web/HTML
+
+.TODO
+[%collapsible]
+====
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+====
+
+== References
+
+* https://youtu.be/mU6anWqZJcc[Learn HTML5 and CSS3 From Scratch - Full Course]
+
+== Create Live Server
+
+.Plugin to Visual Studio Code.
+[,console]
+----
+python -m http.server
+----
+
+== Minimal HTML Site
+
+https://www.sitepoint.com/a-minimal-html-document-html5-edition/
+
+== Link CSS in HTML
+
+https://www.w3schools.com/tags/tag_link.asp
+
+== Sites with Free Images
+
+* https://pixabay.com
+* https://www.pexels.com
+* https://gratisography.com
+
+== Colors
+
+* https://coolors.co
+* https://www.colorzilla.com/gradient-editor/
+
+== Navigate inside webpage
+
+----
+<a href="#">#</a>
+----
+
+== JavaScript
+
+=== Events handling
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+==== Click
+
+[source, js]
+----
+onclick="changeColor('black')
+----
+
+==== Touch
+
+[source, js]
+----
+ontouchmove="funMove(event)"
+ontouchstart="funStart(event)"
+ontouchend="funEnd(event)"
+----
+
+==== Mouse
+
+[source, js]
+----
+onmousedown="mouseDown(event)"
+onmousemove="mouseMove(event)"
+onmouseup="mouseUp(event)"
+----
+
+==== Pointer
+
+[source, js]
+----
+onpointermove="funMove(event)"
+onpointerdown="funDown(event)"
+onpointerup="funUp(event)"
+----
+
+== Scripts
+
+* https://www.w3schools.com/js/js_whereto.asp[The script can be placed either in the head, or in the body.]
+* https://faqs.skillcrush.com/article/176-where-should-js-script-tags-be-linked-in-html-documents[Link the script in the head with an attribute defer.]
+
+[source, html]
+----
+<head>
+    <script src='./path/script.js' defer></script>
+</head>
+----
+
+== History
+
+The browser remembers the user's history. It is possible to navigate back and forth through it via https://developer.mozilla.org/en-US/docs/Web/API/History_API[History API]

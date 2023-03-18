@@ -1,0 +1,171 @@
+= CSS: Cascading Style Sheets
+:toc:
+:hide-uri-scheme:
+:stylesheet: style.css
+:source-language: css
+
+"Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML)."
+-- https://developer.mozilla.org/en-US/docs/Web/CSS
+
+.TODO
+[%collapsible]
+====
+* https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units
+* https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+* https://www.fontawesome.com
+* https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
+* box-sizing: border-box;
+* https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+----
+.header{
+    backround: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("./big.jpeg")center/cover no-repeat fixed;
+}
+
+text-indent: 50px
+
+opacity
+backround-repeat: round
+
+static, relative, fixed, absolute
+
+::before
+::after
+p::before{ content: "hello "; display: block;}
+
+/* Descendent child selectors */
+div h1 {} | div > h1 {}
+
+p::first-line {} | p::first-letter
+
+p:hover
+div:hover {
+    backround: coral;
+}
+
+Transform:transition()
+display: inline-block;
+transform: translate(px, px)
+transform: scale( $num, $num)
+transform: rotateX|Y|Z($(num)deg)
+transform: skew(40deg, 60deg)
+
+
+transition-property: backround;
+transition-duration: 4s;
+transition-delay: 4s;
+transition: {property} {lenght} {delay
+transition: all 4s function 5s;
+}
+
+transition-timig-function: ease | linear | ease-in | ease-out | ease-in-out
+
+@keyframes  move {
+    0%{
+        transform: translateX
+    }
+    50%{
+        transform: translateX
+    }
+}
+.div {
+    animation-name: move;
+    animation-duration: 10s;
+    animation-iteration-count: 2;
+    animation: move duration count;
+    animation: move 5s infinite;
+}
+
+animation-fill-mode: forwards;
+
+background-image: url("../pictures/industry-839254_1920.jpg");
+----
+
+* Grid
+** https://css-tricks.com/snippets/css/complete-guide-grid/
+** https://www.w3schools.com/css/css_grid.asp
+
+----
+display: grid;
+grid-template-columns: 3fr 1fr 6fr 1fr;
+----
+
+* https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
+* https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action[touch-action]
+====
+
+== Inspirations
+
+* https://github.com/asciidoctor/asciidoctor/blob/main/src/stylesheets/asciidoctor.css
+* https://github.com/jgm/pandoc-templates/blob/master/default.html5
+
+== Selectors
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/:root[:root pseudo-class]
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors[Universal_selectors `+* { style properties }+`]
+
+
+== Text
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/font-size[font-size property]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/line-height[line-height property]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/color[color property]
+
+==== https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb[hwb (hue whiteness blackness) functional notation]
+
+==== https://developer.mozilla.org/en-US/docs/Web/CSS/angle[<angle> data type]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap[overflow-wrap property]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/word-break[word-break property]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/white-space[white-space property]
+
+.Import Google Font
+----
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
+body {
+    font-family: 'Lexend', sans-serif;
+}
+----
+
+* https://fonts.google.com
+
+== https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties[Custom Properties (Variables)]
+
+
+== Margin Padding Border
+
+"This property can be used to set a margin on all four sides of an element. Margins create extra space around an element, unlike padding, which creates extra space within an element."
+-- https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+
+* https://developer.mozilla.org/en-US/docs/Web/CSS/margin[margin shorthand property]
+* https://developer.mozilla.org/en-US/docs/Web/CSS/padding[padding shorthand property]
+* https://developer.mozilla.org/en-US/docs/Web/CSS/border[border shorthand property]
+
+== https://developer.mozilla.org/en-US/docs/Web/CSS/position[Position property]
+
+== https://developer.mozilla.org/en-US/docs/Web/CSS/display[Display property]
+
+== Data Types
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/length[<length> data type]
+
+== Rules
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/@import[@import rule]
+
+=== https://developer.mozilla.org/en-US/docs/Web/CSS/@media[Media rule]
+
+----
+@media screen and (min-aspect-ratio: 1/1) {
+    ...
+}
+@media (orientation: portrait) {
+    ...
+}
+----
