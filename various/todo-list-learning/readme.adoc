@@ -1,0 +1,40 @@
+= TODO List Learning
+:keywords: todo, how-to, learn, learning
+:stylesheet: ./../../style.css
+:linkcss:
+
+Approach how to spend your learning time based on your priorities.
+
+== Priority TODO List
+
+Whenever I want to learn a thing I start by creating an empty document about it.
+
+. Create a TODO section in the document.
+** *Keep this list ordered by your priorities*.
+** *Any time you add something or you priorities change, reorder it accordingly*.
+
+. Add the concepts you want to learn to the list (_ordered by your priorities_).
+
+. Take first item from the list and act according to its type:
+.. A specific resource or task -> study it / do it.
+.. General concept / idea -> explore it.
+*** E.g. type it to the browser and read first five links.
+*** Don't spend too much time on it, the purpose is to find good resources.
+*** Trying to explore and study at the same time is often counterproductive. 
+**** *You want to spend your time on the most prioritized stuff not the newest.*
+
+. Don't change the topic (e.g. website) while exploring or studying.
+** When you meet something you need to explore further, insert it to the list.
+
+=== TODO list is not grouped by topics!
+Perhaps some topic may have high priority in terms of general understanding,
+but the priority of its details may be very low.
+
+=== Be lazy in terms of your own writing!
+In case you find a perfect study resource, just use it.
+
+=== Choose wisely what's worth your efforts, don't reinvent the wheel!
+Apart from practicing there are two good reasons to do something.
+
+. The thing you want doesn't exist.
+. You think you can do noticeably better than what's already there.
