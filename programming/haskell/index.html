@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="keywords" content="functional, programming">
+<title>Haskell</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Haskell</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_references">References</a></li>
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_interactive_haskell_repl">Interactive Haskell (REPL)</a></li>
+<li><a href="#_function_precedence_and_associativity">Function Precedence and Associativity</a></li>
+<li><a href="#_basics">Basics</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>An advanced, purely functional programming language</p>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://dl.acm.org/doi/10.1145/1238844.1238856">A history of Haskell: being lazy with class</a></p>
+</li>
+<li>
+<p><a href="http://learnyouahaskell.com/types-and-typeclasses" class="bare">learnyouahaskell.com/types-and-typeclasses</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Constructor" class="bare">wiki.haskell.org/Constructor</a></p>
+</li>
+<li>
+<p><a href="https://en.wikibooks.org/wiki/Haskell/Variables_and_functions" class="bare">en.wikibooks.org/wiki/Haskell/Variables_and_functions</a></p>
+</li>
+<li>
+<p><a href="https://www.tutorialspoint.com/haskell/haskell_functions.htm" class="bare">www.tutorialspoint.com/haskell/haskell_functions.htm</a></p>
+</li>
+<li>
+<p><a href="http://learnyouahaskell.com/syntax-in-functions" class="bare">learnyouahaskell.com/syntax-in-functions</a></p>
+</li>
+<li>
+<p><a href="https://en.wikibooks.org/wiki/Haskell/Pattern_matching" class="bare">en.wikibooks.org/wiki/Haskell/Pattern_matching</a></p>
+</li>
+<li>
+<p>Record pattern matching e.g. <code>f P{name=n} = n</code></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Case" class="bare">wiki.haskell.org/Case</a></p>
+</li>
+<li>
+<p><a href="http://zvon.org/other/haskell/Outputsyntax/caseQexpressions_reference.html" class="bare">zvon.org/other/haskell/Outputsyntax/caseQexpressions_reference.html</a></p>
+</li>
+<li>
+<p><a href="https://www.haskell.org/tutorial/numbers.html" class="bare">www.haskell.org/tutorial/numbers.html</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Converting_numbers" class="bare">wiki.haskell.org/Converting_numbers</a></p>
+</li>
+<li>
+<p>Precedence / associativity of different functions with equal precedence?</p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Declaration_vs._expression_style" class="bare">wiki.haskell.org/Declaration_vs._expression_style</a></p>
+</li>
+<li>
+<p><a href="http://learnyouahaskell.com/higher-order-functions#function-application" class="bare">learnyouahaskell.com/higher-order-functions#function-application</a></p>
+</li>
+<li>
+<p><a href="https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf" class="bare">hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Keywords" class="bare">wiki.haskell.org/Keywords</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Let_vs._Where" class="bare">wiki.haskell.org/Let_vs._Where</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Type" class="bare">wiki.haskell.org/Type</a></p>
+</li>
+<li>
+<p><a href="https://en.wikibooks.org/wiki/Haskell/Type_declarations" class="bare">en.wikibooks.org/wiki/Haskell/Type_declarations</a></p>
+</li>
+<li>
+<p><a href="https://hackage.haskell.org/package/constraints-0.13.4/docs/Data-Constraint.html" class="bare">hackage.haskell.org/package/constraints-0.13.4/docs/Data-Constraint.html</a></p>
+</li>
+<li>
+<p><a href="https://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Typeable.html#v:typeOf">typeOf</a></p>
+</li>
+<li>
+<p><a href="https://downloads.haskell.org/ghc/latest/docs/users_guide/" class="bare">downloads.haskell.org/ghc/latest/docs/users_guide/</a></p>
+</li>
+<li>
+<p><code>(++) :: [a] -&gt; [a] -&gt; [a]</code></p>
+</li>
+<li>
+<p><code>(:) :: a -&gt; [a] -&gt; [a]</code></p>
+</li>
+<li>
+<p><code>(!!) :: [a] -&gt; Int -&gt; a</code></p>
+</li>
+<li>
+<p><code>show :: Show a =&gt; a -&gt; String</code></p>
+</li>
+<li>
+<p><code>read :: Read a =&gt; String -&gt; a</code></p>
+</li>
+<li>
+<p>Guards <code>|</code></p>
+</li>
+<li>
+<p><a href="https://typeclasses.com/underscore">Underscore _</a></p>
+</li>
+<li>
+<p>Apostrophe in names</p>
+</li>
+<li>
+<p><code>main = do</code></p>
+</li>
+<li>
+<p><a href="http://zvon.org/other/haskell/Outputprelude/map_f.html">map f <code>map abs [-1,-3,4,-12]</code></a></p>
+</li>
+<li>
+<p><a href="https://en.wikibooks.org/wiki/Haskell/Control_structures" class="bare">en.wikibooks.org/wiki/Haskell/Control_structures</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/If-then-else" class="bare">wiki.haskell.org/If-then-else</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Pure" class="bare">wiki.haskell.org/Pure</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Memoization" class="bare">wiki.haskell.org/Memoization</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Means_of_expression" class="bare">wiki.haskell.org/Means_of_expression</a></p>
+</li>
+<li>
+<p><a href="http://conal.net/blog/posts/everything-is-a-function-in-haskell" class="bare">conal.net/blog/posts/everything-is-a-function-in-haskell</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Import_modules_properly" class="bare">wiki.haskell.org/Import_modules_properly</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Import" class="bare">wiki.haskell.org/Import</a></p>
+</li>
+<li>
+<p><a href="http://wiki.haskell.org/Comparison_chain" class="bare">wiki.haskell.org/Comparison_chain</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Literate_programming" class="bare">wiki.haskell.org/Literate_programming</a></p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist bibliography">
+<ul class="bibliography">
+<li>
+<p><a href="https://www.haskell.org/" class="bare">www.haskell.org/</a></p>
+</li>
+<li>
+<p><a href="https://www.haskell.org/onlinereport/" class="bare">www.haskell.org/onlinereport/</a></p>
+</li>
+<li>
+<p><a id="real-world-haskell"></a>[real-world-haskell] <a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html">Real World Haskell by Bryan O&#8217;Sullivan, John Goerzen, Donald Bruce Stewart</a></p>
+</li>
+<li>
+<p><a href="https://www.haskell.org/tutorial/">Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel</a></p>
+</li>
+<li>
+<p><a href="https://www.seas.upenn.edu/~cis1940/spring23/schedule.html">Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science</a></p>
+</li>
+<li>
+<p><a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics" class="bare">en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html" class="bare">www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html</a></p>
+</li>
+<li>
+<p><a href="http://learnyouahaskell.com/chapters" class="bare">learnyouahaskell.com/chapters</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interactive_haskell_repl">Interactive Haskell (REPL)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html" class="bare">downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ # Install Haskell, see: https://www.haskell.org/ghcup/
+$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
+$ # Start Haskell REPL (interactive session).
+$ ghci
+
+ghci&gt; -- Double dash makes comment up to the end of the line.
+
+ghci&gt; min 1 2 - 3
+-2
+
+ghci&gt; :type min -- :type command shows type of given expression.
+min :: Ord a =&gt; a -&gt; a -&gt; a
+
+ghci&gt; :type (+) -- Works for operators when are enclosed in braces.
+(+) :: Num a =&gt; a -&gt; a -&gt; a</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html" class="bare">downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_function_precedence_and_associativity">Function Precedence and Associativity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See "Operator Precedence and Associativity" section of <a href="#real-world-haskell">[real-world-haskell]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Precedence values are from 1 to 9 where 1 means lowest precedence.
+Associativity of the same operator can be left, right or no, e.g.</p>
+</div>
+<div class="paragraph">
+<p>Both values can be obtained by <code>:info</code> command in ghci.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :info -
+type Num :: * -&gt; Constraint
+class Num a where
+  ...
+  (-) :: a -&gt; a -&gt; a
+  ...
+  	-- Defined in ‘GHC.Num’
+infixl 6 -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where the last line <code>+infixl 6 - +</code> means left associativity with precedence value 6.</p>
+</div>
+<div class="listingblock">
+<div class="title">Left associativity example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 1 - 2 - 3 - 4
+-8
+ghci&gt; ((1 - 2) - 3) - 4
+-8</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Right associativity example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 3 ^ 2 ^ 1 ^ 0
+9
+ghci&gt; 3 ^ (2 ^ (1 ^ 0))
+9</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basics">Basics</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html">Prelude</a></dt>
+<dd>
+<p>Module that is imported into all Haskell modules by default.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-03-20 00:28:36 +0100
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

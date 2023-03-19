@@ -1,0 +1,147 @@
+= Haskell
+:keywords: functional, programming
+:source-language: haskell
+:source-highlighter: highlight.js
+:stylesheet: ../../style.css
+:linkcss:
+:toc:
+:hide-uri-scheme:
+
+An advanced, purely functional programming language
+
+.TODO
+[%collapsible]
+====
+. https://dl.acm.org/doi/10.1145/1238844.1238856[A history of Haskell: being lazy with class]
+. http://learnyouahaskell.com/types-and-typeclasses
+. https://wiki.haskell.org/Constructor
+. https://en.wikibooks.org/wiki/Haskell/Variables_and_functions
+. https://www.tutorialspoint.com/haskell/haskell_functions.htm
+. http://learnyouahaskell.com/syntax-in-functions
+. https://en.wikibooks.org/wiki/Haskell/Pattern_matching
+. Record pattern matching e.g. `+f P{name=n} = n+`
+. https://wiki.haskell.org/Case
+. http://zvon.org/other/haskell/Outputsyntax/caseQexpressions_reference.html
+. https://www.haskell.org/tutorial/numbers.html
+. https://wiki.haskell.org/Converting_numbers
+. Precedence / associativity of different functions with equal precedence?
+. https://wiki.haskell.org/Declaration_vs._expression_style
+. http://learnyouahaskell.com/higher-order-functions#function-application
+. https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf
+. https://wiki.haskell.org/Keywords
+. https://wiki.haskell.org/Let_vs._Where
+. https://wiki.haskell.org/Type
+. https://en.wikibooks.org/wiki/Haskell/Type_declarations
+. https://hackage.haskell.org/package/constraints-0.13.4/docs/Data-Constraint.html
+. https://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Typeable.html#v:typeOf[typeOf]
+. https://downloads.haskell.org/ghc/latest/docs/users_guide/
+. `+(++) :: [a] -> [a] -> [a]+`
+. `+(:) :: a -> [a] -> [a]+`
+. `+(!!) :: [a] -> Int -> a+`
+. `+show :: Show a => a -> String+`
+. `+read :: Read a => String -> a+`
+. Guards `+|+`
+. https://typeclasses.com/underscore[Underscore _]
+. Apostrophe in names
+. `+main = do+`
+. http://zvon.org/other/haskell/Outputprelude/map_f.html[map f `+map abs [-1,-3,4,-12]+`]
+. https://en.wikibooks.org/wiki/Haskell/Control_structures
+. https://wiki.haskell.org/If-then-else
+. https://wiki.haskell.org/Pure
+. https://wiki.haskell.org/Memoization
+. https://wiki.haskell.org/Means_of_expression
+. http://conal.net/blog/posts/everything-is-a-function-in-haskell
+. https://wiki.haskell.org/Import_modules_properly
+. https://wiki.haskell.org/Import
+. http://wiki.haskell.org/Comparison_chain
+. https://wiki.haskell.org/Literate_programming
+====
+
+[bibliography]
+== References
+
+* https://www.haskell.org/
+* https://www.haskell.org/onlinereport/
+* [[[real-world-haskell]]] https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html[Real World Haskell by Bryan O'Sullivan, John Goerzen, Donald Bruce Stewart]
+* https://www.haskell.org/tutorial/[Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel]
+* https://www.seas.upenn.edu/~cis1940/spring23/schedule.html[Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science]
+* https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics
+
+== Introduction
+
+* https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html
+* http://learnyouahaskell.com/chapters
+
+== Interactive Haskell (REPL)
+
+https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
+
+[, console]
+----
+$ # Install Haskell, see: https://www.haskell.org/ghcup/
+$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
+$ # Start Haskell REPL (interactive session).
+$ ghci
+
+ghci> -- Double dash makes comment up to the end of the line.
+
+ghci> min 1 2 - 3
+-2
+
+ghci> :type min -- :type command shows type of given expression.
+min :: Ord a => a -> a -> a
+
+ghci> :type (+) -- Works for operators when are enclosed in braces.
+(+) :: Num a => a -> a -> a
+----
+
+* https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
+
+
+== Function Precedence and Associativity
+
+See "Operator Precedence and Associativity" section of <<real-world-haskell>>.
+
+
+Precedence values are from 1 to 9 where 1 means lowest precedence.
+Associativity of the same operator can be left, right or no, e.g.
+
+Both values can be obtained by `+:info+` command in ghci.
+
+[,console]
+----
+ghci> :info -
+type Num :: * -> Constraint
+class Num a where
+  ...
+  (-) :: a -> a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+infixl 6 -
+----
+
+Where the last line `+infixl 6 - +` means left associativity with precedence value 6.
+
+.Left associativity example
+[, console]
+----
+ghci> 1 - 2 - 3 - 4
+-8
+ghci> ((1 - 2) - 3) - 4
+-8
+----
+
+.Right associativity example
+[, console]
+----
+ghci> 3 ^ 2 ^ 1 ^ 0
+9
+ghci> 3 ^ (2 ^ (1 ^ 0))
+9
+----
+
+== Basics
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html[Prelude]::
+Module that is imported into all Haskell modules by default.
