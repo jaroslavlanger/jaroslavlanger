@@ -1,7 +1,9 @@
 = J Language
-:toc: right
+:keywords: programming, array, functional, language
 :source-language: ijs
 :source-highlighter: highlight.js
+:hide-uri-scheme:
+:toc:
 
 .TODO
 [%collapsible]
@@ -23,6 +25,8 @@ https://code.jsoftware.com/wiki/System/Installation/J9.4/Zips
 * https://www.jsoftware.com/help/dictionary/contents.htm[J Dictionary by Roger K.W. Hui, Kenneth E. Iverson]
 * https://www.jsoftware.com/papers/APLDictionary.htm[A Dictionary of APL by Kenneth E. Iverson]
 * https://code.jsoftware.com/wiki/Books/Beginners[Books For Learning J]
+* https://aplwiki.com/wiki/J
+
 
 == Principles
 
