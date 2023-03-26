@@ -61,16 +61,13 @@ An advanced, purely functional programming language
 == References
 
 * https://www.haskell.org/
-* https://www.haskell.org/onlinereport/
+* [[[haskell-2010]]] https://www.haskell.org/onlinereport/haskell2010/[Haskell 2010 Language Report]
+* [[[haskell-98]]] https://www.haskell.org/onlinereport/[Haskell 98 Language and Libraries The Revised Report December 2002]
+* [[[learn-you-a-haskell]]] http://learnyouahaskell.com/[Learn You a Haskell for Great Good! A Beginner's Guide by Miran Lipovača]
 * [[[real-world-haskell]]] https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html[Real World Haskell by Bryan O'Sullivan, John Goerzen, Donald Bruce Stewart]
 * https://www.haskell.org/tutorial/[Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel]
 * https://www.seas.upenn.edu/~cis1940/spring23/schedule.html[Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science]
 * https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics
-
-== Introduction
-
-* https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html
-* http://learnyouahaskell.com/chapters
 
 == Interactive Haskell (REPL)
 
@@ -98,6 +95,10 @@ ghci> :type (+) -- Works for operators when are enclosed in braces.
 
 * https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
 
+== Function Application
+
+"Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all."
+-- http://learnyouahaskell.com/starting-out
 
 == Function Precedence and Associativity
 

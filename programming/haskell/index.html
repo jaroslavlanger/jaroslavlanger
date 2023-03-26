@@ -17,8 +17,8 @@
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_references">References</a></li>
-<li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_interactive_haskell_repl">Interactive Haskell (REPL)</a></li>
+<li><a href="#_function_application">Function Application</a></li>
 <li><a href="#_function_precedence_and_associativity">Function Precedence and Associativity</a></li>
 <li><a href="#_basics">Basics</a></li>
 </ul>
@@ -179,7 +179,13 @@
 <p><a href="https://www.haskell.org/" class="bare">www.haskell.org/</a></p>
 </li>
 <li>
-<p><a href="https://www.haskell.org/onlinereport/" class="bare">www.haskell.org/onlinereport/</a></p>
+<p><a id="haskell-2010"></a>[haskell-2010] <a href="https://www.haskell.org/onlinereport/haskell2010/">Haskell 2010 Language Report</a></p>
+</li>
+<li>
+<p><a id="haskell-98"></a>[haskell-98] <a href="https://www.haskell.org/onlinereport/">Haskell 98 Language and Libraries The Revised Report December 2002</a></p>
+</li>
+<li>
+<p><a id="learn-you-a-haskell"></a>[learn-you-a-haskell] <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good! A Beginner&#8217;s Guide by Miran Lipovača</a></p>
 </li>
 <li>
 <p><a id="real-world-haskell"></a>[real-world-haskell] <a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html">Real World Haskell by Bryan O&#8217;Sullivan, John Goerzen, Donald Bruce Stewart</a></p>
@@ -192,21 +198,6 @@
 </li>
 <li>
 <p><a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics" class="bare">en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html" class="bare">www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html</a></p>
-</li>
-<li>
-<p><a href="http://learnyouahaskell.com/chapters" class="bare">learnyouahaskell.com/chapters</a></p>
 </li>
 </ul>
 </div>
@@ -244,6 +235,19 @@ ghci&gt; :type (+) -- Works for operators when are enclosed in braces.
 <p><a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html" class="bare">downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_function_application">Function Application</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="http://learnyouahaskell.com/starting-out" class="bare">learnyouahaskell.com/starting-out</a>
+</div>
 </div>
 </div>
 </div>
@@ -311,7 +315,7 @@ ghci&gt; 3 ^ (2 ^ (1 ^ 0))
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-20 00:28:36 +0100
+Last updated 2023-03-26 09:56:54 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
