@@ -1,0 +1,10 @@
+= Zsh
+:hide-uri-scheme:
+
+Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
+
+https://www.zsh.org/::
+This site provides an index to Zsh information and archives.
+
+https://ohmyz.sh/::
+Oh My Zsh is an open source, community-driven framework for managing your Zsh configuration.
