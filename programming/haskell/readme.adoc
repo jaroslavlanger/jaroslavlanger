@@ -12,7 +12,6 @@ An advanced, purely functional programming language
 .TODO
 [%collapsible]
 ====
-. https://dl.acm.org/doi/10.1145/1238844.1238856[A history of Haskell: being lazy with class]
 . http://learnyouahaskell.com/types-and-typeclasses
 . https://wiki.haskell.org/Constructor
 . https://en.wikibooks.org/wiki/Haskell/Variables_and_functions
@@ -24,10 +23,8 @@ An advanced, purely functional programming language
 . http://zvon.org/other/haskell/Outputsyntax/caseQexpressions_reference.html
 . https://www.haskell.org/tutorial/numbers.html
 . https://wiki.haskell.org/Converting_numbers
-. Precedence / associativity of different functions with equal precedence?
 . https://wiki.haskell.org/Declaration_vs._expression_style
 . http://learnyouahaskell.com/higher-order-functions#function-application
-. https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf
 . https://wiki.haskell.org/Keywords
 . https://wiki.haskell.org/Let_vs._Where
 . https://wiki.haskell.org/Type
@@ -61,10 +58,12 @@ An advanced, purely functional programming language
 == References
 
 * https://www.haskell.org/
+* [[[a-history-of-haskell]]] https://dl.acm.org/doi/10.1145/1238844.1238856[A History of Haskell: Being Lazy With Class]
 * [[[haskell-2010]]] https://www.haskell.org/onlinereport/haskell2010/[Haskell 2010 Language Report]
 * [[[haskell-98]]] https://www.haskell.org/onlinereport/[Haskell 98 Language and Libraries The Revised Report December 2002]
 * [[[learn-you-a-haskell]]] http://learnyouahaskell.com/[Learn You a Haskell for Great Good! A Beginner's Guide by Miran Lipovača]
 * [[[real-world-haskell]]] https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html[Real World Haskell by Bryan O'Sullivan, John Goerzen, Donald Bruce Stewart]
+* [[[cheatsheet]]] https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf[Haskell Cheat Sheet]
 * https://www.haskell.org/tutorial/[Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel]
 * https://www.seas.upenn.edu/~cis1940/spring23/schedule.html[Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science]
 * https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics
@@ -82,32 +81,84 @@ $ # Start Haskell REPL (interactive session).
 $ ghci
 
 ghci> -- Double dash makes comment up to the end of the line.
-
-ghci> min 1 2 - 3
--2
-
-ghci> :type min -- :type command shows type of given expression.
-min :: Ord a => a -> a -> a
-
-ghci> :type (+) -- Works for operators when are enclosed in braces.
-(+) :: Num a => a -> a -> a
 ----
 
 * https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
 
+== Lazy Evaluation
+
+.Generate list of numbers from 1 to 10 inclusive.
+----
+[1..10]
+-- [1,2,3,4,5,6,7,8,9,10]
+----
+
+.Take the first 10 values from infinite sequence of numbers starting with 1.
+----
+take 10 [1..]
+-- [1,2,3,4,5,6,7,8,9,10]
+----
+
+"Because Haskell is lazy, it won't try to evaluate the infinite list immediately because it would never finish. It'll wait to see what you want to get out of that infinite lists."
+-- http://learnyouahaskell.com/starting-out#texas-ranges
+
+== Infix Operators
+
+"There are very few predefined “operators” in Haskell - most that do look predefined are actually syntax (e.g., “=”). Instead, operators are simply functions that take two arguments and have special syntax support."
+-- <<cheatsheet>>
+
+.Addition Example
+----
+1 + 2
+-- 3
+
+(+) 1 2
+-- 3
+
+plus = (+)
+plus 1 2
+-- 3
+
+1 `plus` 2
+-- 3
+----
+
+[quote, '<<cheatsheet>>']
+____
+Allowable symbols which can be used to define operators are:
+
+    # $ % & * + . / < = > ? @ \ ^ | - ~
+
+However, there are several “operators” which cannot be redefined.
+They are: `+<-+`, `+->+` and `+=+`. The last, `+=+`, cannot be redefined by itself, but can be used as part of multi-character operator.
+____
+
+.Definition of addition operator `+=>.+.<=+` and reassigning of classical addition `+++`.
+----
+a =>.+.<= b = a + b
+1 =>.+.<= 2
+-- 3
+
+a + b = a * 10 ^ b -- Please, don't do this...
+1 + 2
+-- 100
+
+1 =>.+.<= 2
+-- 3
+----
+
 == Function Application
 
+"Function application is denoted by juxtaposition and associates to the left. Thus, `+f x y+` is parsed `+(f x) y+`."
+-- <<a-history-of-haskell>>
+
+== Precedence and Associativity
+
 "Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all."
--- http://learnyouahaskell.com/starting-out
-
-== Function Precedence and Associativity
-
-See "Operator Precedence and Associativity" section of <<real-world-haskell>>.
-
+-- http://learnyouahaskell.com/starting-out#ready-set-go
 
 Precedence values are from 1 to 9 where 1 means lowest precedence.
-Associativity of the same operator can be left, right or no, e.g.
-
+Associativity of the same operator can be left, right or no.
 Both values can be obtained by `+:info+` command in ghci.
 
 [,console]
@@ -122,24 +173,85 @@ class Num a where
 infixl 6 -
 ----
 
-Where the last line `+infixl 6 - +` means left associativity with precedence value 6.
+Where the last line `+infixl 6 -+` means left associativity with precedence value 6.
 
-.Left associativity example
+.Examples
+[%collapsible]
+====
+.Left Associativity
+----
+1 - 2 - 3
+-- -4
+(1 - 2) - 3
+-- -4
+----
+
+.Function Application Prioritization
+----
+1 - (-) 2 3
+-- 2
+----
+
+.Right Associativity
+----
+3 ^ 2 ^ 1 ^ 0
+-- 9
+3 ^ (2 ^ (1 ^ 0))
+-- 9
+----
+====
+
+For more details read "Operator Precedence and Associativity" section of <<real-world-haskell>>.
+
+.Different associativities of the same precedence operators leads to a parsing error.
+----
+-- right-plus.hs
+main = print (1 - 2 +++ 3)
+
+infixr  6 +++
+
+(+++) :: Int -> Int -> Int
+a +++ b = a + b
+----
+
 [, console]
 ----
-ghci> 1 - 2 - 3 - 4
--8
-ghci> ((1 - 2) - 3) - 4
--8
+$ ghc right-plus.hs
+[1 of 1] Compiling Main             ( right-plus.hs, right-plus.o )
+
+right-plus.hs:1:15: error:
+    Precedence parsing error
+        cannot mix ‘-’ [infixl 6] and ‘+++’ [infixr 6] in the same infix expression
+  |
+1 | main = print (1 - 2 +++ 3)
+  |               ^^^^^^^^^^^
 ----
 
-.Right associativity example
+== Currying
+
+"a function of two arguments may be represented as a function of one argument that itself returns a function of one argument."
+-- <<a-history-of-haskell>>
+
+.Type of function `+take+`
 [, console]
 ----
-ghci> 3 ^ 2 ^ 1 ^ 0
-9
-ghci> 3 ^ (2 ^ (1 ^ 0))
-9
+ghci> :type take
+take :: Int -> [a] -> [a]
+----
+
+Function `+take+` is at first applied to a number `+Int+` that specifies how many elements should be taken from a list.
+Second, it is applied to the list of any type `+[a]+` from which the values will be taken.
+It returns a list consisting of first `+Int+` number of elements from the list `+[a]+`.
+
+.Definition of `+take10+` by application of function `+take+` to the number 10.
+[, console]
+----
+ghci> take10 = take 10
+ghci> :type take10
+take10 :: [a] -> [a]
+
+ghci> take10 [1..]
+[1,2,3,4,5,6,7,8,9,10]
 ----
 
 == Basics

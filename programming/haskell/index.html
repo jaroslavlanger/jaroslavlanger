@@ -18,8 +18,11 @@
 <ul class="sectlevel1">
 <li><a href="#_references">References</a></li>
 <li><a href="#_interactive_haskell_repl">Interactive Haskell (REPL)</a></li>
+<li><a href="#_lazy_evaluation">Lazy Evaluation</a></li>
+<li><a href="#_infix_operators">Infix Operators</a></li>
 <li><a href="#_function_application">Function Application</a></li>
-<li><a href="#_function_precedence_and_associativity">Function Precedence and Associativity</a></li>
+<li><a href="#_precedence_and_associativity">Precedence and Associativity</a></li>
+<li><a href="#_currying">Currying</a></li>
 <li><a href="#_basics">Basics</a></li>
 </ul>
 </div>
@@ -35,9 +38,6 @@
 <div class="content">
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p><a href="https://dl.acm.org/doi/10.1145/1238844.1238856">A history of Haskell: being lazy with class</a></p>
-</li>
 <li>
 <p><a href="http://learnyouahaskell.com/types-and-typeclasses" class="bare">learnyouahaskell.com/types-and-typeclasses</a></p>
 </li>
@@ -72,16 +72,10 @@
 <p><a href="https://wiki.haskell.org/Converting_numbers" class="bare">wiki.haskell.org/Converting_numbers</a></p>
 </li>
 <li>
-<p>Precedence / associativity of different functions with equal precedence?</p>
-</li>
-<li>
 <p><a href="https://wiki.haskell.org/Declaration_vs._expression_style" class="bare">wiki.haskell.org/Declaration_vs._expression_style</a></p>
 </li>
 <li>
 <p><a href="http://learnyouahaskell.com/higher-order-functions#function-application" class="bare">learnyouahaskell.com/higher-order-functions#function-application</a></p>
-</li>
-<li>
-<p><a href="https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf" class="bare">hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf</a></p>
 </li>
 <li>
 <p><a href="https://wiki.haskell.org/Keywords" class="bare">wiki.haskell.org/Keywords</a></p>
@@ -179,6 +173,9 @@
 <p><a href="https://www.haskell.org/" class="bare">www.haskell.org/</a></p>
 </li>
 <li>
+<p><a id="a-history-of-haskell"></a>[a-history-of-haskell] <a href="https://dl.acm.org/doi/10.1145/1238844.1238856">A History of Haskell: Being Lazy With Class</a></p>
+</li>
+<li>
 <p><a id="haskell-2010"></a>[haskell-2010] <a href="https://www.haskell.org/onlinereport/haskell2010/">Haskell 2010 Language Report</a></p>
 </li>
 <li>
@@ -189,6 +186,9 @@
 </li>
 <li>
 <p><a id="real-world-haskell"></a>[real-world-haskell] <a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html">Real World Haskell by Bryan O&#8217;Sullivan, John Goerzen, Donald Bruce Stewart</a></p>
+</li>
+<li>
+<p><a id="cheatsheet"></a>[cheatsheet] <a href="https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf">Haskell Cheat Sheet</a></p>
 </li>
 <li>
 <p><a href="https://www.haskell.org/tutorial/">Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel</a></p>
@@ -217,16 +217,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 $ # Start Haskell REPL (interactive session).
 $ ghci
 
-ghci&gt; -- Double dash makes comment up to the end of the line.
-
-ghci&gt; min 1 2 - 3
--2
-
-ghci&gt; :type min -- :type command shows type of given expression.
-min :: Ord a =&gt; a -&gt; a -&gt; a
-
-ghci&gt; :type (+) -- Works for operators when are enclosed in braces.
-(+) :: Num a =&gt; a -&gt; a -&gt; a</code></pre>
+ghci&gt; -- Double dash makes comment up to the end of the line.</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -239,30 +230,124 @@ ghci&gt; :type (+) -- Works for operators when are enclosed in braces.
 </div>
 </div>
 <div class="sect1">
+<h2 id="_lazy_evaluation">Lazy Evaluation</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Generate list of numbers from 1 to 10 inclusive.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">[1..10]
+-- [1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Take the first 10 values from infinite sequence of numbers starting with 1.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">take 10 [1..]
+-- [1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+Because Haskell is lazy, it won&#8217;t try to evaluate the infinite list immediately because it would never finish. It&#8217;ll wait to see what you want to get out of that infinite lists.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="http://learnyouahaskell.com/starting-out#texas-ranges" class="bare">learnyouahaskell.com/starting-out#texas-ranges</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infix_operators">Infix Operators</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+There are very few predefined “operators” in Haskell - most that do look predefined are actually syntax (e.g., “=”). Instead, operators are simply functions that take two arguments and have special syntax support.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#cheatsheet">[cheatsheet]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Addition Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">1 + 2
+-- 3
+
+(+) 1 2
+-- 3
+
+plus = (+)
+plus 1 2
+-- 3
+
+1 `plus` 2
+-- 3</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Allowable symbols which can be used to define operators are:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># $ % &amp; * + . / &lt; = &gt; ? @ \ ^ | - ~</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, there are several “operators” which cannot be redefined.
+They are: <code>&lt;-</code>, <code>-&gt;</code> and <code>=</code>. The last, <code>=</code>, cannot be redefined by itself, but can be used as part of multi-character operator.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#cheatsheet">[cheatsheet]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Definition of addition operator <code>=&gt;.+.&lt;=</code> and reassigning of classical addition <code>+</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">a =&gt;.+.&lt;= b = a + b
+1 =&gt;.+.&lt;= 2
+-- 3
+
+a + b = a * 10 ^ b -- Please, don't do this...
+1 + 2
+-- 100
+
+1 =&gt;.+.&lt;= 2
+-- 3</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_function_application">Function Application</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Function application is denoted by juxtaposition and associates to the left. Thus, <code>f x y</code> is parsed <code>(f x) y</code>.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-history-of-haskell">[a-history-of-haskell]</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_precedence_and_associativity">Precedence and Associativity</h2>
 <div class="sectionbody">
 <div class="quoteblock">
 <blockquote>
 Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all.
 </blockquote>
 <div class="attribution">
-&#8212; <a href="http://learnyouahaskell.com/starting-out" class="bare">learnyouahaskell.com/starting-out</a>
+&#8212; <a href="http://learnyouahaskell.com/starting-out#ready-set-go" class="bare">learnyouahaskell.com/starting-out#ready-set-go</a>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_function_precedence_and_associativity">Function Precedence and Associativity</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>See "Operator Precedence and Associativity" section of <a href="#real-world-haskell">[real-world-haskell]</a>.</p>
 </div>
 <div class="paragraph">
 <p>Precedence values are from 1 to 9 where 1 means lowest precedence.
-Associativity of the same operator can be left, right or no, e.g.</p>
-</div>
-<div class="paragraph">
-<p>Both values can be obtained by <code>:info</code> command in ghci.</p>
+Associativity of the same operator can be left, right or no.
+Both values can be obtained by <code>:info</code> command in ghci.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -277,24 +362,100 @@ infixl 6 -</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Where the last line <code>+infixl 6 - +</code> means left associativity with precedence value 6.</p>
+<p>Where the last line <code>infixl 6 -</code> means left associativity with precedence value 6.</p>
+</div>
+<details>
+<summary class="title">Examples</summary>
+<div class="content">
+<div class="listingblock">
+<div class="title">Left Associativity</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">1 - 2 - 3
+-- -4
+(1 - 2) - 3
+-- -4</code></pre>
+</div>
 </div>
 <div class="listingblock">
-<div class="title">Left associativity example</div>
+<div class="title">Function Application Prioritization</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 1 - 2 - 3 - 4
--8
-ghci&gt; ((1 - 2) - 3) - 4
--8</code></pre>
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">1 - (-) 2 3
+-- 2</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Right associativity example</div>
+<div class="title">Right Associativity</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 3 ^ 2 ^ 1 ^ 0
-9
-ghci&gt; 3 ^ (2 ^ (1 ^ 0))
-9</code></pre>
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">3 ^ 2 ^ 1 ^ 0
+-- 9
+3 ^ (2 ^ (1 ^ 0))
+-- 9</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>For more details read "Operator Precedence and Associativity" section of <a href="#real-world-haskell">[real-world-haskell]</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Different associativities of the same precedence operators leads to a parsing error.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">-- right-plus.hs
+main = print (1 - 2 +++ 3)
+
+infixr  6 +++
+
+(+++) :: Int -&gt; Int -&gt; Int
+a +++ b = a + b</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ ghc right-plus.hs
+[1 of 1] Compiling Main             ( right-plus.hs, right-plus.o )
+
+right-plus.hs:1:15: error:
+    Precedence parsing error
+        cannot mix ‘-’ [infixl 6] and ‘+++’ [infixr 6] in the same infix expression
+  |
+1 | main = print (1 - 2 +++ 3)
+  |               ^^^^^^^^^^^</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_currying">Currying</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+a function of two arguments may be represented as a function of one argument that itself returns a function of one argument.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-history-of-haskell">[a-history-of-haskell]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Type of function <code>take</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type take
+take :: Int -&gt; [a] -&gt; [a]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Function <code>take</code> is at first applied to a number <code>Int</code> that specifies how many elements should be taken from a list.
+Second, it is applied to the list of any type <code>[a]</code> from which the values will be taken.
+It returns a list consisting of first <code>Int</code> number of elements from the list <code>[a]</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Definition of <code>take10</code> by application of function <code>take</code> to the number 10.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; take10 = take 10
+ghci&gt; :type take10
+take10 :: [a] -&gt; [a]
+
+ghci&gt; take10 [1..]
+[1,2,3,4,5,6,7,8,9,10]</code></pre>
 </div>
 </div>
 </div>
@@ -315,7 +476,7 @@ ghci&gt; 3 ^ (2 ^ (1 ^ 0))
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-26 09:56:54 +0200
+Last updated 2023-03-30 22:50:55 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
