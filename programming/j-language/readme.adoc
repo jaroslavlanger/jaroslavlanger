@@ -1,0 +1,489 @@
+= J Language
+:keywords: programming, array, functional, language
+:source-language: ijs
+:source-highlighter: highlight.js
+:hide-uri-scheme:
+:toc:
+
+.TODO
+[%collapsible]
+====
+====
+
+
+== Installation
+
+https://code.jsoftware.com/wiki/System/Installation/J9.4/Zips
+
+
+[bibliography]
+== References
+
+* [[[nuvoc]]] https://code.jsoftware.com/wiki/NuVoc[NuVoc - The Accessible Dictionary by Ian Clark]
+* [[[learningj]]] https://www.jsoftware.com/help/learning/contents.htm[Learning J An Introduction to the J Programming Language by Roger Stokes]
+* [[[notation]]] https://dl.acm.org/doi/pdf/10.1145/358896.358899[Notation as a Tool of Thought]
+* https://www.jsoftware.com/help/dictionary/contents.htm[J Dictionary by Roger K.W. Hui, Kenneth E. Iverson]
+* https://www.jsoftware.com/papers/APLDictionary.htm[A Dictionary of APL by Kenneth E. Iverson]
+* https://code.jsoftware.com/wiki/Books/Beginners[Books For Learning J]
+* https://aplwiki.com/wiki/J
+
+
+== Principles
+
+In the absence of parentheses, the right argument of an arithmetic function is everything to the right<<learningj>>.
+----
+   3 * 2 + 1
+9
+----
+
+.Noun, Verb, Adverb, Conjunction
+[%collapsible]
+====
+----
+   NB. n =: noun, v =: verb, a =: adverb, c =: conjunction
+   0 1 2 3          NB. n       = n
+
+   - 5              NB.   v n   = n
+   8 - 3            NB. n v n   = n
+
+   + /              NB. v a     = v
+   i. @ #           NB. v c v   = v
+   + / % #          NB. v a v v = v (fork)
+   # ~ 2 | i. @ #   NB. v v     = v (hook)
+----
+
+----
+   type
+{ &(<;._1 '|invalid name|not defined|noun|adverb|conjunction|verb|unknown')@(2&+)@(4!:0)&boxopen
+----
+====
+
+
+== Learning Vocabulary
+
+Following definitions are taken from <<nuvoc>>.
+The order roughly follows the <<notation>> publication and <<learningj>> book.
+
+Comment `+NB.+`::
+Used to insert a comment in J code, either in the J session or in a script.
+Everything from NB. to the end-of-line (LF) will be ignored by the interpreter.
+----
+   NB. is an abbreviation of Latin phrase Nota Bene meaning "note well".
+----
+Equal `+x = y+`::
+The Boolean result of comparing x and y atom by atom.
+----
+   1 3 2 4 = 1 2 3 4
+1 0 0 1
+----
+Not-Equal `+x ~: y+`::
+The Boolean result of comparing two items, or lists of items, atom by atom.
+Is (Global) `+=:+`::
+Attaches a value to a name to yield a definition.
+----
+   three =: 3   NB. Works with nouns.
+   plus =: +    NB. Works with verbs.
+----
+Same `+] y+`::
+Returns noun y unchanged, i.e. (]y) is equivalent to y.
+----
+   ] n =: 1 2 3
+1 2 3
+----
+Reciprocal `+% y+`::
+Equivalent to 1 % y, the reciprocal of the number y
+Divide `+x % y+`::
+x divided by y
+----
+   3 % 4
+0.75
+----
+Square Root `+%: y+`::
+The square root of y
+Exponential `+^ y+`::
+e^y^, the y-th power of the mathematical constant: e.
+Power `+x ^ y+`::
+x^y^, the y-th power of numeric noun: x .
+----
+   2 ^ 3
+8
+----
+Natural Log `+^. y+`::
+ln _y_ or log~e~ _y_ - the natural logarithm of y.
+Logarithm `+x ^. y+`::
+The logarithm of y to the base x.
+Negative Sign (Other) `+_+`::
+As the first character of a numeric constant, (\_) acts as a negative sign to produce a negative constant.
+The two-character constant (__) combines these usages and represents Negative infinity.
+----
+   - 5
+_5
+
+   _1 % 0
+__
+----
+Infinity(Noun) `+_+`::
+Standing by itself, (_) represents the value Infinity (an IEEE floating-point value).
+Not `+-. y+`::
+Equivalent to 1 - y.
+----
+   -. 0 1 0.2   NB. Boolean "not" or probability complement.
+1 0 0.8
+----
+Conjugate `++ y+`::
+The complex conjugate of the number y
+----
+   1j5
+1j5         NB. 1 Real 5 Imaginary.
+   + 1j5
+1j_5        NB. 1 Real -5 Imaginary.
+----
+GCD (Or) `+x +. y+`::
+The logical operation Or between two Boolean nouns x and y.
+In the more general case where x or y are not Boolean, the result is the Greatest Common Divisor (GCD) of x and y.
+----
+   0 0 1 1 +. 0 1 0 1
+0 1 1 1
+   (0 1) +./ (0 1)      NB. Truth-table of: +.
+0 1
+1 1
+----
+LCM(And) `+x *. y+`::
+The logical operation And between two Boolean nouns x and y.
+In the more general case where x or y are not Boolean, the result is the Least Common Multiple (LCM) of x and y.
+----
+   0 0 1 1 *. 0 1 0 1
+0 0 0 1
+   (0 1) *./ (0 1)      NB. Truth-table of: *.
+0 0
+0 1
+----
+Square `+*: y+`::
+Equivalent to y ^ 2, the square of numeric noun y.
+Magnitude `+| y+`::
+The absolute value of numeric y. If y is complex, |y is the magnitude of y.
+----
+   | 3
+3
+   | 3j4
+5
+----
+Residue `+x | y+`::
+The remainder when dividing a given number y by another given number x.
+----
+   3 | 0 1 2 3 4 5 6 7
+0 1 2 0 1 2 0 1
+----
+Reverse `+|. y+`::
+Rearranges the items of y in reverse order
+----
+   |. 0 1 2 3 4
+4 3 2 1 0
+----
+Integers `+i. y+`::
+Returns an ascending (or descending) sequence of integers, wrapped to the shape specified by (|y).
+----
+   i. 5
+0 1 2 3 4
+----
+Tally `+# y+`::
+Counts the items in y
+----
+   # i. 5
+5
+----
+Antibase 2 `+#: y+`::
+Returns the binary expansion of a given number y as a Boolean list
+----
+   #: 18
+1 0 0 1 0
+----
+Shape Of `+$ y+`::
+The shape of the noun y.
+----
+   $ i. 5
+5
+
+   $ 2 5 $ i. 10
+2 5
+----
+Shape `+x $ y+`::
+Creates an array whose shape depends on x and the shape of y, and whose items are taken from y.
+----
+   2 5 $ i. 10
+0 1 2 3 4
+5 6 7 8 9
+
+   5 $ 6
+6 6 6 6 6
+----
+Roll `+? y+`::
+Generates a random number uniformly distributed in a range determined by integer y.
+----
+   ? 0      NB. Random number in interval (0, 1)
+0.622471
+   ? 10     NB. Random number from i. 10
+3
+----
+Lesser of (Min) `+x <. y+`::
+The lesser atoms of x and y
+----
+   _4 <. 5
+_4
+----
+Decrement `+<: y+`::
+Equivalent to y-1
+----
+   <: _5 1 0 5
+_6 0 _1 4
+----
+Larger of (Max) `+x >. y+`::
+The larger atoms of x and y.
+----
+   _5 >. _1
+_1
+----
+Increment `+>: y+`::
+Equivalent to y+1.
+----
+   >: _5 1 0 5
+_4 2 1 6
+----
+Factorial `+! y+`::
+The Factorial of y.
+----
+   ! >: i. 5
+1 2 6 24 120
+----
+Out Of `+x ! y+`::
+Returns y-Combinations-x:  yCx  (read: x out of y  or: y pick x).
+The number of ways of picking x balls (unordered) from a bag of y balls:
+----
+   10 ! 10      NB. There is only 1 way of picking all 10 balls
+   0 ! 10
+1
+   9 ! 10
+   1 ! 10       NB. There are 10 ways of choosing 1 ball from 10
+10
+   8 ! 10
+   2 ! 10       NB. 45 ways to pick 2 out of 10
+45
+----
+Insert (Adverb) `+u/ y+`::
+Inserts (dyad) u between the items of y
+----
+   + / >: i. 5      NB. Equivalent to (1+2+3+4+5)
+15
+----
+Prefix (Adverb) `+u\ y+`::
+(u\y) applies verb u to successive prefixes of list y of increasing length (1, 2, 3, ...)
+----
+   + / \ >: i. 5
+1 3 6 10 15
+
+   ]\ 'word'
+w   
+wo  
+wor 
+word
+----
+Rank (Conjunction) `+u"n+`::
+Applies the verb u to each cell in turn of an array y, or to corresponding cells of x and y . The "parts" are called n-cells, the operand n determining the size of the n-cell.
+----
+   |. 3 3 $ i. 9            NB. Create table 3x3 from i. 9 and reverse the rows.
+   (|. " _) 3 3 $ i. 9      NB. Same result, reverses by the biggest axis (infinity).
+   (|. " 2) 3 3 $ i. 9      NB. Same result, reverses by second axis (the biggest).
+6 7 8
+3 4 5
+0 1 2
+   (|. " 1) 3 3 $ i. 9      NB. Reverse by the first axis, reverses the columns.
+2 1 0
+5 4 3
+8 7 6
+   (|. " 0) 3 3 $ i. 9      NB. Reverse by the 0-th axis.
+   3 3 $ i. 9               NB. Nothing happens, reversed scalars remain the same.
+0 1 2
+3 4 5
+6 7 8
+----
+.Sum Example
+[%collapsible]
+====
+----
+   ] rep =: [2 2 2 $ i. 2^3
+0 1
+2 3
+
+4 5
+6 7
+   $ rep            NB. Shape
+2 2 2
+   # $ rep          NB. Rank
+3
+   +/ b. 0          NB. (v (b. 0)) shows inherent rank of verb v for (monad, left, right).
+_ _ _
+   +/ rep
+   (+/ " _) rep
+   (+/ " 3) rep     NB. Applies +/ over the greatest axis counted inside out.
+4  6
+8 10
+   (+/ " 2) rep     NB. Applies +/ over the second axis (sum columns)
+2 4
+10 12
+   (+/ " 1) rep     NB. Applies +/ over the first axis from inside (sum rows).
+1 5
+9 13
+   (+/ " 0) rep     NB. Applies +/ over 0-th axis. Sum of a scalar is the scalar.
+0 1
+2 3
+
+4 5
+6 7
+----
+====
+Verb Information (Adverb) `+(u b.) y+`::
+Generates one of 3 diagnostic functions associated with verb u according to the value of flag y
+----
+   < b. 0    NB. Ranks for monadic, left and right cases.
+_ 0 0
+----
+
+
+=== Chapter 2: Lists and Tables
+
+----
+   # $ n_report     NB. "Rank" of report (number of dimensions) is 4.
+4
+
+   NB. Boxing and Unboxing
+   < i. 3
+┌─────┐
+│0 1 2│
+└─────┘
+   > < i. 3
+0 1 2
+----
+
+=== Chapter 3: Defining Functions
+
+Every verb belongs to one of four categories:
+
+* Monadic verb: n = v n
+* Dyadic verb:  n = n v n
+* Adverb:       v = v a
+* Conjunction:  v = v c n
+
+.Bonding
+....
+(f & k) y    means    y f k 
+(k & f) y    means    k f y 
+....
+
+.Composition of Functions
+[literal]
+(f @: g) y    means  f (g y)
+
+.Trains of Verbs
+--
+Sequence of verbs is called a "train".
+Train of length 2 is called a hook.
+
+If f is dyad, g is monad,
+....
+(f g) y       means   y f (g y)
+....
+
+Train of length 3 is called a "fork".
+If f is monad g is dyad, h is monad
+....
+(f g h) y     means   (f y) g (h y)
+....
+--
+
+[%collapsible]
+====
+
+----
+   'a' ,~ 'b'       NB. ~ "Commuting" adverb exchanges left and right arguments.
+ba
+   mod =: | ~
+   7 mod 3
+1
+
+   NB. & conjunction bonds one verb with one noun.
+   double =: * & 2  NB. (* & 2) y = (y * 2)
+   double 3
+6
+
+   L =: 3 5 7 9
+   sum =: + /
+   sum L
+24
+   # L
+4
+   sum L % # L
+6
+   mean =: sum % #  NB. fork
+   mean L
+6
+
+   range =: <. / , >. /         NB. Fork
+   range 2 4 5 _7 12 2 3 _3
+_7 12
+
+   ,. i. 4      NB. Monadic ,. verb "Ravel" makes 1-column table from vector
+0
+1
+2
+3
+
+   NB. Dyadic verb ,: "Laminate"
+   ('left';'right') ,: (,. ; (,. @: (2 & +))) i. 2
+┌────┬─────┐
+│left│right│
+├────┼─────┤
+│0   │2    │
+│1   │3    │
+└────┴─────┘
+----
+
+====
+
+
+=== Chapter 8: Composing Verbs
+
+.Ambivalent Compositions
+----
+When f is monad.
+              (f @: g) y    =    f (g y)
+            x (f @: g) y    =    f (x g y)
+
+When g is monad.
+              (f &: g) y    =    f (g y)
+            x (f &: g) y    =    (g x) f (g y)
+----
+
+.More on Composition: Monad Tracking Monad
+----
+Suppose that the monadic rank of g is G.
+   G =: 0 { (g b. 0)
+
+             (f @ g) y    means     (f @: g) " G   y
+----
+
+.Summary
+----
+Here is a summary of the 8 cases we have looked at so far.
+         @:       (f @: g) y  =  f (g y)
+         @:     x (f @: g) y  =  f (x g y)
+
+         &:       (f &: g) y  =  f (g y) 
+         &:     x (f &: g) y  =  (g x) f (g y)
+
+         @        (f @ g)  y  =  (f @: g) " G  y
+         @      x (f @ g)  y  =  x (f @: g) " LR y
+
+         &        (f & g)  y  =  (f @: g) " G  y
+         &      x (f & g)  y  =  (g x) (f " (G,G)) (g y)
+where G is the monadic rank of g and LR is the vector of left and right ranks of g.
+----

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="keywords" content="data, text, format, csv, yaml, json, xml, html, tex, asciidoc, markdown">
+<title>Data</title>
+<link rel="stylesheet" href="./../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Data</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_about">About</a></li>
+<li><a href="#_file_encoding">File Encoding</a>
+<ul class="sectlevel2">
+<li><a href="#_bom">BOM</a></li>
+</ul>
+</li>
+<li><a href="#_conversion_between_formats">Conversion Between Formats</a>
+<ul class="sectlevel2">
+<li><a href="#_pandoc_a_universal_document_converter">Pandoc a universal document converter</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_about">About</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Text formats suitable for storage and transfer of structured data</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>csv</p>
+</li>
+<li>
+<p>yaml</p>
+</li>
+<li>
+<p>toml</p>
+</li>
+<li>
+<p>xml</p>
+</li>
+<li>
+<p>json</p>
+</li>
+<li>
+<p>xls</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Markup formats</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>html</p>
+</li>
+<li>
+<p>markdown</p>
+</li>
+<li>
+<p>asciidoc</p>
+</li>
+<li>
+<p>rst</p>
+</li>
+<li>
+<p>tex</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_encoding">File Encoding</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bom">BOM</h3>
+<div class="quoteblock">
+<blockquote>
+The byte order mark (BOM) is a particular usage of the special Unicode character, U+FEFF BYTE ORDER MARK
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://en.wikipedia.org/wiki/Byte_order_mark" class="bare">en.wikipedia.org/wiki/Byte_order_mark</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">UTF-8 BOM</div>
+<div class="content">
+<pre>0xEF,0xBB,0xBF</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">UTF-16 BOM</div>
+<div class="content">
+<pre>U+FEFF</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conversion_between_formats">Conversion Between Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Good format specification allows to convert the document from one format to another.
+It can be done automatically using a conversion tool.
+When the target format has equal or greater expression power the conversion is lossless.</p>
+</div>
+<div class="sect2">
+<h3 id="_pandoc_a_universal_document_converter"><a href="https://pandoc.org/">Pandoc a universal document converter</a></h3>
+<div class="listingblock">
+<div class="title">Installation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">wget "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb"
+sudo dpkg -i pandoc-2.11.4-1-amd64.deb</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jgm/pandoc/releases/">Pandoc releases (github.com)</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Basic usage</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pandoc.org/demos.html">Demos (pandoc.org)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Convert markdown to PDF</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">pandoc report.md --pdf-engine=xelatex -o report.pdf</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Convert markdown to HTML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># HTML fragment (plain html)
+pandoc page.md -o page.html
+
+# HTML with style (-s for standalone)
+pandoc -s page.md -o page.html
+
+# Add advanced LaTeX math
+pandoc -s page.md --mathjax -o page.html</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://tex.stackexchange.com/questions/551960/pandoc-cannot-parse-equation-with-a-fraction">use --mathjax (tex.stackexchange.com)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-04-18 18:43:29 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

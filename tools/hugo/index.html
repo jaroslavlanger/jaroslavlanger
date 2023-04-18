@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="keywords" content="web, website, hugo, static-site-generator, site-generator, website-generator">
+<title>Hugo: Static Site Generator</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Hugo: Static Site Generator</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_basics">Basics</a></li>
+<li><a href="#_file_structure">File Structure</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fast, powerful static site generator written in Go.</p>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>{{ .Site.Title }}</code></p>
+</li>
+<li>
+<p><code>{{ .Page.Title }}</code></p>
+</li>
+<li>
+<p><code>{{ partial "meta.html" . }}</code></p>
+</li>
+<li>
+<p><code>{{ .Title }}</code></p>
+</li>
+<li>
+<p><code>{{ .Content }}</code></p>
+</li>
+<li>
+<p><code>{{ block "main" . }}{{ end }}</code></p>
+</li>
+<li>
+<p><code>{{ define "main" }}&lt;p&gt;sth&lt;/p&gt;{{ end }}</code></p>
+</li>
+<li>
+<p><code>{{ print .Page.Title }}</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify }}
+&lt;link rel="stylesheet" href="{{ $style.Permalink }}"&gt;</pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basics">Basics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create new hugo website.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">hugo new site NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Modify <code>baseURL</code> and <code>title</code> values in <code>config.toml</code> file.</p>
+</div>
+<div class="paragraph">
+<p>Run Hugo server in background.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">hugo serve --buildDrafts --noHTTPCache
+# Press &lt;Ctrl+Z&gt; # Stop current process.
+bg # Continue stopped process in backgroud.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create first page using markdown.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">echo '# First Markdown Page' &gt; content/_index.md</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">echo "theme = 'anake'" &gt;&gt; config.toml</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_structure">File Structure</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>config.toml - general settings such as project title, author etc.</p>
+</li>
+<li>
+<p>themes - place to put a hugo "theme", that is things below prepared by someone</p>
+</li>
+<li>
+<p>content/ - Content written in markdown format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>_index.md - You can add inforamtion to directory using _index.md</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>layouts/ - HTML templates for markdown files (uses go-template language)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>_default/</p>
+<div class="ulist">
+<ul>
+<li>
+<p>baseof.html - Base  for any page, both single and list.</p>
+</li>
+<li>
+<p>list.html   - Template for pages from directories.</p>
+</li>
+<li>
+<p>single.html - Template for pages from markdowns.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>partials/ - HTML template part, it can be called from other template.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>nav.html - Example of partial layout for navigation bar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>index.html - General templates are overwritten when the template has the same name.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>archetypes - markdown template for a new page, use: <code>hugo new SECTION/NAME.md</code>.</p>
+</li>
+<li>
+<p>public/ - <code>hugo</code> command generates the website there</p>
+</li>
+<li>
+<p>assets/</p>
+<div class="ulist">
+<ul>
+<li>
+<p>sass/main.scss</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-04-18 23:04:17 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

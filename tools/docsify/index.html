@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="keywords" content="web, docsify, navigation, side-bar, sidebar, tree, directories, files">
+<title>Docsify</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Docsify</h1>
+</div>
+<div id="content">
+<div class="paragraph">
+<p><a href="https://docsify.js.org/#/">A magical documentation site generator</a></p>
+</div>
+<div class="paragraph">
+<p>Following index.html transforms a GitHub repository into a single page application.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /&gt;
+  &lt;meta name="description" content="Description"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="app"&gt;&lt;/div&gt;
+  &lt;script&gt;
+    window.$docsify = {
+      name: '',
+      repo: ''
+    }
+  &lt;/script&gt;
+  &lt;!-- Docsify v4 --&gt;
+  &lt;script src="//cdn.jsdelivr.net/npm/docsify@4"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>How to automatically generate sidebar with a file tree structure?</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/docsifyjs/docsify/issues/610" class="bare">github.com/docsifyjs/docsify/issues/610</a></p>
+</div>
+<div class="listingblock">
+<div class="title">Generate Auto-sidebar</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Install globally docsify-tools
+npm i docsify-tools -g
+
+# Generate sidebar with tree structure
+docsify-auto-sidebar -d docs</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">package.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "docsify-auto-sidebar -d ../*name-of-repo*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docsify-tools": "^1.0.20"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">GitHub Action</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-sidebar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm ci
+      - run: npm i docsify-tools
+
+      - name: Make Sidebar
+        run: npm test
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto-updated Sidebar</code></pre>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-04-18 23:01:44 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

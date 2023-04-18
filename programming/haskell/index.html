@@ -12,15 +12,23 @@
 </head>
 <body class="article">
 <div id="header">
-<h1>Haskell</h1>
+<h1><a href="https://www.haskell.org">Haskell</a></h1>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_references">References</a></li>
-<li><a href="#_introduction">Introduction</a></li>
-<li><a href="#_interactive_haskell_repl">Interactive Haskell (REPL)</a></li>
-<li><a href="#_function_precedence_and_associativity">Function Precedence and Associativity</a></li>
 <li><a href="#_basics">Basics</a></li>
+<li><a href="#_evaluation_of_expressions">Evaluation of Expressions</a></li>
+<li><a href="#_types">Types</a></li>
+<li><a href="#_lazy_evaluation">Lazy Evaluation</a></li>
+<li><a href="#_function_application">Function Application</a></li>
+<li><a href="#_function_type">Function Type</a></li>
+<li><a href="#_currying">Currying</a></li>
+<li><a href="#_infix_operators">Infix Operators</a></li>
+<li><a href="#_precedence_and_associativity">Precedence and Associativity</a></li>
+<li><a href="#_do_expressions">Do Expressions</a></li>
+<li><a href="#_modules">Modules</a></li>
+<li><a href="#_packages">Packages</a></li>
 </ul>
 </div>
 </div>
@@ -36,7 +44,13 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="https://dl.acm.org/doi/10.1145/1238844.1238856">A history of Haskell: being lazy with class</a></p>
+<p><a href="https://wiki.haskell.org/Fold" class="bare">wiki.haskell.org/Fold</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/39628091/defining-a-function-for-multiple-types" class="bare">stackoverflow.com/questions/39628091/defining-a-function-for-multiple-types</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/$" class="bare">wiki.haskell.org/$</a></p>
 </li>
 <li>
 <p><a href="http://learnyouahaskell.com/types-and-typeclasses" class="bare">learnyouahaskell.com/types-and-typeclasses</a></p>
@@ -54,9 +68,6 @@
 <p><a href="http://learnyouahaskell.com/syntax-in-functions" class="bare">learnyouahaskell.com/syntax-in-functions</a></p>
 </li>
 <li>
-<p><a href="https://en.wikibooks.org/wiki/Haskell/Pattern_matching" class="bare">en.wikibooks.org/wiki/Haskell/Pattern_matching</a></p>
-</li>
-<li>
 <p>Record pattern matching e.g. <code>f P{name=n} = n</code></p>
 </li>
 <li>
@@ -72,19 +83,10 @@
 <p><a href="https://wiki.haskell.org/Converting_numbers" class="bare">wiki.haskell.org/Converting_numbers</a></p>
 </li>
 <li>
-<p>Precedence / associativity of different functions with equal precedence?</p>
-</li>
-<li>
 <p><a href="https://wiki.haskell.org/Declaration_vs._expression_style" class="bare">wiki.haskell.org/Declaration_vs._expression_style</a></p>
 </li>
 <li>
 <p><a href="http://learnyouahaskell.com/higher-order-functions#function-application" class="bare">learnyouahaskell.com/higher-order-functions#function-application</a></p>
-</li>
-<li>
-<p><a href="https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf" class="bare">hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf</a></p>
-</li>
-<li>
-<p><a href="https://wiki.haskell.org/Keywords" class="bare">wiki.haskell.org/Keywords</a></p>
 </li>
 <li>
 <p><a href="https://wiki.haskell.org/Let_vs._Where" class="bare">wiki.haskell.org/Let_vs._Where</a></p>
@@ -105,21 +107,6 @@
 <p><a href="https://downloads.haskell.org/ghc/latest/docs/users_guide/" class="bare">downloads.haskell.org/ghc/latest/docs/users_guide/</a></p>
 </li>
 <li>
-<p><code>(++) :: [a] -&gt; [a] -&gt; [a]</code></p>
-</li>
-<li>
-<p><code>(:) :: a -&gt; [a] -&gt; [a]</code></p>
-</li>
-<li>
-<p><code>(!!) :: [a] -&gt; Int -&gt; a</code></p>
-</li>
-<li>
-<p><code>show :: Show a =&gt; a -&gt; String</code></p>
-</li>
-<li>
-<p><code>read :: Read a =&gt; String -&gt; a</code></p>
-</li>
-<li>
 <p>Guards <code>|</code></p>
 </li>
 <li>
@@ -127,12 +114,6 @@
 </li>
 <li>
 <p>Apostrophe in names</p>
-</li>
-<li>
-<p><code>main = do</code></p>
-</li>
-<li>
-<p><a href="http://zvon.org/other/haskell/Outputprelude/map_f.html">map f <code>map abs [-1,-3,4,-12]</code></a></p>
 </li>
 <li>
 <p><a href="https://en.wikibooks.org/wiki/Haskell/Control_structures" class="bare">en.wikibooks.org/wiki/Haskell/Control_structures</a></p>
@@ -159,10 +140,43 @@
 <p><a href="https://wiki.haskell.org/Import" class="bare">wiki.haskell.org/Import</a></p>
 </li>
 <li>
+<p><a href="https://wiki.haskell.org/Pointfree" class="bare">wiki.haskell.org/Pointfree</a></p>
+</li>
+<li>
 <p><a href="http://wiki.haskell.org/Comparison_chain" class="bare">wiki.haskell.org/Comparison_chain</a></p>
 </li>
 <li>
-<p><a href="https://wiki.haskell.org/Literate_programming" class="bare">wiki.haskell.org/Literate_programming</a></p>
+<p><a href="https://hackage.haskell.org/package/probability-0.2.8/docs/Numeric-Probability-Distribution.html" class="bare">hackage.haskell.org/package/probability-0.2.8/docs/Numeric-Probability-Distribution.html</a></p>
+</li>
+<li>
+<p><a href="https://dennybritz.com/posts/probability-monads-from-scratch/" class="bare">dennybritz.com/posts/probability-monads-from-scratch/</a></p>
+</li>
+<li>
+<p><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Maybe.html" class="bare">hackage.haskell.org/package/base-4.18.0.0/docs/Data-Maybe.html</a></p>
+</li>
+<li>
+<p><a href="https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/13-the-list-monad" class="bare">www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/13-the-list-monad</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Monad" class="bare">wiki.haskell.org/Monad</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/All_About_Monads" class="bare">wiki.haskell.org/All_About_Monads</a></p>
+</li>
+<li>
+<p><a href="https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf">Monads for functional programming by Philip Wadler</a></p>
+</li>
+<li>
+<p><a href="https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html" class="bare">www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html</a></p>
+</li>
+<li>
+<p><a href="https://wiki.haskell.org/Debugging" class="bare">wiki.haskell.org/Debugging</a></p>
+</li>
+<li>
+<p><a href="https://downloads.haskell.org/~ghc/8.6.5/docs/html/users_guide/ghci.html#the-ghci-debugger" class="bare">downloads.haskell.org/~ghc/8.6.5/docs/html/users_guide/ghci.html#the-ghci-debugger</a></p>
+</li>
+<li>
+<p><a href="https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/pattern_synonyms.html" class="bare">ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/pattern_synonyms.html</a></p>
 </li>
 </ol>
 </div>
@@ -176,133 +190,541 @@
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
-<p><a href="https://www.haskell.org/" class="bare">www.haskell.org/</a></p>
+<p><a id="haskell-wikibook"></a>[haskell-wikibook] <a href="https://en.wikibooks.org/wiki/Haskell">Haskell by en.wikibooks.org</a></p>
 </li>
 <li>
-<p><a href="https://www.haskell.org/onlinereport/" class="bare">www.haskell.org/onlinereport/</a></p>
+<p><a href="https://wiki.haskell.org/Learning_Haskell" class="bare">wiki.haskell.org/Learning_Haskell</a></p>
 </li>
 <li>
-<p><a id="real-world-haskell"></a>[real-world-haskell] <a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html">Real World Haskell by Bryan O&#8217;Sullivan, John Goerzen, Donald Bruce Stewart</a></p>
+<p><a href="https://wiki.haskell.org/Meta-tutorial" class="bare">wiki.haskell.org/Meta-tutorial</a></p>
 </li>
 <li>
-<p><a href="https://www.haskell.org/tutorial/">Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel</a></p>
+<p><a href="https://wiki.haskell.org/Keywords" class="bare">wiki.haskell.org/Keywords</a></p>
+</li>
+<li>
+<p><a href="https://www.haskell.org/documentation/" class="bare">www.haskell.org/documentation/</a></p>
+</li>
+<li>
+<p><a id="a-gentle-introduction-to-haskell"></a>[a-gentle-introduction-to-haskell] <a href="https://www.haskell.org/tutorial/">A Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel</a></p>
+</li>
+<li>
+<p><a id="haskell-2010"></a>[haskell-2010] <a href="https://www.haskell.org/onlinereport/haskell2010/">Haskell 2010 Language Report</a></p>
+</li>
+<li>
+<p><a id="haskell-98"></a>[haskell-98] <a href="https://www.haskell.org/onlinereport/">Haskell 98 Language and Libraries The Revised Report December 2002</a></p>
+</li>
+<li>
+<p><a id="a-history-of-haskell"></a>[a-history-of-haskell] <a href="https://dl.acm.org/doi/10.1145/1238844.1238856">A History of Haskell: Being Lazy With Class</a></p>
+</li>
+<li>
+<p><a id="learn-you-a-haskell"></a>[learn-you-a-haskell] <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good! A Beginner&#8217;s Guide by Miran Lipovača</a></p>
+</li>
+<li>
+<p><a id="cheatsheet"></a>[cheatsheet] <a href="https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf">Haskell Cheat Sheet</a></p>
 </li>
 <li>
 <p><a href="https://www.seas.upenn.edu/~cis1940/spring23/schedule.html">Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science</a></p>
 </li>
 <li>
-<p><a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics" class="bare">en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html" class="bare">www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html</a></p>
+<p><a href="https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial" class="bare">en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial</a></p>
 </li>
 <li>
-<p><a href="http://learnyouahaskell.com/chapters" class="bare">learnyouahaskell.com/chapters</a></p>
+<p><a href="https://wiki.haskell.org/Literate_programming" class="bare">wiki.haskell.org/Literate_programming</a></p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_interactive_haskell_repl">Interactive Haskell (REPL)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html" class="bare">downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html</a></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ # Install Haskell, see: https://www.haskell.org/ghcup/
-$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-
-$ # Start Haskell REPL (interactive session).
-$ ghci
-
-ghci&gt; -- Double dash makes comment up to the end of the line.
-
-ghci&gt; min 1 2 - 3
--2
-
-ghci&gt; :type min -- :type command shows type of given expression.
-min :: Ord a =&gt; a -&gt; a -&gt; a
-
-ghci&gt; :type (+) -- Works for operators when are enclosed in braces.
-(+) :: Num a =&gt; a -&gt; a -&gt; a</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html" class="bare">downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_function_precedence_and_associativity">Function Precedence and Associativity</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>See "Operator Precedence and Associativity" section of <a href="#real-world-haskell">[real-world-haskell]</a>.</p>
-</div>
-<div class="paragraph">
-<p>Precedence values are from 1 to 9 where 1 means lowest precedence.
-Associativity of the same operator can be left, right or no, e.g.</p>
-</div>
-<div class="paragraph">
-<p>Both values can be obtained by <code>:info</code> command in ghci.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :info -
-type Num :: * -&gt; Constraint
-class Num a where
-  ...
-  (-) :: a -&gt; a -&gt; a
-  ...
-  	-- Defined in ‘GHC.Num’
-infixl 6 -</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Where the last line <code>+infixl 6 - +</code> means left associativity with precedence value 6.</p>
-</div>
-<div class="listingblock">
-<div class="title">Left associativity example</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 1 - 2 - 3 - 4
--8
-ghci&gt; ((1 - 2) - 3) - 4
--8</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Right associativity example</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 3 ^ 2 ^ 1 ^ 0
-9
-ghci&gt; 3 ^ (2 ^ (1 ^ 0))
-9</code></pre>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_basics">Basics</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>So far, if I could pick just one resource from which to learn Haskell, it would be the <a href="#haskell-wikibook">[haskell-wikibook]</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.haskell.org/ghcup/">Install Haskell</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Start Haskell REPL (interactive session)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ ghci</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Comment Text Until the End of a Line</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; -- Double dash makes comment up to the end of the line.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_evaluation_of_expressions">Evaluation of Expressions</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Because Haskell is a purely functional language, all computations are done via the evaluation of expressions (syntactic terms) to yield values
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-gentle-introduction-to-haskell">[a-gentle-introduction-to-haskell]</a><br>
+<cite>chapter 2  Values, Types, and Other Goodies</cite>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Expression <code>False</code> yields boolean value <code>False</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; False
+False</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Expression <code>[]</code> yields empty list <code>[]</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; []
+[]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Expression <code>[ False  ,   True    ]</code> yields list <code>[False,True]</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; [ False  ,   True    ]
+[False,True]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_types">Types</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">NOTE</dt>
+<dd>
+<p><code>:type</code> is one of <a href="https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html">GHCi commands</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">Value <code>False</code> has type (<code>::</code>) boolean type (<code>Bool</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type False
+False :: Bool</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Empty list (<code>[]</code>) has type (<code>::</code>) list of type <code>a</code> (<code>[a]</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type []
+[] :: [a]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List with <code>False</code> value  (<code>[False]</code>) has type (<code>::</code>) list of booleans (<code>[Bool]</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type [False]
+[False] :: [Bool]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Zero (<code>0</code>) has type (<code>::</code>) type <code>a</code> constrained (<code>=&gt;</code>) to be instance of class Num (<code>Num a</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type 0
+0 :: Num a =&gt; a</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List of three numbers (<code>[1,2,3]</code>) has type (<code>::</code>) list of type <code>a</code> (<code>[a]</code>) constrained (<code>=&gt;</code>) to be instance of class Num (<code>Num a</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type [1,2,3]
+[1,2,3] :: Num a =&gt; [a]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lazy_evaluation">Lazy Evaluation</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Generate list of numbers from 1 to 10 inclusive.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; [1..10]
+[1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Take the first 10 values from infinite sequence of numbers starting with 1.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; take 10 [1..]
+[1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+Because Haskell is lazy, it won&#8217;t try to evaluate the infinite list immediately because it would never finish. It&#8217;ll wait to see what you want to get out of that infinite lists.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="http://learnyouahaskell.com/starting-out#texas-ranges" class="bare">learnyouahaskell.com/starting-out#texas-ranges</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_function_application">Function Application</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Function application is denoted by juxtaposition and associates to the left. Thus, <code>f x y</code> is parsed <code>(f x) y</code>.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-history-of-haskell">[a-history-of-haskell]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; take 10 [1..]
+[1,2,3,4,5,6,7,8,9,10]
+ghci&gt;
+ghci&gt; (take 10) [1..]
+[1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_function_type">Function Type</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Function <code>not</code> has type (<code>::</code>) applied to boolean (<code>Bool</code>) returns (<code>-&gt;</code>) boolean (<code>Bool</code>).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type not
+not :: Bool -&gt; Bool</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Function <code>not</code> applied to value <code>True</code> returns <code>False</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; not True
+False</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_currying">Currying</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+a function of two arguments may be represented as a function of one argument that itself returns a function of one argument.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-history-of-haskell">[a-history-of-haskell]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Function <code>take</code> has type (<code>::</code>) applied to <code>Int</code> returns (<code>-&gt;</code>) function with type <code>[a] -&gt; [a]</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :type take
+take :: Int -&gt; [a] -&gt; [a]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Definition of <code>takeFirst10</code> by application of function <code>take</code> to the number <code>10</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; takeFirst10 = take 10
+ghci&gt; :type takeFirst10
+takeFirst10 :: [a] -&gt; [a]
+ghci&gt;
+ghci&gt; takeFirst10 [1..]
+[1,2,3,4,5,6,7,8,9,10]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infix_operators">Infix Operators</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+[Lexically, infix operators consist entirely of "symbols," as opposed to normal identifiers which are alphanumeric (<a href="https://www.haskell.org/onlinereport/lexemes.html#ids">§2.4</a>). Haskell has no prefix operators, with the exception of minus (-), which is both infix and prefix.]
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-gentle-introduction-to-haskell">[a-gentle-introduction-to-haskell]</a><br>
+<cite>chapter 3 Functions</cite>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Infix Operator Examples</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 0 - 1
+-1
+ghci&gt; 10 ^ 2
+100
+ghci&gt; 0 : []
+[0]
+ghci&gt; 1 : 0 : []
+[1,0]
+ghci&gt; [0] ++ [1]
+[0,1]
+ghci&gt; ['a'..] !! 9
+'j'</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+A <strong>section</strong> is a partial application of an infix operator to no arguments, the left argument, or the right argument—and by surrounding the result in parentheses
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#history-of-haskell">[history-of-haskell]</a>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Sections</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; power = (^)
+ghci&gt; 2 `power` 3
+8
+ghci&gt; power 2 3
+8
+ghci&gt;
+ghci&gt; cube = (^3)
+ghci&gt; cube 2
+8
+ghci&gt;
+ghci&gt; powerOf2 = (2^)
+ghci&gt; powerOf2 3
+8</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">WARNING</dt>
+<dd>
+<p><code>(-42)</code> equals to <code>-42</code> not to a function that subtracts <code>42</code>.
+In order to get the later, write <code>(subtract 42)</code></p>
+</dd>
+</dl>
+</div>
+<div class="quoteblock">
+<blockquote>
+There are very few predefined “operators” in Haskell - most that do look predefined are actually syntax (e.g., “=”). Instead, operators are simply functions that take two arguments and have special syntax support.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#cheatsheet">[cheatsheet]</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Allowable symbols which can be used to define operators are:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># $ % &amp; * + . / &lt; = &gt; ? @ \ ^ | - ~</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, there are several “operators” which cannot be redefined.
+They are: <code>&lt;-</code>, <code>-&gt;</code> and <code>=</code>. The last, <code>=</code>, cannot be redefined by itself, but can be used as part of multi-character operator.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#cheatsheet">[cheatsheet]</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_precedence_and_associativity">Precedence and Associativity</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+A fixity declaration can be given for any infix operator or constructor (including those made from ordinary identifiers, such as <code>elem</code>). This declaration specifies a precedence level from 0 to 9 (with 9 being the strongest; normal <strong>application</strong> is assumed to have a precedence level of 10), and left-, right-, or non-associativity.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-gentle-introduction-to-haskell">[a-gentle-introduction-to-haskell]</a><br>
+<cite>chapter 3 Functions</cite>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+If no fixity declaration is given for a particular operator, it defaults to infixl 9.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#a-gentle-introduction-to-haskell">[a-gentle-introduction-to-haskell]</a><br>
+<cite>chapter 3 Functions</cite>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Fixity information can be can be obtained using <code>:info</code> command in ghci.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :info /
+type Fractional :: * -&gt; Constraint
+class Num a =&gt; Fractional a where
+  (/) :: a -&gt; a -&gt; a
+  ...
+  	-- Defined in ‘GHC.Real’
+infixl 7 /</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Fixity <code>infixl 7 /</code> means <strong>infix</strong> operator, <strong>l</strong>eft associativity, precedence <strong>7</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Left Associativity</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 1 / 2 / 3
+0.16666666666666666
+ghci&gt; (1 / 2) / 3
+0.16666666666666666
+ghci&gt; 1 * 2 / 3
+0.6666666666666666</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Right Associativity</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 3 ^ 2 ^ 1 ^ 0
+9
+ghci&gt; 3 ^ (2 ^ (1 ^ 0))
+9
+ghci&gt; ((3 ^ 2) ^ 1) ^ 0
+1</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Definition of division operator <code>///</code> with right associativity in file <code>RightDivision.hs</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">module RightDivision ((///)) where
+
+infixr  7 ///
+(///) :: Fractional a =&gt; a -&gt; a -&gt; a
+a /// b = a / b</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Load RightDivision.hs and use <code>///</code> operator.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; :load RightDivision
+[1 of 1] Compiling RightDivision    ( RightDivision.hs, interpreted )
+Ok, one module loaded.
+ghci&gt; 1 /// 2 /// 3
+1.5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Different associativities of the same precedence operators leads to a parsing error.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">ghci&gt; 1 /// 2 * 3
+
+&lt;interactive&gt;:6:1: error:
+    Precedence parsing error
+        cannot mix ‘///’ [infixr 7] and ‘*’ [infixl 7] in the same infix expression</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_do_expressions">Do Expressions</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A do expression provides a more conventional syntax for monadic programming. It allows an expression such as</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>putStr "x: "    &gt;&gt;
+getLine         &gt;&gt;= \l -&gt;
+return (words l)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to be written in a more traditional way as:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>do putStr "x: "
+   l &lt;- getLine
+   return (words l)</pre>
+</div>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#haskell-2010">[haskell-2010]</a><br>
+<cite>3.14 Do Expressions</cite>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modules">Modules</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+A Haskell program is a collection of modules, one of which, by convention, must be called Main and must export the value main.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#haskell-2010">[haskell-2010]</a> Chapter 5 Modules
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+A module begins with a header: the keyword module, the module name, and a list of entities (enclosed in round parentheses) to be exported. The header is followed by a possibly-empty list of import declarations (impdecls, Section 5.3) that specify modules to be imported, optionally restricting the imported bindings. This is followed by a possibly-empty list of top-level declarations (topdecls, Chapter 4).
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#haskell-2010">[haskell-2010]</a> Chapter 5 Modules
+</div>
+</div>
+<details>
+<summary class="title">Example of module Main header</summary>
+<div class="content">
+<div class="listingblock">
+<div class="title">Following header creates module <code>Main</code>, which exports function <code>main</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">module Main(main) where</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This exact header is inserted as a first line, if other header is omitted.</p>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>For more information, see <a href="https://en.wikibooks.org/wiki/Haskell/Modules" class="bare">en.wikibooks.org/wiki/Haskell/Modules</a>.</p>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html">Prelude</a></dt>
 <dd>
-<p>Module that is imported into all Haskell modules by default.</p>
+<p>"There is one distinguished module, Prelude, which is imported into all modules by default"&#8201;&#8212;&#8201;<a href="#haskell-2010">[haskell-2010]</a> Chapter 5 Modules</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_packages">Packages</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Hackage is the Haskell community&#8217;s central package archive of open source software. Hackage has been online since January 2007 and is constantly growing.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://hackage.haskell.org/" class="bare">hackage.haskell.org/</a>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/base">base: Basic libraries</a></dt>
+<dd>
+<p>This package contains the Standard Haskell Prelude and its support libraries, and a large collection of useful libraries ranging from data structures to parsing combinators and debugging utilities.</p>
+</dd>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/containers">containers: Assorted concrete container types</a></dt>
+<dd>
+<p>This package contains efficient general-purpose implementations of various immutable container types including sets, maps, sequences, trees, and graphs.</p>
 </dd>
 </dl>
 </div>
@@ -311,7 +733,7 @@ ghci&gt; 3 ^ (2 ^ (1 ^ 0))
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-20 00:28:36 +0100
+Last updated 2023-04-18 20:03:54 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

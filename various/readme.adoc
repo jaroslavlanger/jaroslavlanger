@@ -1,0 +1,9 @@
+= Various Topics
+:stylesheet: ./../style.css
+:linkcss:
+
+== Index
+
+* link:advices-based-on-my-life[]
+* link:how-to-get-the-job-you-want[]
+* link:todo-list-learning[]

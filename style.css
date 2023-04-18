@@ -1,7 +1,14 @@
+/* = TODO
+ * . Code block - use --root-hue for background color.
+ * . Quote block - style with quotes similarly to asciidoc default.
+ * ** `+.quoteblock blockquote::before {}+`
+ * . Verbatim looks awful.
+ * . There should be a space before (above) the figure name.
+ */
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 
 * {
-  overflow-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 :root {

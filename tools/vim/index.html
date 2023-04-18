@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+<h1 id="vim">Vim</h1>
+<p>Vi improved - visual text editor for life.</p>
+<p><code>2021 Apr 10, Jaroslav Langer</code></p>
+<h2 id="contents">Contents</h2>
+<!-- TOC GFM -->
+<ul>
+<li><a href="#to-do">To Do</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#where-to-learn-vim">Where to Learn Vim</a></li>
+<li><a href="#vim-modes">Vim Modes</a></li>
+</ul></li>
+<li><a href="#basics">Basics</a>
+<ul>
+<li><a href="#basic-commands">Basic Commands</a></li>
+<li><a href="#normal-mode-movement">Normal Mode Movement</a></li>
+<li><a href="#single-stroke-editing-actions">Single-stroke Editing
+Actions</a></li>
+<li><a href="#composed-editing-actions">Composed Editing
+Actions</a></li>
+<li><a href="#composed-editing-example">Composed Editing
+Example</a></li>
+<li><a href="#basic-operations">Basic Operations</a></li>
+<li><a href="#search-for-pattern">Search for Pattern</a></li>
+<li><a href="#copy-from-and-paste-to-clipboard">Copy from and Paste to
+Clipboard</a></li>
+<li><a href="#autocomplete">Autocomplete</a></li>
+</ul></li>
+<li><a href="#advanced">Advanced</a>
+<ul>
+<li><a href="#advanced-movement">Advanced Movement</a></li>
+<li><a href="#move-to-desired-character">Move to Desired
+Character</a></li>
+<li><a href="#visual-modes">Visual Modes</a></li>
+<li><a href="#visual-mode-actions">Visual Mode Actions</a></li>
+<li><a href="#change-view">Change View</a></li>
+<li><a href="#replace-by-pattern">Replace by Pattern</a></li>
+<li><a href="#mark-movements">Mark Movements</a></li>
+<li><a href="#commands">Commands</a></li>
+</ul></li>
+<li><a href="#more-files">More Files</a>
+<ul>
+<li><a href="#tabs">Tabs</a></li>
+</ul></li>
+<li><a href="#features">Features</a>
+<ul>
+<li><a href="#spell-checking">Spell Checking</a></li>
+<li><a href="#auto-increment">Auto Increment</a></li>
+</ul></li>
+<li><a href="#settings">Settings</a>
+<ul>
+<li><a href="#configuration-file">Configuration File</a></li>
+</ul></li>
+<li><a href="#terminal">Terminal</a></li>
+<li><a href="#netrw">Netrw</a></li>
+<li><a href="#vimdiff">Vimdiff</a></li>
+</ul>
+<!-- /TOC -->
+<h2 id="to-do">To Do</h2>
+<ul>
+<li><a href="https://www.brianstorti.com/vim-registers/">Vim registers:
+The basics and beyond <code>:reg</code> (brianstorti.com)</a></li>
+<li><a
+href="https://www.linux.com/training-tutorials/vim-tips-using-tabs/">Vim
+tips: Using tabs (linux.com)</a></li>
+<li><a
+href="https://www.freecodecamp.org/news/learn-linux-vim-basic-features-19134461ab85/">Why
+I love Vim: It’s the lesser-known features that make it so amazing
+(freecodecamp.org)</a></li>
+<li><a href="https://shapeshed.com/vim-netrw/">Vim: you don’t need
+NERDtree or (maybe) netrw</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li><a href="https://www.shell-tips.com/linux/vi-vs-vim/">What Are The
+Differences Between Vi And Vim? (shell-tips.com)</a></li>
+</ul>
+<h3 id="where-to-learn-vim">Where to Learn Vim</h3>
+<ol type="1">
+<li>Inside the vim editor.
+<ul>
+<li><code>:Tutor</code> - start tutorial.</li>
+</ul></li>
+<li><a href="https://www.youtube.com/watch?v=d8XtNXutVto">vim tutor by
+Luke Smith</a></li>
+<li><a href="https://www.cs.auckland.ac.nz/references/gnu/vim/">Vim
+documentation: help (cs.auckland.ac.nz)</a></li>
+<li><a href="https://vim-adventures.com/">learn by playing a game (vim
+adventures)</a></li>
+<li><a href="https://www.cs.colostate.edu/helpdocs/vi.html">Basic Vi
+Commands (Colorado State University)</a></li>
+</ol>
+<h3 id="vim-modes">Vim Modes</h3>
+<p><strong>Normal mode</strong></p>
+<ul>
+<li>Every vim session starts in normal mode.</li>
+<li>In normal mode keys do not write down their letters, they all have
+special actions.</li>
+</ul>
+<p><strong>Insert mode</strong></p>
+<ul>
+<li>Insert mode works the same as normal text editor.
+<ul>
+<li>If you type “b” the “b” appears on the screen.</li>
+</ul></li>
+<li>To enter the insert mode press <code>[i]</code>.</li>
+<li>Press <code>[esc]</code> to exit the insert mode.</li>
+</ul>
+<p><strong>Visual mode</strong></p>
+<ul>
+<li>Visual mode enables to visually select the text and apply editing to
+the selection.</li>
+<li>To enter the visual mode press <code>v</code>.</li>
+<li>Press <code>[esc]</code> to exit the visual mode.</li>
+</ul>
+<p><strong>Command mode</strong></p>
+<ul>
+<li>Command mode allows you to use advanced commands such as replacing
+text with regex.
+<ul>
+<li>It also allows you to set up the editor e.g. set search to be case
+insensitive.</li>
+</ul></li>
+<li>To enter the command mode press <code>:</code>.</li>
+<li>Use <code>[backspace]</code> to exit the command mode.</li>
+</ul>
+<h2 id="basics">Basics</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open file example.txt if exists otherwise create a new one.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> example.txt</span></code></pre></div>
+<h3 id="basic-commands">Basic Commands</h3>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Keystrokes</th>
+<th>Action</th>
+<th>Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[i]</code></td>
+<td>Act like other text editors (insert mode).</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[esc]</code></td>
+<td>Return to the “Normal Mode” (necessary for exiting).</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[i][h][i][esc]</code></td>
+<td>Start editing write “hi” and end editing.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[shift-Z][shift-Q]</code></td>
+<td>Quit vim without saving (form Normal mode).</td>
+<td><code>[:][q][!][enter]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[:][w][enter]</code></td>
+<td>Save file (write the changes to the file).</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[shift-Z][shift-Z]</code></td>
+<td>Save and quit.</td>
+<td><code>[:][x][enter]</code>; <code>[:][w][q][enter]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[:][q][enter]</code></td>
+<td>Safely quit vim (will not happen if file is not saved).</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="normal-mode-movement">Normal Mode Movement</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[j]</code></td>
+<td>Move down.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[k]</code></td>
+<td>Move up.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[h]</code></td>
+<td>Move right.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[l]</code></td>
+<td>Move left.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[8][j]</code></td>
+<td>Move 8 lines down.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[g][g]</code></td>
+<td>Move to the first line.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[shift-G]</code></td>
+<td>Move to the last line.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="single-stroke-editing-actions">Single-stroke Editing
+Actions</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[x]</code></td>
+<td>Delete character under the cursor.</td>
+</tr>
+<tr class="even">
+<td><code>[p]</code></td>
+<td>Paste deleted or yanked content (e.g. the deleted character).</td>
+</tr>
+<tr class="odd">
+<td><code>[r][8]</code></td>
+<td>Replace character under the cursor with number “9”.</td>
+</tr>
+<tr class="even">
+<td><code>[i]</code></td>
+<td>Start insert mode right before the cursor.</td>
+</tr>
+<tr class="odd">
+<td><code>[a]</code></td>
+<td>Start insert mode right after the cursor.</td>
+</tr>
+<tr class="even">
+<td><code>[o]</code></td>
+<td>Create paragraph bellow the cursor and enter the insert mode.</td>
+</tr>
+<tr class="odd">
+<td><code>[shift-X]</code></td>
+<td>Delete character before the cursor (backspace).</td>
+</tr>
+<tr class="even">
+<td><code>[shift-P]</code></td>
+<td>Paste deleted or yanked content before the cursor.</td>
+</tr>
+<tr class="odd">
+<td><code>[shift-R]</code></td>
+<td>Start replacing all characters (like insert mode) until
+<code>[esc]</code>.</td>
+</tr>
+<tr class="even">
+<td><code>[shift-I]</code></td>
+<td>Start insert mode at the beginning of the line.</td>
+</tr>
+<tr class="odd">
+<td><code>[shift-A]</code></td>
+<td>Start insert mode at the end of the line.</td>
+</tr>
+<tr class="even">
+<td><code>[shift-O]</code></td>
+<td>Create paragraph above the cursor and enter the insert mode.</td>
+</tr>
+<tr class="odd">
+<td><code>[shift-J]</code></td>
+<td>Delete current line’s newline.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="composed-editing-actions">Composed Editing Actions</h3>
+<table>
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[d][d]</code></td>
+<td>Delete current line.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[y][y]</code></td>
+<td>Yank (copy) current line.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[c][c]</code></td>
+<td>Delete current line and enter the insert mode.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="composed-editing-example">Composed Editing Example</h3>
+<p>The editing actions all behave similarly. Follows example of delete
+action, however the modifiers works the same for copying, replacing etc.
+Delete action store the deleted text to the buffer, co it act as a “Cut”
+(<code>[ctrl-X]</code>) in other editors.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+<th>Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[d][d]</code></td>
+<td>Delete current line.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[9][d][d]</code></td>
+<td>Delete nine line down.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][$]</code></td>
+<td>Delete characters to the end of the line.</td>
+<td><code>[shift-D]</code></td>
+</tr>
+<tr class="even">
+<td><code>[d][0]</code></td>
+<td>Delete characters to the beginning of the line.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][^]</code></td>
+<td>Delete to the line’s first not white-space character.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[d][w]</code></td>
+<td>Delete characters to the end of the word.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][i][w]</code></td>
+<td>Delete word under the cursor.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[d][i][(]</code></td>
+<td>Delete content in <code>(</code> parentheses.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][a][[]</code></td>
+<td>Delete content in <code>[</code> parentheses.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[d][i]["]</code></td>
+<td>Delete content in <code>"</code> double quotes.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][a][w]</code></td>
+<td>Delete word under the cursor with space around.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[d][i][p]</code></td>
+<td>Delete paragraph (content between empty lines).</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[d][i][p]</code></td>
+<td>Delete paragraph and space around.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-operations">Basic Operations</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[u]</code></td>
+<td>Undo action.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[ctrl-r]</code></td>
+<td>Redo action.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[.]</code></td>
+<td>Repeat last action.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="search-for-pattern">Search for Pattern</h3>
+<table>
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[/][8]</code></td>
+<td>Search for regex pattern <code>\8\</code> and go to the first
+match.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[n]</code></td>
+<td>Go the next match.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[shift-N]</code></td>
+<td>Go to the previous match.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[*]</code></td>
+<td>Search for the word under the cursor.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>:noh</code></td>
+<td>Abbreviation for :nohlsearch (no highlight search).</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[?][8]</code></td>
+<td>Search for regex pattern <code>\8\</code> and go to the previous
+match.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="copy-from-and-paste-to-clipboard">Copy from and Paste to
+Clipboard</h3>
+<p>Use the <code>y</code> and <code>p</code> the same way, only type
+<code>"+</code> before the action. * e.g use <code>"+p</code> to paste
+the content from the clipboard or use <code>"+yy</code> to copy the
+current line.</p>
+<h3 id="autocomplete">Autocomplete</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[ctrl-n]</code></td>
+<td>Go to next recommendation.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[ctrl-p]</code></td>
+<td>Go to previous recommendation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advanced">Advanced</h2>
+<h3 id="advanced-movement">Advanced Movement</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>[w]</code></td>
+<td>Move to the beginning of the next word.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[shift-W]</code></td>
+<td>Move one position after next whitespace.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[b]</code></td>
+<td>Move to the beginning of the previous word.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[shift+B]</code></td>
+<td>Move one position before previous whitespace.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[e]</code></td>
+<td>Move to the end of the next word.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[shift+E]</code></td>
+<td>Move at the position before next whitespace.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[g][e]</code></td>
+<td>Move to the end of the previous word.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[$]</code></td>
+<td>Move to the end of the line.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[0]</code></td>
+<td>Move to the beginning of the line.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[^]</code></td>
+<td>Move to the beginning of the first word.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[{]</code></td>
+<td>Move to the previous empty line (paragraph).</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[}]</code></td>
+<td>Move to the next empty line (paragraph).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[(]</code></td>
+<td>Move to the previous sentence.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[)]</code></td>
+<td>Move to the next sentence.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[%]</code></td>
+<td>Move to the matching parentheses.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[1][1][shift-G]</code></td>
+<td>Move to the 11th line.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[:][1][1][enter]</code></td>
+<td>Move to the line 11.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[ctrl+g]</code></td>
+<td>Show current line of the file and percentage.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[2][0][%]</code></td>
+<td>Move to the 20% of the document.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[ctrl-d]</code></td>
+<td>Move half page down.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[ctrl-u]</code></td>
+<td>Move half page up.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>[ctrl-f]</code></td>
+<td>Move page down.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>[ctrl-b]</code></td>
+<td>Move page up.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="move-to-desired-character">Move to Desired Character</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[f][8]</code></td>
+<td>Move to the next <code>8</code> on the current line.</td>
+</tr>
+<tr class="even">
+<td><code>[F][8]</code></td>
+<td>Move to the previous <code>8</code> on the current line.</td>
+</tr>
+<tr class="odd">
+<td><code>[t][8]</code></td>
+<td>Move one character before the next <code>8</code> on the current
+line.</td>
+</tr>
+<tr class="even">
+<td><code>[T][8]</code></td>
+<td>Move one character after the previous <code>8</code> on the current
+line.</td>
+</tr>
+<tr class="odd">
+<td><code>[;]</code></td>
+<td>Repeat the action of <code>[f]</code> <code>[F]</code>
+<code>[t]</code> <code>[T]</code>.</td>
+</tr>
+<tr class="even">
+<td><code>[,]</code></td>
+<td>Repeat the action in the oposite direction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visual-modes">Visual Modes</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[v]</code></td>
+<td>Triggers visual mode.</td>
+</tr>
+<tr class="even">
+<td><code>[shift-V]</code></td>
+<td>Triggers line visual mode.</td>
+</tr>
+<tr class="odd">
+<td><code>[ctrl+v]</code></td>
+<td>Triggers block visual mode.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visual-mode-actions">Visual Mode Actions</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[d]</code></td>
+<td>Deletes highlighted characters.</td>
+</tr>
+<tr class="even">
+<td><code>[y]</code></td>
+<td>Yanks highlighted characters.</td>
+</tr>
+<tr class="odd">
+<td><code>[c]</code></td>
+<td>Changes highlighted characters.</td>
+</tr>
+<tr class="even">
+<td><code>:norm</code></td>
+<td>Apply normal mode commands to every highlighted line.</td>
+</tr>
+<tr class="odd">
+<td><code>:norm I#</code></td>
+<td>Add hashtag before first word on every highlighted line.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="change-view">Change View</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[z][t]</code></td>
+<td>Move current line to the top.</td>
+</tr>
+<tr class="even">
+<td><code>[z][z]</code></td>
+<td>Move cursor line to the middle.</td>
+</tr>
+<tr class="odd">
+<td><code>[z][b]</code></td>
+<td>Move cursor line to the bottom.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="replace-by-pattern">Replace by Pattern</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:s/pattern/substituent/</code></td>
+<td>Substitute one match (sed syntax).</td>
+</tr>
+<tr class="even">
+<td><code>:s/pattern/substituent/g</code></td>
+<td>Substitute all matches (on the same line).</td>
+</tr>
+<tr class="odd">
+<td><code>:%s/pattern/substituent/g</code></td>
+<td>Substitute all matches (all lines).</td>
+</tr>
+<tr class="even">
+<td><code>:%s/pattern/substituent/gc</code></td>
+<td>Confirm all substitutions for all matches (all lines).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a
+href="https://vim.fandom.com/wiki/Search_and_replace">Search_and_replace
+(vim.fandom.com)</a></li>
+</ul>
+<h3 id="mark-movements">Mark Movements</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[m][a]</code></td>
+<td>Set mark <code>a</code> to the current cursor location.</td>
+</tr>
+<tr class="even">
+<td><code>['][a]</code></td>
+<td>Jump to the beginning of line with mark <code>a</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>[backtick][a]</code></td>
+<td>Jump to the line and column of mark <code>a</code>.</td>
+</tr>
+<tr class="even">
+<td><code>['][']</code></td>
+<td>Jump to location before last jump.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://vim.fandom.com/wiki/Using_marks">Using_marks
+(vim.fandom.com)</a></li>
+</ul>
+<h3 id="commands">Commands</h3>
+<p>Command mode starts with press of the key <code>:</code>.</p>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Command</th>
+<th>Example usage</th>
+<th>Description</th>
+<th>Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>e</code></td>
+<td><code>:e filename</code></td>
+<td>Open file for editing.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>r</code></td>
+<td><code>:r filename</code></td>
+<td>Open file for reading.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>!</code></td>
+<td><code>:! ls</code></td>
+<td>Runs any terminal command.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>w</code></td>
+<td><code>:w filename</code></td>
+<td>Write as a filename.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>w</code></td>
+<td><code>:w !sh</code></td>
+<td>Execute like a shell script (write buffer to shell).</td>
+<td><code>:w !bash</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>source</code></td>
+<td><code>:so %</code></td>
+<td>Read file and treat it as a vim script.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>retab</code></td>
+<td><code>:retab</code></td>
+<td>Convert tabs to spaces.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>qa</code></td>
+<td><code>:qa</code></td>
+<td>Quit all files.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>sort</code></td>
+<td><code>:sort</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>earlier</code></td>
+<td><code>:earlier 15m</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>later</code></td>
+<td><code>:later 10m</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a
+href="https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim">https://superuser.com/questions/132029/how-do-you-reload-your-vimrc-file-without-restarting-vim
+(superuser.com)</a></li>
+<li><a
+href="https://vi.stackexchange.com/questions/10209/execute-current-buffer-as-bash-script-from-vim">Execute
+current buffer as bash script from vim (stackexchange.com)</a></li>
+</ul>
+<h2 id="more-files">More Files</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open files horizontally split windows</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> <span class="at">-o</span> file1 file2</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open files vertically split windows</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> <span class="at">-O</span> file1 file2</span></code></pre></div>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+<th>Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:split</code></td>
+<td>Horizontally split vim window in half.</td>
+<td><code>:sp</code></td>
+</tr>
+<tr class="even">
+<td><code>:vsplit</code></td>
+<td>Vertically split vim window in half.</td>
+<td><code>:vs</code></td>
+</tr>
+<tr class="odd">
+<td><code>:botright vs</code></td>
+<td>Vertically split open in right window.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>[ctrl-w][ctrl-w]</code></td>
+<td>Switch to the next window.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[ctrl-w][ctrl-k]</code></td>
+<td>Switch to upper window, options: hjkl.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tabs">Tabs</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:tabnew FILE</code></td>
+<td>Open FILE in new tab.</td>
+</tr>
+<tr class="even">
+<td><code>[g][t]</code></td>
+<td>Go to the next tab.</td>
+</tr>
+<tr class="odd">
+<td><code>[g][shift-T]</code></td>
+<td>Go to the previous tab.</td>
+</tr>
+<tr class="even">
+<td><code>[8][g][t]</code></td>
+<td>Go to the 8th tab.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="features">Features</h2>
+<h3 id="spell-checking">Spell Checking</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:set spell! spelllang=en_us</code></td>
+<td>Turn on spell checking.</td>
+</tr>
+<tr class="even">
+<td><code>:setlocal spell! spelllang=en_us</code></td>
+<td>Turn spell checking only for the current file.</td>
+</tr>
+<tr class="odd">
+<td><code>:set nospell</code></td>
+<td>Turn off spell checking.</td>
+</tr>
+<tr class="even">
+<td><code>[z][=]</code></td>
+<td>Get the dictionary to choose from.</td>
+</tr>
+<tr class="odd">
+<td><code>[]][s]</code></td>
+<td>Go to the next misspelled word.</td>
+</tr>
+<tr class="even">
+<td><code>[z][g]</code></td>
+<td>Add the word under cursor to the dictionary.</td>
+</tr>
+<tr class="odd">
+<td><code>[z][u][w]</code></td>
+<td>Remove the word under cursor from the dictionary.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-increment">Auto Increment</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[ctrl-a]</code></td>
+<td>Auto increment the next number on the line.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>:set nu!</td>
+<td>turns on/off the line number</td>
+</tr>
+<tr class="even">
+<td>:set tabstop=4</td>
+<td>sets the number of spaces for tab</td>
+</tr>
+<tr class="odd">
+<td>:set softtabstop=0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>:set expandtab</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:set shiftwidth=4</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>:set smarttab</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:set ignorecase</td>
+<td>also <code>set ic</code> search will be case insensitive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-file">Configuration File</h3>
+<ul>
+<li><a
+href="https://www.linode.com/docs/guides/introduction-to-vim-customization/">How
+to configuration</a></li>
+</ul>
+<h2 id="terminal">Terminal</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:term</code></td>
+<td>Opens terminal in vim.</td>
+</tr>
+<tr class="even">
+<td><code>[ctrl-\][ctrl-n]</code></td>
+<td>Returns to the normal mode.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="netrw">Netrw</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[%]</code></td>
+<td>Create new file.</td>
+</tr>
+<tr class="even">
+<td><code>[t]</code></td>
+<td>Open in new tab.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vimdiff">Vimdiff</h2>
+<p><code>vimdiff file_1 file_2</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>Keystrokes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[]][c]</code></td>
+<td>Go to the next change.</td>
+</tr>
+<tr class="even">
+<td><code>[[][c]</code></td>
+<td>Go to the previous change.</td>
+</tr>
+<tr class="odd">
+<td><code>[d][p]</code></td>
+<td>Apply this change to the second file.</td>
+</tr>
+<tr class="even">
+<td><code>[d][o]</code></td>
+<td>Apply change from the other file.</td>
+</tr>
+<tr class="odd">
+<td><code>:windo diffthis</code></td>
+<td>Start diff mode from windows split.</td>
+</tr>
+<tr class="even">
+<td><code>:diffoff</code></td>
+<td>Turn off the diff mode.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

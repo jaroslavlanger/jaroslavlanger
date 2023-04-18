@@ -1,4 +1,4 @@
-= Haskell
+= https://www.haskell.org[Haskell]
 :keywords: functional, programming
 :source-language: haskell
 :source-highlighter: highlight.js
@@ -12,39 +12,30 @@ An advanced, purely functional programming language
 .TODO
 [%collapsible]
 ====
-. https://dl.acm.org/doi/10.1145/1238844.1238856[A history of Haskell: being lazy with class]
+. https://wiki.haskell.org/Fold
+. https://stackoverflow.com/questions/39628091/defining-a-function-for-multiple-types
+. https://wiki.haskell.org/$
 . http://learnyouahaskell.com/types-and-typeclasses
 . https://wiki.haskell.org/Constructor
 . https://en.wikibooks.org/wiki/Haskell/Variables_and_functions
 . https://www.tutorialspoint.com/haskell/haskell_functions.htm
 . http://learnyouahaskell.com/syntax-in-functions
-. https://en.wikibooks.org/wiki/Haskell/Pattern_matching
 . Record pattern matching e.g. `+f P{name=n} = n+`
 . https://wiki.haskell.org/Case
 . http://zvon.org/other/haskell/Outputsyntax/caseQexpressions_reference.html
 . https://www.haskell.org/tutorial/numbers.html
 . https://wiki.haskell.org/Converting_numbers
-. Precedence / associativity of different functions with equal precedence?
 . https://wiki.haskell.org/Declaration_vs._expression_style
 . http://learnyouahaskell.com/higher-order-functions#function-application
-. https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf
-. https://wiki.haskell.org/Keywords
 . https://wiki.haskell.org/Let_vs._Where
 . https://wiki.haskell.org/Type
 . https://en.wikibooks.org/wiki/Haskell/Type_declarations
 . https://hackage.haskell.org/package/constraints-0.13.4/docs/Data-Constraint.html
 . https://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Typeable.html#v:typeOf[typeOf]
 . https://downloads.haskell.org/ghc/latest/docs/users_guide/
-. `+(++) :: [a] -> [a] -> [a]+`
-. `+(:) :: a -> [a] -> [a]+`
-. `+(!!) :: [a] -> Int -> a+`
-. `+show :: Show a => a -> String+`
-. `+read :: Read a => String -> a+`
 . Guards `+|+`
 . https://typeclasses.com/underscore[Underscore _]
 . Apostrophe in names
-. `+main = do+`
-. http://zvon.org/other/haskell/Outputprelude/map_f.html[map f `+map abs [-1,-3,4,-12]+`]
 . https://en.wikibooks.org/wiki/Haskell/Control_structures
 . https://wiki.haskell.org/If-then-else
 . https://wiki.haskell.org/Pure
@@ -53,95 +44,327 @@ An advanced, purely functional programming language
 . http://conal.net/blog/posts/everything-is-a-function-in-haskell
 . https://wiki.haskell.org/Import_modules_properly
 . https://wiki.haskell.org/Import
+. https://wiki.haskell.org/Pointfree
 . http://wiki.haskell.org/Comparison_chain
-. https://wiki.haskell.org/Literate_programming
+. https://hackage.haskell.org/package/probability-0.2.8/docs/Numeric-Probability-Distribution.html
+. https://dennybritz.com/posts/probability-monads-from-scratch/
+. https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Maybe.html
+. https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/13-the-list-monad
+. https://wiki.haskell.org/Monad
+. https://wiki.haskell.org/All_About_Monads
+. https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf[Monads for functional programming by Philip Wadler]
+. https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+. https://wiki.haskell.org/Debugging
+. https://downloads.haskell.org/~ghc/8.6.5/docs/html/users_guide/ghci.html#the-ghci-debugger
+. https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/pattern_synonyms.html
 ====
 
 [bibliography]
 == References
 
-* https://www.haskell.org/
-* https://www.haskell.org/onlinereport/
-* [[[real-world-haskell]]] https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html[Real World Haskell by Bryan O'Sullivan, John Goerzen, Donald Bruce Stewart]
-* https://www.haskell.org/tutorial/[Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel]
+* [[[haskell-wikibook]]] https://en.wikibooks.org/wiki/Haskell[Haskell by en.wikibooks.org]
+* https://wiki.haskell.org/Learning_Haskell
+* https://wiki.haskell.org/Meta-tutorial
+* https://wiki.haskell.org/Keywords
+* https://www.haskell.org/documentation/
+* [[[a-gentle-introduction-to-haskell]]] https://www.haskell.org/tutorial/[A Gentle Introduction To Haskell by Paul Hudak, John Peterson, Joseph Fasel]
+* [[[haskell-2010]]] https://www.haskell.org/onlinereport/haskell2010/[Haskell 2010 Language Report]
+* [[[haskell-98]]] https://www.haskell.org/onlinereport/[Haskell 98 Language and Libraries The Revised Report December 2002]
+* [[[a-history-of-haskell]]] https://dl.acm.org/doi/10.1145/1238844.1238856[A History of Haskell: Being Lazy With Class]
+* [[[learn-you-a-haskell]]] http://learnyouahaskell.com/[Learn You a Haskell for Great Good! A Beginner's Guide by Miran Lipovača]
+* [[[cheatsheet]]] https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf[Haskell Cheat Sheet]
 * https://www.seas.upenn.edu/~cis1940/spring23/schedule.html[Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science]
-* https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial/Language_basics
+* https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial
+* https://wiki.haskell.org/Literate_programming
 
-== Introduction
+== Basics
 
-* https://www.oreilly.com/library/view/real-world-haskell/9780596155339/ch01.html
-* http://learnyouahaskell.com/chapters
+So far, if I could pick just one resource from which to learn Haskell, it would be the <<haskell-wikibook>>.
 
-== Interactive Haskell (REPL)
-
-https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
-
-[, console]
-----
-$ # Install Haskell, see: https://www.haskell.org/ghcup/
+.https://www.haskell.org/ghcup/[Install Haskell]
+[source,console]
 $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
-$ # Start Haskell REPL (interactive session).
+.Start Haskell REPL (interactive session)
+[source,console]
 $ ghci
 
+.Comment Text Until the End of a Line
+[source,console]
 ghci> -- Double dash makes comment up to the end of the line.
 
-ghci> min 1 2 - 3
--2
+== Evaluation of Expressions
 
-ghci> :type min -- :type command shows type of given expression.
-min :: Ord a => a -> a -> a
+"Because Haskell is a purely functional language, all computations are done via the evaluation of expressions (syntactic terms) to yield values"
+-- <<a-gentle-introduction-to-haskell>>, chapter 2  Values, Types, and Other Goodies
 
-ghci> :type (+) -- Works for operators when are enclosed in braces.
-(+) :: Num a => a -> a -> a
-----
+.Expression `+False+` yields boolean value `+False+`.
+[source,console]
+ghci> False
+False
 
-* https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html
+.Expression `+[]+` yields empty list `+[]+`.
+[source,console]
+ghci> []
+[]
 
+.Expression `+[ False  ,   True    ]+` yields list `+[False,True]+`.
+[source,console]
+ghci> [ False  ,   True    ]
+[False,True]
 
-== Function Precedence and Associativity
+== Types
 
-See "Operator Precedence and Associativity" section of <<real-world-haskell>>.
+NOTE:: `+:type+` is one of https://downloads.haskell.org/~ghc/6.10.3/docs/html/users_guide/ghci-commands.html[GHCi commands].
 
+.Value `+False+` has type (`+::+`) boolean type (`+Bool+`).
+[source,console]
+ghci> :type False
+False :: Bool
 
-Precedence values are from 1 to 9 where 1 means lowest precedence.
-Associativity of the same operator can be left, right or no, e.g.
+.Empty list (`+[]+`) has type (`+::+`) list of type `+a+` (`+[a]+`).
+[source,console]
+ghci> :type []
+[] :: [a]
 
-Both values can be obtained by `+:info+` command in ghci.
+.List with `+False+` value  (`+[False]+`) has type (`+::+`) list of booleans (`+[Bool]+`).
+[source,console]
+ghci> :type [False]
+[False] :: [Bool]
 
-[,console]
-----
-ghci> :info -
-type Num :: * -> Constraint
-class Num a where
+.Zero (`+0+`) has type (`+::+`) type `+a+` constrained (`+=>+`) to be instance of class Num (`+Num a+`).
+[source,console]
+ghci> :type 0
+0 :: Num a => a
+
+.List of three numbers (`+[1,2,3]+`) has type (`+::+`) list of type `+a+` (`+[a]+`) constrained (`+=>+`) to be instance of class Num (`+Num a+`).
+[source,console]
+ghci> :type [1,2,3]
+[1,2,3] :: Num a => [a]
+
+== Lazy Evaluation
+
+.Generate list of numbers from 1 to 10 inclusive.
+[source,console]
+ghci> [1..10]
+[1,2,3,4,5,6,7,8,9,10]
+
+.Take the first 10 values from infinite sequence of numbers starting with 1.
+[source,console]
+ghci> take 10 [1..]
+[1,2,3,4,5,6,7,8,9,10]
+
+"Because Haskell is lazy, it won't try to evaluate the infinite list immediately because it would never finish. It'll wait to see what you want to get out of that infinite lists."
+-- http://learnyouahaskell.com/starting-out#texas-ranges
+
+== Function Application
+
+"Function application is denoted by juxtaposition and associates to the left. Thus, `+f x y+` is parsed `+(f x) y+`."
+-- <<a-history-of-haskell>>
+
+[source,console]
+ghci> take 10 [1..]
+[1,2,3,4,5,6,7,8,9,10]
+ghci> 
+ghci> (take 10) [1..]
+[1,2,3,4,5,6,7,8,9,10]
+
+== Function Type
+
+.Function `+not+` has type (`+::+`) applied to boolean (`+Bool+`) returns (`+->+`) boolean (`+Bool+`).
+[source,console]
+ghci> :type not
+not :: Bool -> Bool
+
+.Function `+not+` applied to value `+True+` returns `+False+`.
+[source,console]
+ghci> not True
+False
+
+== Currying
+
+"a function of two arguments may be represented as a function of one argument that itself returns a function of one argument."
+-- <<a-history-of-haskell>>
+
+.Function `+take+` has type (`+::+`) applied to `+Int+` returns (`+->+`) function with type `+[a] -> [a]+`.
+[source,console]
+ghci> :type take
+take :: Int -> [a] -> [a]
+
+.Definition of `+takeFirst10+` by application of function `+take+` to the number `+10+`.
+[source, console]
+ghci> takeFirst10 = take 10
+ghci> :type takeFirst10
+takeFirst10 :: [a] -> [a]
+ghci> 
+ghci> takeFirst10 [1..]
+[1,2,3,4,5,6,7,8,9,10]
+
+== Infix Operators
+
+"[Lexically, infix operators consist entirely of "symbols," as opposed to normal identifiers which are alphanumeric (https://www.haskell.org/onlinereport/lexemes.html#ids[§2.4]). Haskell has no prefix operators, with the exception of minus (-), which is both infix and prefix.]"
+-- <<a-gentle-introduction-to-haskell>>, chapter 3 Functions
+
+.Infix Operator Examples
+[source, console]
+ghci> 0 - 1
+-1
+ghci> 10 ^ 2
+100
+ghci> 0 : []
+[0]
+ghci> 1 : 0 : []
+[1,0]
+ghci> [0] ++ [1]
+[0,1]
+ghci> ['a'..] !! 9
+'j'
+
+"A *section* is a partial application of an infix operator to no arguments, the left argument, or the right argument—and by surrounding the result in parentheses"
+-- <<history-of-haskell>>
+
+.Sections
+[source, console]
+ghci> power = (^)
+ghci> 2 `power` 3
+8
+ghci> power 2 3
+8
+ghci> 
+ghci> cube = (^3)
+ghci> cube 2
+8
+ghci> 
+ghci> powerOf2 = (2^)
+ghci> powerOf2 3
+8
+
+WARNING:: `+(-42)+` equals to `+-42+` not to a function that subtracts `+42+`.
+In order to get the later, write `+(subtract 42)+`
+
+"There are very few predefined “operators” in Haskell - most that do look predefined are actually syntax (e.g., “=”). Instead, operators are simply functions that take two arguments and have special syntax support."
+-- <<cheatsheet>>
+
+[quote, '<<cheatsheet>>']
+____
+Allowable symbols which can be used to define operators are:
+
+    # $ % & * + . / < = > ? @ \ ^ | - ~
+
+However, there are several “operators” which cannot be redefined.
+They are: `+<-+`, `+->+` and `+=+`. The last, `+=+`, cannot be redefined by itself, but can be used as part of multi-character operator.
+____
+
+== Precedence and Associativity
+
+"A fixity declaration can be given for any infix operator or constructor (including those made from ordinary identifiers, such as `elem`). This declaration specifies a precedence level from 0 to 9 (with 9 being the strongest; normal *application* is assumed to have a precedence level of 10), and left-, right-, or non-associativity."
+-- <<a-gentle-introduction-to-haskell>>, chapter 3 Functions
+
+"If no fixity declaration is given for a particular operator, it defaults to infixl 9."
+-- <<a-gentle-introduction-to-haskell>>, chapter 3 Functions
+
+.Fixity information can be can be obtained using `+:info+` command in ghci.
+[source,console]
+ghci> :info /
+type Fractional :: * -> Constraint
+class Num a => Fractional a where
+  (/) :: a -> a -> a
   ...
-  (-) :: a -> a -> a
-  ...
-  	-- Defined in ‘GHC.Num’
-infixl 6 -
-----
+  	-- Defined in ‘GHC.Real’
+infixl 7 /
 
-Where the last line `+infixl 6 - +` means left associativity with precedence value 6.
+Fixity `+infixl 7 /+` means *infix* operator, **l**eft associativity, precedence *7*.
 
-.Left associativity example
-[, console]
-----
-ghci> 1 - 2 - 3 - 4
--8
-ghci> ((1 - 2) - 3) - 4
--8
-----
+.Left Associativity
+[source,console]
+ghci> 1 / 2 / 3
+0.16666666666666666
+ghci> (1 / 2) / 3
+0.16666666666666666
+ghci> 1 * 2 / 3
+0.6666666666666666
 
-.Right associativity example
-[, console]
+.Right Associativity
+[source,console]
 ----
 ghci> 3 ^ 2 ^ 1 ^ 0
 9
 ghci> 3 ^ (2 ^ (1 ^ 0))
 9
+ghci> ((3 ^ 2) ^ 1) ^ 0
+1
 ----
 
-== Basics
+.Definition of division operator `+///+` with right associativity in file `+RightDivision.hs+`
+----
+include::RightDivision.hs[]
+----
+
+.Load RightDivision.hs and use `+///+` operator.
+[source,console]
+ghci> :load RightDivision
+[1 of 1] Compiling RightDivision    ( RightDivision.hs, interpreted )
+Ok, one module loaded.
+ghci> 1 /// 2 /// 3
+1.5
+
+.Different associativities of the same precedence operators leads to a parsing error.
+[source,console]
+----
+ghci> 1 /// 2 * 3
+
+<interactive>:6:1: error:
+    Precedence parsing error
+        cannot mix ‘///’ [infixr 7] and ‘*’ [infixl 7] in the same infix expression
+----
+
+== Do Expressions
+
+[quote,'<<haskell-2010>>' 3.14 Do Expressions]
+____
+A do expression provides a more conventional syntax for monadic programming. It allows an expression such as
+
+  putStr "x: "    >>
+  getLine         >>= \l ->
+  return (words l)
+
+to be written in a more traditional way as:
+
+  do putStr "x: "
+     l <- getLine
+     return (words l)
+____
+
+== Modules
+
+"A Haskell program is a collection of modules, one of which, by convention, must be called Main and must export the value main."
+-- <<haskell-2010>> Chapter 5 Modules
+
+"A module begins with a header: the keyword module, the module name, and a list of entities (enclosed in round parentheses) to be exported. The header is followed by a possibly-empty list of import declarations (impdecls, Section 5.3) that specify modules to be imported, optionally restricting the imported bindings. This is followed by a possibly-empty list of top-level declarations (topdecls, Chapter 4)."
+-- <<haskell-2010>> Chapter 5 Modules
+
+.Example of module Main header
+[%collapsible]
+====
+.Following header creates module `+Main+`, which exports function `+main+`.
+----
+module Main(main) where
+----
+This exact header is inserted as a first line, if other header is omitted.
+====
+
+For more information, see https://en.wikibooks.org/wiki/Haskell/Modules.
 
 https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html[Prelude]::
-Module that is imported into all Haskell modules by default.
+"There is one distinguished module, Prelude, which is imported into all modules by default"
+-- <<haskell-2010>> Chapter 5 Modules
+
+== Packages
+
+"Hackage is the Haskell community's central package archive of open source software. Hackage has been online since January 2007 and is constantly growing."
+-- https://hackage.haskell.org/
+
+https://hackage.haskell.org/package/base[base: Basic libraries]::
+This package contains the Standard Haskell Prelude and its support libraries, and a large collection of useful libraries ranging from data structures to parsing combinators and debugging utilities.
+https://hackage.haskell.org/package/containers[containers: Assorted concrete container types]::
+This package contains efficient general-purpose implementations of various immutable container types including sets, maps, sequences, trees, and graphs.

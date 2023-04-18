@@ -1,0 +1,10 @@
+= GitHub
+:source-highlighter: highlight.js
+:stylesheet: ../../style.css
+:linkcss:
+
+.jekyll-gh-pages.yml
+[source, yml]
+----
+include::jekyll-gh-pages.yml[]
+----

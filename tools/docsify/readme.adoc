@@ -1,0 +1,77 @@
+= Docsify
+:keywords: web, docsify, navigation, side-bar, sidebar, tree, directories, files
+:hide-uri-scheme:
+:source-highlighter: highlight.js
+:toc:
+:linkcss:
+:stylesheet: ../../style.css
+
+https://docsify.js.org/#/[A magical documentation site generator]
+
+Following index.html transforms a GitHub repository into a single page application.
+
+[,html]
+----
+include::./github/index.html[]
+----
+
+*How to automatically generate sidebar with a file tree structure?*
+
+https://github.com/docsifyjs/docsify/issues/610
+
+.Generate Auto-sidebar
+[source, shell]
+----
+# Install globally docsify-tools
+npm i docsify-tools -g
+
+# Generate sidebar with tree structure
+docsify-auto-sidebar -d docs
+----
+
+.package.json
+[source, json]
+----
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "docsify-auto-sidebar -d ../*name-of-repo*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docsify-tools": "^1.0.20"
+  }
+}
+----
+
+.GitHub Action
+[source, yaml]
+----
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-sidebar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm ci
+      - run: npm i docsify-tools
+
+      - name: Make Sidebar
+        run: npm test
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto-updated Sidebar
+----
