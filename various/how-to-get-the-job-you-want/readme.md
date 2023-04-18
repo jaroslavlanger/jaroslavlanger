@@ -11,6 +11,7 @@ Of course, the more you know yourself the better.
 For a start you can take the following questions as an inspiration.
 
 **Personality**
+
 * Who I am?
 * What type of job I want to do?
 * What makes me happy?
@@ -18,17 +19,20 @@ For a start you can take the following questions as an inspiration.
 * What I can not stand?
 
 **Abilities**
+
 * What I can do?
 * What I want to learn?
 * What are my strengths and weaknesses?
 
 **Environment**
+
 * Where I want to work?
 * What company size fits me?
 * In the office / open-space / outside / traveling?
 * Individual tasks / teamwork?
 
 **Money**
+
 * What is the least salary I can accept?
 * How much money is appropriate?
 * What salary I want to have in the future?
@@ -37,6 +41,7 @@ Find the Job
 ------------
 
 **Actively search for jobs / companies that you like.**
+
 * Search for them on the internet on job offering sites, LinkedIn...
 * Look at the individual people on social media.
 * Talk about jobs with your friends.
@@ -50,7 +55,9 @@ Get Your Foot In
 The prerequisites are to know who you are, what you want, what you can do and which job connects the dots.
 Knowing this, you need to reverse the perspective and see why should the company for the job hire you?
 Once you figure it out, it's time to get in touch with the employer.
+
 And there are multiple ways to do it:
+
 * Apply for an open position on the internet.
 * Sent an email regarding an open position from the company's career pages.
 * Contact the individual person you find approachable.
@@ -63,7 +70,9 @@ One technique that may help you is called the Elevator pitch.
 In short it's about clearly presenting your proposal in a short amount of time.
 When you meet the right guy in person he is usually willing to give you just some of his time.
 If you are not prepared, the chance you blew it is high.
+
 In the simplest form it's just three sentence piece where you say:
+
 (1.) Who you are. (2.) What you can do. And (3.) what you want.
 
 
@@ -94,6 +103,7 @@ It must contain:
 * Body 3-4 sentences of my motivation ...
 
 **Call Trick**
+
 * You may put a call announcement at the bottom of the motivation letter.
 * Then at the announced date you can start the call like: "I am calling you as announced in the motivational letter, as I would really like to know such and such...".
 * This technique is questionable and it can definitely backfire at you.
