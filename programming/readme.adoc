@@ -13,7 +13,7 @@
 * https://youtube.com/playlist?list=PLVFrD1dmDdvdvWFK8brOVNL7bKHpE-9w0[Structure and Interpretation of Computer Programs - YouTube playlist by @code_report]
 * https://youtube.com/playlist?list=PLVFrD1dmDdvcjCQDPhExqP56jqxp0Ssn_[Category Theory for Programmers - YouTube playlist by @code_report]
 * https://youtube.com/playlist?list=PLVFrD1dmDdvdv7trr5j9ir7qrFK5K80X0[Seven Languages in Seven Weeks - YouTube playlist by @code_report]
-* First-class citizen
+* https://en.wikipedia.org/wiki/Tacit_programming
 ====
 
 == Start Programming
@@ -72,6 +72,11 @@ https://en.wikipedia.org/wiki/Evaluation_strategy[Evaluation strategy]::
 * Lazy evaluation
 * Short-circuit evaluation
 
+=== First-class Citizen
+
+"In programming language design, a *first-class* citizen (also type, *object*, entity, or *value*) in a given programming language is an entity which supports all the operations generally available to other entities. These operations typically include being *passed as an argument*, *returned from a function*, and *assigned to a variable*."
+-- https://en.wikipedia.org/wiki/First-class_citizen
+
 == Languages Worth Mentioning
 
 Assembly language::
@@ -82,6 +87,10 @@ One of the most successful languages of all time.
 I believe, most of the programming languages are written in the C language.
 Its at that time popularity can be grasped from the song https://youtu.be/1S1fISh-pag[Write in C].
 
+https://go.dev/[Go]::
+"Go is a statically typed, compiled high-level programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson."
+-- https://en.wikipedia.org/wiki/Go_(programming_language)[]
+
 https://www.rust-lang.org/[Rust]::
 The most loved programming language, plus another language that made it to the Linux kernel source code.
 Memory safety done by borrow checker, is the most loved language, made it to the kernel.
@@ -91,6 +100,9 @@ Z Shell is a great option for interactive login shell, extends the Bourne Shell.
 
 JavaScript::
 The programming language of the web.
+
+https://www.typescriptlang.org/[TypeScript]::
+Typed superset of JavaScript developed by Microsoft.
 
 https://www.haskell.org/[Haskell]::
 Lazily evaluated purely-functional language with type classes.
@@ -103,3 +115,7 @@ Great (array) language for mathematics that runs fast (jit).
 
 https://mlochbaum.github.io/BQN/[BQN]::
 Iversonian language, by Marshall Lochbaum who started in J and implemented a lot of Dyalog APL himself.
+
+https://www.raku.org/[Raku]::
+Formerly called Perl 6.
+When regular expressions are not powerful enough, look at https://docs.raku.org/language/grammar_tutorial.html.
