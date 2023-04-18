@@ -30,3 +30,11 @@ Which::
 On the other hand, use which with non-restrictive (or non-defining) clauses. These are clauses providing additional information about something that has already been identified in the context. In this use, which is always preceded by a comma and a comma is placed after the restrictive clause ends (if the sentence continues).
 
 The explanations are taken from https://www.diffen.com/difference/That_vs_Which
+
+== Parentheses Brackets Braces
+
+    (parentheses)
+    [brackets]
+    {braces}
+
+https://practicaltypography.com/parentheses-brackets-and-braces.html
