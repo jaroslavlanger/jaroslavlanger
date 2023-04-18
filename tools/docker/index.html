@@ -4,138 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>docker</title>
+  <title>readme</title>
   <style>
-    html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      word-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-    }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -180,7 +50,7 @@
     code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
     code span.at { color: #7d9029; } /* Attribute */
     code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
+    code span.bu { color: #008000; } /* BuiltIn */
     code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #4070a0; } /* Char */
     code span.cn { color: #880000; } /* Constant */
@@ -193,7 +63,7 @@
     code span.ex { } /* Extension */
     code span.fl { color: #40a070; } /* Float */
     code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
     code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
     code span.kw { color: #007020; font-weight: bold; } /* Keyword */
     code span.op { color: #666666; } /* Operator */
@@ -207,13 +77,13 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
 <h1 id="docker">Docker</h1>
-<p>Docker - How to use it, what’s all that (<a href="https://blog.sourcerer.io/a-crash-course-on-docker-learn-to-swim-with-the-big-fish-6ff25e8958b0">best link</a>)</p>
+<p>Docker - How to use it, what’s all that (<a
+href="https://blog.sourcerer.io/a-crash-course-on-docker-learn-to-swim-with-the-big-fish-6ff25e8958b0">best
+link</a>)</p>
 <p>Install docker - ALREADY DONE, READ SOMEWHERE</p>
 <p>Adding user to docker group</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
@@ -221,20 +91,26 @@
 <h2 id="keywords">Keywords</h2>
 <ul>
 <li>CaaS - Containers as a Service</li>
-<li>Container - small, stateless environment for running a piece of software.</li>
-<li>Virtual machine - A virtual version of a real machine. It simulates the hardware of a machine inside of a larger machine.</li>
-<li>Hypervisor - software that enables a physical machine to host several different virtual machines</li>
+<li>Container - small, stateless environment for running a piece of
+software.</li>
+<li>Virtual machine - A virtual version of a real machine. It simulates
+the hardware of a machine inside of a larger machine.</li>
+<li>Hypervisor - software that enables a physical machine to host
+several different virtual machines</li>
 <li>Image - ~kind of stated piece of software~</li>
 <li>volume -</li>
 <li>Dockerfile - configuration for Docker images (containers?).</li>
 </ul>
 <h2 id="basic-commands">Basic commands</h2>
 <ul>
-<li><p>ps - Lists running containers, optional -a flag to list all containers.</p></li>
+<li><p>ps - Lists running containers, optional -a flag to list all
+containers.</p></li>
 <li><p>create - Creates a container from an image.</p></li>
 <li><p>start - Starts a created container.</p></li>
 <li><p>run - Creates and starts the container</p></li>
-<li><p>attach - Attaches the terminal’s standard input and output to a running container, literally connecting you to the container as you would to any virtual machine.</p></li>
+<li><p>attach - Attaches the terminal’s standard input and output to a
+running container, literally connecting you to the container as you
+would to any virtual machine.</p></li>
 <li><p>exit - exits and stops the container</p></li>
 <li><p>build - builds an image</p></li>
 <li><p>images - lists all images</p></li>
@@ -276,14 +152,46 @@
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> webserver <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/usr/share/nginx/html <span class="at">-d</span> <span class="at">-p</span> 8080:80 nginx</span></code></pre></div>
 <h3 id="dockerfile-how-to-images">Dockerfile (How to images)</h3>
 <ul>
-<li>FROM - The FROM instruction initializes a new build stage and sets the <a href="https://docs.docker.com/glossary/#base-image">Base Image</a> for subsequent instructions. As such, a valid Dockerfile must start with a FROM instruction. The image can be any valid image – it is especially easy to start by pulling an image from the <a href="https://docs.docker.com/docker-hub/repos/">Public Repositories</a>.</li>
-<li>COPY - The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.</li>
-<li>WORKDIR - The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.</li>
-<li>VOLUME - The VOLUME instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers. The value can be a JSON array, VOLUME [“/var/log/”], or a plain string with multiple arguments, such as VOLUME /var/log or VOLUME /var/log /var/db. For more information/examples and mounting instructions via the Docker client, refer to <a href="https://docs.docker.com/storage/volumes/">Share Directories via Volumes</a> documentation.</li>
-<li>EXPOSE - The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. You can specify whether the port listens on TCP or UDP, and the default is TCP if the protocol is not specified.</li>
-<li>ENV - The ENV instruction sets the environment variable <key> to the value <value>. This value will be in the environment for all subsequent instructions in the build stage and can be <a href="https://docs.docker.com/engine/reference/builder/#environment-replacement">replaced inline</a> in many as well.</li>
-<li>RUN - The RUN instruction will execute any commands in a new layer on top of the current image and commit the results. The resulting committed image will be used for the next step in the Dockerfile.</li>
-<li>CMD - There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect. The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable, or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.</li>
+<li>FROM - The FROM instruction initializes a new build stage and sets
+the <a href="https://docs.docker.com/glossary/#base-image">Base
+Image</a> for subsequent instructions. As such, a valid Dockerfile must
+start with a FROM instruction. The image can be any valid image – it is
+especially easy to start by pulling an image from the <a
+href="https://docs.docker.com/docker-hub/repos/">Public
+Repositories</a>.</li>
+<li>COPY - The COPY instruction copies new files or directories from
+<src> and adds them to the filesystem of the container at the path
+<dest>.</li>
+<li>WORKDIR - The WORKDIR instruction sets the working directory for any
+RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the
+Dockerfile. If the WORKDIR doesn’t exist, it will be created even if
+it’s not used in any subsequent Dockerfile instruction.</li>
+<li>VOLUME - The VOLUME instruction creates a mount point with the
+specified name and marks it as holding externally mounted volumes from
+native host or other containers. The value can be a JSON array, VOLUME
+[“/var/log/”], or a plain string with multiple arguments, such as VOLUME
+/var/log or VOLUME /var/log /var/db. For more information/examples and
+mounting instructions via the Docker client, refer to <a
+href="https://docs.docker.com/storage/volumes/">Share Directories via
+Volumes</a> documentation.</li>
+<li>EXPOSE - The EXPOSE instruction informs Docker that the container
+listens on the specified network ports at runtime. You can specify
+whether the port listens on TCP or UDP, and the default is TCP if the
+protocol is not specified.</li>
+<li>ENV - The ENV instruction sets the environment variable <key> to the
+value <value>. This value will be in the environment for all subsequent
+instructions in the build stage and can be <a
+href="https://docs.docker.com/engine/reference/builder/#environment-replacement">replaced
+inline</a> in many as well.</li>
+<li>RUN - The RUN instruction will execute any commands in a new layer
+on top of the current image and commit the results. The resulting
+committed image will be used for the next step in the Dockerfile.</li>
+<li>CMD - There can only be one CMD instruction in a Dockerfile. If you
+list more than one CMD then only the last CMD will take effect. The main
+purpose of a CMD is to provide defaults for an executing container.
+These defaults can include an executable, or they can omit the
+executable, in which case you must specify an ENTRYPOINT instruction as
+well.</li>
 </ul>
 <pre class=".dockerfile"><code># Dockerfile
 FROM nginx:alpine
@@ -297,18 +205,41 @@ EXPOSE 80</code></pre>
 <h2 id="docker-compose">Docker-compose</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> <span class="at">--version</span></span></code></pre></div>
 <ul>
-<li><p>up - with docker-compose.yml it builds image with Dockerfile and runs it</p></li>
+<li><p>up - with docker-compose.yml it builds image with Dockerfile and
+runs it</p></li>
 <li><p>down</p></li>
-<li><p>Docker-compose.yml The Compose file is a <a href="https://yaml.org/">YAML</a> file defining <a href="https://docs.docker.com/compose/compose-file/#service-configuration-reference">services</a>, <a href="https://docs.docker.com/compose/compose-file/#network-configuration-reference">networks</a> and <a href="https://docs.docker.com/compose/compose-file/#volume-configuration-reference">volumes</a>. The default path for a Compose file is ./docker-compose.yml</p></li>
-<li><p>build Configuration options that are applied at build time. build can be specified either as a string containing a path to the build context or, as an object with the path specified under <a href="https://docs.docker.com/compose/compose-file/#context">context</a></p></li>
-<li><p>image Specify the image to start the container from. Can either be a repository/tag or a partial image ID.</p></li>
-<li><p>secrets Grant access to secrets on a per-service basis using the per-service secrets configuration. Two different syntax variants are supported.</p></li>
-<li><p>restart no is the default restart policy, and it does not restart a container under any circumstance. When always is specified, the container always restarts. The on-failure policy restarts a container if the exit code indicates an on-failure error.</p></li>
-<li><p>environment Add environment variables. You can use either an array or a dictionary. Any boolean values (true, false, yes, no) need to be enclosed in quotes to ensure they are not converted to True or False by the YML parser.</p></li>
+<li><p>Docker-compose.yml The Compose file is a <a
+href="https://yaml.org/">YAML</a> file defining <a
+href="https://docs.docker.com/compose/compose-file/#service-configuration-reference">services</a>,
+<a
+href="https://docs.docker.com/compose/compose-file/#network-configuration-reference">networks</a>
+and <a
+href="https://docs.docker.com/compose/compose-file/#volume-configuration-reference">volumes</a>.
+The default path for a Compose file is ./docker-compose.yml</p></li>
+<li><p>build Configuration options that are applied at build time. build
+can be specified either as a string containing a path to the build
+context or, as an object with the path specified under <a
+href="https://docs.docker.com/compose/compose-file/#context">context</a></p></li>
+<li><p>image Specify the image to start the container from. Can either
+be a repository/tag or a partial image ID.</p></li>
+<li><p>secrets Grant access to secrets on a per-service basis using the
+per-service secrets configuration. Two different syntax variants are
+supported.</p></li>
+<li><p>restart no is the default restart policy, and it does not restart
+a container under any circumstance. When always is specified, the
+container always restarts. The on-failure policy restarts a container if
+the exit code indicates an on-failure error.</p></li>
+<li><p>environment Add environment variables. You can use either an
+array or a dictionary. Any boolean values (true, false, yes, no) need to
+be enclosed in quotes to ensure they are not converted to True or False
+by the YML parser.</p></li>
 <li><p>command Override the default command.</p></li>
-<li><p>links Link to containers in another service. Either specify both the service name and a link alias (SERVICE:ALIAS), or just the service name.</p></li>
+<li><p>links Link to containers in another service. Either specify both
+the service name and a link alias (SERVICE:ALIAS), or just the service
+name.</p></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.yml</span></span>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode yml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.yml</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;2&#39;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">webserver</span><span class="kw">:</span></span>
@@ -317,7 +248,8 @@ EXPOSE 80</code></pre>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;8080:80&quot;</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">volumes</span><span class="kw">:</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> .:/usr/share/nginx/html</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up <span class="er">(</span><span class="ex">-d</span><span class="kw">)</span></span>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up <span class="er">(</span><span class="ex">-d</span><span class="kw">)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -f for specifying other file than docker-compose.yml</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> <span class="at">-f</span> demo.detailed.yml up</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> <span class="at">-f</span> demo.detailed.yml down</span></code></pre></div>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+<h1 id="git">Git</h1>
+<p>How to use git successfully even with a little background
+knowledge.</p>
+<h2 id="contents">Contents</h2>
+<!-- TOC GFM -->
+<ul>
+<li><a href="#to-do">To Do</a></li>
+<li><a href="#basic-information">Basic Information</a></li>
+<li><a href="#git-installation-and-setup">Git Installation and Setup</a>
+<ul>
+<li><a href="#create-a-git-account">Create a Git Account</a></li>
+<li><a href="#basic-git-configuration">Basic Git Configuration</a></li>
+</ul></li>
+<li><a href="#basic-commands">Basic Commands</a>
+<ul>
+<li><a href="#git---help">Git –help</a></li>
+<li><a href="#create-a-project-git-clone-git-init-git-fork">Create a
+Project (git clone, git init, git fork)</a></li>
+<li><a href="#see-status-of-the-index-git-status">See Status of the
+Index (git status)</a></li>
+<li><a href="#file-changes-differences-git-diff">File Changes
+(Differences) (git diff)</a></li>
+<li><a href="#stage-changes-to-the-index-git-add-git-rm-git-mv">Stage
+Changes to the Index (git add, git rm, git mv)</a></li>
+<li><a href="#commit-changes-git-commit">Commit Changes (git
+commit)</a></li>
+<li><a href="#push-commits-to-the-remote-repository-git-push">Push
+Commits to the Remote Repository (git push)</a></li>
+</ul></li>
+<li><a href="#ignore-files-from-the-git-structure-gitignore">Ignore
+Files from the Git Structure (.gitignore)</a></li>
+<li><a href="#advanced-commands">Advanced Commands</a>
+<ul>
+<li><a
+href="#see-commits-diffs-and-messages-git-log-git-diff-git-show">See
+Commits, Diffs and Messages (git log, git diff, git show)</a></li>
+<li><a href="#branching-git-branch-git-checkout">Branching (git branch,
+git checkout)</a></li>
+<li><a href="#merging-git-merge">Merging (git merge)</a></li>
+<li><a href="#remote-repositories-git-remote">Remote Repositories (git
+remote)</a></li>
+<li><a
+href="#download-remote-branch-and-test-it-git-fetch-git-checkout">Download
+Remote Branch and Test It (git fetch, git checkout)</a></li>
+<li><a href="#pulling---download-from-remote-and-merge-git-pull">Pulling
+- Download from Remote and Merge (git pull)</a></li>
+<li><a href="#get-information-about-git-files-git-ls-files">Get
+Information About git Files (git ls-files)</a></li>
+<li><a href="#clean-the-working-tree-git-stash">Clean the Working Tree
+(git stash)</a></li>
+<li><a
+href="#reset-the-current-branch-head-to-specific-state-commit-git-reset">Reset
+the Current Branch (HEAD) to Specific State (commit) (git
+reset)</a></li>
+<li><a
+href="#remove-revert-changes-after-push-git-reset-git-push-git-revert">Remove
+(Revert) Changes After Push (git reset, git push, git revert)</a></li>
+</ul></li>
+<li><a href="#common-scenarios">Common Scenarios</a>
+<ul>
+<li><a href="#duplicate-a-repository">Duplicate a Repository</a></li>
+<li><a href="#move-repository-form-one-git-site-to-another">Move
+Repository form One Git Site to Another</a></li>
+<li><a href="#change-file-history-in-every-commit">Change File (history)
+in Every Commit</a></li>
+</ul></li>
+<li><a href="#contribute-to-a-project">Contribute to a Project</a>
+<ul>
+<li><a
+href="#contribute-to-someones-repository-with-push-rights">Contribute to
+Someone’s Repository (with push rights)</a></li>
+<li><a href="#contribute-without-the-rights-to-push-fork">Contribute
+Without the Rights to Push (fork)</a></li>
+</ul></li>
+<li><a href="#submodules">Submodules</a></li>
+<li><a href="#customizing-git">Customizing Git</a>
+<ul>
+<li><a href="#git-editor-and-diff-tool">Git Editor and Diff
+Tool</a></li>
+</ul></li>
+</ul>
+<!-- /TOC -->
+<h2 id="to-do">To Do</h2>
+<ul>
+<li><a
+href="https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c">How
+To: Merge a Git submodule into its main repository</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">7.11
+Git Tools - Submodules</a></li>
+<li><a
+href="https://docs.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository">Splitting
+a subfolder out into a new repository</a></li>
+<li><a
+href="https://dev.to/itminds/how-to-split-and-merge-multiple-git-repositories-and-keep-the-history-2938">How
+to split and merge multiple git repositories while keeping the
+history</a></li>
+<li><a
+href="https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/">Merging
+Two Git Repositories Into One Repository Without Losing File
+History</a></li>
+<li><a
+href="https://stackoverflow.com/questions/14542326/undo-git-filter-branch">Undo
+git filter-branch</a></li>
+<li>https://git-scm.com/docs/git-ls-tree</li>
+<li><a
+href="https://developer.ibm.com/tutorials/d-learn-workings-git/">Learn
+the workings of Git, not just the commands (IBM)</a></li>
+</ul>
+<h2 id="basic-information">Basic Information</h2>
+<p>Git is a version control system. Probably the best way to learn it is
+just to read the <a href="https://git-scm.com/doc">documentation</a>. In
+case you do not have much time and just need to jump on the train, this
+document helps you to understand the basics fast.</p>
+<p>Git keeps the versions as a snapshots on your local machine. It
+enables you to work completely offline and synchronize the code with the
+remote repository when it suits you.</p>
+<p><strong>There are four levels in the git hierarchy</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Git Levels</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Working Tree</td>
+<td>The actual files in the local directory managed by git.</td>
+</tr>
+<tr class="even">
+<td>Index</td>
+<td>Git structure of the files. Not in index - does not exist for
+git.</td>
+</tr>
+<tr class="odd">
+<td>Committed</td>
+<td>There is a snapshot version of the files. It can be shared.</td>
+</tr>
+<tr class="even">
+<td>Remote Repository</td>
+<td>The commit (snapshot) was shared through push or pull with
+others.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>In terms of files, they can be in one of three
+states</strong></p>
+<ol type="1">
+<li>Modified: Changes not staged for commit.
+<ul>
+<li>Some files are either untracked, modified or deleted.</li>
+</ul></li>
+<li>Staged: Changes to be committed (recorded in the index).
+<ul>
+<li>The file changes (e.g. modified, renamed, new file, deleted) are
+staged for the next commit.</li>
+</ul></li>
+<li>Committed: Nothing to commit, working tree clean.
+<ul>
+<li>Files in the working tree and files in the last commit
+identical.</li>
+</ul></li>
+</ol>
+<h2 id="git-installation-and-setup">Git Installation and Setup</h2>
+<h3 id="create-a-git-account">Create a Git Account</h3>
+<p>First step is to create account on some git site such as GitHub,
+GitLab etc.</p>
+<ul>
+<li><a href="https://github.com/">GitHub - Where the world builds
+software</a></li>
+<li><a href="https://about.gitlab.com/">GitLab is the open DevOps
+platform</a></li>
+</ul>
+<p>Once you have it, add your public SSH key to it.</p>
+<h3 id="basic-git-configuration">Basic Git Configuration</h3>
+<p>After the git installation, there is a need of some
+configurations.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Name Surname&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;username@email.com&quot;</span></span></code></pre></div>
+<h2 id="basic-commands">Basic Commands</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Git Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>git init</td>
+<td>Create an empty Git repository or reinitialize an existing one.</td>
+</tr>
+<tr class="even">
+<td>git clone</td>
+<td>Clones remote git repository to your machine as local git
+repository.</td>
+</tr>
+<tr class="odd">
+<td>git add</td>
+<td>Add file contents to the index.</td>
+</tr>
+<tr class="even">
+<td>git commit</td>
+<td>Record changes to the repository.</td>
+</tr>
+<tr class="odd">
+<td>git push</td>
+<td>Pushes local repository to the remote one.</td>
+</tr>
+<tr class="even">
+<td>git fetch</td>
+<td>Downloads content from remote git repository.</td>
+</tr>
+<tr class="odd">
+<td>git merge</td>
+<td>Incorporates changes from given named branch to current branch.</td>
+</tr>
+<tr class="even">
+<td>git pull</td>
+<td>Does git fetch and git merge.</td>
+</tr>
+<tr class="odd">
+<td>git branch</td>
+<td>Branch is simply a pointer to specific snapshot (version).</td>
+</tr>
+<tr class="even">
+<td>HEAD</td>
+<td>Special pointer which point at the branch you are currently on.</td>
+</tr>
+<tr class="odd">
+<td>git checkout</td>
+<td>Changes branch at which the HEAD is pointing and updates the local
+files to match with that branch (switch branches).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="git-help">Git –help</h3>
+<p>Git has a beautifully done manual, so adding <code>--help</code>
+after any command is usually sufficient help once you start using the
+git.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of help for rm command</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--help</span></span></code></pre></div>
+<h3 id="create-a-project-git-clone-git-init-git-fork">Create a Project
+(git clone, git init, git fork)</h3>
+<p>It is either possible to create a new repository (project) or to find
+some already existing.</p>
+<p><strong>Create repository from scratch</strong></p>
+<p>On your GITSITE create a new repository and get its URL under button
+“clone” (e.g. https://github.com/USERNAME/PROJECT.git)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone the repository (project) to your machine</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@YOUR_PROJECT_PATH.git</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create README.md about your project</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;# REPOSITORY_NAME&quot;</span> <span class="op">&gt;&gt;</span> README.md <span class="co">#touch README.md</span></span></code></pre></div>
+<p><strong>Create repository from existing directory</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> EXISTING_DIRECTORY</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;# REPOSITORY_NAME&quot;</span> <span class="op">&gt;&gt;</span> README.md <span class="co">#touch README.md</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty Git repository or reinitialize an existing one</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add remote site git@GITSITE:USER/REPOSITORY.git as origin</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@GITSITE.com:USER_NAME/REPOSITORY_NAME.git</span></code></pre></div>
+<ul>
+<li><a href="https://github.com/">From github.com</a></li>
+</ul>
+<p><strong>Create a repository from an existing repository</strong></p>
+<p>There is an option to use an existing project as your starting point
+by making a copy. It is called a fork, by doing so you will have your
+own copy of the whole project. Then you can just git clone and start
+doing stuff.</p>
+<h3 id="see-status-of-the-index-git-status">See Status of the Index (git
+status)</h3>
+<p>Files can be either untracked, added, modified or deleted.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show status of git files, which where not added, which were deleted but added etc.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
+<h3 id="file-changes-differences-git-diff">File Changes (Differences)
+(git diff)</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show changes between staged file and file in the working tree.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff path/to/file</span></code></pre></div>
+<h3 id="stage-changes-to-the-index-git-add-git-rm-git-mv">Stage Changes
+to the Index (git add, git rm, git mv)</h3>
+<p>Stage files to the index for the next commit.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the one file (README.md) to the index (will be commited).</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add all the files from current directory.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add all files to the index.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span>          <span class="co"># git add --all</span></span></code></pre></div>
+<p><strong>Remove Files from the Index</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove files from the working tree and from the index (File is deleted and will not be commited).</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm FILE</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete directory (option recursive).</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">-r</span> DIR</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove FILE only from index (file will not be commited) it doesn&#39;t delete it locally.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> FILE</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Forced remove - the file is deleted from index and working tree even when it has local modifications.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">-f</span> FILE</span></code></pre></div>
+<p><strong>Rename or move files</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Move or rename files.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> mv file/path new/file/path</span></code></pre></div>
+<ul>
+<li><a href="https://git-scm.com/docs/git-mv">git mv
+(git-scm.com)</a></li>
+</ul>
+<p><strong>Discard Local Changes</strong></p>
+<pre><code># Discard changes in working directory.
+git checkout -- FILENAME</code></pre>
+<h3 id="commit-changes-git-commit">Commit Changes (git commit)</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit (record) the changes with a meaningful message.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Initial commit, README.md created.&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write commit message in advance to a file and then use it for commit.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-eF</span> commit_message.txt</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Redo last commit with new changes</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span></span></code></pre></div>
+<ul>
+<li><a
+href="https://stackoverflow.com/questions/20438293/preparing-a-git-commit-message-before-committing">Preparing
+a git commit message before committing? (stackoverflow.com)</a></li>
+</ul>
+<h3 id="push-commits-to-the-remote-repository-git-push">Push Commits to
+the Remote Repository (git push)</h3>
+<pre><code># Pushes the current branch to the remote repository called &quot;origin&quot;.
+git push -u origin
+
+# Pushes local &quot;main&quot; branch to the remote repository called &quot;origin&quot;.
+git push -u origin main
+
+# Pushes local &quot;main&quot; branch to the &quot;dev&quot; branch of remote repository &quot;origin&quot;.
+git push origin main:dev
+
+# Forcing push if necessary (rewriting commits history perhaps).
+git push -f</code></pre>
+<h2 id="ignore-files-from-the-git-structure-.gitignore">Ignore Files
+from the Git Structure (.gitignore)</h2>
+<p><code>.gitignore</code> file specifies intentionally untracked files
+to be ignored.</p>
+<pre class=".gitignore"><code># Ignore all .ipynb checkpoints
+.ipynb_checkpoints
+# Ignore knapsack instances directory
+./knapsack/instances</code></pre>
+<ul>
+<li><a href="https://git-scm.com/docs/gitignore">gitignore
+(git-scm.com)</a></li>
+<li><a
+href="https://stackoverflow.com/questions/35916658/how-to-git-ignore-ipython-notebook-checkpoints-anywhere-in-repository">How
+to git ignore ipython notebook checkpoints anywhere in repository
+(stackoverflow.com)</a></li>
+</ul>
+<h2 id="advanced-commands">Advanced Commands</h2>
+<h3 id="see-commits-diffs-and-messages-git-log-git-diff-git-show">See
+Commits, Diffs and Messages (git log, git diff, git show)</h3>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all commits of the current branch.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all commits that are fetched, graphically.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--all</span> <span class="at">--graph</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show commits affecting the a specific file (--oneline makes message and commit&#39;s hash shorter).</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> path/to/file.sth</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Diff file with it&#39;s version from given commit (commit&#39;s hash taken from git log).</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff 0a42637 path/to/file.sh</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show information about given commit, tag, etc.</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show 0a42637</span></code></pre></div>
+<ul>
+<li><a
+href="https://stackoverflow.com/questions/10176601/git-diff-file-against-its-last-change">git
+diff file against its last change (stackoverflow.com)</a></li>
+</ul>
+<h3 id="branching-git-branch-git-checkout">Branching (git branch, git
+checkout)</h3>
+<p>The main branch is by default called “main”. In the past, it was
+often called “master”. Good practise is to create a separate branch for
+development.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show branches - the current is marked with asterix</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List all branches, also the remote ones</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-a</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create branch</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch BRANCH_NAME</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Change to a branch</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout BRANCH_NAME</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the current branch to main</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Crate branch and check out to it in one step</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> BRANCH_NAME</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete branch</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> BRANCH_NAME</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove branches deleted on the remote</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--prune</span> origin</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote prune origin</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename branch</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> NEW_BRANCH_NAME</span></code></pre></div>
+<h3 id="merging-git-merge">Merging (git merge)</h3>
+<p>Merge the ANOTHER_BRANCH to main.</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge ANOTHER_BRANCH</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the local content with BRANCH_NAME of REMOTE_NAME</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--allow-unrelated-histories</span> REMOTE_NAME/BRANCH_NAME</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># No fast-foreward (--no-ff)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--no-ff</span> ANOTHER_BRANCH</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply all changes from another branch (then it can be commited in one commit).</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--squash</span> ANOTHER_BRANCH</span></code></pre></div>
+<ul>
+<li><a
+href="https://nvie.com/posts/a-successful-git-branching-model/">No
+fast-foreward - A successful Git branching model (nvie.com)</a>.</li>
+</ul>
+<h3 id="remote-repositories-git-remote">Remote Repositories (git
+remote)</h3>
+<p>Once you clone a repository, it sets a remote for the repository
+under the origin. Thanks to that you can push your code to origin (the
+remote repository) or to pull code from the repository.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the remotes</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add remote</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add NAME URL</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add remote and fetch</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add <span class="at">-f</span> NAME URL</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete remote</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote remove NAME URL</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set remote url</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github.com:USERNAME/REPOSITORY.git</span></code></pre></div>
+<h3
+id="download-remote-branch-and-test-it-git-fetch-git-checkout">Download
+Remote Branch and Test It (git fetch, git checkout)</h3>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch files from origin( remote site).</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the desired BRANCH_NAME from origin and change to it.</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> BRANCH_NAME origin/BRANCH_NAME</span></code></pre></div>
+<h3 id="pulling---download-from-remote-and-merge-git-pull">Pulling -
+Download from Remote and Merge (git pull)</h3>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Git pull - equivalent to git fetch and git merge.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch origin branch from remote origin( and merge it with local branch origin).</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code></pre></div>
+<p><strong>Git pull using git fetch and git merge.</strong></p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Downloads content from a remote repository and write to .git/FETCH_HEAD</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merges the FETCH_HEAD to the current branch.</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge FETCH_HEAD</span></code></pre></div>
+<p><strong>Create the pull request</strong></p>
+<p>In case you do not have the push rights in order to merge your
+changes to the remote repository you need to create Pull Request at the
+git site, so the owner can pull your changes.</p>
+<ul>
+<li><a href="#https://git-scm.com/docs/git-request-pull">Create a pull
+request</a></li>
+</ul>
+<h3 id="get-information-about-git-files-git-ls-files">Get Information
+About git Files (git ls-files)</h3>
+<ul>
+<li><a href="https://git-scm.com/docs/git-ls-files"
+class="uri">https://git-scm.com/docs/git-ls-files</a></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show information about files in the index and the working tree</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-files</span></code></pre></div>
+<p>For example, I got this error:</p>
+<pre><code>git fatal: no submodule mapping found in .gitmodules for path</code></pre>
+<p>I used this command to get staged files that git considers to be
+submodules (160000).</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-files <span class="at">--stage</span> <span class="kw">|</span> <span class="fu">grep</span> 160000</span></code></pre></div>
+<ul>
+<li><a href="https://stackoverflow.com/a/4185579"
+class="uri">https://stackoverflow.com/a/4185579</a></li>
+</ul>
+<h3 id="clean-the-working-tree-git-stash">Clean the Working Tree (git
+stash)</h3>
+<p>Save the changes from the last commit on and clean them</p>
+<p>So the working directory is at the stage of last commit.</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saves all differences from last commit away and clean them off (equivalent to git stash push).</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Shows list of stashes.</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash list</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Restored changes from the last stash.</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash apply</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># See the most recent stash (equivalent to git stash show -p stash@{0}).</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash show <span class="at">-p</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># See older stash</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash show <span class="at">-p</span> stash@{1}</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the last stash.</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash drop</span></code></pre></div>
+<h3
+id="reset-the-current-branch-head-to-specific-state-commit-git-reset">Reset
+the Current Branch (HEAD) to Specific State (commit) (git reset)</h3>
+<p><strong>Undo stuff before commit, i.e. reset the Index and Working
+Tree or the Index only.</strong></p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes unwanted staging of many files - resets the index only.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deletes all changes from the last commit - resets index and the working tree.</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span></span></code></pre></div>
+<p><strong>Remove changes after commit i.e. reset to the specific
+commit.</strong></p>
+<pre><code># Resets branch (HEAD) to given commit, but the working tree and index stay the same.
+git reset --soft HASH_OF_COMMIT
+
+# Resets branch (HEAD) and index to the given commit, files (working tree) stays untouched.
+git reset --mixed HASH_OF_COMMIT
+
+# Resets the index and the working tree, everything is reseted to the given commit.
+git reset --hard HASH_OF_COMMIT</code></pre>
+<ul>
+<li><a href="#https://git-scm.com/docs/git-reset">git-reset
+(git-scm.com)</a></li>
+</ul>
+<h3
+id="remove-revert-changes-after-push-git-reset-git-push-git-revert">Remove
+(Revert) Changes After Push (git reset, git push, git revert)</h3>
+<p><strong>Remove changes and keep history</strong></p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revert some existing commits (Requires no local modifications from the HEAD commit)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert</span></code></pre></div>
+<p><strong>Remove changes without history</strong></p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Move HEAD to the second latest commit</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD^</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Do the modifications</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the changes</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Forcefully push the changes (to rewrite the history)</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-f</span></span></code></pre></div>
+<h2 id="common-scenarios">Common Scenarios</h2>
+<h3 id="duplicate-a-repository">Duplicate a Repository</h3>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--bare</span> https://githost.org/OLD_REPOSITORY.git</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> OLD_REPOSITORY</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--mirror</span> https://github.com/NEW_REPOSITORY.git</span></code></pre></div>
+<ul>
+<li><a
+href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository">Duplicating
+a repository (docs.github.com)</a></li>
+</ul>
+<h3 id="move-repository-form-one-git-site-to-another">Move Repository
+form One Git Site to Another</h3>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone the repository from the old site.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@GITSITE_OLD.com:USER/PROJECT.git</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Go to the repo directory.</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> PROJECT</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename remote origin to old-origin</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote rename origin old-origin</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new remote and call it origin</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@GITSITE_NEW.com:USER/PROJECT.git</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Push everything to the new origin</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin <span class="at">--all</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin <span class="at">--tags</span></span></code></pre></div>
+<h3 id="change-file-history-in-every-commit">Change File (history) in
+Every Commit</h3>
+<pre><code># Delete file from every commit
+git filter-branch --index-filter &#39;git rm --cached --ignore-unmatch path/to/file&#39; HEAD
+
+# Move (rename) file through all history
+git filter-branch -f --tree-filter &#39;if [ -d path/to/dir ]; then mkdir -p path/to/new/dir &amp;&amp; git mv path/to/dir path/to/new/dir; fi&#39; HEAD</code></pre>
+<ul>
+<li><a href="https://git-scm.com/docs/git-filter-branch">git
+filter-branch (git-scm.com)</a></li>
+<li><a
+href="https://stackoverflow.com/questions/2314652/is-it-possible-to-move-rename-files-in-git-and-maintain-their-history">Is
+it possible to move/rename files in Git and maintain their
+history?</a></li>
+</ul>
+<h2 id="contribute-to-a-project">Contribute to a Project</h2>
+<h3 id="contribute-to-someones-repository-with-push-rights">Contribute
+to Someone’s Repository (with push rights)</h3>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone the repository</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@GITSITE.com:PROJECT_PATH.git</span></code></pre></div>
+<p><strong>Update the Content from Remote</strong></p>
+<p>If there is a time lag between cloning and the time you want to work
+on the repository, the remote repository may have changed. Then it is
+reasonable to update the local content from the remote i.e. pull the
+changes.</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Git pull fetches the last version from the origin (GITSITE:repo) and merges it with the local content</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># git pull origin</span></span></code></pre></div>
+<p><strong>Develop the Code as a New Branch</strong></p>
+<p>Instead of modifying the main, and pushing to the origin/main. Create
+a development branch and make the changes there. Don’t merge the branch
+with main. Push the development branch to remote and create a pull
+request.</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your development branch</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch BRANCH_NAME</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check out the branch</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout BRANCH_NAME</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Record the changes to be commited</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add PATH_TO_FILE, PATH_TO_FILE_1</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if everything is git added or git deleted</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the changes</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Meaningful description of the changes&quot;</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Push the local changes to the branch BRANCH_NAME of remote site</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin BRANCH_NAME</span></code></pre></div>
+<h3 id="contribute-without-the-rights-to-push-fork">Contribute Without
+the Rights to Push (fork)</h3>
+<p>Fork the repository. Clone it and treat it as your own.</p>
+<p>Once you are happy with your changes, create a pull request on the
+GITSITE.</p>
+<h2 id="submodules">Submodules</h2>
+<p><a
+href="https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c">How
+To: Merge a Git submodule into its main repository</a></p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add submodule</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule add https://github.com/NEW_REPOSITORY.git REPO_NAME</span></code></pre></div>
+<h2 id="customizing-git">Customizing Git</h2>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List all git configurations with specified origin</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span> <span class="at">--show-origin</span></span></code></pre></div>
+<h3 id="git-editor-and-diff-tool">Git Editor and Diff Tool</h3>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set vim as your default git editor.</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">&quot;vim&quot;</span></span></code></pre></div>
+<ul>
+<li><a
+href="https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits">How
+do I make Git use the editor of my choice for commits?
+(stackoverflow)</a></li>
+</ul>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set vimdiff as your difftool</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> diff.tool vimdiff</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Diff changes with a diff tool of your choice</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> difftool</span></code></pre></div>
+<ul>
+<li><a
+href="https://blog.programster.org/configure-git-to-use-vimdiff">Configure
+Git To Use Vimdiff (programster.org)</a></li>
+</ul>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Jupyter notebook
+# Jupyter Notebook
 
 Nice tool, enabling to work with code surounded by text smoothly.
 

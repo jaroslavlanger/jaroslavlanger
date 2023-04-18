@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+<h1 id="regular-expressions">Regular Expressions</h1>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>https://en.wikipedia.org/wiki/Regular_expression</li>
+<li>https://en.wikipedia.org/wiki/Raku_rules</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>I found <a
+href="https://www.regular-expressions.info/">Regular-Expressions.info</a>
+very useful to me, from now on I go there if I am not sure how exactly
+the thing works.</p>
+<p>You don’t need to reinvent the wheel every time. There are “community
+patterns” on <a href="https://regexr.com/">regexr.com</a>, that solves
+your problem, or at least usually give you a nice baseline.</p>
+<h2 id="optional-item">Optional item ‘?’</h2>
+<p>Makes the preceding token in optional. <code>regexp?</code> will
+match <code>regex</code> and <code>regexp</code>. In order to make
+optional more tokens use grouping,
+e.g. <code>Reg(ular)? ?Ex(p?ressions)?</code>.</p>
+<ul>
+<li><a
+href="https://www.regular-expressions.info/optional.html">Optional Items
+(regular-expressions.info)</a></li>
+</ul>
+<h2 id="character-classes-or-character-sets">Character Classes or
+Character Sets ‘[]’</h2>
+<ul>
+<li><a
+href="https://www.regular-expressions.info/charclass.html">Character
+Classes or Character Sets (regular-expressions.info)</a></li>
+</ul>
+<h2 id="regex-alternation">Regex Alternation ‘|’</h2>
+<p>Alternation has the lowest precedence of all regex operators. So the
+regex math either everything to the left from this sign <code>|</code>
+or everything to the right. In case the alternation should be applied
+only as a part of the pattern, then it needs to be closed with braces to
+create a group.</p>
+<pre><code>/first_pattern|second_pattern/</code></pre>
+<p>It is equivalent to</p>
+<pre><code>/(first_pattern|second_pattern)/</code></pre>
+<p>and not equivalent to</p>
+<pre><code>/first_patter(n|s)econd_pattern/</code></pre>
+<ul>
+<li><a
+href="https://www.regular-expressions.info/alternation.html">Alternation
+(regular-expressions info)</a></li>
+</ul>
+<h2 id="metacharacter">Metacharacter</h2>
+<div class="line-block">Sym. | Matches |<br />
+—- | |<br />
+<code>\b</code> | “Word boundary” i.e. between ^-word, nonword-word,
+word-nonword, word-end. |</div>
+<ul>
+<li><a
+href="https://www.regular-expressions.info/wordboundaries.html">Word
+Boundaries (regular-expressions.info)</a></li>
+</ul>
+<h2 id="integer">Integer</h2>
+<p><strong>anywhere on the line</strong></p>
+<pre><code>$pattern = &#39;/[[:digit:]]+/&#39;;</code></pre>
+<p><strong>Tousand dot every third position from end</strong></p>
+<pre><code>$integer = &#39;/[[:digit:]]{1,3}(\.[[:digit:]]{3})*/&#39;;</code></pre>
+<p><strong>Tousand - dot every third position from end, ,-</strong></p>
+<pre><code>$pattern = &#39;/[[:digit:]]{1,3}(\.[[:digit:]]{3})*(\ )*,-/&#39;;</code></pre>
+<h2 id="float">Float</h2>
+<p><strong>Tousand dot every third position from end with
+comma</strong></p>
+<pre><code>$float = &#39;/([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?/&#39;;</code></pre>
+<p><strong>Tousand dot every third position from end with comma and
+Kč</strong></p>
+<pre><code>$pattern = &#39;/([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?(\ )*Kč/&#39;;</code></pre>
+<p><strong>Tousand dot every third position from end with comma and
+CZK</strong></p>
+<pre><code>$pattern = &#39;/([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?(\ )*CZK/&#39;;</code></pre>
+<p><strong>CZK and tousand dot every third position from end with
+comma</strong></p>
+<pre><code>$pattern = &#39;/CZK(\ )*([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?/&#39;;</code></pre>
+<p><strong>CZK at start or end and tousand dot every third position from
+end with comma</strong></p>
+<pre><code>$pattern = &#39;/(([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?(\ )*CZK|CZK(\ )*([[:digit:]]){1,3}(\.[[:digit:]]{3})*(,[[:digit:]]*)?)/&#39;;</code></pre>
+</body>
+</html>

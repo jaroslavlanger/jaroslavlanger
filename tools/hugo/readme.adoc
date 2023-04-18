@@ -1,6 +1,9 @@
 = Hugo: Static Site Generator
 :keywords: web, website, hugo, static-site-generator, site-generator, website-generator
+:source-highlighter: highlight.js
 :toc:
+:linkcss:
+:stylesheet: ../../style.css
 
 Fast, powerful static site generator written in Go.
 

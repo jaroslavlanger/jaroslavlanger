@@ -3,6 +3,8 @@
 :hide-uri-scheme:
 :source-highlighter: highlight.js
 :toc:
+:linkcss:
+:stylesheet: ../../style.css
 
 https://docsify.js.org/#/[A magical documentation site generator]
 
@@ -10,7 +12,7 @@ Following index.html transforms a GitHub repository into a single page applicati
 
 [,html]
 ----
-include::./index.html[]
+include::./github/index.html[]
 ----
 
 *How to automatically generate sidebar with a file tree structure?*
