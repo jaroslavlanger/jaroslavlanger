@@ -1,20 +1,9 @@
 # Regular Expressions
 
-`2021 Feb 09, Jaroslav Langer`
+## TODO
 
-## Contents
-
-<!-- TOC GFM -->
-
-* [Introduction](#introduction)
-* [Optional item '?'](#optional-item-)
-* [Character Classes or Character Sets '[]'](#character-classes-or-character-sets-)
-* [Regex Alternation '|'](#regex-alternation-)
-* [Metacharacter](#metacharacter)
-* [Integer](#integer)
-* [Float](#float)
-
-<!-- /TOC -->
+* https://en.wikipedia.org/wiki/Regular_expression
+* https://en.wikipedia.org/wiki/Raku_rules
 
 ## Introduction
 
