@@ -95,7 +95,7 @@ https://www.rust-lang.org/[Rust]::
 The most loved programming language, plus another language that made it to the Linux kernel source code.
 Memory safety done by borrow checker, is the most loved language, made it to the kernel.
 
-Zsh::
+link:zsh[Z shell]::
 Z Shell is a great option for interactive login shell, extends the Bourne Shell.
 
 JavaScript::
@@ -104,7 +104,7 @@ The programming language of the web.
 https://www.typescriptlang.org/[TypeScript]::
 Typed superset of JavaScript developed by Microsoft.
 
-https://www.haskell.org/[Haskell]::
+link:haskell[Haskell]::
 Lazily evaluated purely-functional language with type classes.
 
 https://www.python.org/[Python]::

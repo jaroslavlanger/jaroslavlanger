@@ -1,5 +1,7 @@
-= Zsh
+= Z shell
 :hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
 
 Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
 
