@@ -1,28 +1,33 @@
-= Text Specifications
-:keywords: text, format, csv, yaml, json, xml, html, tex, asciidoc, markdown, regex
+= Data
+:keywords: data, text, format, csv, yaml, json, xml, html, tex, asciidoc, markdown
 :hide-uri-scheme:
 :toc:
+:source-highlighter: highlight.js
+:stylesheet: ../style.css
+:linkcss:
 
 == About
 
-Good specification of text format has many use cases.
+Text formats suitable for storage and transfer of structured data::
+* csv
+* yaml
+* toml
+* xml
+* json
+* xls
+Markup formats::
+* html
+* markdown
+* asciidoc
+* rst
+* tex
 
-|===
-| Use Case | Examples
-
-| Data storage / transfer | csv, yaml, toml, xml, json, xls
-| Markup langauge | html, xml, markdown, asciidoc, rst, tex
-| Styling | css, scss
-| Pattern matching | regex
-|===
-
-== Encoding
+== File Encoding
 
 === BOM
 
-    The byte order mark (BOM) is a particular usage of the special Unicode character, U+FEFF BYTE ORDER MARK
-
-quoted from: https://en.wikipedia.org/wiki/Byte_order_mark
+"The byte order mark (BOM) is a particular usage of the special Unicode character, U+FEFF BYTE ORDER MARK"
+-- https://en.wikipedia.org/wiki/Byte_order_mark
 
 .UTF-8 BOM
 ----
@@ -36,17 +41,13 @@ U+FEFF
 
 == Conversion Between Formats
 
-Good format specification has many advantages.
-Among others, it allows to convert the document from one format to another.
-This can be done automatically using a conversion tool.
+Good format specification allows to convert the document from one format to another.
+It can be done automatically using a conversion tool.
 When the target format has equal or greater expression power the conversion is lossless.
 
-=== Pandoc
+=== https://pandoc.org/[Pandoc a universal document converter]
 
-https://pandoc.org/[Pandoc a universal document converter]
-
-Installation
-
+.Installation
 [source, shell]
 ----
 wget "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb"
@@ -59,15 +60,13 @@ https://github.com/jgm/pandoc/releases/[Pandoc releases (github.com)]
 
 * https://pandoc.org/demos.html[Demos (pandoc.org)]
 
-Convert markdown to PDF
-
+.Convert markdown to PDF
 [source, shell]
 ----
 pandoc report.md --pdf-engine=xelatex -o report.pdf
 ----
 
-Convert markdown to HTML
-
+.Convert markdown to HTML
 [source, shell]
 ----
 # HTML fragment (plain html)
