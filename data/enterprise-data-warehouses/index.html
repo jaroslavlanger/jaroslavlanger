@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="keywords" content="data, database, data-warehouse, data-lake, EDW, business-intelligence, BI">
+<title>Enterprise Data Warehouses</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Enterprise Data Warehouses</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_independent_data_marts">Independent Data Marts</a></li>
+<li><a href="#_bill_inmon">Bill Inmon</a></li>
+<li><a href="#_hub_and_spoke">Hub and Spoke</a></li>
+<li><a href="#_ralph_kimball">Ralph Kimball</a></li>
+<li><a href="#_datamart_bus">Datamart Bus</a></li>
+<li><a href="#_daniel_lindstendt">Daniel Lindstendt</a></li>
+<li><a href="#_data_vault">Data Vault</a></li>
+<li><a href="#_data_warehouse_architecture">Data Warehouse Architecture</a>
+<ul class="sectlevel2">
+<li><a href="#_source_systems">Source systems</a></li>
+<li><a href="#_landing_layer">Landing Layer</a></li>
+<li><a href="#_data_base">Data Base</a></li>
+<li><a href="#_delivery_layer">Delivery Layer</a></li>
+</ul>
+</li>
+<li><a href="#_exercise_pharmacy_modeling">Exercise - Pharmacy Modeling</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Term Project first milestone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Technical documentation of data sources and processing flow.</p>
+</li>
+<li>
+<p>Create entities model.</p>
+</li>
+<li>
+<p>Create a database model using a CASE tool.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CASE capable of generating the create and insert scripts for PostgreSQL.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf" class="bare">https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download" class="bare">https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/47112412/unrecognized-vm-option-maxpermsize-512m-when-running-zeppelin" class="bare">https://stackoverflow.com/questions/47112412/unrecognized-vm-option-maxpermsize-512m-when-running-zeppelin</a></p>
+</li>
+<li>
+<p><a href="https://itslinuxfoss.com/fix-unable-to-locate-package-openjdk-8-jdk" class="bare">https://itslinuxfoss.com/fix-unable-to-locate-package-openjdk-8-jdk</a></p>
+</li>
+<li>
+<p><a href="http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html" class="bare">http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="openblock">
+<div class="title">Conceptual Model</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go through the data</p>
+</li>
+<li>
+<p>Business logic</p>
+</li>
+<li>
+<p>Define key entities</p>
+</li>
+<li>
+<p>Relations between the entities</p>
+</li>
+<li>
+<p>Cardinality</p>
+</li>
+<li>
+<p>Description of non obvious things?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</details>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-md" data-lang="md">Technologies
+* ETL Tool - pentaho
+* Database - PostgreSQL
+* Reporting - Power BI
+
+Business Intelligence
+
+    Set of *processes*, know-how, aplications and technologies.
+    It enables to optimize processes, gather overview of business situation.
+    It gives the business and edge over competition.
+
+It's not about technologies.
+
+Technology changes, the basic principle stays.
+* Company collect data, if it can leverage them, it gives it an edge.
+    * e.g. I know when you run out of a product, I send you a promo-code so you buys it again.
+
+
+Data Warehouse Examples
+* Books
+* SQL Database
+* Excel sheets
+* SQL Code
+
+Data Warehouse
+* consistency and reliability.
+* Often implemented as as big database.
+* Often uses complicated code for measuring KPIs.
+* Itself it is a project, someone must develop and maintain it.
+* When done right, the information is transparent and auditable.
+
+## Case Study
+
+Company XYZ
+* new systems: ERP, CRM, SCM
+
+Digitalization
+
+Problems:
+* Reporting - slow and dumb
+* Data are not consolidated
+* Product information are divergent
+* It requires a lot of manual work
+
+BSEARCH (SVYHLEDAT) - returns
+
+Power Query
+Power BI
+
+### Data Integration
+* Joining data tables
+
+Data warehouse should model the business logic.
+It transforms multiple data sources.
+
+Excel has data connectors.
+On update it reloads the data.
+
+The raw data should never be in simple file e.g. Excel sheet, so the leaks are harder to do.
+
+
+Business Definitions must be clear and transparent, so every entity agrees when calculated.
+
+### Reporting
+
+To whom the report is made:
+* user - sees details related to his field
+* analytic - sees more information except the critically confidential
+* manager - confindential information about fields he has responsibility
+* controlling - excel with details
+* director - very simple reports over all domains
+
+
+Customer pathway (experience)
+* How the customer behaves on the website / in life.
+* Customer Experience 360 - segmentation
+
+
+Company evaluation based on data.
+
+### Prediction Models
+
+* When the new technology pays off.
+* When a specific machine breaks.
+* Cluster analysis
+
+
+## Stories
+
+Wallmart
+* pregnant woman is ultra loyal
+
+Barack Obama
+* won the presidential thanks to better analytics of unified people behaviour.
+* -&gt;
+
+* EDW as a Source of Information
+
+## History
+
+1. Until 15. century
+    * Master - student
+    * Could create anything
+2. 15.-16. century north Italy
+    * Manufacture
+    * This requires some system to organize the information
+    * Employees were less skilled, doing less simple job
+3. Scientific Management Theory - Winslow Taylor
+    * the smaller individual parts, the better and cheaper it become
+4. Henry Ford
+    * motivated employees
+    * automated production line
+5. Tomas Bata
+    * Combination of Taylor and Ford
+6. 1970 Edgar Frank Codd from IBM - A Relational Model of Data for Large Shared Data Banks
+7. BI 1.0 - Tools using database
+    * These are the ones who created it Oracle, IBM, Microsoft, Teradata, SAP
+    * business intelligence was for the big players
+8. BI 2.0 - Internet
+    * business intelligence for smaller shops
+9. Cloud
+    * Everything is tracked, ...
+    * Business Intelligence became critical for the business.
+
+
+## Database Model
+
+* Conceptual model
+    * Relations between entities
+* Logical (database) model
+    * Maps conceptual model to database tables
+    * Normalization CNF
+* Physical model
+    * Specific implementation of logical model
+    * e.g. data segmentation, indexes, partitioning
+
+## Data Warehouse (DWH) Architecture
+
+* Source layer - inputs e.g. sap, excel
+* Landing layer e.g. file system, or ETL (extract, transform, load)
+* Database
+    * Staging layer - raw data in database
+    * Integrated layer (IDL) / target - clean, normalized data, consolidation
+    * Access Layer - prepared data for special purposes, aggregations etc.
+* Information delivery layer
+
+## Integrated Data Layer Modeling
+
+* It should model the underlying business, not fit the collected data.
+
+## Definitions
+
+* TOGAF - The Open Group Architecture Framework
+* KPI - Key Performance Indicator
+* CRM - Customer Relationship Management
+* ERP - Enterprise Resource Planning
+* SCM - Supply Chain Management
+* EDW - Enterprise Data Warehouse
+* ETL - Extract, transform, load
+* OLAP - Online analytical, processing
+
+### Term Project
+
+1. You got data and business questions
+2. Reporting
+3. Answer the business questions
+
+### First Part
+
+* Logical database model
+* Database PostgreSQL</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Data Warehouse</dt>
+<dd>
+<p>Information system, stores data from company information systems for analytical use in future.</p>
+</dd>
+<dt class="hdlist1">Data Mart</dt>
+<dd>
+<p>Exposed data (end-point of the data warehouse).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_independent_data_marts">Independent Data Marts</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>| Source | Extract-Transform-Load | Data Mart | Applications |</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bill_inmon">Bill Inmon</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>1990 Building the Data Warehouse</p>
+</li>
+<li>
+<p>Top Down</p>
+</li>
+<li>
+<p>Waterfall</p>
+</li>
+<li>
+<p>Better for long-term big projects.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hub_and_spoke">Hub and Spoke</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>|------------------- back room ---------------|                           |
+|                      |------------------- front room -------------------|
+| Source | acquisition | warehouse | delivery | data marts | applications |</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ralph_kimball">Ralph Kimball</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Dimensional modeling</p>
+</li>
+<li>
+<p>Defined historization data (SCD)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Slowly changing dimension.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Better for quick solutions for small things.</p>
+</li>
+<li>
+<p>Until 12 Data marts it is the more profitable.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_datamart_bus">Datamart Bus</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>| Source | Staging | Presentation | Access Tools |</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_daniel_lindstendt">Daniel Lindstendt</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_vault">Data Vault</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>"All the data, all the time".</p>
+</div>
+<div class="paragraph">
+<p>Data are just stored, no afterwards manipulation is allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1995 first unpublished talk.</p>
+</li>
+<li>
+<p>2010 The Business of Data Vault modelling</p>
+</li>
+<li>
+<p>2015 Building a scalable data warehouse with data vault 2.0 (TOP!)</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|        | Hard Business Rules |                      | Soft Business Rules |          |
+| Source | ------------------- | Staging | Data Vault | ------------------- | Delivery |</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">HUB</dt>
+<dd>
+<p>business keys</p>
+</dd>
+<dt class="hdlist1">Satellite</dt>
+<dd>
+<p>Reference of HUB.</p>
+</dd>
+<dt class="hdlist1">Link</dt>
+<dd>
+<p>links between satellites</p>
+</dd>
+<dt class="hdlist1">Reference</dt>
+<dd>
+<p>Codebooks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Query assistant</p>
+</li>
+<li>
+<p>Point in time</p>
+</li>
+<li>
+<p>Bridge</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_warehouse_architecture">Data Warehouse Architecture</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>| Source | Landing   | Staging | Integrated | Access | Delivery          |
+|        | Archiving |                               |                   |
+|        | Data Lake |                               |                   |
+|        | --------------- Sandbox ----------------- |                   |
+| ---------------- Technical Metadata -------------- |                   |
+|                                                    | Business Metadata |
+|                                                    | Data Lineage      |</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data Lineage - from Delivery automatically returns source information.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_source_systems">Source systems</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Definition of time slots.</p>
+</li>
+<li>
+<p>Linked server.</p>
+</li>
+<li>
+<p>API</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_landing_layer">Landing Layer</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Full Load or Increment or Delta</p>
+</li>
+<li>
+<p>First layer interacts with the database.</p>
+</li>
+<li>
+<p>Change data capture (CDC)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka - captures data about such events.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_base">Data Base</h3>
+<div class="paragraph">
+<p><strong>Stage Layer</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Validation of data before the target.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Integrated Core Target</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3NF Norm</p>
+</li>
+<li>
+<p>No business logic</p>
+</li>
+<li>
+<p>Historization</p>
+</li>
+<li>
+<p>Easily over billion lines</p>
+</li>
+<li>
+<p>Slowly changing dimension</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SCD0</p>
+</li>
+<li>
+<p>SCD1</p>
+</li>
+<li>
+<p>SCD2</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Semantic Layer</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Source of ground truth.</p>
+</li>
+<li>
+<p>Serves as separation of inherent and business properties.</p>
+</li>
+<li>
+<p>This layer is optional but highly recommended.</p>
+</li>
+<li>
+<p>View</p>
+</li>
+<li>
+<p>Contains set of Datamarts.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Datamart</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Dimensional Modeling</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Factual table</p>
+</li>
+<li>
+<p>Dimensional table</p>
+</li>
+<li>
+<p>Factual table contains numbers NOT averages, not sums.</p>
+</li>
+<li>
+<p>Schemes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Star scheme, all dimensions are linked to one fact.</p>
+</li>
+<li>
+<p>Snowflake, links between dimension tables.</p>
+</li>
+<li>
+<p>Snow storm - more fact tables in one.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dimension can&#8217;t have facts!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delivery_layer">Delivery Layer</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercise_pharmacy_modeling">Exercise - Pharmacy Modeling</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Supplier</p>
+</li>
+<li>
+<p>Product</p>
+<div class="ulist">
+<ul>
+<li>
+<p>RX - Prescription</p>
+</li>
+<li>
+<p>OTC - Free drugs</p>
+</li>
+<li>
+<p>Other - Supplements</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Drugstore</p>
+</li>
+<li>
+<p>Shift</p>
+</li>
+<li>
+<p>Distributor</p>
+</li>
+<li>
+<p>Employee</p>
+</li>
+<li>
+<p>Warehouse</p>
+</li>
+<li>
+<p>Transaction</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Reservation</p>
+</li>
+<li>
+<p>Reclamation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Loyalty program</p>
+</li>
+<li>
+<p>Customer</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-04-18 19:26:04 +0200
+</div>
+</div>
+</body>
+</html>
