@@ -1,0 +1,17 @@
+= Java
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+:source-language: java
+:source-highlighter: highlight.js
+
+A general-purpose programming language intended to let programmers write once, run anywhere.
+
+.TODO
+[%collapsible]
+====
+* https://snapshot.debian.org/package/openjdk-8/8u362-ga-4/
+====
+
+[source, console]
+sudo update-alternatives --config java
