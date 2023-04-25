@@ -1,4 +1,7 @@
 #!/bin/bash
+# Shell script for Test Driven Development
+#
+# en.wikipedia.org/wiki/Test-driven_development
 
 #path to test data
 TEST_DATA=./data
@@ -25,4 +28,3 @@ for i in $(echo {0000..0100}) ; do
   fi
   echo "OK";
 done
-
