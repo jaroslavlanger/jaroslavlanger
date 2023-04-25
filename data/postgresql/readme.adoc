@@ -1,0 +1,88 @@
+= PostgreSQL
+:source-highlighter: highlight.js
+:stylesheet: ./../../style.css
+:linkcss:
+
+The World's Most Advanced Open Source Relational Database
+
+.Install postgresql on using apt
+[source, console]
+sudo apt install postgresql postgresql-contrib
+
+.Check status, start, stop, restart
+[source, console]
+sudo systemctl status postgresql
+
+== Encryption
+
+For compatibility with older software
+you might need to change encryption from `+scram-sha-256+` to `+md5+`.
+
+.Set password_encryption in /etc/postgresql/VERSION/main/postgresql.conf
+[source, txt]
+password_encryption = md5	# scram-sha-256 or md5
+
+.Default /etc/postgresql/VERSION/main/pg_hba.conf
+[source, txt]
+----
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            scram-sha-256
+# IPv6 local connections:
+host    all             all             ::1/128                 scram-sha-256
+----
+
+.md5 /etc/postgresql/VERSION/main/pg_hba.conf
+[source, txt]
+----
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+----
+
+.After these changes start and stop (or restart) posgresql
+[source, console]
+sudo systemctl stop postgresql
+sudo systemctl start postgresql
+sudo systemctl restart postgresql
+
+.Show current password encryption
+[source, psql]
+show password_encryption;
+
+== PSQL
+
+.Set password for user postgres
+[source, console]
+sudo passwd postgres
+
+.Login as a postgres user
+[source, console]
+su – postgres
+
+.Start psql
+[source, console]
+psql
+
+.PSQL Commands
+|===
+| `+\?+`      | Show all psql commands.
+| `+\q+`      | Exit psql shell.
+| `+\l+`      | List databases.
+| `+\c DB+`   | Connect to database DB.
+| `+\d+`      | List tables (relations).
+| `+\du+`     | List users.
+| `+\i FILE+` | Execute commands from FILE.
+| `+\! CMD+`  | Execute shell command CMD.
+|===
+
+https://www.geeksforgeeks.org/postgresql-psql-commands/
+
+== SQL
+
+.Basic Commands
+[source, sql]
+create database DATABASE_NAME;
+create user USER_NAME with encrypted password 'SOME PASSWORD';
+drop database DATABASE_NAME;
+drop user USER_NAME;

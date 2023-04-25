@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>PostgreSQL</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>PostgreSQL</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The World&#8217;s Most Advanced Open Source Relational Database</p>
+</div>
+<div class="listingblock">
+<div class="title">Install postgresql on using apt</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo apt install postgresql postgresql-contrib</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check status, start, stop, restart</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo systemctl status postgresql</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encryption">Encryption</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For compatibility with older software
+you might need to change encryption from <code>scram-sha-256</code> to <code>md5</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Set password_encryption in /etc/postgresql/VERSION/main/postgresql.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">password_encryption = md5	# scram-sha-256 or md5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Default /etc/postgresql/VERSION/main/pg_hba.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
+host    all             all             127.0.0.1/32            scram-sha-256
+# IPv6 local connections:
+host    all             all             ::1/128                 scram-sha-256</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">md5 /etc/postgresql/VERSION/main/pg_hba.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">After these changes start and stop (or restart) posgresql</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo systemctl stop postgresql
+sudo systemctl start postgresql
+sudo systemctl restart postgresql</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Show current password encryption</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-psql hljs" data-lang="psql">show password_encryption;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_psql">PSQL</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Set password for user postgres</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo passwd postgres</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Login as a postgres user</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">su – postgres</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Start psql</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">psql</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. PSQL Commands</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show all psql commands.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\q</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit psql shell.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List databases.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\c DB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connect to database DB.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\d</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List tables (relations).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\du</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List users.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\i FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute commands from FILE.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\! CMD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute shell command CMD.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="https://www.geeksforgeeks.org/postgresql-psql-commands/" class="bare">https://www.geeksforgeeks.org/postgresql-psql-commands/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sql">SQL</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Basic Commands</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create database DATABASE_NAME;
+create user USER_NAME with encrypted password 'SOME PASSWORD';
+drop database DATABASE_NAME;
+drop user USER_NAME;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-04-25 20:12:43 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>
