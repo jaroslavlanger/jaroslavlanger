@@ -29,6 +29,17 @@
 <li><a href="#_do_expressions">Do Expressions</a></li>
 <li><a href="#_modules">Modules</a></li>
 <li><a href="#_packages">Packages</a></li>
+<li><a href="#_category_theory">Category Theory</a>
+<ul class="sectlevel2">
+<li><a href="#_semigroup">Semigroup</a></li>
+<li><a href="#_monoid">Monoid</a></li>
+<li><a href="#_foldable">Foldable</a></li>
+<li><a href="#_functor">Functor</a></li>
+<li><a href="#_traversable">Traversable</a></li>
+<li><a href="#_applicative">Applicative</a></li>
+<li><a href="#_monad">Monad</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -726,14 +737,102 @@ Hackage is the Haskell community&#8217;s central package archive of open source 
 <dd>
 <p>This package contains efficient general-purpose implementations of various immutable container types including sets, maps, sequences, trees, and graphs.</p>
 </dd>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/safe">safe: Library of safe (exception free) functions</a></dt>
+<dd>
+<p>A library wrapping Prelude/Data.List functions that can throw exceptions, such as head and !!. Each unsafe function has up to four variants</p>
+</dd>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/lens">lens: Lenses, Folds and Traversals</a></dt>
+<dd>
+<p>The combinators in Control.Lens provide a highly generic toolbox for composing families of getters, folds, isomorphisms, traversals, setters and lenses and their indexed variants.</p>
+</dd>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/repa">repa: High performance, regular, shape polymorphic parallel arrays.</a></dt>
+<dd>
+<p>Repa provides high performance, regular, multi-dimensional, shape polymorphic parallel arrays.</p>
+</dd>
 </dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_category_theory">Category Theory</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_semigroup"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Semigroup.html">Semigroup</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition: <code>(&lt;&gt;) | sconcat</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Semigroup a where
+        (&lt;&gt;) :: a -&gt; a -&gt; a</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_monoid"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Monoid.html">Monoid</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition: <code>mempty | mconcat</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Semigroup a =&gt; Monoid a where
+        mempty :: a</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_foldable"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Foldable.html">Foldable</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition <code>foldMap | foldr</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Foldable t where
+        foldMap :: Monoid m =&gt; (a -&gt; m) -&gt; t a -&gt; m</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_functor"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Functor.html">Functor</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition: <code>fmap</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Functor f where
+        fmap :: (a -&gt; b) -&gt; f a -&gt; f b</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_traversable"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Traversable.html">Traversable</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition <code>traverse | sequenceA</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class (Functor t, Foldable t) =&gt; Traversable t where
+        traverse :: Applicative f =&gt; (a -&gt; f b) -&gt; t a -&gt; f (t b)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_applicative"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Applicative.html">Applicative</a></h3>
+<div class="listingblock">
+<div class="title">A minimal complete definition must include implementations of pure and of either &lt;*&gt; or liftA2</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Functor f =&gt; Applicative f where
+        pure :: a -&gt; f a
+        (&lt;*&gt;) :: f (a -&gt; b) -&gt; f a -&gt; f b</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_monad"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html">Monad</a></h3>
+<div class="listingblock">
+<div class="title">Minimal complete definition <code>(&gt;&gt;=)</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">class Applicative m =&gt; Monad m where
+        (&gt;&gt;=) :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-18 20:03:54 +0200
+Last updated 2023-04-24 13:18:01 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
