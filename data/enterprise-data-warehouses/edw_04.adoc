@@ -1,0 +1,54 @@
+= EDW 04
+
+.TODO
+
+. Visual paradigm - good merge of ETL.
+. Data brics
+. https://doc.serenytics.com/developer/api_reference/python_client/ [serenytics]
+. PowerQuery language M
+.. Guy in a cube.
+. DAX
+.. Fabian Ferrari SQLBI
+. SSIS - SQL Server Integration Services
+. BIML - BI Markup Language
+. https://www.datale.cz/
+. Talend opensource
+. data integrator
+
+. azure sql, azure data factory
+
+1. ETL
+
+E -> T -> L (transformation before load)
+
+E -> L -> T (transformation after load)
+
+ELT vs ETL
+
+Expensive database ELT, all load on database.
+
+Cheap databse ETL do the job outside
+
+2. Scheduler
+
+cron
+
+3. Orchestration
+
+4. Metadata management
+
+Data stewardship. Lecture from VZP at courses.fit.cvut.cz
+
+
+Power BI
+
+Azure SQL + Azure Data Factory
+
+Talend + Postgres
+
+ETLs:
+* talend (good)
+* click
+* azure data factory
+* ssis (only when skilled person)
+* pentaho

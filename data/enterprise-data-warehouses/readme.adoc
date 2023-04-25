@@ -1,5 +1,6 @@
 = Enterprise Data Warehouses
 :keywords: data, database, data-warehouse, data-lake, EDW, business-intelligence, BI
+:hide-uri-scheme:
 :stylesheet: ./../../style.css
 :linkcss:
 :toc:
@@ -12,11 +13,6 @@
 ** Create entities model.
 ** Create a database model using a CASE tool.
 *** CASE capable of generating the create and insert scripts for PostgreSQL.
-. https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf
-.. https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download
-.. https://stackoverflow.com/questions/47112412/unrecognized-vm-option-maxpermsize-512m-when-running-zeppelin
-.. https://itslinuxfoss.com/fix-unable-to-locate-package-openjdk-8-jdk
-.. http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html
 
 .Conceptual Model
 --
@@ -28,6 +24,21 @@
 . Description of non obvious things?
 --
 ====
+
+== Software
+
+=== pgAdmin
+
+. https://www.pgadmin.org/download/pgadmin-4-apt/
+. https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/
+
+=== Pentaho Data Integration
+
+* https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf
+* https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download
+
+. Input -> CSV file input
+** Lazy conversion - turn off (when troubles with conversions try switching it).
 
 [source, md]
 ----
