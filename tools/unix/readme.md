@@ -574,6 +574,20 @@ diff -y --suppress-common-lines FILE_A FILE_B | wc -l
 cmp file1 file2
 ```
 
+### Linux Directory Structure
+
+```asciidoc
+|===
+| /bin | Executables.
+| /root | Root user data.
+| /home/* | Other user data.
+| /opt | Optional software (things you can't instal with package manager).
+| /etc | Configuration files, e.g. /etc/issue.
+| /lib | Shared libraries.
+|===
+```
+
+https://linuxhandbook.com/linux-directory-structure/
 
 ## Install stuff
 

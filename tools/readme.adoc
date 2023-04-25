@@ -20,6 +20,7 @@ The art of using a computer like a human being
 * link:make[]
 * link:neovim[]
 * link:regular-expressions[]
+* link:unix[]
 * link:vim[]
 
 == Overview
@@ -52,18 +53,6 @@ The art of using a computer like a human being
 .. Debian-Testing
 
 === Linux
-
-.Linux directory structure
-|===
-| /bin | Executables.
-| /root | Root user data.
-| /home/* | Other user data.
-| /opt | Optional software (things you can't instal with package manager).
-| /etc | Configuration files.
-| /lib | Shared libraries.
-|===
-
-https://linuxhandbook.com/linux-directory-structure/
 
 *Type special characters*
 
@@ -145,6 +134,10 @@ Following settings might lower your eye strain.
 . Use a software which lowers the screen temperature.
     * http://jonls.dk/redshift/
     * https://justgetflux.com/
+
+=== Video Player
+
+https://www.videolan.org/vlc/
 
 == Terminal Window Manger
 
