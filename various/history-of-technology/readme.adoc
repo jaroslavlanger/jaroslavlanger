@@ -1,0 +1,35 @@
+= History of Technology
+:stylesheet: ./../../style.css
+:linkcss:
+
+== 2007
+iPhone:: First useful multi-touch phone device.
+
+== 2005
+Git:: version control system.
+
+== 2004
+Facebook:: First social network with over 3 billion users.
+
+== 2001
+Wikipedia:: is a multilingual free online encyclopedia.
+
+== 1999
+GNOME:: is a free and open-source desktop environment for Unix-like operating systems.
+
+== 1998
+Google:: Most visited website of today.
+
+== 1997
+PosgreSQL:: a free and open-source relational database management system.
+
+== 1993
+HTML:: markup language for documents designed to be displayed in a web browser.
+Debian:: the most popular linux distribution for personal computers and servers.
+
+== 1991
+Vim:: text editor.
+Linux kernel:: is a free and open-source Unix-like operating system kernel.
+
+== 1972
+C:: programming language.
