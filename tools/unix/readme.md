@@ -185,8 +185,9 @@ unalias
 
 **command help, command info, command man, command apropos**
 
-```
-man -k
+Show appropriate manual pages for given TERM
+```sh
+man -k TERM     # Equivalent to command "apropos TERM"
 ```
 
 ### Expansions and suppressions
@@ -589,13 +590,23 @@ cmp file1 file2
 
 https://linuxhandbook.com/linux-directory-structure/
 
-## Install stuff
+## Install Software
 
-### Install from official repositories
+Every distribution family has its package manager.
+Debian based distributions have https://en.wikipedia.org/wiki/APT_(software).
+Arch based distros have https://en.wikipedia.org/wiki/Arch_Linux#Pacman.
+
+### Advanced Package Tool (apt)
+
+Install a package using apt.
 
 ```sh
-sudo apt-get install ALMOST_ANYTHING
+sudo apt install PACKAGE_NAME
 ```
+
+The packages are looked up in source repositories specified in /etc/apt/sources.list and /etc/apt/sources.list.d/
+
+https://wiki.debian.org/SourcesList
 
 ### Install from package .deb
 
