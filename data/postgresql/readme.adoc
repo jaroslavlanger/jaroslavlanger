@@ -1,5 +1,6 @@
 = PostgreSQL
 :source-highlighter: highlight.js
+:source-language: sql
 :stylesheet: ./../../style.css
 :linkcss:
 
@@ -81,8 +82,14 @@ https://www.geeksforgeeks.org/postgresql-psql-commands/
 == SQL
 
 .Basic Commands
-[source, sql]
+----
 create database DATABASE_NAME;
 create user USER_NAME with encrypted password 'SOME PASSWORD';
 drop database DATABASE_NAME;
 drop user USER_NAME;
+----
+
+.Grant user the permission to create tables.
+----
+grant all on schema public to USER_NAME;
+----
