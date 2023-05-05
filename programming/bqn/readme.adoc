@@ -1,0 +1,52 @@
+= BQN
+:stylesheet: ../../style.css
+:linkcss:
+:source-language: bqn
+
+https://mlochbaum.github.io/BQN/
+
+.TODO
+[%collapsible]
+====
+. https://mlochbaum.github.io/BQN/doc/quick.html
+. https://mlochbaum.github.io/BQN/doc/index.html[BQN documentation]
+. https://mlochbaum.github.io/bqncrate/
+====
+
+.Motivational Example
+----
+# https://mlochbaum.github.io/bqncrate/
+(1⊸»⊸∨' '⊸≠)⊸/d1	Remove duplicate spaces, turning each sequence of spaces into one
+----
+
+== https://mlochbaum.github.io/BQN/doc/primitive.html[Primitives]
+
+.Functions
+|===
+| Glyph | Monadic | Dyadic
+
+|===
+
+.Modifiers
+|===
+| Glyph | Name(s) | Definition | Description
+
+| ⊸ | Before/Bind | {(𝔽 𝕨 ⊣ 𝕩)𝔾 𝕩} | 𝔾's left argument comes from 𝔽
+|===
+
+== https://mlochbaum.github.io/BQN/doc/block.html[Blocks]
+
+"In BQN, a block is any piece of code surrounded with curly braces {}."
+-- https://mlochbaum.github.io/BQN/doc/block.html
+
+.Special Names
+|===
+| Lowercase | Uppercase | Meaning
+
+| 𝕩 | 𝕏 | Right argument
+| 𝕨 | 𝕎 | Left argument, or Nothing (·)
+| 𝕤 | 𝕊 | Function self-reference
+| 𝕗 | 𝔽 | Left operand
+| 𝕘 | 𝔾 | Right operand
+| 𝕣 | none | Modifier self-reference
+|===

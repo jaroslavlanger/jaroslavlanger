@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>BQN</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>BQN</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://mlochbaum.github.io/BQN/" class="bare">https://mlochbaum.github.io/BQN/</a></p>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/quick.html" class="bare">https://mlochbaum.github.io/BQN/doc/quick.html</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/index.html">BQN documentation</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/bqncrate/" class="bare">https://mlochbaum.github.io/bqncrate/</a></p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="listingblock">
+<div class="title">Motivational Example</div>
+<div class="content">
+<pre class="highlight"><code class="language-bqn" data-lang="bqn"># https://mlochbaum.github.io/bqncrate/
+(1⊸»⊸∨' '⊸≠)⊸/d1	Remove duplicate spaces, turning each sequence of spaces into one</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_primitives"><a href="https://mlochbaum.github.io/BQN/doc/primitive.html">Primitives</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Functions</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Glyph</th>
+<th class="tableblock halign-left valign-top">Monadic</th>
+<th class="tableblock halign-left valign-top">Dyadic</th>
+</tr>
+</thead>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Modifiers</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Glyph</th>
+<th class="tableblock halign-left valign-top">Name(s)</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">⊸</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Before/Bind</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{(𝔽 𝕨 ⊣ 𝕩)𝔾 𝕩}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔾&#8217;s left argument comes from 𝔽</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_blocks"><a href="https://mlochbaum.github.io/BQN/doc/block.html">Blocks</a></h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+In BQN, a block is any piece of code surrounded with curly braces {}.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://mlochbaum.github.io/BQN/doc/block.html" class="bare">https://mlochbaum.github.io/BQN/doc/block.html</a>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Special Names</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Lowercase</th>
+<th class="tableblock halign-left valign-top">Uppercase</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕩</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕏</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right argument</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕨</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕎</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left argument, or Nothing (·)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕤</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕊</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Function self-reference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕗</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔽</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left operand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕘</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔾</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right operand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕣</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modifier self-reference</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-05 12:48:51 +0200
+</div>
+</div>
+</body>
+</html>
