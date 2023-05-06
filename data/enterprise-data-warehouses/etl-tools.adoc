@@ -1,10 +1,8 @@
-= EDW 04
-
-.TODO
+== ETL Tools
 
 . Visual paradigm - good merge of ETL.
 . Data brics
-. https://doc.serenytics.com/developer/api_reference/python_client/ [serenytics]
+. https://doc.serenytics.com/developer/api_reference/python_client/[serenytics]
 . PowerQuery language M
 .. Guy in a cube.
 . DAX
@@ -17,7 +15,7 @@
 
 . azure sql, azure data factory
 
-1. ETL
+1 - ETL
 
 E -> T -> L (transformation before load)
 
@@ -29,13 +27,13 @@ Expensive database ELT, all load on database.
 
 Cheap databse ETL do the job outside
 
-2. Scheduler
+2 - Scheduler
 
 cron
 
-3. Orchestration
+3 - Orchestration
 
-4. Metadata management
+4 - Metadata management
 
 Data stewardship. Lecture from VZP at courses.fit.cvut.cz
 

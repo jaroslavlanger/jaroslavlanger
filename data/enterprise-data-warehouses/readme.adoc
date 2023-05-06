@@ -4,15 +4,14 @@
 :stylesheet: ./../../style.css
 :linkcss:
 :toc:
+:experimental:
 
 .TODO
 [%collapsible]
 ====
-* Term Project first milestone
-** Technical documentation of data sources and processing flow.
-** Create entities model.
-** Create a database model using a CASE tool.
-*** CASE capable of generating the create and insert scripts for PostgreSQL.
+Historization - Slowly changing dimensions
+* Punch through, Kimball type 1, SCD 1
+* Insert, Kimball type 2, SCD 2
 
 .Conceptual Model
 --
@@ -25,24 +24,37 @@
 --
 ====
 
-== Software
+include::introduction.adoc[]
 
-=== pgAdmin
+include::architecture.adoc[]
 
-. https://www.pgadmin.org/download/pgadmin-4-apt/
-. https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/
+include::etl-tools.adoc[]
 
-=== Pentaho Data Integration
+include::pentaho-data-integration.adoc[]
 
-* https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf
-* https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download
+include::visualization-tools.adoc[]
 
-. Input -> CSV file input
-** Lazy conversion - turn off (when troubles with conversions try switching it).
+== Glossary
 
-[source, md]
-----
-include::edw_01.md[]
-----
+TOGAF:: The Open Group Architecture Framework
+KPI:: Key Performance Indicator
+CRM:: Customer Relationship Management
+ERP:: Enterprise Resource Planning
+SCM:: Supply Chain Management
+EDW:: Enterprise Data Warehouse
+ETL:: Extract, transform, load
+OLAP:: Online analytical, processing
 
-include::edw_02.adoc[]
+== Term Project
+
+1. You got data and business questions
+2. Reporting
+3. Answer the business questions
+
+=== First Milestone
+
+* Technical documentation of data sources and processing flow.
+* Create entities model.
+* Logical database model
+* Create a database model using a CASE tool.
+** CASE capable of generating the create and insert scripts for PostgreSQL.

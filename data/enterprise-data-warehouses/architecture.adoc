@@ -1,3 +1,17 @@
+== Data Warehouse Architecture
+
+* Source layer - inputs e.g. sap, excel
+* Landing layer e.g. file system, or ETL (extract, transform, load)
+* Database
+    * Staging layer - raw data in database
+    * Integrated layer (IDL) / target - clean, normalized data, consolidation
+    * Access Layer - prepared data for special purposes, aggregations etc.
+* Information delivery layer
+
+== Integrated Data Layer Modeling
+
+* It should model the underlying business, not fit the collected data.
+
 Data Warehouse::
 Information system, stores data from company information systems for analytical use in future.
 
