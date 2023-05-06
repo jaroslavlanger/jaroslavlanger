@@ -30,19 +30,65 @@
 <p><a href="https://mlochbaum.github.io/BQN/doc/index.html">BQN documentation</a></p>
 </li>
 <li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/fold.html" class="bare">https://mlochbaum.github.io/BQN/doc/fold.html</a></p>
+</li>
+<li>
 <p><a href="https://mlochbaum.github.io/bqncrate/" class="bare">https://mlochbaum.github.io/bqncrate/</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/tutorial/expression.html" class="bare">https://mlochbaum.github.io/BQN/tutorial/expression.html</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Compound expressions are evaluated from right to left.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
 </div>
 </details>
-<div class="listingblock">
-<div class="title">Motivational Example</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<div class="title">Conor&#8217;s Running Product Exercise</div>
+<blockquote>
+But basically you&#8217;re given an array of numbers. So for instance we&#8217;ll call it 1 2 3 4 and you want to return another array of numbers which is equal to the product of each of them, but where you have removed one element each time.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.arraycast.com/episode-15-transcript" class="bare">https://www.arraycast.com/episode-15-transcript</a>
+</div>
+</div>
+<details>
+<summary class="title">Solution</summary>
 <div class="content">
-<pre class="highlight"><code class="language-bqn" data-lang="bqn"># https://mlochbaum.github.io/bqncrate/
-(1⊸»⊸∨' '⊸≠)⊸/d1	Remove duplicate spaces, turning each sequence of spaces into one</code></pre>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bqn" data-lang="bqn">×´⊸÷ 1‿2‿3‿4
+# ⟨ 24 12 8 6 ⟩</code></pre>
 </div>
 </div>
+</div>
+</details>
+<div class="listingblock">
+<div class="title">Remove duplicate spaces, turning each sequence of spaces into one</div>
+<div class="content">
+<pre class="highlight"><code class="language-bqn" data-lang="bqn">(1⊸»⊸∨' '⊸≠)⊸/d1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8201;&#8212;&#8201;<a href="https://mlochbaum.github.io/bqncrate/" class="bare">https://mlochbaum.github.io/bqncrate/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_try_bqn_online"><a href="https://mlochbaum.github.io/BQN/try.html">Try BQN Online</a></h2>
+<div class="sectionbody">
+
 </div>
 </div>
 <div class="sect1">
@@ -62,6 +108,18 @@
 <th class="tableblock halign-left valign-top">Dyadic</th>
 </tr>
 </thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">×</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiply</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">÷</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reciprocal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Divide</p></td>
+</tr>
+</tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Modifiers</caption>
@@ -88,6 +146,31 @@
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Array traversal and iteration control modifiers</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">1-Modifier</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">2-Modifier</th>
+<th class="tableblock halign-left valign-top">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">´</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fold</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -102,7 +185,7 @@ In BQN, a block is any piece of code surrounded with curly braces {}.
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Special Names</caption>
+<caption class="title">Table 4. Special Names</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -153,7 +236,7 @@ In BQN, a block is any piece of code surrounded with curly braces {}.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-05 12:48:51 +0200
+Last updated 2023-05-06 15:32:40 +0200
 </div>
 </div>
 </body>
