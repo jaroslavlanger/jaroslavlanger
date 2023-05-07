@@ -12,6 +12,7 @@ An advanced, purely functional programming language
 .TODO
 [%collapsible]
 ====
+. https://hackage.haskell.org/package/data-aviary-0.4.0/docs/Data-Aviary-Birds.html
 . https://wiki.haskell.org/Fold
 . https://stackoverflow.com/questions/39628091/defining-a-function-for-multiple-types
 . https://wiki.haskell.org/$
