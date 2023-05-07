@@ -52,6 +52,8 @@ npm install -g elm-format
 
 === https://package.elm-lang.org/packages/elm/parser/latest/Parser[Parser]
 
+=== https://package.elm-lang.org/packages/elm/html/latest/Html[Html]
+
 == Project
 
 .Initialize elm package
