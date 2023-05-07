@@ -1,0 +1,49 @@
+=== Pentaho Data Integration
+
+* https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf
+* https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download
+
+Create connection between elements::
+Hold kbd:[shift], right click element FROM, right click element TO.
+Align elements::
+Select elements with mouse. Press kbd:[ctrl+up] (or other direction).
+
+*Transformations*
+
+. Use variables in filenames e.g. `+${root_path}/+`.
+** Edit -> Set environment variables
+. In transformation, right click -> properties -> miscellaneous
+** Check: Make the transformation database transactional.
+. Pentaho always searches for the minimal value of a sequence.
+** When having new table, add dummy line with sequence number set to 0.
+
+. Input -> CSV file input
+** Lazy conversion - turn off (when troubles with conversions try switching it).
+. Input -> Table input
+** Get SQL select statement.
+
+. Transformation
+** -> Value mapper
+** -> Select values
+*** Press Get fields to select
+*** Selects subset of fields and renames them (do based on Logical Data Map).
+*** Delete unwanted fields using kdb:[del].
+*** Reorder the fields using kdb:[ctrl+up] (or down).
+
+. Data Warehouse
+.. -> Dimension lookup/update
+*** For historization
+*** Last update field - type of dimensions update = date of last update.
+*** Technical key, Use sequence
+*** Stream datefield, use it when you want historize dates based on data
+just the date of the transformation run.
+
+. Output -> Table output
+** For stage database set Truncate table ON
+
+*Jobs*
+
+. Design -> General
+.. -> START
+.. -> Transformation
+.. -> Success

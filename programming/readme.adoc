@@ -10,10 +10,14 @@
 ====
 * https://dl.acm.org/doi/10.1145/359576.359579[1978, John Backus, Can programming be liberated from the von Neumann style?: a functional style and its algebra of programs]
 * https://dl.acm.org/doi/10.1145/358896.358899[1980, Kenneth E. Iverson, Notation as a tool of thought]
+* https://dl.acm.org/doi/10.1145/3520306.3534504[2022, Conor Hoekstra, Combinatory logic and combinators in array languages]
 * https://youtube.com/playlist?list=PLVFrD1dmDdvdvWFK8brOVNL7bKHpE-9w0[Structure and Interpretation of Computer Programs - YouTube playlist by @code_report]
 * https://youtube.com/playlist?list=PLVFrD1dmDdvcjCQDPhExqP56jqxp0Ssn_[Category Theory for Programmers - YouTube playlist by @code_report]
 * https://youtube.com/playlist?list=PLVFrD1dmDdvdv7trr5j9ir7qrFK5K80X0[Seven Languages in Seven Weeks - YouTube playlist by @code_report]
+* https://en.wikipedia.org/wiki/Type_class
 * https://en.wikipedia.org/wiki/Tacit_programming
+* https://aplwiki.com/wiki/Train
+* https://docs.modular.com/mojo/
 ====
 
 == Start Programming
@@ -82,18 +86,19 @@ https://en.wikipedia.org/wiki/Evaluation_strategy[Evaluation strategy]::
 Assembly language::
 First abstraction above machine code.
 
-C Language::
+C::
 One of the most successful languages of all time.
 I believe, most of the programming languages are written in the C language.
-Its at that time popularity can be grasped from the song https://youtu.be/1S1fISh-pag[Write in C].
+You can sense C's at the time popularity from the song https://youtu.be/1S1fISh-pag[Write in C].
 
 https://go.dev/[Go]::
 "Go is a statically typed, compiled high-level programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson."
 -- https://en.wikipedia.org/wiki/Go_(programming_language)[]
 
 https://www.rust-lang.org/[Rust]::
-The most loved programming language, plus another language that made it to the Linux kernel source code.
-Memory safety done by borrow checker, is the most loved language, made it to the kernel.
+The most loved programming language.
+Memory safety is done by borrow checker.
+Is another language that made it to the Linux kernel source code.
 
 link:zsh[Z shell]::
 Z Shell is a great option for interactive login shell, extends the Bourne Shell.
@@ -113,9 +118,9 @@ Second most used programming language with very pleasant syntax.
 https://julialang.org/[Julia]::
 Great (array) language for mathematics that runs fast (jit).
 
-https://mlochbaum.github.io/BQN/[BQN]::
+link:bqn[BQN]::
 Iversonian language, by Marshall Lochbaum who started in J and implemented a lot of Dyalog APL himself.
 
 https://www.raku.org/[Raku]::
 Formerly called Perl 6.
-When regular expressions are not powerful enough, look at https://docs.raku.org/language/grammar_tutorial.html.
+When regular expressions are not powerful enough, look at Raku's https://docs.raku.org/language/grammar_tutorial.html[Grammars].

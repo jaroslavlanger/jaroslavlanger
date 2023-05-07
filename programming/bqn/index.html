@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>BQN</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>BQN</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://mlochbaum.github.io/BQN/" class="bare">https://mlochbaum.github.io/BQN/</a></p>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/quick.html" class="bare">https://mlochbaum.github.io/BQN/doc/quick.html</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/index.html">BQN documentation</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/doc/fold.html" class="bare">https://mlochbaum.github.io/BQN/doc/fold.html</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/bqncrate/" class="bare">https://mlochbaum.github.io/bqncrate/</a></p>
+</li>
+<li>
+<p><a href="https://mlochbaum.github.io/BQN/tutorial/expression.html" class="bare">https://mlochbaum.github.io/BQN/tutorial/expression.html</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Compound expressions are evaluated from right to left.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<div class="title">Conor&#8217;s Running Product Exercise</div>
+<blockquote>
+But basically you&#8217;re given an array of numbers. So for instance we&#8217;ll call it 1 2 3 4 and you want to return another array of numbers which is equal to the product of each of them, but where you have removed one element each time.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.arraycast.com/episode-15-transcript" class="bare">https://www.arraycast.com/episode-15-transcript</a>
+</div>
+</div>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bqn" data-lang="bqn">×´⊸÷ 1‿2‿3‿4
+# ⟨ 24 12 8 6 ⟩</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="listingblock">
+<div class="title">Remove duplicate spaces, turning each sequence of spaces into one</div>
+<div class="content">
+<pre class="highlight"><code class="language-bqn" data-lang="bqn">(1⊸»⊸∨' '⊸≠)⊸/d1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8201;&#8212;&#8201;<a href="https://mlochbaum.github.io/bqncrate/" class="bare">https://mlochbaum.github.io/bqncrate/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_try_bqn_online"><a href="https://mlochbaum.github.io/BQN/try.html">Try BQN Online</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_primitives"><a href="https://mlochbaum.github.io/BQN/doc/primitive.html">Primitives</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Functions</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Glyph</th>
+<th class="tableblock halign-left valign-top">Monadic</th>
+<th class="tableblock halign-left valign-top">Dyadic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">×</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiply</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">÷</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reciprocal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Divide</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Modifiers</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Glyph</th>
+<th class="tableblock halign-left valign-top">Name(s)</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">⊸</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Before/Bind</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{(𝔽 𝕨 ⊣ 𝕩)𝔾 𝕩}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔾&#8217;s left argument comes from 𝔽</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Array traversal and iteration control modifiers</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">1-Modifier</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">2-Modifier</th>
+<th class="tableblock halign-left valign-top">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">´</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fold</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_blocks"><a href="https://mlochbaum.github.io/BQN/doc/block.html">Blocks</a></h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+In BQN, a block is any piece of code surrounded with curly braces {}.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://mlochbaum.github.io/BQN/doc/block.html" class="bare">https://mlochbaum.github.io/BQN/doc/block.html</a>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Special Names</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Lowercase</th>
+<th class="tableblock halign-left valign-top">Uppercase</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕩</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕏</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right argument</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕨</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕎</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left argument, or Nothing (·)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕤</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕊</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Function self-reference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕗</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔽</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left operand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕘</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝔾</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right operand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𝕣</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modifier self-reference</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-06 15:32:40 +0200
+</div>
+</div>
+</body>
+</html>

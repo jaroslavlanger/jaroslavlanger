@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>Conda</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Conda</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, Fortran, and more.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://docs.conda.io/en/latest/" class="bare">docs.conda.io/en/latest/</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html">Installation</a></h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<div class="title">Anaconda or Miniconda?</div>
+<blockquote>
+<div class="paragraph">
+<p>Choose Anaconda if you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Are new to conda or Python.</p>
+</li>
+<li>
+<p>Like the convenience of having Python and over 1,500 scientific packages automatically installed at once.</p>
+</li>
+<li>
+<p>Have the time and disk space---a few minutes and 3 GB.</p>
+</li>
+<li>
+<p>Do not want to individually install each of the packages you want to use.</p>
+</li>
+<li>
+<p>Wish to use a set of packages curated and vetted for interoperability and usability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Choose Miniconda if you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Do not mind installing each of the packages you want to use individually.</p>
+</li>
+<li>
+<p>Do not have time or disk space to install over 1,500 packages at once.</p>
+</li>
+<li>
+<p>Want fast access to Python and the conda commands and you wish to sort out the other programs later.</p>
+</li>
+</ul>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda" class="bare">conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+Miniconda is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://docs.conda.io/en/latest/miniconda.html" class="bare">docs.conda.io/en/latest/miniconda.html</a>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">NOTE</dt>
+<dd>
+<p>If you don&#8217;t want Conda to automatically activate the base environment, run:</p>
+<div class="literalblock">
+<div class="content">
+<pre>conda config --set auto_activate_base false</pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started"><a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">Getting Started</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_managing_environments"><a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing Environments</a></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Example of environment creation, activation, listing, deactivation and deletion.</div>
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">conda create --name env-name python=3.9
+conda activate env-name
+conda env list
+conda deactivate
+conda remove --name env-name --all</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-02 13:20:49 +0200
+</div>
+</div>
+</body>
+</html>

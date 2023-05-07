@@ -1,0 +1,32 @@
+== Visualization Tools
+
+=== Recommendations
+
+* Check the appearance of your result for people with colour vision deficiency.
+** E.g. https://www.toptal.com/designers/colorfilter
+
+=== https://powerbi.microsoft.com/en-au/[Power BI]
+
+* Power Query
+* Power Pivot
+* Power View
+* Power Map
+
+, m language, dax, slicer, treemap
+
+"Power Query (Get & Transform) and Power Pivot complement each other. Power Query is the recommended experience for importing data. Power Pivot is great for modeling the data you’ve imported. Use both to shape your data in Excel so you can explore and visualize it in PivotTables, PivotCharts, and Power BI."
+-- https://support.microsoft.com/en-us/office/how-power-query-and-power-pivot-work-together-a5f52cba-2150-4fc0-bb8f-b21d69990bc0
+
+"A core capability of Power Query is to filter and combine, that is, to mash-up data from one or more of a rich collection of supported data sources. Any such data mashup is expressed using the Power Query M Formula Language. It's a functional, case sensitive language similar to F#."
+ -- https://learn.microsoft.com/en-us/powerquery-m/
+
+=== https://www.qlik.com/us/products/qlikview[QlikView]
+
+=== https://github.com/plotly/dash[Dash]
+
+* https://realpython.com/python-dash/
+
+=== https://rmarkdown.rstudio.com/index.html[R Markdown]
+
+"Your data tells a story. Tell it with R Markdown. Turn your analyses into high quality documents, reports, presentations and dashboards."
+-- https://rmarkdown.rstudio.com/index.html

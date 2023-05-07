@@ -4,12 +4,8 @@
 :source-highlighter: highlight.js
 :hide-uri-scheme:
 :toc:
-
-.TODO
-[%collapsible]
-====
-====
-
+:stylesheet: ../../style.css
+:linkcss:
 
 == Installation
 

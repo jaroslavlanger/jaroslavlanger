@@ -1,0 +1,81 @@
+= BQN
+:stylesheet: ../../style.css
+:linkcss:
+:source-language: bqn
+
+https://mlochbaum.github.io/BQN/
+
+.TODO
+[%collapsible]
+====
+. https://mlochbaum.github.io/BQN/doc/quick.html
+. https://mlochbaum.github.io/BQN/doc/index.html[BQN documentation]
+. https://mlochbaum.github.io/BQN/doc/fold.html
+. https://mlochbaum.github.io/bqncrate/
+. https://mlochbaum.github.io/BQN/tutorial/expression.html
+** Compound expressions are evaluated from right to left.
+====
+
+== Motivation
+
+.Conor's Running Product Exercise
+"But basically you're given an array of numbers. So for instance we'll call it 1 2 3 4 and you want to return another array of numbers which is equal to the product of each of them, but where you have removed one element each time."
+-- https://www.arraycast.com/episode-15-transcript
+
+.Solution
+[%collapsible]
+====
+----
+×´⊸÷ 1‿2‿3‿4
+# ⟨ 24 12 8 6 ⟩
+----
+====
+
+.Remove duplicate spaces, turning each sequence of spaces into one
+----
+(1⊸»⊸∨' '⊸≠)⊸/d1
+----
+-- https://mlochbaum.github.io/bqncrate/
+
+== https://mlochbaum.github.io/BQN/try.html[Try BQN Online]
+
+== https://mlochbaum.github.io/BQN/doc/primitive.html[Primitives]
+
+.Functions
+|===
+| Glyph | Monadic | Dyadic
+
+| × | Sign | Multiply
+| ÷ | Reciprocal | Divide
+|===
+
+.Modifiers
+|===
+| Glyph | Name(s) | Definition | Description
+
+| ⊸ | Before/Bind | {(𝔽 𝕨 ⊣ 𝕩)𝔾 𝕩} | 𝔾's left argument comes from 𝔽
+|===
+
+.Array traversal and iteration control modifiers
+|===
+| 1-Modifier | Name | 2-Modifier | Name
+
+| ´ | Fold |  | 
+|===
+
+== https://mlochbaum.github.io/BQN/doc/block.html[Blocks]
+
+"In BQN, a block is any piece of code surrounded with curly braces {}."
+-- https://mlochbaum.github.io/BQN/doc/block.html
+
+.Special Names
+|===
+| Lowercase | Uppercase | Meaning
+
+| 𝕩 | 𝕏 | Right argument
+| 𝕨 | 𝕎 | Left argument, or Nothing (·)
+| 𝕤 | 𝕊 | Function self-reference
+| 𝕗 | 𝔽 | Left operand
+| 𝕘 | 𝔾 | Right operand
+| 𝕣 | none | Modifier self-reference
+|===

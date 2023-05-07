@@ -15,6 +15,23 @@
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_case_study">Case Study</a>
+<ul class="sectlevel2">
+<li><a href="#_data_integration">Data Integration</a></li>
+<li><a href="#_reporting">Reporting</a></li>
+<li><a href="#_prediction_models">Prediction Models</a></li>
+</ul>
+</li>
+<li><a href="#_stories">Stories</a></li>
+<li><a href="#_history">History</a></li>
+<li><a href="#_database_model">Database Model</a>
+<ul class="sectlevel2">
+<li><a href="#_pgadmin">pgAdmin</a></li>
+</ul>
+</li>
+<li><a href="#_data_warehouse_architecture">Data Warehouse Architecture</a></li>
+<li><a href="#_integrated_data_layer_modeling">Integrated Data Layer Modeling</a></li>
 <li><a href="#_independent_data_marts">Independent Data Marts</a></li>
 <li><a href="#_bill_inmon">Bill Inmon</a></li>
 <li><a href="#_hub_and_spoke">Hub and Spoke</a></li>
@@ -22,7 +39,7 @@
 <li><a href="#_datamart_bus">Datamart Bus</a></li>
 <li><a href="#_daniel_lindstendt">Daniel Lindstendt</a></li>
 <li><a href="#_data_vault">Data Vault</a></li>
-<li><a href="#_data_warehouse_architecture">Data Warehouse Architecture</a>
+<li><a href="#_data_warehouse_architecture_2">Data Warehouse Architecture</a>
 <ul class="sectlevel2">
 <li><a href="#_source_systems">Source systems</a></li>
 <li><a href="#_landing_layer">Landing Layer</a></li>
@@ -31,6 +48,26 @@
 </ul>
 </li>
 <li><a href="#_exercise_pharmacy_modeling">Exercise - Pharmacy Modeling</a></li>
+<li><a href="#_etl_tools">ETL Tools</a>
+<ul class="sectlevel2">
+<li><a href="#_pentaho_data_integration">Pentaho Data Integration</a></li>
+</ul>
+</li>
+<li><a href="#_visualization_tools">Visualization Tools</a>
+<ul class="sectlevel2">
+<li><a href="#_recommendations">Recommendations</a></li>
+<li><a href="#_power_bi">Power BI</a></li>
+<li><a href="#_qlikview">QlikView</a></li>
+<li><a href="#_dash">Dash</a></li>
+<li><a href="#_r_markdown">R Markdown</a></li>
+</ul>
+</li>
+<li><a href="#_glossary">Glossary</a></li>
+<li><a href="#_term_project">Term Project</a>
+<ul class="sectlevel2">
+<li><a href="#_first_milestone">First Milestone</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -40,55 +77,10 @@
 <details>
 <summary class="title">TODO</summary>
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Term Project first milestone</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Technical documentation of data sources and processing flow.</p>
-</li>
-<li>
-<p>Create entities model.</p>
-</li>
-<li>
-<p>Create a database model using a CASE tool.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>CASE capable of generating the create and insert scripts for PostgreSQL.</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf" class="bare">https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf</a></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><a href="https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download" class="bare">https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download</a></p>
-</li>
-<li>
-<p><a href="https://stackoverflow.com/questions/47112412/unrecognized-vm-option-maxpermsize-512m-when-running-zeppelin" class="bare">https://stackoverflow.com/questions/47112412/unrecognized-vm-option-maxpermsize-512m-when-running-zeppelin</a></p>
-</li>
-<li>
-<p><a href="https://itslinuxfoss.com/fix-unable-to-locate-package-openjdk-8-jdk" class="bare">https://itslinuxfoss.com/fix-unable-to-locate-package-openjdk-8-jdk</a></p>
-</li>
-<li>
-<p><a href="http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html" class="bare">http://www.webupd8.org/p/ubuntu-ppas-by-webupd8.html</a></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Historization - Slowly changing dimensions
+* Punch through, Kimball type 1, SCD 1
+* Insert, Kimball type 2, SCD 2</p>
 </div>
 <div class="openblock">
 <div class="title">Conceptual Model</div>
@@ -119,181 +111,480 @@
 </div>
 </div>
 </details>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-md" data-lang="md">Technologies
-* ETL Tool - pentaho
-* Database - PostgreSQL
-* Reporting - Power BI
-
-Business Intelligence
-
-    Set of *processes*, know-how, aplications and technologies.
-    It enables to optimize processes, gather overview of business situation.
-    It gives the business and edge over competition.
-
-It's not about technologies.
-
-Technology changes, the basic principle stays.
-* Company collect data, if it can leverage them, it gives it an edge.
-    * e.g. I know when you run out of a product, I send you a promo-code so you buys it again.
-
-
-Data Warehouse Examples
-* Books
-* SQL Database
-* Excel sheets
-* SQL Code
-
-Data Warehouse
-* consistency and reliability.
-* Often implemented as as big database.
-* Often uses complicated code for measuring KPIs.
-* Itself it is a project, someone must develop and maintain it.
-* When done right, the information is transparent and auditable.
-
-## Case Study
-
-Company XYZ
-* new systems: ERP, CRM, SCM
-
-Digitalization
-
-Problems:
-* Reporting - slow and dumb
-* Data are not consolidated
-* Product information are divergent
-* It requires a lot of manual work
-
-BSEARCH (SVYHLEDAT) - returns
-
-Power Query
-Power BI
-
-### Data Integration
-* Joining data tables
-
-Data warehouse should model the business logic.
-It transforms multiple data sources.
-
-Excel has data connectors.
-On update it reloads the data.
-
-The raw data should never be in simple file e.g. Excel sheet, so the leaks are harder to do.
-
-
-Business Definitions must be clear and transparent, so every entity agrees when calculated.
-
-### Reporting
-
-To whom the report is made:
-* user - sees details related to his field
-* analytic - sees more information except the critically confidential
-* manager - confindential information about fields he has responsibility
-* controlling - excel with details
-* director - very simple reports over all domains
-
-
-Customer pathway (experience)
-* How the customer behaves on the website / in life.
-* Customer Experience 360 - segmentation
-
-
-Company evaluation based on data.
-
-### Prediction Models
-
-* When the new technology pays off.
-* When a specific machine breaks.
-* Cluster analysis
-
-
-## Stories
-
-Wallmart
-* pregnant woman is ultra loyal
-
-Barack Obama
-* won the presidential thanks to better analytics of unified people behaviour.
-* -&gt;
-
-* EDW as a Source of Information
-
-## History
-
-1. Until 15. century
-    * Master - student
-    * Could create anything
-2. 15.-16. century north Italy
-    * Manufacture
-    * This requires some system to organize the information
-    * Employees were less skilled, doing less simple job
-3. Scientific Management Theory - Winslow Taylor
-    * the smaller individual parts, the better and cheaper it become
-4. Henry Ford
-    * motivated employees
-    * automated production line
-5. Tomas Bata
-    * Combination of Taylor and Ford
-6. 1970 Edgar Frank Codd from IBM - A Relational Model of Data for Large Shared Data Banks
-7. BI 1.0 - Tools using database
-    * These are the ones who created it Oracle, IBM, Microsoft, Teradata, SAP
-    * business intelligence was for the big players
-8. BI 2.0 - Internet
-    * business intelligence for smaller shops
-9. Cloud
-    * Everything is tracked, ...
-    * Business Intelligence became critical for the business.
-
-
-## Database Model
-
-* Conceptual model
-    * Relations between entities
-* Logical (database) model
-    * Maps conceptual model to database tables
-    * Normalization CNF
-* Physical model
-    * Specific implementation of logical model
-    * e.g. data segmentation, indexes, partitioning
-
-## Data Warehouse (DWH) Architecture
-
-* Source layer - inputs e.g. sap, excel
-* Landing layer e.g. file system, or ETL (extract, transform, load)
-* Database
-    * Staging layer - raw data in database
-    * Integrated layer (IDL) / target - clean, normalized data, consolidation
-    * Access Layer - prepared data for special purposes, aggregations etc.
-* Information delivery layer
-
-## Integrated Data Layer Modeling
-
-* It should model the underlying business, not fit the collected data.
-
-## Definitions
-
-* TOGAF - The Open Group Architecture Framework
-* KPI - Key Performance Indicator
-* CRM - Customer Relationship Management
-* ERP - Enterprise Resource Planning
-* SCM - Supply Chain Management
-* EDW - Enterprise Data Warehouse
-* ETL - Extract, transform, load
-* OLAP - Online analytical, processing
-
-### Term Project
-
-1. You got data and business questions
-2. Reporting
-3. Answer the business questions
-
-### First Part
-
-* Logical database model
-* Database PostgreSQL</code></pre>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Technologies</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>ETL Tool - pentaho</p>
+</li>
+<li>
+<p>Database - PostgreSQL</p>
+</li>
+<li>
+<p>Reporting - Power BI</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Business Intelligence</dt>
+<dd>
+<p>Set of <strong>processes</strong>, know-how, aplications and technologies.
+It enables to optimize processes, gather overview of business situation.
+It gives the business and edge over competition.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+It&#8217;s not about technologies.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Technology changes, the basic principle stays</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Company collect data, if it can leverage them, it gives it an edge.</p>
+</li>
+<li>
+<p>e.g. I know when you run out of a product, I send you a promo-code so you buys it again.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Data Warehouse Examples</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Books</p>
+</li>
+<li>
+<p>SQL Database</p>
+</li>
+<li>
+<p>Excel sheets</p>
+</li>
+<li>
+<p>SQL Code</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Data Warehouse</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>consistency and reliability.</p>
+</li>
+<li>
+<p>Often implemented as as big database.</p>
+</li>
+<li>
+<p>Often uses complicated code for measuring KPIs.</p>
+</li>
+<li>
+<p>Itself it is a project, someone must develop and maintain it.</p>
+</li>
+<li>
+<p>When done right, the information is transparent and auditable.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_case_study">Case Study</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Company XYZ</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>new systems: ERP, CRM, SCM</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Digitalization</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Problems</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Reporting - slow and dumb</p>
+</li>
+<li>
+<p>Data are not consolidated</p>
+</li>
+<li>
+<p>Product information are divergent</p>
+</li>
+<li>
+<p>It requires a lot of manual work</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>BSEARCH (SVYHLEDAT) - returns</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Power Query</p>
+</li>
+<li>
+<p>Power BI</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_data_integration">Data Integration</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Joining data tables</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Data warehouse should model the business logic.
+It transforms multiple data sources.</p>
+</div>
+<div class="paragraph">
+<p>Excel has data connectors.
+On update it reloads the data.</p>
+</div>
+<div class="paragraph">
+<p>The raw data should never be in simple file e.g. Excel sheet, so the leaks are harder to do.</p>
+</div>
+<div class="paragraph">
+<p>Business Definitions must be clear and transparent, so every entity agrees when calculated.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reporting">Reporting</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">To whom the report is made</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>user - sees details related to his field</p>
+</li>
+<li>
+<p>analytic - sees more information except the critically confidential</p>
+</li>
+<li>
+<p>manager - confindential information about fields he has responsibility</p>
+</li>
+<li>
+<p>controlling - excel with details</p>
+</li>
+<li>
+<p>director - very simple reports over all domains</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Customer pathway (experience)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>How the customer behaves on the website / in life.</p>
+</li>
+<li>
+<p>Customer Experience 360 - segmentation</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Company evaluation based on data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prediction_models">Prediction Models</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When the new technology pays off.</p>
+</li>
+<li>
+<p>When a specific machine breaks.</p>
+</li>
+<li>
+<p>Cluster analysis</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stories">Stories</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Wallmart</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>pregnant woman is ultra loyal</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Barack Obama</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>won the presidential thanks to better analytics of unified people behaviour.</p>
+</li>
+<li>
+<p>&#8594;</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>EDW as a Source of Information</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_history">History</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Until 15. century</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Master - student</p>
+</li>
+<li>
+<p>Could create anything</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>15.-16. century north Italy</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Manufacture</p>
+</li>
+<li>
+<p>This requires some system to organize the information</p>
+</li>
+<li>
+<p>Employees were less skilled, doing less simple job</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Scientific Management Theory - Winslow Taylor</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the smaller individual parts, the better and cheaper it become</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Henry Ford</p>
+<div class="ulist">
+<ul>
+<li>
+<p>motivated employees</p>
+</li>
+<li>
+<p>automated production line</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tomas Bata</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Combination of Taylor and Ford</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1970 Edgar Frank Codd from IBM - A Relational Model of Data for Large Shared Data Banks</p>
+</li>
+<li>
+<p>BI 1.0 - Tools using database</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These are the ones who created it Oracle, IBM, Microsoft, Teradata, SAP</p>
+</li>
+<li>
+<p>business intelligence was for the big players</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>BI 2.0 - Internet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>business intelligence for smaller shops</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cloud</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Everything is tracked, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Business Intelligence became critical for the business.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database_model">Database Model</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Conceptual model</p>
+</li>
+<li>
+<p>Relations between entities</p>
+</li>
+<li>
+<p>Logical (database) model</p>
+</li>
+<li>
+<p>Maps conceptual model to database tables</p>
+</li>
+<li>
+<p>Normalization CNF</p>
+</li>
+<li>
+<p>Physical model</p>
+</li>
+<li>
+<p>Specific implementation of logical model</p>
+</li>
+<li>
+<p>e.g. data segmentation, indexes, partitioning</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_pgadmin">pgAdmin</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://www.pgadmin.org/download/pgadmin-4-apt/" class="bare">www.pgadmin.org/download/pgadmin-4-apt/</a></p>
+</li>
+<li>
+<p><a href="https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/" class="bare">www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_warehouse_architecture">Data Warehouse Architecture</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Source layer - inputs e.g. sap, excel</p>
+</li>
+<li>
+<p>Landing layer e.g. file system, or ETL (extract, transform, load)</p>
+</li>
+<li>
+<p>Database</p>
+</li>
+<li>
+<p>Staging layer - raw data in database</p>
+</li>
+<li>
+<p>Integrated layer (IDL) / target - clean, normalized data, consolidation</p>
+</li>
+<li>
+<p>Access Layer - prepared data for special purposes, aggregations etc.</p>
+</li>
+<li>
+<p>Information delivery layer</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrated_data_layer_modeling">Integrated Data Layer Modeling</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>It should model the underlying business, not fit the collected data.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Data Warehouse</dt>
@@ -305,6 +596,9 @@ Barack Obama
 <p>Exposed data (end-point of the data warehouse).</p>
 </dd>
 </dl>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -459,7 +753,7 @@ Barack Obama
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_warehouse_architecture">Data Warehouse Architecture</h2>
+<h2 id="_data_warehouse_architecture_2">Data Warehouse Architecture</h2>
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
@@ -701,10 +995,453 @@ Barack Obama
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_etl_tools">ETL Tools</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Visual paradigm - good merge of ETL.</p>
+</li>
+<li>
+<p>Data brics</p>
+</li>
+<li>
+<p><a href="https://doc.serenytics.com/developer/api_reference/python_client/">serenytics</a></p>
+</li>
+<li>
+<p>PowerQuery language M</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Guy in a cube.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>DAX</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Fabian Ferrari SQLBI</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>SSIS - SQL Server Integration Services</p>
+</li>
+<li>
+<p>BIML - BI Markup Language</p>
+</li>
+<li>
+<p><a href="https://www.datale.cz/" class="bare">www.datale.cz/</a></p>
+</li>
+<li>
+<p>Talend opensource</p>
+</li>
+<li>
+<p>data integrator</p>
+</li>
+<li>
+<p>azure sql, azure data factory</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>1 - ETL</p>
+</div>
+<div class="paragraph">
+<p>E &#8594; T &#8594; L (transformation before load)</p>
+</div>
+<div class="paragraph">
+<p>E &#8594; L &#8594; T (transformation after load)</p>
+</div>
+<div class="paragraph">
+<p>ELT vs ETL</p>
+</div>
+<div class="paragraph">
+<p>Expensive database ELT, all load on database.</p>
+</div>
+<div class="paragraph">
+<p>Cheap databse ETL do the job outside</p>
+</div>
+<div class="paragraph">
+<p>2 - Scheduler</p>
+</div>
+<div class="paragraph">
+<p>cron</p>
+</div>
+<div class="paragraph">
+<p>3 - Orchestration</p>
+</div>
+<div class="paragraph">
+<p>4 - Metadata management</p>
+</div>
+<div class="paragraph">
+<p>Data stewardship. Lecture from VZP at courses.fit.cvut.cz</p>
+</div>
+<div class="paragraph">
+<p>Power BI</p>
+</div>
+<div class="paragraph">
+<p>Azure SQL + Azure Data Factory</p>
+</div>
+<div class="paragraph">
+<p>Talend + Postgres</p>
+</div>
+<div class="paragraph">
+<p>ETLs:
+* talend (good)
+* click
+* azure data factory
+* ssis (only when skilled person)
+* pentaho</p>
+</div>
+<div class="sect2">
+<h3 id="_pentaho_data_integration">Pentaho Data Integration</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf" class="bare">www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf</a></p>
+</li>
+<li>
+<p><a href="https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download" class="bare">sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download</a></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Create connection between elements</dt>
+<dd>
+<p>Hold <kbd>shift</kbd>, right click element FROM, right click element TO.</p>
+</dd>
+<dt class="hdlist1">Align elements</dt>
+<dd>
+<p>Select elements with mouse. Press <span class="keyseq"><kbd>ctrl</kbd>+<kbd>up</kbd></span> (or other direction).</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Transformations</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use variables in filenames e.g. <code>${root_path}/</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit &#8594; Set environment variables</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In transformation, right click &#8594; properties &#8594; miscellaneous</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check: Make the transformation database transactional.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Pentaho always searches for the minimal value of a sequence.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When having new table, add dummy line with sequence number set to 0.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Input &#8594; CSV file input</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Lazy conversion - turn off (when troubles with conversions try switching it).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Input &#8594; Table input</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Get SQL select statement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Transformation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8594; Value mapper</p>
+</li>
+<li>
+<p>&#8594; Select values</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Press Get fields to select</p>
+</li>
+<li>
+<p>Selects subset of fields and renames them (do based on Logical Data Map).</p>
+</li>
+<li>
+<p>Delete unwanted fields using kdb:[del].</p>
+</li>
+<li>
+<p>Reorder the fields using kdb:[ctrl+up] (or down).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Data Warehouse</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>&#8594; Dimension lookup/update</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For historization</p>
+</li>
+<li>
+<p>Last update field - type of dimensions update = date of last update.</p>
+</li>
+<li>
+<p>Technical key, Use sequence</p>
+</li>
+<li>
+<p>Stream datefield, use it when you want historize dates based on data
+just the date of the transformation run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Output &#8594; Table output</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For stage database set Truncate table ON</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Jobs</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Design &#8594; General</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>&#8594; START</p>
+</li>
+<li>
+<p>&#8594; Transformation</p>
+</li>
+<li>
+<p>&#8594; Success</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visualization_tools">Visualization Tools</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_recommendations">Recommendations</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Check the appearance of your result for people with colour vision deficiency.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>E.g. <a href="https://www.toptal.com/designers/colorfilter" class="bare">www.toptal.com/designers/colorfilter</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_power_bi"><a href="https://powerbi.microsoft.com/en-au/">Power BI</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Power Query</p>
+</li>
+<li>
+<p>Power Pivot</p>
+</li>
+<li>
+<p>Power View</p>
+</li>
+<li>
+<p>Power Map</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>, m language, dax, slicer, treemap</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+Power Query (Get &amp; Transform) and Power Pivot complement each other. Power Query is the recommended experience for importing data. Power Pivot is great for modeling the data you’ve imported. Use both to shape your data in Excel so you can explore and visualize it in PivotTables, PivotCharts, and Power BI.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://support.microsoft.com/en-us/office/how-power-query-and-power-pivot-work-together-a5f52cba-2150-4fc0-bb8f-b21d69990bc0" class="bare">support.microsoft.com/en-us/office/how-power-query-and-power-pivot-work-together-a5f52cba-2150-4fc0-bb8f-b21d69990bc0</a>
+</div>
+</div>
+<div class="paragraph">
+<p>"A core capability of Power Query is to filter and combine, that is, to mash-up data from one or more of a rich collection of supported data sources. Any such data mashup is expressed using the Power Query M Formula Language. It&#8217;s a functional, case sensitive language similar to F#."
+&#8201;&#8212;&#8201;<a href="https://learn.microsoft.com/en-us/powerquery-m/" class="bare">learn.microsoft.com/en-us/powerquery-m/</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_qlikview"><a href="https://www.qlik.com/us/products/qlikview">QlikView</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_dash"><a href="https://github.com/plotly/dash">Dash</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://realpython.com/python-dash/" class="bare">realpython.com/python-dash/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_r_markdown"><a href="https://rmarkdown.rstudio.com/index.html">R Markdown</a></h3>
+<div class="quoteblock">
+<blockquote>
+Your data tells a story. Tell it with R Markdown. Turn your analyses into high quality documents, reports, presentations and dashboards.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://rmarkdown.rstudio.com/index.html" class="bare">rmarkdown.rstudio.com/index.html</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">Glossary</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">TOGAF</dt>
+<dd>
+<p>The Open Group Architecture Framework</p>
+</dd>
+<dt class="hdlist1">KPI</dt>
+<dd>
+<p>Key Performance Indicator</p>
+</dd>
+<dt class="hdlist1">CRM</dt>
+<dd>
+<p>Customer Relationship Management</p>
+</dd>
+<dt class="hdlist1">ERP</dt>
+<dd>
+<p>Enterprise Resource Planning</p>
+</dd>
+<dt class="hdlist1">SCM</dt>
+<dd>
+<p>Supply Chain Management</p>
+</dd>
+<dt class="hdlist1">EDW</dt>
+<dd>
+<p>Enterprise Data Warehouse</p>
+</dd>
+<dt class="hdlist1">ETL</dt>
+<dd>
+<p>Extract, transform, load</p>
+</dd>
+<dt class="hdlist1">OLAP</dt>
+<dd>
+<p>Online analytical, processing</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_term_project">Term Project</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You got data and business questions</p>
+</li>
+<li>
+<p>Reporting</p>
+</li>
+<li>
+<p>Answer the business questions</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_first_milestone">First Milestone</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Technical documentation of data sources and processing flow.</p>
+</li>
+<li>
+<p>Create entities model.</p>
+</li>
+<li>
+<p>Logical database model</p>
+</li>
+<li>
+<p>Create a database model using a CASE tool.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CASE capable of generating the create and insert scripts for PostgreSQL.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-18 19:26:04 +0200
+Last updated 2023-05-06 12:47:15 +0200
 </div>
 </div>
 </body>

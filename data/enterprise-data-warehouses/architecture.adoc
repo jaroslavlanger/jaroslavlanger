@@ -1,0 +1,168 @@
+== Data Warehouse Architecture
+
+* Source layer - inputs e.g. sap, excel
+* Landing layer e.g. file system, or ETL (extract, transform, load)
+* Database
+    * Staging layer - raw data in database
+    * Integrated layer (IDL) / target - clean, normalized data, consolidation
+    * Access Layer - prepared data for special purposes, aggregations etc.
+* Information delivery layer
+
+== Integrated Data Layer Modeling
+
+* It should model the underlying business, not fit the collected data.
+
+Data Warehouse::
+Information system, stores data from company information systems for analytical use in future.
+
+Data Mart::
+Exposed data (end-point of the data warehouse).
+
+== Independent Data Marts
+
+....
+| Source | Extract-Transform-Load | Data Mart | Applications |
+....
+
+
+== Bill Inmon
+
+* 1990 Building the Data Warehouse
+* Top Down
+* Waterfall
+* Better for long-term big projects.
+
+== Hub and Spoke
+
+....
+|------------------- back room ---------------|                           |
+|                      |------------------- front room -------------------|
+| Source | acquisition | warehouse | delivery | data marts | applications |
+....
+
+== Ralph Kimball
+
+* Dimensional modeling
+* Defined historization data (SCD)
+** Slowly changing dimension.
+* Better for quick solutions for small things.
+* Until 12 Data marts it is the more profitable.
+
+== Datamart Bus
+
+....
+| Source | Staging | Presentation | Access Tools |
+....
+
+== Daniel Lindstendt
+
+== Data Vault
+
+"All the data, all the time".
+
+Data are just stored, no afterwards manipulation is allowed.
+
+* 1995 first unpublished talk.
+* 2010 The Business of Data Vault modelling
+* 2015 Building a scalable data warehouse with data vault 2.0 (TOP!)
+
+....
+
+|        | Hard Business Rules |                      | Soft Business Rules |          |
+| Source | ------------------- | Staging | Data Vault | ------------------- | Delivery |
+....
+
+HUB:: business keys
+Satellite:: Reference of HUB.
+Link:: links between satellites
+Reference:: Codebooks
+
+* Query assistant
+* Point in time
+* Bridge
+
+== Data Warehouse Architecture
+
+....
+| Source | Landing   | Staging | Integrated | Access | Delivery          |
+|        | Archiving |                               |                   |
+|        | Data Lake |                               |                   |
+|        | --------------- Sandbox ----------------- |                   |
+| ---------------- Technical Metadata -------------- |                   |
+|                                                    | Business Metadata |
+|                                                    | Data Lineage      |
+....
+
+* Data Lineage - from Delivery automatically returns source information.
+
+=== Source systems
+
+* Definition of time slots.
+* Linked server.
+* API
+
+=== Landing Layer
+
+* Full Load or Increment or Delta
+* First layer interacts with the database.
+* Change data capture (CDC)
+** Kafka - captures data about such events.
+
+=== Data Base
+
+*Stage Layer*
+
+* Validation of data before the target.
+
+*Integrated Core Target*
+
+* 3NF Norm
+* No business logic
+* Historization
+* Easily over billion lines
+* Slowly changing dimension
+** SCD0
+** SCD1
+** SCD2
+
+*Semantic Layer*
+
+* Source of ground truth.
+* Serves as separation of inherent and business properties.
+* This layer is optional but highly recommended.
+* View
+* Contains set of Datamarts.
+** Datamart
+
+_Dimensional Modeling_
+
+* Factual table
+* Dimensional table
+* Factual table contains numbers NOT averages, not sums.
+* Schemes
+** Star scheme, all dimensions are linked to one fact.
+** Snowflake, links between dimension tables.
+** Snow storm - more fact tables in one.
+* Dimension can't have facts!
+
+=== Delivery Layer
+
+
+== Exercise - Pharmacy Modeling
+
+* Supplier
+* Product
+** RX - Prescription
+** OTC - Free drugs
+** Other - Supplements
+* Drugstore
+* Shift
+* Distributor
+* Employee
+* Warehouse
+* Transaction
+** Sale
+** Reservation
+** Reclamation
+* Loyalty program
+* Customer

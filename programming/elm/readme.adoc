@@ -1,0 +1,68 @@
+= Elm
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+
+"Elm is a functional programming language for declaratively creating web browser based graphical user interfaces."
+-- https://en.wikibooks.org/wiki/Elm_programming_language
+
+.TODO
+[%collapsible]
+====
+* https://semver.org/[Semantic Versioning 2.0.0]
+* Redux pattern.
+* Elm is inserted as bundle into a div.
+* Elm compiler is implemented in haskell.
+* https://www.schoolofhaskell.com/user/griba/elm-from-a-haskell-perspective
+====
+
+== https://elm-lang.org/try[Try Elm! Online Editor]
+
+== https://guide.elm-lang.org/install/elm.html[Installation]
+
+.Install elm-test
+[source, console]
+npm install -g elm-test
+
+.Install elm-format
+[source, console]
+npm install -g elm-format
+
+== https://elm-lang.org/docs/syntax[Syntax]
+
+== https://package.elm-lang.org/packages/elm/core/latest/[Core Libraries]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/Basics[Basics]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/Tuple[Tuple]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/Maybe[Maybe]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/List[List]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/String[String]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/Dict[Dict]
+
+=== https://package.elm-lang.org/packages/elm/core/latest/Debug[Debug]
+
+== Packages
+
+=== https://package.elm-lang.org/packages/elm/json/latest/[JSON in Elm]
+
+=== https://package.elm-lang.org/packages/elm/parser/latest/Parser[Parser]
+
+=== https://package.elm-lang.org/packages/elm/html/latest/Html[Html]
+
+== Project
+
+.Initialize elm package
+[source, console]
+elm init
+
+.Install package (add dependency)
+[source, console]
+----
+# Let's for example install package elm/parser
+elm install elm/parser
+----
