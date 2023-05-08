@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>Unix</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Unix</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#references">References</a></li>
+<li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#terminology">Terminology</a></li>
+<li><a href="#what-is-posix">What is POSIX?</a></li>
+<li><a href="#shell-command-language">Shell Command Language</a></li>
+<li><a href="#posix-utilities">POSIX Utilities</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#shell-principle-commands-and-keywords">Shell principle - commands and keywords</a></li>
+<li><a href="#comments-tell-shell-to-ignore-it">Comments - tell shell to ignore it</a></li>
+<li><a href="#command-arguments-and-options">Command Arguments and Options</a></li>
+<li><a href="#use-tab-autocompletion">USE TAB AUTOCOMPLETION</a></li>
+<li><a href="#use-shell-history">USE SHELL HISTORY</a></li>
+<li><a href="#command-types">Command Types</a></li>
+<li><a href="#more-information-about-commands">More information about commands</a></li>
+<li><a href="#expansions-and-suppressions">Expansions and suppressions</a></li>
+</ul>
+</li>
+<li><a href="#files-and-directories">Files and directories</a>
+<ul class="sectlevel2">
+<li><a href="#paths">Paths</a></li>
+<li><a href="#manipulation-with-files-and-directories">Manipulation with files and directories</a></li>
+<li><a href="#information-about-files-directories">Information about files, directories</a></li>
+<li><a href="#compression-and-decompression">Compression and decompression</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#globbing-and-wildcards">Globbing and Wildcards</a></li>
+<li><a href="#gnu-findutils">GNU Findutils</a></li>
+<li><a href="#read-files">Read files</a></li>
+<li><a href="#standard-input-standard-output-standard-error-output-stdin-stdout-stderr">Standard input, standard output, standard error output (Stdin, stdout, stderr)</a></li>
+<li><a href="#pipe-command-output-redirection">Pipe - command output redirection</a></li>
+<li><a href="#compare-two-files">Compare two files</a></li>
+<li><a href="#linux-directory-structure">Linux Directory Structure</a></li>
+</ul>
+</li>
+<li><a href="#install-software">Install Software</a>
+<ul class="sectlevel2">
+<li><a href="#advanced-package-tool-apt">Advanced Package Tool (apt)</a></li>
+<li><a href="#install-from-package-deb">Install from package .deb</a></li>
+<li><a href="#version-of-installed-software">Version of installed software</a></li>
+<li><a href="#search-for-package">Search for package</a></li>
+<li><a href="#check-if-installed">Check if installed</a></li>
+</ul>
+</li>
+<li><a href="#user-management-and-privileges">User management and privileges</a>
+<ul class="sectlevel2">
+<li><a href="#adddelete-user-group">Add,delete  user | group</a></li>
+<li><a href="#add-user-to-group">Add user to group</a></li>
+<li><a href="#group-information">Group information</a></li>
+<li><a href="#change-password">Change password</a></li>
+<li><a href="#switch-user">Switch user</a></li>
+<li><a href="#superuser">Superuser</a></li>
+<li><a href="#user-permissions">User permissions</a></li>
+<li><a href="#change-permissions">Change permissions</a></li>
+</ul>
+</li>
+<li><a href="#useful-commands">Useful commands</a>
+<ul class="sectlevel2">
+<li><a href="#push-process-the-background">Push process the background</a></li>
+</ul>
+</li>
+<li><a href="#ssh">SSH</a>
+<ul class="sectlevel2">
+<li><a href="#copy-files-over-ssh">Copy files over ssh</a></li>
+<li><a href="#screen">Screen</a></li>
+<li><a href="#sshfs">SSHFS</a></li>
+<li><a href="#mount-local-direcotry-to-remote-directory">Mount local direcotry to remote directory</a></li>
+<li><a href="#if-user-on-local-is-different-than-the-one-logging-with-ssh">If user on local is different than the one logging with ssh</a></li>
+<li><a href="#unmount">Unmount</a></li>
+</ul>
+</li>
+<li><a href="#processes">Processes</a></li>
+<li><a href="#environments-and-variables">Environments and variables</a>
+<ul class="sectlevel2">
+<li><a href="#set">set</a></li>
+<li><a href="#compgen-v">compgen -v</a></li>
+<li><a href="#global-env-printenv">GLOBAL: env, printenv &#8230;&#8203;</a></li>
+<li><a href="#printenv">printenv</a></li>
+<li><a href="#local">LOCAL</a></li>
+<li><a href="#open-new-shell">Open new shell</a></li>
+<li><a href="#history">History</a></li>
+</ul>
+</li>
+<li><a href="#text-transformation">Text transformation</a>
+<ul class="sectlevel2">
+<li><a href="#tr">tr</a></li>
+</ul>
+</li>
+<li><a href="#expansions">Expansions</a></li>
+<li><a href="#grep">Grep</a>
+<ul class="sectlevel2">
+<li><a href="#regular-expressions">Regular Expressions</a></li>
+</ul>
+</li>
+<li><a href="#command-line-editing">Command Line Editing</a></li>
+<li><a href="#sed">sed</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Unix (/ˈjuːnɪks/; trademarked as UNIX) is a family of multitasking, multiuser computer operating systems that derive from the original AT&amp;T Unix
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://en.wikipedia.org/wiki/Unix" class="bare">https://en.wikipedia.org/wiki/Unix</a>
+</div>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell">Displey cursore under the prompt</a></p>
+</li>
+<li>
+<p><code>ls | xargs -I {} echo {}</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title"><a href="https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture" class="bare">https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture</a></div>
+<p>uname -a</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="references">References</h2>
+<div class="sectionbody">
+<div class="ulist bibliography">
+<ul class="bibliography">
+<li>
+<p><a id="POSIX-2017"></a>[POSIX-2017] <a href="https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/">POSIX.1-2017</a></p>
+</li>
+<li>
+<p><a id="coreutils"></a>[coreutils] <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutils 9.3</a></p>
+</li>
+<li>
+<p><a id="findutils"></a>[findutils] <a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html">GNU Findutils 4.9.0</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="disclaimer">Disclaimer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The document started as a notes of a Shell Programming course at UCT, Prague.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="terminology">Terminology</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux kernel</a></dt>
+<dd>
+<p>The Linux kernel is a free and open-source, operating system kernel. It was originally authored in 1991 by Linus Torvalds.
+"The kernel is a computer program at the core of a computer&#8217;s operating system and generally has complete control over everything in the system, facilitates interactions between hardware and software components."&#8201;&#8212;&#8201;<a href="https://en.wikipedia.org/wiki/Kernel_(operating_system" class="bare">https://en.wikipedia.org/wiki/Kernel_(operating_system</a>)</p>
+</dd>
+<dt class="hdlist1">GNU/Linux Operating System</dt>
+<dd>
+<p>"By 1990 we had either found or written all the major components except one—the kernel. Then Linux, a Unix-like kernel, was developed by Linus Torvalds in 1991 and made free software in 1992. Combining Linux with the almost-complete GNU system resulted in a complete operating system: the GNU/Linux system."&#8201;&#8212;&#8201;<a href="https://www.gnu.org/gnu/gnu-history.html" class="bare">https://www.gnu.org/gnu/gnu-history.html</a></p>
+</dd>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Desktop_environment">Desktop Environment</a></dt>
+<dd>
+<p>Is an implementation of a bundle of programs running on top of a computer operating system that share a common graphical user interface (GUI).
+A desktop environment typically consists of icons, windows, toolbars, folders, wallpapers and desktop widgets.
+E.g. GNOME, KDE Plasma, XFCE.</p>
+</dd>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Linux_distribution">Linux Distribution</a></dt>
+<dd>
+<p>A Linux distribution (often abbreviated as distro) is an operating system made from a software collection. A typical Linux distribution comprises a Linux kernel, package management system, GNU tools and libraries, additional software, documentation, a window system (the most common being the X Window System, or, more recently, Wayland), a window manager, and a desktop environment.
+E.g. Debian, Ubuntu, Mint, Fedora, Gentoo.</p>
+</dd>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Package_manager">Package manager</a></dt>
+<dd>
+<p>"A package manager or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner."&#8201;&#8212;&#8201;<a href="https://en.wikipedia.org/wiki/Package_manager" class="bare">https://en.wikipedia.org/wiki/Package_manager</a>
+E.g. APT, pacman, yum.</p>
+</dd>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Command-line_interface">Terminal, command-line interface (CLI)</a></dt>
+<dd>
+<p>An application where you interact by typing commands at the bottom (the window).
+E.g. xterm, GNOME terminal, putty.</p>
+</dd>
+<dt class="hdlist1">Command-line</dt>
+<dd>
+<p>Is the line in the terminal, where you write commands.</p>
+</dd>
+<dt class="hdlist1">Shell (command-line interpreter)</dt>
+<dd>
+<p>The program which interprets what you type in the command-line.
+E.g. Bourne shell (sh), bash, zsh, dash.</p>
+</dd>
+<dt class="hdlist1">Prompt</dt>
+<dd>
+<p>First letters of the command-line that are static (does not change by typing).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-is-posix">What is POSIX?</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems.[1] POSIX defines both the system and user-level application programming interfaces (APIs), along with command line shells and utility interfaces
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://en.wikipedia.org/wiki/POSIX" class="bare">https://en.wikipedia.org/wiki/POSIX</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="shell-command-language"><a href="https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/shell.html">Shell Command Language</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="posix-utilities"><a href="https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/utilities.html">POSIX Utilities</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>The terminal enviroment</strong></p>
+</div>
+<div class="paragraph">
+<p>Once the terminal is open, what you see is the Command-line interface (CLI). On the left to the cursor is the prompt, which prompts you to take action.</p>
+</div>
+<div class="paragraph">
+<p>Usually the prompts tells a name of a current user, the name of the machine (hostname) and the location where the user is relatively to the machine (path). Typicaly it also shows, whether the logged user is a normal user ($) or superuser (#).</p>
+</div>
+<div class="paragraph">
+<p>Example of common appearance could be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">USER_NAME@HOSTNAME:PATH$</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shell-principle-commands-and-keywords">Shell principle - commands and keywords</h3>
+<div class="paragraph">
+<p>Shell is a scripting language, so you can do basically anything as in any other programming language. However shell is also a command language so most of the time you will run commands that someone already made for you. Once you will be able to use these commands, you will probably combine them into shell scripts.</p>
+</div>
+<div class="paragraph">
+<p><strong>What happens when I type something to the terminal</strong></p>
+</div>
+<div class="paragraph">
+<p>Many words have special meaning. Some words are reserved for the shell programming language, they are called <strong>keywords</strong>, multiple words are <strong>built-in commands</strong> and usually there are also many <strong>executable commands</strong> prepared for you.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="comments-tell-shell-to-ignore-it">Comments - tell shell to ignore it</h3>
+<div class="paragraph">
+<p>Everything between a hash sign <code>#</code> and the end of the line is ignored. So it is perfect for making comments or remarks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># anything written here is ignored</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sometimes I will use the <code>#</code> sign to show you the command&#8217;s output. It is ignored, so it does not matter if you copy-past the lines with it or not.</p>
+</div>
+<div class="paragraph">
+<p><strong>command exit</strong></p>
+</div>
+<div class="paragraph">
+<p><code>exit</code> command terminates current shell. If you run only one shell, it also close the terminal. Shell is case-sensitive, so while <code>exit</code> followed by enter closes the terminal, <code>Exit</code> only tells you that <code>Exit: command not found</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">Exit
+# Exit: command not found</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>command echo</strong></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s start with printing "Hello world!". Type <code>echo Hello world!</code> and press enter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">echo Hello world! # Hello world!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-arguments-and-options">Command Arguments and Options</h3>
+<div class="paragraph">
+<p>You can pass arguments to the commands such you passed <code>Hello world!</code> to <code>echo</code> command. Commonly, the commands also have multiple options to be run with.</p>
+</div>
+<div class="paragraph">
+<p>Probably the most common option is the option <code>--help</code> or <code>-h</code> that should help you with the command usage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">exit --help
+# exit: exit [n]
+#     Exit the shell.
+#
+#     Exits the shell with a status of N.  If N is omitted, the exit status
+#     is that of the last command executed.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is common there are two types of options.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Single letter, starts with hyphen-minus character <code>-x</code></p>
+</li>
+<li>
+<p>full text (no spaces), stars with double minus <code>--xxxx</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So the command structure look like this <code>command [-o | --options] [arguments]</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-tab-autocompletion">USE TAB AUTOCOMPLETION</h3>
+<div class="paragraph">
+<p>Whenever, you press tab, the terminal autocomplete the word you are writing. If there is more than one posibility, nothing happens. Until you press tab twice.  Than it shows you the all the possible completions.</p>
+</div>
+<div class="paragraph">
+<p><strong>It&#8217;s unbelievable great feature</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-shell-history">USE SHELL HISTORY</h3>
+<div class="paragraph">
+<p>It is a huge mistake to write commands more than once. Shell remembers what commands you have written, so you can just call them from the history. In case you used it as the previous command, press <code>[arrow up]</code>. In case you wrote it some commands ago, press <code>[ctrl-r]</code> and start typing, if the result is not what you want, you either press <code>[ctrl-r]</code> again for next match, or <code>[ecs]</code> to end the search.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed">Search for a previous command with the prefix I just typed (unix.stackexchange.com)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-types">Command Types</h3>
+<div class="paragraph">
+<p>There are several command types:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unknown</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">builtin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use <code>enable</code> or <code>compgen -b</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">executable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">files in <code>/bin</code> or <code>/usr/bin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">functions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defined functions (by user)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aliases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">concatenating more commands</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>command type</strong></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s check the type of the <code>echo</code> command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">type echo # echo is a shell builtin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ok, <code>echo</code> is a built-in command. Can i find where it is?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># type command with option -a
+type -a echo
+# echo is a shell builtin
+# echo is /bin/echo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>command enable, command compgen, command function, command alias, command unalias</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># To enable or disable shell builtins
+enable
+# List builtins
+compgen -b
+
+# Define function
+function greet() { echo "hello"; }
+
+# Create alias
+alias my_alias='command_1; command_2'
+# Destory alias
+unalias</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="more-information-about-commands">More information about commands</h3>
+<div class="paragraph">
+<p><strong>command help, command info, command man, command apropos</strong></p>
+</div>
+<div class="paragraph">
+<p>Show appropriate manual pages for given TERM</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">man -k TERM     # Equivalent to command "apropos TERM"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="expansions-and-suppressions">Expansions and suppressions</h3>
+<div class="paragraph">
+<p>Not everything you write to shell is interpreted as you wrote it. Some characters are suppressed and others are expanded.</p>
+</div>
+<div class="paragraph">
+<p>White space characters are suppressed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">echo   The   triple   spaces   are   shrinken   .
+# The triple spaces are shrinken .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some character such as tilda <code>~</code> are expanded.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">echo ~
+# /home/YOUR_USERNAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are various <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html">expansions</a> for now it is good to know this:</p>
+</div>
+<div class="paragraph">
+<p><strong>"double quotes"</strong> - prevents all suppressions and expansions except $ notations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo "~   $USER    ."
+# ~   YOUR_USERNAME    .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>'single quotes'</strong> - takes it as it is.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo '~   $USER    .'
+# ~   $USER    .</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="files-and-directories">Files and directories</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="paths">Paths</h3>
+<div class="paragraph">
+<p>There is always a need to specify a path to the file a directory you want to work with.
+The file can be a document you want to read, an image or simply anything.
+Directory is a container for such a files and other directories.
+Besides the files and directories the path may specify a command to be used.</p>
+</div>
+<div class="paragraph">
+<p>There is already a <a href="#linux-directory-structure">directory structure</a> by default.
+Important is that there is one root directory, where every other directories are either in the root directory or nested into its subdirectories. Also every user has its own user directory.
+At every point in a terminal you are in some directory.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Symbol</th>
+<th class="tableblock halign-left valign-top">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The root directory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D/DD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/</code> serves also as a directory separator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>~</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your home directory, usually <code>/home/YOUR_USER_NAME</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your current directory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>..</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory one above your current directory.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Show path to the current directory
+pwd         # /home/USER/Desktop/DIR
+
+# Show full path to directory or file.
+realpath /  # /
+realpath ~  # /home/USER
+realpath .  # /home/USER/Desktop/DIR
+realpath .. # /home/User/Desktop</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change current Directory (<code>cd</code>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">cd /home/username/path/to/the/directory
+
+cd   # Plain cd moves to the home directory i.e. works same as cd ~
+cd - # Goes to the direcotry you was previously in.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manipulation-with-files-and-directories">Manipulation with files and directories</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Create new directory
+mkdir NEW_DIRECTORY
+mkdir -p ./path/to/end/dir # create every dir that does not exist on the path
+
+# Copy files and directories
+cp file1 file2  # Copy file1 to file2
+cp -r dir1 dir2 # Copy all from dir1 to dir2
+
+# Move file to another place
+mv /old/path/to/file1 /new/path/to/file1
+# Rename file1 as file2 and check if not overwriting
+mv -i file1 file2
+# Create new directory and put everything in
+mv ./!(dir1) ./dir1/
+
+# Rename directories tutorial_01,tutorial_02,tutorial_03 to t_01, t_02, t_03
+for var in 0{1,2,3}; do mv tutorial_$var t_$var; done
+# Replace space with underscore
+for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
+# Add word before extension (file_whatever.png -&gt; file_whatever_historical.png)
+for file in *; do mv "$file" $(echo ${file%%.*}_historical.png); done
+
+# Delete files and directories
+rm file # Remove file
+rm -r   # Remove directory (recursively with all files)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://vitux.com/how-to-replace-spaces-in-filenames-with-underscores-on-the-linux-shell/">replace spaces link</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="information-about-files-directories">Information about files, directories</h3>
+<div class="paragraph">
+<p><strong>Commands: ls, tree, du, wc, stat</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Shows all files of given directory
+ls ./path/to/the/directory
+
+# Show structure of all files and dictionaries from your dictionary
+tree
+
+# Shows counts of lines, words and bytes
+wc FILE_NAME
+# show number of lines (-l) words (-w) and bytes (-c)
+wc -l FILE_NAME
+
+# Recursively shows sizes (disk usage) of directories and files
+du ./path/to/the/directory
+# Show size of the DIRECTORY and its direct children (2 ~ levels down etc.)
+du -d 1 ./path/to/the/DIRECTORY
+# Display info in human readable form (-h) only for the top folder (-s)
+du -hs FILE_NAME
+# Display all file and directory sizes
+du -a
+
+# show file statistics
+stat file1</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="compression-and-decompression">Compression and decompression</h3>
+<div class="paragraph">
+<p>(Uploading and downloading in ohter way is <strong>damn</strong> slow)</p>
+</div>
+<div class="paragraph">
+<p><strong>Command zip</strong></p>
+</div>
+<div class="paragraph">
+<p>Zip files into new.zip</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">zip new file1 file2 file3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unzip files from new.zip</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">unzip new.zip
+# to NEW_DIR
+unzip new.zip -d PATH/NEW_DIR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Command tar</strong></p>
+</div>
+<div class="paragraph">
+<p>Compress files to new.tar.gz</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># -c = create
+# -v = verbose
+# -z = gzip / gz / zip
+# -f = following files
+
+tar -cvzf new.tar.gz file1 file2 file3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Decompress from new.tar.gz</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># -x = extract
+
+tar -xvzf oldFile.tar.gz</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Decompress from new.tar.bz2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># -j = bz2
+# -C = where to extract
+
+tar -xvjf oldFile.tar.bz2 -C /path/Directory</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.interserver.net/tips/kb/use-tar-command-linux-examples/">How to use Tar Command in Linux with examples (interserver.net)</a></p>
+</li>
+<li>
+<p><a href="https://linuxize.com/post/how-to-extract-unzip-tar-bz2-file/">How to Extract (Unzip) Tar Bz2 File (linuxize.com)</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links">Links</h3>
+<div class="paragraph">
+<p><strong>soft link</strong></p>
+</div>
+<div class="paragraph">
+<p>Points to the original file, can be used as the original file for multiple purposes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Ways to create soft links
+ln -s FILENAME LINKNAME
+cp -s FILENAME LINKNAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example Usage
+* I installed "code_like_hell" editor with the executable file at /usr/share/code_like_hell/bin/code_like_hell
+* I want to open the editor just by typing <code>ch</code> to the terminal.
+* So I create an symbolic link called <code>ch</code> at the <code>/usr/bin</code> directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">ln -s /usr/share/code_like_hell/bin/code_like_hell /usr/bin/ch</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>hard link</strong></p>
+</div>
+<div class="paragraph">
+<p>Acts like a synchronized copy of the original file, change in one file changes the other.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Hard link creations
+ln FILENAME LINKNAME
+cp -l FILENAME LINKNAME</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="globbing-and-wildcards">Globbing and Wildcards</h3>
+<div class="paragraph">
+<p>Glob patterns specify sets of filenames with wildcard characters. Wildcards are symbols with special meaning. It is especially useful when we don&#8217;t know the exact name or if we perhaps want to use more than one name to do something.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh"># Question Mark
+? # Matches one character within one directory.
+
+# Single Asterisk
+* # Matches zero or more characters within one directory.
+
+## Double Asterisk
+** # Matches matches zero or more characters across multiple directories.
+
+# Square Brackets Range
+[a-dsu] # Matches one character from the range i.e. a,b,c,d,s,u
+[3-7a-g]
+
+# Square Brackets Group
+[:digit:] # Equals to [0-9]
+[:alpha:] # Equals to [a-zA-Z]
+[:alnum:] # Equals to [0-9a-zA-Z]
+[:upper:] # Equals to [A-Z]
+[:lower:] # Equals to [a-z]
+
+# Not containing anything from bracket
+[!a] # Matches one character that is not letter a. Equivalent of [^ ] in RegEx.
+
+# Examples
+ls ?[[:digit:]]*
+ls ?[4-6]</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm">More information</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/28176590/what-do-double-asterisk-wildcards-mean">What do double-asterisk wildcards mean?</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gnu-findutils"><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html#Top">GNU Findutils</a></h3>
+<div class="sect3">
+<h4 id="locate"><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-locate">locate</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">locate -b -i -n 17 -S -u</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find"><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-find">find</a></h4>
+<div class="literalblock">
+<div class="content">
+<pre>find /  -name   "toBeFound"     ACTIONS -delete
+        -regex  '.*anything.*'
+        -type f d l s                   -ls
+        -user                           -exec ls -l {} \;
+        -size   +-nc k M G              -ok
+        -empty
+        -mindepth -maxdepth n
+        -perm 400 u=rw -u=rmw /u=r,o=x
+        -user USERNAME
+        -group</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="read-files">Read files</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Create new (empty) file
+touch path/to/my/newFileName.anything
+
+# Output every line from file
+cat file
+
+# Output every line from file in reverse order
+tac file
+
+# Output first 5 lines from file in reverse order
+head file
+# Output first n lines from file in reverse order
+head -n 3 file
+
+# Output last 5 lines from file in reverse order
+tail file
+# Monitor a file as that other software writes to
+tail -f</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="standard-input-standard-output-standard-error-output-stdin-stdout-stderr">Standard input, standard output, standard error output (Stdin, stdout, stderr)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># 0&lt;      1&gt; &gt;&gt;   2&gt;
+# 1&gt; where_to     2&gt;&amp;1
+# &amp;&gt; where_to
+
+# Take output of command and writes it to the file
+# COMMAND &gt; FILE
+echo Hello world! &gt; file_example.txt
+
+# Take output of command and writes it at the end of file
+# COMMAND &gt;&gt; APPENDED_FILE
+echo Hello another world! &gt;&gt; file_example.txt</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux">what-are-stdin-stdout-and-stderr-on-linux</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pipe-command-output-redirection">Pipe - command output redirection</h3>
+<div class="paragraph">
+<p>Connects standard output of one command to the standard input of another command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># any_command | sort, uniq, less, head
+# tee
+# file
+
+# Sort output
+sudo du -a | sort -n -r | head -n 20</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Named pipes (Advanced)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mkfifo pipe2
+ls &gt; pipe2
+cat &lt; pipe2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.howtoforge.com/linux-mkfifo-command/">mkfifo (how to forge)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="compare-two-files">Compare two files</h3>
+<div class="paragraph">
+<p><strong>Command diff</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Show differences of files FILE_A, FILE_B (e.g. "&lt; UNIQUE LINE OF FILE_A")
+diff FILE_A FILE_B
+
+# Unified format - more information about the files, changes have a context
+diff -u FILE_A FILE_B
+
+# Compare file with a pipe redirection
+SOME_COMMAND | diff FILE_A -
+
+# Show non-printing characters
+diff FILE_A FILE_B | cat -t</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.computerhope.com/unix/udiff.htm">Linux diff command (computerhope)</a></p>
+</li>
+<li>
+<p><a href="https://superuser.com/questions/560050/how-to-compare-two-files-for-non-printing-characters">How to compare two files for non-printing characters (superuser.com)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Show differences side by side (usually preferred, not always)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Show differences side by side
+diff --side-by-side --suppress-common-lines FILE_A FILE_B
+
+# See the difference line by line with more command
+diff -y --suppress-common-lines FILE_A FILE_B | more
+
+# Get number of different lines
+diff -y --suppress-common-lines FILE_A FILE_B | wc -l</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://community.spiceworks.com/topic/85704-how-can-i-make-diff-only-show-differences-between-two-files">How can i make "Diff" only show differences between two files? (community.spiceworks.com)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Command cmp</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cmp file1 file2</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="linux-directory-structure">Linux Directory Structure</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/bin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Executables.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/root</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root user data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/home/*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other user data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional software (things you can&#8217;t instal with package manager).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/etc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration files, e.g. /etc/issue.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/lib</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shared libraries.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><a href="https://linuxhandbook.com/linux-directory-structure/" class="bare">https://linuxhandbook.com/linux-directory-structure/</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-software">Install Software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every distribution family has its package manager.
+Debian based distributions have <a href="https://en.wikipedia.org/wiki/APT_(software" class="bare">https://en.wikipedia.org/wiki/APT_(software</a>).
+Arch based distros have <a href="https://en.wikipedia.org/wiki/Arch_Linux#Pacman" class="bare">https://en.wikipedia.org/wiki/Arch_Linux#Pacman</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="advanced-package-tool-apt">Advanced Package Tool (apt)</h3>
+<div class="paragraph">
+<p>Install a package using apt.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">sudo apt install PACKAGE_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The packages are looked up in source repositories specified in /etc/apt/sources.list and /etc/apt/sources.list.d/</p>
+</div>
+<div class="paragraph">
+<p><a href="https://wiki.debian.org/SourcesList" class="bare">https://wiki.debian.org/SourcesList</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-from-package-deb">Install from package .deb</h3>
+<div class="paragraph">
+<p>Works the same way for an update.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">sudo dpkg -i PACKAGE_NAME.deb
+# attempt to fix corrupted dependencies
+sudo apt-get install -f</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt" class="bare">https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-of-installed-software">Version of installed software</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Most of the programs have implemented option --version
+COMMAND_NAME --version</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-package">Search for package</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">apt-cache search KEYWORD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://askubuntu.com/questions/160897/how-do-i-search-for-available-packages-from-the-command-line" class="bare">https://askubuntu.com/questions/160897/how-do-i-search-for-available-packages-from-the-command-line</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="check-if-installed">Check if installed</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">dpkg-query -l 'someth'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-management-and-privileges">User management and privileges</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">groupmod
+whoami
+who
+groups</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adddelete-user-group">Add,delete  user | group</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">adduser USERNAME
+deluser USERNAME
+groupadd GROUPNAME
+goupdel GROUPNAME</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-user-to-group">Add user to group</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">usermod -a -G GROUP USER</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="group-information">Group information</h3>
+<div class="paragraph">
+<p>Read file containing information about groups.
+Every line of the file has following structure:</p>
+</div>
+<div class="paragraph">
+<p><code>GROUP_NAME:PASSWORD:GROUP_ID:GROUP_USER_1, GROUP_USER_2, GROUP_USER_3</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">less /etc/group</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="change-password">Change password</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[sudo] passwd [username]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-user">Switch user</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">su USERNAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every su opens a new shell.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Show number of open shells
+echo $SHLVL</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="superuser">Superuser</h3>
+<div class="listingblock">
+<div class="title">Login as superuser, superuser password required.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">su</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Login as superuser, current user&#8217;s password required.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo su</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Grant to the command privileges of superuser.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo COMMAND</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-permissions">User permissions</h3>
+<div class="paragraph">
+<p>Everything has permissions set.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ls -la
+#drwxrwxrwx NUMBER USER USER NUMBER DATE NAME_OF_THE_FILE</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">The first 10 letters are the permissions, the structure follows</div>
+<div class="content">
+<pre>-        ---  ---   ---
+filemode user group others</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">File types</div>
+<div class="content">
+<pre>+ d - directory
++ l - link
++ b - bloc type (harddisc)
++ c - chartype</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="change-permissions">Change permissions</h3>
+<div class="literalblock">
+<div class="content">
+<pre>chmod u-x
+    rename needs directory privileges
+    to read files directory needs r+x
+    to rename files directory needs w+x
+    --- 000 0
+    --x 001 1
+    -w- 010 2
+    -wx 011 3
+    r-- 100 4... chmod 755 text.txt chmod u=rw,g+rw ccc.txt</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">/etc/shadow
+
+setuid bit chmod u+s ... 4777
+setgid bit chmod g+s ... 2777
+sticky bit chmod  +t ... 1777
+
+umask 0224 d- 777 f- 666</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Change ownership</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">chown USER[:GROUP] OBJECT</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="useful-commands">Useful commands</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Get basic info about command</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Path to the executable file i.e. command COMMAND
+which COMMAND
+
+# One line information
+whatis COMMAND
+# Equivalent to
+man -f COMMAND</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Show big files in a terminal</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Output stays into terminal after pressing q to quit
+more
+# File open in vim-like environment after pressing :q to quit the terminal is clean
+less</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Open anything in terminal (works like double-click)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">xdg-open ANY_NAME.ANYTHING</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">split - Split content</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Split file into multiple n-lines files
+split -l 100 FILE_NAME NEW_NAME
+# Split file into 50MB files, with numerical suffix
+split -d -b 50m data.csv data_ --additional-suffix='.csv'
+# Proportionally split file into n files
+split -n 3 filename a
+# Change suffix length (by default 2 characters)
+split -n 3 -a 5 filename</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">cat - Concatenate content</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cat file_0* &gt; merge                              # merges all the files named file_01 file_02 etc.
+echo "First line" | cat - second_file            # minus make the first file_stream from stdin
+echo "first" | cat - lines &gt; tmp &amp;&amp; mv tmp lines # prepend "first" to lines file.</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.cyberciti.biz/faq/bash-prepend-text-lines-to-file/">prepend text to file</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">cut - Extract sections from each line of files</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Get the Nth column (numbered from 1), implicit separator is `tab`
+cut -f 3 filename   # get third column
+cut -f 1,3 filename # enumerated columns
+cut -f 2-3 filename # range of columns
+
+cut -d ':' -f 1 /etc/password | head # define separator
+
+cut -c 2-10 # extract characters (one character one column)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">paste - merge columns/rows</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">paste file1 file2 file3         #(implicitni oddelovac je TAB)
+paste -d ':' file1 file2 file3  #(explicitni definice oddelovace)
+paste -s file1 file2 file3      #(spoji obsahy jednotlivych souboru za sebou po radcich)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">sort</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Sort and merge multiple files
+sort file1 file2 file3 &gt; file
+cut -d ':' -f 1 /etc/passwd | sort
+
+sort -r file # sort in reverse order
+
+sort -n file # Numeric sort not lexicographic
+
+cut -d ':' -f 3 /etc/passwd | sort
+cut -d ':' -f 3 /etc/passwd | sort -n
+
+sort -k file # sort by k-th columns (separator is `tab` by default)
+
+# (seradi numericky podle klice = od 5. sloupce v tabulce)
+ls -l | sort -nr -k 5
+
+# (razeni podle vice klicu)
+sort --key=1,1 --key=2n filename
+
+# (offset v ramci sloupce)
+sort -k 3.7nbr -k 3.1nbr -k 3.4nbr filename
+
+# (explicitni definice oddelovace)
+sort -t ':' -k 7 /etc/passwd</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">shuf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Get random N lines from input
+shuf -n N input &gt; output</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">wget - download file from url (webpage, image, etc.)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">wget https://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Ranger: Browser folders like a pro</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo apt-get instal ranger # install ranger
+ranger # start ranger</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>| key   | action                                |
+| ---   | ---                                   |
+| j k   | move up, move down                    |
+| h l   | move level up, move into directory    |
+| s     | open terminal console                 |
+| zh    | see hidden files and directories      |
+| / n N | search, go to next, previous match    |</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps">ranger (digitalocean)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Show terminal height and width</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># show height
+tput lines
+# show width
+tput cols</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="push-process-the-background">Push process the background</h3>
+<div class="paragraph">
+<p>"I have opened something with terminal, now i see the process and can not use the terminal anymore"</p>
+</div>
+<div class="paragraph">
+<p>Situation as described is the single most common example when is super nice to push the process to the background.</p>
+</div>
+<div class="paragraph">
+<p><strong>How to do it?</strong></p>
+</div>
+<div class="paragraph">
+<p>Press <strong>Ctrl+Z</strong>, then type</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">bg</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The proccess will continue in background.</p>
+</div>
+<div class="paragraph">
+<p>If you want to bring the process back to the foreground, type</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">fg</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://superuser.com/questions/154486/how-to-run-programs-from-a-linux-terminal-without-blocking-the-terminal">How to run programs from a linux terminal without blocking the terminal? (superuser.com)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Copy from terminal to clipboard</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">pwd | xclip -selection clipboard</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://askubuntu.com/questions/597788/copy-to-clipboard-current-path-from-console-with-no-mouse">copy to clipboard current path from console with no mouse \[duplicate] (askubuntu.com)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Calculator bc</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo "scale=2; 3/2" | bc
+
+echo "obase=10; ibase=2; 1101" | bc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get Date</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">date            # Get current date
+date -r FILE    # Get last modification date of a file
+date +%T.%N     # Specify the datetime format (start with + for datetime format use %)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ssh">SSH</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ssh USER@99.888.777.22</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copy-files-over-ssh">Copy files over ssh</h3>
+<div class="paragraph">
+<p>scp [OPTION] [user@]SRC_HOST:]file1 [user@]DEST_HOST:]file2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">scp -r compute  USER@78.128.250.10:/home/USER/computing/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/">scp link</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="screen">Screen</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># How to use screen from terminal
+screen      # Create screen
+screen -d   # Detach from screen
+screen -r   # Reattach to screen
+screen -ls  # List all screens
+
+# Kill screen
+screen -X -S SESSION_ID_FROM_LS kill</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://linuxize.com/post/how-to-use-linux-screen/">screen link</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/1509677/kill-detached-screen-session">kill screen</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>How to work inside of a screen</strong></p>
+</div>
+<div class="paragraph">
+<p>Press <code>Ctrl+a+OPTION</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">OPTION</th>
+<th class="tableblock halign-left valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create new bash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">show open bash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">devide horizontaly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">devide verticaly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change region</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rename region</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kill actual screen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">close region</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">close regions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">esc</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="sshfs">SSHFS</h3>
+
+</div>
+<div class="sect2">
+<h3 id="mount-local-direcotry-to-remote-directory">Mount local direcotry to remote directory</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sshfs $USER@remote.example.com:/home/$USER/code ~/remote_code</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="if-user-on-local-is-different-than-the-one-logging-with-ssh">If user on local is different than the one logging with ssh</h3>
+<div class="paragraph">
+<p>Uncomment user allow_other in /etc/fuse.conf</p>
+</div>
+<div class="listingblock">
+<div class="title">/etc/fuse.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">user_allow_other</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sshfs -o allow_other user@myserver:/home/user/myprojects ~/mount/myprojects</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unmount">Unmount</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">fusermount -u ~/mount/myprojects</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="processes">Processes</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">shows processes</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">top</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find process</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ps aux | grep cat</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Kill process</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># kill one specific precess id
+kill -9 3827
+
+# kill family of proceses
+killall -9 chrome</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.linux.com/training-tutorials/how-kill-process-command-line/" class="bare">https://www.linux.com/training-tutorials/how-kill-process-command-line/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="environments-and-variables">Environments and variables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Variables and functions, can be exported (global) or not.</p>
+</div>
+<div class="sect2">
+<h3 id="set">set</h3>
+<div class="paragraph">
+<p>Can be used to set various shell options, or the positional parameters. If no arguments or options are given, then it prints all shell variables and functions.</p>
+</div>
+<div class="listingblock">
+<div class="title">Print value of variable</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo ${...}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="compgen-v">compgen -v</h3>
+<div class="paragraph">
+<p>Outputs only names of all shell variables, exported or not.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://askubuntu.com/questions/953579/what-is-the-difference-between-env-declare-and-compgen-v" class="bare">https://askubuntu.com/questions/953579/what-is-the-difference-between-env-declare-and-compgen-v</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="global-env-printenv">GLOBAL: env, printenv &#8230;&#8203;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Export can be used to export variables or functions.
+export
+# With the -p option, it prints exported variables and functions
+export -p</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>env</strong></p>
+</div>
+<div class="paragraph">
+<p>The env command can run other commands with modified environments. If no command is given, env prints environment variables (i.e., exported variables).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="printenv">printenv</h3>
+<div class="paragraph">
+<p>Prints environment variables.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="local">LOCAL</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">set | grep ''
+var_a=123a</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># CONSTANTS
+$USER; $PATH; $SHLVL; $SHELL;
+
+# variables
+name=value [[:alnum:]]
+
+unset ... (local)
+declare [-i; -r] ...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="open-new-shell">Open new shell</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Open (some) shell
+bash # open bash
+dash # open dash
+sh   # open shell
+
+# Tell current shell language
+echo $0
+# See shell level
+echo $SHLVL
+# exit shell i.e. go to the previous enviroment
+exit</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">bash    child[sub]   interactive / uninteractiv - | read</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">startup</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>login shell
+    /etc/profile
+    $HOME/ [.profile; .bash_profile; .bash_login]
+non-login shell
+    /etc/.bashrc
+    $HOME/.bashrc
+    source</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="history">History</h3>
+<div class="listingblock">
+<div class="title">Settings of history file</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">~/.bashrc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Edit size of history command and history file</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">HISTSIZE=1000
+HISTFILESIZE=10000</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Path to historyfile</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo $HISTFILE</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">How to stop logging ls command in history</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">echo 'export HISTIGNORE="ls:tree:cat:tail:head:bash"' &gt;&gt; ~/.bashrc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Run 111st command</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">history !111</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>press - ctrl+R - for searching of a commands from past</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.rootusers.com/17-bash-history-command-examples-in-linux/" class="bare">https://www.rootusers.com/17-bash-history-command-examples-in-linux/</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="text-transformation">Text transformation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="tr">tr</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Example: Remove spaces from filename
+ls # name\ with\ spaces.txt
+for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
+ls # name_with_spaces.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Translate, squeeze, and/or delete characters from standard input, writing to standard output.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">tr [OPTIONS] SET1 [SET2]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Translate charactes</p>
+</div>
+<div class="paragraph">
+<p>Command expects arguments <code>SET1 SET2</code> where SET1 are characters to be translated with SET2.
+prikaz ocekava dva argumenty: sadu znaku, ktere ma nahradit a sadu znaku, kterymi je ma nahradit
+sady znaku mohou byt vyjadreny tremi zpusoby</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Characters specified by enumeration
+echo "characters" | tr abc 123
+# Characters specified by range
+echo "characters" | tr a-z 1-3
+echo "chArACtERs" | tr a-z A-Z
+# Characters specified by POSIX
+echo "chArACtERs" | tr [:lower:] [:upper:]
+# First range is shorter - nothing special
+echo "aaabbbccc" | tr a-b 1-3
+# First range is longer - characters from SET1 without partner are replaced with last form SET2
+echo "aaabbbccc" | tr a-c 1-2</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove characters</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># remove characters
+echo "aaabbbccc" | tr -d ab
+# replace repetitions with one occurance
+echo "aaabbbccc" | tr -s ab
+echo "abcabcabc" | tr -s ab</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="expansions">Expansions</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># wild cards * ? ' ' $
+mv old/* new/
+
+# paths \ . ..
+ls ..
+
+# brace expansion {}
+mkdir task_{a,b,c} # mkdir task_a task_b task_c
+mkdir task{01..03} # mkdir task01 task02 task03
+
+# tilde expansion
+ls ~/Documents # ls /home/$USER/Documents
+
+# parameter and variable expansion
+variable=10
+echo ${variable} # echo 10
+
+# command substitution
+echo Hello \"$(ls)\" folders!
+
+# arithmetic expansion + - * / % ** ++ --
+echo $((1238 % 17)) echo 14
+
+# word splitting
+# filename expansion
+# quote removal</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html" class="bare">https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grep"><a href="https://www.gnu.org/software/grep/manual/grep.html">Grep</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="regular-expressions"><a href="https://www.gnu.org/software/grep/manual/grep.html#Regular-Expressions">Regular Expressions</a></h3>
+<div class="paragraph">
+<p><code>“regex” or “regexp”?  &#8594;  /regexp?/</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-line-editing">Command Line Editing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.gnu.org/software/bash/manual/bash.html#Command-Line-Editing" class="bare">https://www.gnu.org/software/bash/manual/bash.html#Command-Line-Editing</a></p>
+</div>
+<div class="listingblock">
+<div class="title">Enable vi-style line editing</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">set -o vi</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sed">sed</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+The sed utility is a stream editor that shall read one or more text files, make editing changes according to a script of editing commands, and write the results to standard output. The script shall be obtained from either the script operand string or a combination of the option-arguments from the -e script and -f script_file options.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html" class="bare">https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.gnu.org/software/sed/manual/sed.html" class="bare">https://www.gnu.org/software/sed/manual/sed.html</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-08 23:06:29 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

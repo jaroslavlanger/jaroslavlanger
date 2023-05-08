@@ -1,57 +1,79 @@
-# Unix in Shell
+= Unix
+:source-language: shell
+:source-highlighter: highlight.js
+:experimental:
+:idprefix:
+:idseparator: -
+:linkcss:
+:stylesheet: ../../style.css
+:toc:
 
-Command line interface you become addicted to.
+"Unix (/ˈjuːnɪks/; trademarked as UNIX) is a family of multitasking, multiuser computer operating systems that derive from the original AT&T Unix"
+-- https://en.wikipedia.org/wiki/Unix
 
-## To Do
+.TODO
+[%collapsible]
+====
+* https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
+* `ls | xargs -I {} echo {}`
 
-- [Displey cursore under the prompt](https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell)
-- `ls | xargs -I {} echo {}`
-
-```adoc
 .https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
 [,console]
 uname -a
-```
+====
 
-## Introduction
+[bibliography]
+== References
 
-This document is written in purpose to simplify the access to the advanced usage of a computer. It started as a notes of a Shell Programming course at UCT, Prague.
+* [[[POSIX-2017]]] https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/[POSIX.1-2017]
+* [[[coreutils]]] https://www.gnu.org/software/coreutils/manual/coreutils.html[GNU Coreutils 9.3]
+* [[[findutils]]] https://www.gnu.org/software/findutils/manual/html_mono/find.html[GNU Findutils 4.9.0]
 
-**Conventions and symbols**
+== Disclaimer
 
-| Symbols                 | Meaning                                                                                          |
-| ---                     | ---                                                                                              |
-| `[ ]` (square brackets) | Means optionality i.e. the things inside may be left out.                                        |
-| `/` (slash)             | Means exclusive or i.e. it is possible to use either the left or the right part but not both.    |
-| `|` (vertical bar)      | Means logical (inclusive) or between the the things on the right and on the left.                |
-| `CAPITAL_LETTER`        | Words written in uppercase means they should be substituted - in this case with "A" for example. |
+The document started as a notes of a Shell Programming course at UCT, Prague.
 
-## Basics - shell, terminal, commands
+== Terminology
 
-**Difference between shell, terminal, bash, command line and prompt**
+https://en.wikipedia.org/wiki/Linux_kernel[Linux kernel]::
+The Linux kernel is a free and open-source, operating system kernel. It was originally authored in 1991 by Linus Torvalds.
+"The kernel is a computer program at the core of a computer's operating system and generally has complete control over everything in the system, facilitates interactions between hardware and software components."
+-- https://en.wikipedia.org/wiki/Kernel_(operating_system)
+GNU/Linux Operating System::
+"By 1990 we had either found or written all the major components except one—the kernel. Then Linux, a Unix-like kernel, was developed by Linus Torvalds in 1991 and made free software in 1992. Combining Linux with the almost-complete GNU system resulted in a complete operating system: the GNU/Linux system."
+-- https://www.gnu.org/gnu/gnu-history.html
+https://en.wikipedia.org/wiki/Desktop_environment[Desktop Environment]::
+Is an implementation of a bundle of programs running on top of a computer operating system that share a common graphical user interface (GUI).
+A desktop environment typically consists of icons, windows, toolbars, folders, wallpapers and desktop widgets.
+E.g. GNOME, KDE Plasma, XFCE.
+https://en.wikipedia.org/wiki/Linux_distribution[Linux Distribution]::
+A Linux distribution (often abbreviated as distro) is an operating system made from a software collection. A typical Linux distribution comprises a Linux kernel, package management system, GNU tools and libraries, additional software, documentation, a window system (the most common being the X Window System, or, more recently, Wayland), a window manager, and a desktop environment.
+E.g. Debian, Ubuntu, Mint, Fedora, Gentoo.
+https://en.wikipedia.org/wiki/Package_manager[Package manager]::
+"A package manager or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner."
+-- https://en.wikipedia.org/wiki/Package_manager
+E.g. APT, pacman, yum.
+https://en.wikipedia.org/wiki/Command-line_interface[Terminal, command-line interface (CLI)]::
+An application where you interact by typing commands at the bottom (the window).
+E.g. xterm, GNOME terminal, putty.
+Command-line::
+Is the line in the terminal, where you write commands.
+Shell (command-line interpreter)::
+The program which interprets what you type in the command-line.
+E.g. Bourne shell (sh), bash, zsh, dash.
+Prompt::
+First letters of the command-line that are static (does not change by typing).
 
-- <ctrl><alt><t> opens **terminal emulator** (the window is the terminal emulator).
-- The terminal runs the **shell programming language** (bash, dash, zsh or other shell language).
-- The line where you can write commands is called the **command line**.
-- First letters of the command line that are static (does not change by typing) are called the **prompt**.
+== What is POSIX?
 
-* [If not clear see this video](https://www.youtube.com/watch?v=hMSByvFHOro)
+"is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems.[1] POSIX defines both the system and user-level application programming interfaces (APIs), along with command line shells and utility interfaces"
+-- https://en.wikipedia.org/wiki/POSIX
 
-**Open terminal**
+== https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/shell.html[Shell Command Language]
 
-Press <ctrl><alt><t>.
+== https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/utilities.html[POSIX Utilities]
 
-If it does not work:
-
-1) Open menu ~ press super key (windows key).
-2) Type "term" and you should see either "Terminal", "xterm" or something similar.
-3) Open it ~ press Enter (double-click).
-
-**Putty access from Windows**
-
-TBD
-
-147.251.253.55
+== Introduction
 
 **The terminal enviroment**
 
@@ -61,9 +83,10 @@ Usually the prompts tells a name of a current user, the name of the machine (hos
 
 Example of common appearance could be:
 
-```
+[,console]
+----
 USER_NAME@HOSTNAME:PATH$
-```
+----
 
 ### Shell principle - commands and keywords
 
@@ -110,7 +133,7 @@ Probably the most common option is the option `--help` or `-h` that should help 
 exit --help
 # exit: exit [n]
 #     Exit the shell.
-#     
+#
 #     Exits the shell with a status of N.  If N is omitted, the exit status
 #     is that of the last command executed.
 ```
@@ -132,19 +155,21 @@ Whenever, you press tab, the terminal autocomplete the word you are writing. If 
 
 It is a huge mistake to write commands more than once. Shell remembers what commands you have written, so you can just call them from the history. In case you used it as the previous command, press `[arrow up]`. In case you wrote it some commands ago, press `[ctrl-r]` and start typing, if the result is not what you want, you either press `[ctrl-r]` again for next match, or `[ecs]` to end the search.
 
-* [Search for a previous command with the prefix I just typed (unix.stackexchange.com)](https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed)
+https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed[Search for a previous command with the prefix I just typed (unix.stackexchange.com)]
 
 ### Command Types
 
 There are several command types:
 
-| Type       | Description                   |
-| ---        | ---                           |
-| unknown    |                               |
-| builtin    | use `enable` or `compgen -b`  |
-| executable | files in `/bin` or `/usr/bin` |
-| functions  | defined functions (by user)   |
-| aliases    | concatenating more commands   |
+|===
+| Type       | Description
+
+| unknown    |
+| builtin    | use `enable` or `compgen -b`
+| executable | files in `/bin` or `/usr/bin`
+| functions  | defined functions (by user)
+| aliases    | concatenating more commands
+|===
 
 
 **command type**
@@ -208,7 +233,7 @@ echo ~
 # /home/YOUR_USERNAME
 ```
 
-There are various [expansions](https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html) for now it is good to know this:
+There are various https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html[expansions] for now it is good to know this:
 
 **"double quotes"** - prevents all suppressions and expansions except $ notations.
 
@@ -233,17 +258,19 @@ The file can be a document you want to read, an image or simply anything.
 Directory is a container for such a files and other directories.
 Besides the files and directories the path may specify a command to be used.
 
-There is already a [directory structure](#linux-directory-structure) by default.
+There is already a xref:#linux-directory-structure[directory structure] by default.
 Important is that there is one root directory, where every other directories are either in the root directory or nested into its subdirectories. Also every user has its own user directory.
 At every point in a terminal you are in some directory.
 
-| Symbol | Path |
-| ---    | --- |
-| `/`    | The root directory. |
-| `D/DD` | `/` serves also as a directory separator. |
-| `~`    | Your home directory, usually `/home/YOUR_USER_NAME` |
-| `.`    | Your current directory. |
-| `..`   | Directory one above your current directory. |
+|===
+| Symbol | Path
+
+| `/`    | The root directory.
+| `D/DD` | `/` serves also as a directory separator.
+| `~`    | Your home directory, usually `/home/YOUR_USER_NAME`
+| `.`    | Your current directory.
+| `..`   | Directory one above your current directory.
+|===
 
 ```sh
 # Show path to the current directory
@@ -295,7 +322,7 @@ rm file # Remove file
 rm -r   # Remove directory (recursively with all files)
 ```
 
-* [replace spaces link](https://vitux.com/how-to-replace-spaces-in-filenames-with-underscores-on-the-linux-shell/)
+https://vitux.com/how-to-replace-spaces-in-filenames-with-underscores-on-the-linux-shell/[replace spaces link]
 
 ### Information about files, directories
 
@@ -305,7 +332,7 @@ rm -r   # Remove directory (recursively with all files)
 # Shows all files of given directory
 ls ./path/to/the/directory
 
-# Show structure of all files and dictionaries from your dictionary 
+# Show structure of all files and dictionaries from your dictionary
 tree
 
 # Shows counts of lines, words and bytes
@@ -313,9 +340,9 @@ wc FILE_NAME
 # show number of lines (-l) words (-w) and bytes (-c)
 wc -l FILE_NAME
 
-# Recursively shows sizes (disk usage) of directories and files 
-du ./path/to/the/directory 
-# Show size of the DIRECTORY and its direct children (2 ~ levels down etc.) 
+# Recursively shows sizes (disk usage) of directories and files
+du ./path/to/the/directory
+# Show size of the DIRECTORY and its direct children (2 ~ levels down etc.)
 du -d 1 ./path/to/the/DIRECTORY
 # Display info in human readable form (-h) only for the top folder (-s)
 du -hs FILE_NAME
@@ -375,10 +402,10 @@ Decompress from new.tar.bz2
 tar -xvjf oldFile.tar.bz2 -C /path/Directory
 ```
 
-* [How to use Tar Command in Linux with examples (interserver.net)](https://www.interserver.net/tips/kb/use-tar-command-linux-examples/) |
-* [How to Extract (Unzip) Tar Bz2 File (linuxize.com)](https://linuxize.com/post/how-to-extract-unzip-tar-bz2-file/)
+* https://www.interserver.net/tips/kb/use-tar-command-linux-examples/[How to use Tar Command in Linux with examples (interserver.net)]
+* https://linuxize.com/post/how-to-extract-unzip-tar-bz2-file/[How to Extract (Unzip) Tar Bz2 File (linuxize.com)]
 
-### Links
+=== Links
 
 **soft link**
 
@@ -442,35 +469,35 @@ ls ?[[:digit:]]*
 ls ?[4-6]
 ```
 
-* [More information](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm)
-* [What do double-asterisk wildcards mean?](https://stackoverflow.com/questions/28176590/what-do-double-asterisk-wildcards-mean)
+* https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm[More information]
+* https://stackoverflow.com/questions/28176590/what-do-double-asterisk-wildcards-mean[What do double-asterisk wildcards mean?]
 
-### Find anything
+=== https://www.gnu.org/software/findutils/manual/html_mono/find.html#Top[GNU Findutils]
 
-#### locate
+==== https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-locate[locate]
 
-```sh
+----
 locate -b -i -n 17 -S -u
-```
+----
 
-#### find
+==== https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-find[find]
 
-```sh
+....
 find /  -name   "toBeFound"     ACTIONS -delete
         -regex  '.*anything.*'
-        -type f d l s                   -ls 
+        -type f d l s                   -ls
         -user                           -exec ls -l {} \;
         -size   +-nc k M G              -ok
         -empty
         -mindepth -maxdepth n
-        -perm 	400 	u=rw 	-u=rmw 	/u=r,o=x
-		-user 	langera
-		-group
-```
+        -perm 400 u=rw -u=rmw /u=r,o=x
+        -user USERNAME
+        -group
+....
 
-### Read files
+=== Read files
 
-```sh
+----
 # Create new (empty) file
 touch path/to/my/newFileName.anything
 
@@ -489,12 +516,12 @@ head -n 3 file
 tail file
 # Monitor a file as that other software writes to
 tail -f
-```
+----
 
-### Standard input, standard output, standard error output (Stdin, stdout, stderr)
+=== Standard input, standard output, standard error output (Stdin, stdout, stderr)
 
 ```bash
-# 0<      1> >>   2>       
+# 0<      1> >>   2>
 # 1> where_to     2>&1
 # &> where_to
 
@@ -507,9 +534,9 @@ echo Hello world! > file_example.txt
 echo Hello another world! >> file_example.txt
 ```
 
-* [what-are-stdin-stdout-and-stderr-on-linux](https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux)
+* https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux[what-are-stdin-stdout-and-stderr-on-linux]
 
-### Pipe - command output redirection
+=== Pipe - command output redirection
 
 Connects standard output of one command to the standard input of another command.
 
@@ -530,13 +557,13 @@ ls > pipe2
 cat < pipe2
 ```
 
-* [mkfifo (how to forge)](https://www.howtoforge.com/linux-mkfifo-command/)
+https://www.howtoforge.com/linux-mkfifo-command/[mkfifo (how to forge)]
 
-### Compare two files
+=== Compare two files
 
 **Command diff**
 
-```
+----
 # Show differences of files FILE_A, FILE_B (e.g. "< UNIQUE LINE OF FILE_A")
 diff FILE_A FILE_B
 
@@ -548,15 +575,15 @@ SOME_COMMAND | diff FILE_A -
 
 # Show non-printing characters
 diff FILE_A FILE_B | cat -t
-```
+----
 
-* [Linux diff command (computerhope)](https://www.computerhope.com/unix/udiff.htm)
-* [How to compare two files for non-printing characters (superuser.com)](https://superuser.com/questions/560050/how-to-compare-two-files-for-non-printing-characters)
+* https://www.computerhope.com/unix/udiff.htm[Linux diff command (computerhope)]
+* https://superuser.com/questions/560050/how-to-compare-two-files-for-non-printing-characters[How to compare two files for non-printing characters (superuser.com)]
 
 
 Show differences side by side (usually preferred, not always)
 
-```sh
+----
 # Show differences side by side
 diff --side-by-side --suppress-common-lines FILE_A FILE_B
 
@@ -565,19 +592,18 @@ diff -y --suppress-common-lines FILE_A FILE_B | more
 
 # Get number of different lines
 diff -y --suppress-common-lines FILE_A FILE_B | wc -l
-```
+----
 
-* [How can i make "Diff" only show differences between two files? (community.spiceworks.com)](https://community.spiceworks.com/topic/85704-how-can-i-make-diff-only-show-differences-between-two-files) |
+* https://community.spiceworks.com/topic/85704-how-can-i-make-diff-only-show-differences-between-two-files[How can i make "Diff" only show differences between two files? (community.spiceworks.com)]
 
 **Command cmp**
 
-```sh
+----
 cmp file1 file2
-```
+----
 
-### Linux Directory Structure
+=== Linux Directory Structure
 
-```asciidoc
 |===
 | /bin | Executables.
 | /root | Root user data.
@@ -586,7 +612,6 @@ cmp file1 file2
 | /etc | Configuration files, e.g. /etc/issue.
 | /lib | Shared libraries.
 |===
-```
 
 https://linuxhandbook.com/linux-directory-structure/
 
@@ -618,156 +643,154 @@ sudo dpkg -i PACKAGE_NAME.deb
 sudo apt-get install -f
 ```
 
-* [source](https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt)
+https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt
 
-### Version of installed software
+=== Version of installed software
 
-```sh
+----
 # Most of the programs have implemented option --version
 COMMAND_NAME --version
-```
+----
 
-### Search for package
+=== Search for package
 
-```sh
+----
 apt-cache search KEYWORD
-```
-[source](https://askubuntu.com/questions/160897/how-do-i-search-for-available-packages-from-the-command-line)
+----
+https://askubuntu.com/questions/160897/how-do-i-search-for-available-packages-from-the-command-line
 
-### Check if installed
+=== Check if installed
 
-```sh
+----
 dpkg-query -l 'someth'
-```
+----
 
-## User management and privileges
+== User management and privileges
 
-### TBD Basic commands
-
-```sh
+----
 groupmod
 whoami
 who
 groups
-```
+----
 
-### Add,delete  user | group
+=== Add,delete  user | group
 
-```sh
+----
 adduser USERNAME
 deluser USERNAME
 groupadd GROUPNAME
 goupdel GROUPNAME
-```
+----
 
-### Add user to group
+=== Add user to group
 
-```sh
+----
 usermod -a -G GROUP USER
-```
+----
 
-### Group information
+=== Group information
 
 Read file containing information about groups.
 Every line of the file has following structure:
-GROUP_NAME:PASSWORD:GROUP_ID:GROUP_USER_1, GROUP_USER_2, GROUP_USER_3
 
-```sh
+`+GROUP_NAME:PASSWORD:GROUP_ID:GROUP_USER_1, GROUP_USER_2, GROUP_USER_3+`
+
+----
 less /etc/group
-```
+----
 
-### Change password
+=== Change password
 
-```sh
+----
 [sudo] passwd [username]
-```
+----
 
-### Switch user
+=== Switch user
 
-```sh
+----
 su USERNAME
-```
+----
 
 Every su opens a new shell.
 
-```sh
+----
 # Show number of open shells
 echo $SHLVL
-```
+----
 
-### Superuser
+=== Superuser
 
-Login as superuser, superuser password required.
-```sh
+.Login as superuser, superuser password required.
+----
 su
-```
-Login as superuser, current user's password required.
-```sh
+----
+.Login as superuser, current user's password required.
+----
 sudo su
-```
-Grant to the command privileges of superuser.
-```sh
+----
+.Grant to the command privileges of superuser.
+----
 sudo COMMAND
-```
+----
 
-### User permissions
+=== User permissions
 
 Everything has permissions set.
 
-Example
-
-```sh
+.Example
+----
 ls -la
 #drwxrwxrwx NUMBER USER USER NUMBER DATE NAME_OF_THE_FILE
-```
-The first 10 letters are the permissions, the structure follows
-```
+----
+
+.The first 10 letters are the permissions, the structure follows
+....
 -        ---  ---   ---
 filemode user group others
-```
+....
 
-File types
-
-+ d - directory 
-+ l - link 	
-+ b - bloc type (harddisc) 
+.File types
+....
++ d - directory
++ l - link
++ b - bloc type (harddisc)
 + c - chartype
+....
 
-### Change permissions
+=== Change permissions
 
-```
+....
 chmod u-x
-	rename needs directory privileges
-	to read files directory needs r+x
-	to rename files directory needs w+x
-	--- 000	0
-	--x 001 1
-	-w- 010 2
-	-wx 011 3
-	r-- 100 4... 	chmod 755 text.txt chmod u=rw,g+rw ccc.txt
-```
+    rename needs directory privileges
+    to read files directory needs r+x
+    to rename files directory needs w+x
+    --- 000 0
+    --x 001 1
+    -w- 010 2
+    -wx 011 3
+    r-- 100 4... chmod 755 text.txt chmod u=rw,g+rw ccc.txt
+....
 
-```sh
+----
 /etc/shadow
 
-setuid bit 		chmod 	u+s ... 4777
-setgid bit 		chmod	g+s ...	2777
-sticky bit 		chmod	+t ...	1777
+setuid bit chmod u+s ... 4777
+setgid bit chmod g+s ... 2777
+sticky bit chmod  +t ... 1777
 
-umask	0224		d- 777	f- 666
-```
+umask 0224 d- 777 f- 666
+----
 
-### Change ownership
-
-```sh
+.Change ownership
+----
 chown USER[:GROUP] OBJECT
-```
+----
 
 ## Useful commands
 
-### Get basic info about command
-
-```sh
+.Get basic info about command
+----
 # Path to the executable file i.e. command COMMAND
 which COMMAND
 
@@ -775,29 +798,23 @@ which COMMAND
 whatis COMMAND
 # Equivalent to
 man -f COMMAND
-```
+----
 
-### Show big files in a terminal
-
-```sh
+.Show big files in a terminal
+----
 # Output stays into terminal after pressing q to quit
 more
 # File open in vim-like environment after pressing :q to quit the terminal is clean
 less
-```
+----
 
-### Open anything in terminal
-
-Works like double-click
-```sh
+.Open anything in terminal (works like double-click)
+----
 xdg-open ANY_NAME.ANYTHING
-```
+----
 
-### split
-
-- Split content
-
-```bash
+.split - Split content
+----
 # Split file into multiple n-lines files
 split -l 100 FILE_NAME NEW_NAME
 # Split file into 50MB files, with numerical suffix
@@ -806,25 +823,18 @@ split -d -b 50m data.csv data_ --additional-suffix='.csv'
 split -n 3 filename a
 # Change suffix length (by default 2 characters)
 split -n 3 -a 5 filename
-```
+----
 
-### cat
-
-- Concatenate content
-
-```bash
+.cat - Concatenate content
+----
 cat file_0* > merge                              # merges all the files named file_01 file_02 etc.
 echo "First line" | cat - second_file            # minus make the first file_stream from stdin
 echo "first" | cat - lines > tmp && mv tmp lines # prepend "first" to lines file.
-```
+----
+* https://www.cyberciti.biz/faq/bash-prepend-text-lines-to-file/[prepend text to file]
 
-* [prepend text to file](https://www.cyberciti.biz/faq/bash-prepend-text-lines-to-file/)
-
-### cut
-
-- Extract sections from each line of files
-
-```bash
+.cut - Extract sections from each line of files
+----
 # Get the Nth column (numbered from 1), implicit separator is `tab`
 cut -f 3 filename   # get third column
 cut -f 1,3 filename # enumerated columns
@@ -833,21 +843,17 @@ cut -f 2-3 filename # range of columns
 cut -d ':' -f 1 /etc/password | head # define separator
 
 cut -c 2-10 # extract characters (one character one column)
-```
+----
 
-### paste
-
-- merge columns/rows
-
-```bash
+.paste - merge columns/rows
+----
 paste file1 file2 file3         #(implicitni oddelovac je TAB)
 paste -d ':' file1 file2 file3  #(explicitni definice oddelovace)
 paste -s file1 file2 file3      #(spoji obsahy jednotlivych souboru za sebou po radcich)
-```
+----
 
-### sort
-
-```bash
+.sort
+----
 # Sort and merge multiple files
 sort file1 file2 file3 > file
 cut -d ':' -f 1 /etc/passwd | sort
@@ -872,29 +878,24 @@ sort -k 3.7nbr -k 3.1nbr -k 3.4nbr filename
 
 # (explicitni definice oddelovace)
 sort -t ':' -k 7 /etc/passwd
-```
+----
 
-### shuf
-
-```bash
+.shuf
+----
 # Get random N lines from input
 shuf -n N input > output
-```
+----
 
-### wget - download file from url (webpage, image, etc.)
-
-```sh
+.wget - download file from url (webpage, image, etc.)
+----
 wget https://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg
-```
+----
 
-### Browser folders like a pro
-
-Ranger
-
-```sh
+.Ranger: Browser folders like a pro
+----
 sudo apt-get instal ranger # install ranger
 ranger # start ranger
-```
+----
 
 | key   | action                                |
 | ---   | ---                                   |
@@ -904,18 +905,17 @@ ranger # start ranger
 | zh    | see hidden files and directories      |
 | / n N | search, go to next, previous match    |
 
-* [ranger (digitalocean)](https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps)
+* https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps[ranger (digitalocean)]
 
-### show terminal height and width
-
-```sh
+.Show terminal height and width
+----
 # show height
 tput lines
 # show width
 tput cols
-```
+----
 
-### Push process the background
+=== Push process the background
 
 "I have opened something with terminal, now i see the process and can not use the terminal anymore"
 
@@ -925,195 +925,186 @@ Situation as described is the single most common example when is super nice to p
 
 Press **Ctrl+Z**, then type
 
-```sh
+----
 bg
-```
+----
 
 The proccess will continue in background.
 
 If you want to bring the process back to the foreground, type
 
-```sh
+----
 fg
-```
+----
 
-* [How to run programs from a linux terminal without blocking the terminal? (superuser.com)](https://superuser.com/questions/154486/how-to-run-programs-from-a-linux-terminal-without-blocking-the-terminal)
+* https://superuser.com/questions/154486/how-to-run-programs-from-a-linux-terminal-without-blocking-the-terminal[How to run programs from a linux terminal without blocking the terminal? (superuser.com)]
 
-### Copy from terminal to clipboard
-
-```sh
+.Copy from terminal to clipboard
+----
 pwd | xclip -selection clipboard
-```
+----
 
-* [copy to clipboard current path from console with no mouse \[duplicate\] (askubuntu.com)](https://askubuntu.com/questions/597788/copy-to-clipboard-current-path-from-console-with-no-mouse)
+* https://askubuntu.com/questions/597788/copy-to-clipboard-current-path-from-console-with-no-mouse[copy to clipboard current path from console with no mouse \[duplicate\] (askubuntu.com)]
 
-### calculator bc
-
-```sh
+.Calculator bc
+----
 echo "scale=2; 3/2" | bc
 
 echo "obase=10; ibase=2; 1101" | bc
-```
+----
 
-### Get Date
-
-```sh
+.Get Date
+----
 date            # Get current date
 date -r FILE    # Get last modification date of a file
 date +%T.%N     # Specify the datetime format (start with + for datetime format use %)
-```
+----
 
-### See images in asciiart
+== SSH
 
-```sh
-cacaview image.jpg
-```
-
-## SSH
-
-```sh
+----
 ssh USER@99.888.777.22
-```
+----
 
-### Copy files over ssh
+=== Copy files over ssh
 
 scp [OPTION] [user@]SRC_HOST:]file1 [user@]DEST_HOST:]file2
 
-```sh
+----
 scp -r compute  USER@78.128.250.10:/home/USER/computing/
-```
+----
 
-[scp link](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
+https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/[scp link]
 
-### Screen
+=== Screen
 
-```sh
+----
 # How to use screen from terminal
-screen      # Create screen 
+screen      # Create screen
 screen -d   # Detach from screen
 screen -r   # Reattach to screen
 screen -ls  # List all screens
 
 # Kill screen
 screen -X -S SESSION_ID_FROM_LS kill
-```
+----
 
-* [screen link](https://linuxize.com/post/how-to-use-linux-screen/)
-* [kill screen](https://stackoverflow.com/questions/1509677/kill-detached-screen-session)
+* https://linuxize.com/post/how-to-use-linux-screen/[screen link]
+* https://stackoverflow.com/questions/1509677/kill-detached-screen-session[kill screen]
 
 **How to work inside of a screen**
 
 Press `Ctrl+a+OPTION`
 
-| OPTION | Action             |
-| --- | ---                   |
-| c   | create new bash       |
-| "   | show open bash        |
-| S   | devide horizontaly    |
-| |   | devide verticaly      |
-| tab | change region         |
-| A   | rename region         |
-| k   | kill actual screen    |
-| X   | close region          |
-| Q   | close regions         |
-| esc | relase cursor up/down |
+|====
+| OPTION | Action
 
-### SSHFS
+| c   | create new bash
+| "   | show open bash
+| S   | devide horizontaly
+| |   | devide verticaly
+| tab | change region
+| A   | rename region
+| k   | kill actual screen
+| X   | close region
+| Q   | close regions
+| esc | relase cursor up/down
+|====
 
-### Mount local direcotry to remote directory
+=== SSHFS
 
-```sh
+=== Mount local direcotry to remote directory
+
+----
 sshfs $USER@remote.example.com:/home/$USER/code ~/remote_code
-```
-### If user on local is different than the one logging with ssh
+----
+
+=== If user on local is different than the one logging with ssh
 
 Uncomment user allow_other in /etc/fuse.conf
 
-```/etc/fuse.conf
+./etc/fuse.conf
+----
 user_allow_other
-```
+----
 
-```sh
+----
 sshfs -o allow_other user@myserver:/home/user/myprojects ~/mount/myprojects
-```
+----
 
-### Unmount
+=== Unmount
 
-```sh
+----
 fusermount -u ~/mount/myprojects
-```
+----
 
-## Processes
+== Processes
 
-```sh
-# shows processes
+.shows processes
+----
 top
-```
+----
 
-### Find process
-
-```sh
+.Find process
+----
 ps aux | grep cat
-```
+----
 
-### Kill process
-
-```sh
+.Kill process
+----
 # kill one specific precess id
 kill -9 3827
 
 # kill family of proceses
 killall -9 chrome
-```
+----
 
-* [source](https://www.linux.com/training-tutorials/how-kill-process-command-line/)
+https://www.linux.com/training-tutorials/how-kill-process-command-line/
 
-## Environments and variables
+== Environments and variables
 
 Variables and functions, can be exported (global) or not.
 
-### set
+=== set
 
-can be used to set various shell options, or the positional parameters. If no arguments or options are given, then it prints all shell variables and functions.
+Can be used to set various shell options, or the positional parameters. If no arguments or options are given, then it prints all shell variables and functions.
 
-### Print value of variable
-
-```sh
+.Print value of variable
+----
 echo ${...}
-```
+----
 
-### compgen -v
+=== compgen -v
 
 Outputs only names of all shell variables, exported or not.
 
-* [compgen](https://askubuntu.com/questions/953579/what-is-the-difference-between-env-declare-and-compgen-v)
+https://askubuntu.com/questions/953579/what-is-the-difference-between-env-declare-and-compgen-v
 
+=== GLOBAL: env, printenv ...
 
-### GLOBAL: env, printenv ...
-
-```sh
+----
 # Export can be used to export variables or functions.
 export
 # With the -p option, it prints exported variables and functions
 export -p
-```
+----
 
 **env**
 
 The env command can run other commands with modified environments. If no command is given, env prints environment variables (i.e., exported variables).
 
-### printenv
+=== printenv
 
 Prints environment variables.
 
-### LOCAL
+=== LOCAL
 
-```
+----
 set | grep ''
 var_a=123a
-```
+----
 
-```sh
+----
 # CONSTANTS
 $USER; $PATH; $SHLVL; $SHELL;
 
@@ -1122,11 +1113,11 @@ name=value [[:alnum:]]
 
 unset ... (local)
 declare [-i; -r] ...
-```
+----
 
-### Open new shell
+=== Open new shell
 
-```sh
+----
 # Open (some) shell
 bash # open bash
 dash # open dash
@@ -1138,69 +1129,74 @@ echo $0
 echo $SHLVL
 # exit shell i.e. go to the previous enviroment
 exit
-```
+----
 
-```sh
-bash    child[sub]   interactive / uninteractiv - | read   
-```
-```sh
+----
+bash    child[sub]   interactive / uninteractiv - | read
+----
+
+----
 startup
-```
+----
 
-```sh
-login shell            
+....
+login shell
     /etc/profile
     $HOME/ [.profile; .bash_profile; .bash_login]
 non-login shell
     /etc/.bashrc
     $HOME/.bashrc
     source
-```
+....
 
-### History
+=== History
 
-settings of history file 
-```sh
+.Settings of history file
+----
 ~/.bashrc
-```
-Edit size of history command and history file
-```sh
+----
+
+.Edit size of history command and history file
+----
 HISTSIZE=1000
 HISTFILESIZE=10000
-```
-path to historyfile
-```sh
+----
+
+.Path to historyfile
+----
 echo $HISTFILE
-```
-how to stop logging ls command in history
-```sh
+----
+
+.How to stop logging ls command in history
+----
 echo 'export HISTIGNORE="ls:tree:cat:tail:head:bash"' >> ~/.bashrc
-```
-run 111st command
-```sh
+----
+
+.Run 111st command
+----
 history !111
-```
+----
 
 press - ctrl+R - for searching of a commands from past
 
-[Source](https://www.rootusers.com/17-bash-history-command-examples-in-linux/)
+https://www.rootusers.com/17-bash-history-command-examples-in-linux/
 
-## Text transformation
+== Text transformation
 
-### tr
+=== tr
 
-```sh
+----
 # Example: Remove spaces from filename
 ls # name\ with\ spaces.txt
 for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
 ls # name_with_spaces.txt
-```
+----
 
 Translate, squeeze, and/or delete characters from standard input, writing to standard output.
 
-```
+----
 tr [OPTIONS] SET1 [SET2]
-```
+----
 
 Translate charactes
 
@@ -1208,7 +1204,7 @@ Command expects arguments `SET1 SET2` where SET1 are characters to be translated
 prikaz ocekava dva argumenty: sadu znaku, ktere ma nahradit a sadu znaku, kterymi je ma nahradit
 sady znaku mohou byt vyjadreny tremi zpusoby
 
-```sh
+----
 # Characters specified by enumeration
 echo "characters" | tr abc 123
 # Characters specified by range
@@ -1220,21 +1216,20 @@ echo "chArACtERs" | tr [:lower:] [:upper:]
 echo "aaabbbccc" | tr a-b 1-3
 # First range is longer - characters from SET1 without partner are replaced with last form SET2
 echo "aaabbbccc" | tr a-c 1-2
-```
+----
 
-Remove characters
-
-```sh
+.Remove characters
+----
 # remove characters
 echo "aaabbbccc" | tr -d ab
 # replace repetitions with one occurance
-echo "aaabbbccc" | tr -s ab 
+echo "aaabbbccc" | tr -s ab
 echo "abcabcabc" | tr -s ab
-```
+----
 
-## Expansions
+== Expansions
 
-```sh 
+----
 # wild cards * ? ' ' $
 mv old/* new/
 
@@ -1261,196 +1256,29 @@ echo $((1238 % 17)) echo 14
 # word splitting
 # filename expansion
 # quote removal
-```
+----
 
-* [Documentation](https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html)
+https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html
 
-## Regular Expressions
+== https://www.gnu.org/software/grep/manual/grep.html[Grep]
 
-`“REGEX” or “REGEXP”?  ->  /REGEXP?/`
+=== https://www.gnu.org/software/grep/manual/grep.html#Regular-Expressions[Regular Expressions]
 
-**BRE ERE**
+`“regex” or “regexp”?  ->  /regexp?/`
 
-- BRE = Basic Regular Expressions
-  - `. * [^- ] ^ $`
-- ERE = Extended Regular Expressions
-  - `+ ? { } ( ) | \`
+== Command Line Editing
 
-**Classes**
+https://www.gnu.org/software/bash/manual/bash.html#Command-Line-Editing
 
-- Enumerated classes: `[abc987]`
-- Range-based classes: `[a-e5-8]`
-- POSIX classes `[: :]`
+.Enable vi-style line editing
+----
+set -o vi
+----
 
-| POSIX       | Classes       |
-| ---         | ---           |
-| `[:alpha:]` | `[a-zA-Z]`    |
-| `[:digit:]` | `[0-9]`       |
-| `[:lower:]` |               |
-| `[:upper:]` |               |
-| `[:alnum:]` |               |
-| `[:word:]`  | `[a-zA-Z_]`   |
-| `[:blank:]` | `[\ \t]`      |
-| `[:xdigit]` | `[a-fA-F0-9]` |
+== sed
 
-**Quantifiers**
+"The sed utility is a stream editor that shall read one or more text files, make editing changes according to a script of editing commands, and write the results to standard output. The script shall be obtained from either the script operand string or a combination of the option-arguments from the -e script and -f script_file options."
+-- https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html
 
-| Quantifier   | Description                              |
-| ---          | ---                                      |
-| `*`          | Any quantity                             |
-| `+`          | At least once                            |
-| `?`          | Once at maximum                          |
-| `{min, max}` | within min, max range includeing min max |
-
-**Special characters**
-
-| s.c. | Desc. |
-| ---  | ---   |
-| \b   |       | 
-| \<   |       | 
-| \>   |       | 
-| \w   |       | 
-| \W   |       | 
-| \s   |       | skoro_i
-| \d   |       |
-
-**Alternations**
-
-`RE1|RE2`
-
-**Groups**
-
-`'<(h[1-6])>.*</\1>'`
-
-Commands
-
-```bash
-# BRE
-grep - BRE
-
-# ERE
-egrep
-grep -E
-grep \ERE 
-```
-
-### Grep
-
-Usage: `grep -options 'RE' where`
-
-options: `-n -c -i -v`
-
-- fgrep
-- rgrep
-
-Examples
-
-```bash
-less /
-locate --regexp [bre] --regex [ere]
-```
-
-## Move in terminal
-
-- alt B / F
-
-### Manipulation with text in terminal
-
-- alt U / l
-- alt t
-- ctrl t
-- kill ring CTRL K ctrl+y alt y
-
-## sed
-
-- stream editor pro filtrovani a transformaci textu
-
-
-Usage: `sed options 'script' file`
-
-
-**options**
-
-```
--n  potlaci autoprint radku
--i  potlaci presmerovani na obrazovku a zmeny zapise do souboru
-```
-
-**addresses**
-
-```
-n           cislo radky
-addr1,addr2 rozsah radku
-first~step  prvni a kazdy dalsi po definovanem kroku
-$           posledni radka
-addr1,+n    zacatek a n nasledujicich radku
-addr!       vsechny ostatni radky krome definovanych (definovane mohou byt vsemi uvedenymi zpusoby)
-/regexp/    radka, ktera splnuje definovany BRE vyraz (delimiter je delimiter / nebo \cregexpc kde c je libovolny znak)
-```
-
-**commands (singleline)**
-
-```
-p   tisk vybraneho radku
-    sed 'p' filename
-    sed -n 'p' filename
-i   vlozi text pred aktualni radek
-    sed 'i text' filename
-a   vlozi text za aktualni radek
-    sed 'a text' filename
-d   vymaze aktualni radek
-    sed 'd' filename
-    sed '2~2d' filename
-=   zobrazi cislo aktualniho radku
-    sed '=' filename
-    sed '2,5=' filename
-c   zmeni text aktualniho radku
-    sed '2c text' filename
-    sed '2,5c text' filename
-r   cteni radku ze souboru
-    sed 'r input1' input2
-    sed '2,3r input1' input2
-w   zapis radku do souboru
-    sed 'w input' output    (alternativa k cp)
-    sed '2,3w input' output
-s/regexp/replacement/   substituce
-     echo "pes" | sed 's/pes/kocka/'
-    sed s/pes/kocka/ filename > newfilename            
-    replacement
-        muze obsahovat znak &, ktery vlozi text definovany regularnim vyrazem
-        muze obsahovat back references \1 - \9
-    flags
-        prikazu s mohou nasledovat ruzne priznaky
-            echo "aaabbbccc" | sed 's/b/1/'   (nahradi pouze prvni vyskyt)
-            echo "aaabbbccc" | sed 's/b/1/g'  (nahradi globalne v celem radku)
-            echo "aaabBbccc" | sed 's/b/1/Ig' (nahradi globalne v celem radku a ignoruje velikost pismen)
-y/set1/set2/   transliterace
-    echo "aaabbbccc" | sed 'y/abc/123/'
-         na rozdil od prikazu tr vyzaduje stejnou delku znakovych sad
-         nepodporuje rozsah (-) ani POSIX znakove tridy => vycet znaku musi byt presne definovan
-```
-
-**Other**
-
-```bash
-# vice prikazu najednou (oddeluji se strednikem ve slozenych zavorkach s option -e)
-sed -e '{s/pes/slon/; s/oves/zito/}' filename
-sed -e 's/pes/slon/; s/oves/zito/' filename
-sed 's/pes/slon/; s/oves/zito/' filename
-```
-
-```bash
-# aplikace transformaci ulozenych v souboru (kazdy prikaz na samostatnem radku)
-sed -f script.sed filename
-    script.sed
-        s/pes/slon/
-        s/oves/zito/
-```
-
-```bash
-sed i a =   p d n
-            P D N
-#   sed '/prvni/{N; s/\n/ /}' radky2
-#   sed '=' radky2 | sed '/[1-9]/{N; s/\n/ /}'
-#   sed '/^$/{N; /treti/D}' radky1
-```
+"sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors."
+-- https://www.gnu.org/software/sed/manual/sed.html
