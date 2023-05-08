@@ -75,7 +75,7 @@ An advanced, purely functional programming language
 * [[[a-history-of-haskell]]] https://dl.acm.org/doi/10.1145/1238844.1238856[A History of Haskell: Being Lazy With Class]
 * [[[learn-you-a-haskell]]] http://learnyouahaskell.com/[Learn You a Haskell for Great Good! A Beginner's Guide by Miran Lipovača]
 * [[[cheatsheet]]] https://hackage.haskell.org/package/CheatSheet-1.7/src/CheatSheet.pdf[Haskell Cheat Sheet]
-* https://www.seas.upenn.edu/~cis1940/spring23/schedule.html[Introduction to Haskell at University of Pennsylvania School of Engineering and Applied Science]
+* https://www.seas.upenn.edu/~cis1940/spring13/[Introduction to Haskell (Spring 2013) by Brent Yorgey at University of Pennsylvania]
 * https://en.wikibooks.org/wiki/Yet_Another_Haskell_Tutorial
 * https://wiki.haskell.org/Literate_programming
 
