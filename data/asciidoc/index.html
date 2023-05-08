@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="description" content="">
+<meta name="keywords" content="adoc, asciidoc, asciidoctor">
+<title>AsciiDoc</title>
+<link rel="stylesheet" href="./experimental.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article toc2 toc-right">
+<div id="header">
+<h1>AsciiDoc</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_asciidoc_syntax_quick_reference">AsciiDoc Syntax Quick Reference</a></li>
+<li><a href="#_installation">Installation</a></li>
+<li><a href="#_comments">Comments</a></li>
+<li><a href="#_document_header">Document Header</a></li>
+<li><a href="#_table_of_contents">Table of Contents</a></li>
+<li><a href="#_block_quote">Block Quote</a></li>
+<li><a href="#_admonitions">Admonitions</a></li>
+<li><a href="#_document_attributes">Document Attributes</a></li>
+<li><a href="#_links">Links</a></li>
+<li><a href="#_include_documents">Include Documents</a></li>
+<li><a href="#_examples_heading_1">Example&#8217;s Heading 1</a></li>
+<li><a href="#_presentation_with_reveal_js">Presentation with reveal.js</a></li>
+<li><a href="#_blocks">Blocks</a>
+<ul class="sectlevel2">
+<li><a href="#_open_block">Open Block</a></li>
+</ul>
+</li>
+<li><a href="#_asciidoctor_backends_i_e_templates">Asciidoctor Backends (i.e. templates)</a></li>
+<li><a href="#_asciidoctor">Asciidoctor</a>
+<ul class="sectlevel2">
+<li><a href="#_asciidoctor_processors">Asciidoctor Processors</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+AsciiDoc appears strikingly similar to Markdown, making way for an easy transition. Where AsciiDoc shines is in its depth. AsciiDoc provides all the essential elements in technical writing out of the box. No variants needed. Its syntax can be elaborated without having to fundamentally change the language, assuring users that it’s still standard AsciiDoc.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://asciidoc.org/" class="bare">asciidoc.org/</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Look at the <a href="asciidoc.adoc">source</a> to understand the magic.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoc_syntax_quick_reference"><a class="anchor" href="#_asciidoc_syntax_quick_reference"></a><a class="link" href="#_asciidoc_syntax_quick_reference"><a href="https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a></a></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Styles e.g. <code>:stylesheet: style.css</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Custom stylesheet to style the included header to the left.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Preamble section.</p>
+</li>
+<li>
+<p><code>[.lead]</code></p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoc/latest/attributes/counters/">Counters e.g. (1) &#8230;&#8203; (2) ..</a></p>
+</li>
+<li>
+<p>Text styles e.g. <code>[big]#text#</code></p>
+</li>
+<li>
+<p>Generating multiple files at once: <code>asciidoctor **/*.adoc</code></p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">Installation</a></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo apt install asciidoctor</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.asciidoctor.org/asciidoctor/latest/install/" class="bare">docs.asciidoctor.org/asciidoctor/latest/install/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_comments"><a class="anchor" href="#_comments"></a><a class="link" href="#_comments">Comments</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two types of comments <strong>line</strong> comment and <strong>block</strong> comment.
+Asciidoc does not support in-line comments.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-adoc hljs" data-lang="adoc">// This is a commented line.
+////
+This is a commented block.
+////</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.asciidoctor.org/asciidoc/latest/comments/" class="bare">docs.asciidoctor.org/asciidoc/latest/comments/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_header"><a class="anchor" href="#_document_header"></a><a class="link" href="#_document_header"><a href="https://docs.asciidoctor.org/asciidoc/latest/document/header/">Document Header</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_table_of_contents"><a class="anchor" href="#_table_of_contents"></a><a class="link" href="#_table_of_contents"><a href="https://docs.asciidoctor.org/asciidoc/latest/toc/">Table of Contents</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_block_quote"><a class="anchor" href="#_block_quote"></a><a class="link" href="#_block_quote"><a href="https://docs.asciidoctor.org/asciidoc/latest/blocks/blockquotes/">Block Quote</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_admonitions"><a class="anchor" href="#_admonitions"></a><a class="link" href="#_admonitions">Admonitions</a></h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+AsciiDoc provides five basic admonitions:
+NOTE, TIP, IMPORTANT, CAUTION, WARNING.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/" class="bare">docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_attributes"><a class="anchor" href="#_document_attributes"></a><a class="link" href="#_document_attributes"><a href="https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes-ref/">Document Attributes</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links"><a class="anchor" href="#_links"></a><a class="link" href="#_links">Links</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Link an exact document (.pdf, .adoc, etc): <a href="directory/example.adoc">link</a>.</p>
+</li>
+<li>
+<p>Reference the future html using its .adoc: <a href="./directory/example.html">xref</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>xref</code> requires relative path e.g. <code>./something</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_include_documents"><a class="anchor" href="#_include_documents"></a><a class="link" href="#_include_documents"><a href="https://docs.asciidoctor.org/asciidoc/latest/directives/include/">Include Documents</a></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>This text is before the <code>include</code> line.</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples_heading_1"><a class="anchor" href="#_examples_heading_1"></a><a class="link" href="#_examples_heading_1">Example&#8217;s Heading 1</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Text.</p>
+</div>
+<div class="paragraph">
+<p><strong>This text is after the <code>include</code> line.</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_presentation_with_reveal_js"><a class="anchor" href="#_presentation_with_reveal_js"></a><a class="link" href="#_presentation_with_reveal_js"><a href="https://docs.asciidoctor.org/reveal.js-converter/latest/converter/features/">Presentation with reveal.js</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_blocks"><a class="anchor" href="#_blocks"></a><a class="link" href="#_blocks">Blocks</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_open_block"><a class="anchor" href="#_open_block"></a><a class="link" href="#_open_block">Open Block</a></h3>
+<div id="name" class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Block with id=name</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoctor_backends_i_e_templates"><a class="anchor" href="#_asciidoctor_backends_i_e_templates"></a><a class="link" href="#_asciidoctor_backends_i_e_templates"><a href="https://github.com/asciidoctor/asciidoctor-backends">Asciidoctor Backends (i.e. templates)</a></a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoctor"><a class="anchor" href="#_asciidoctor"></a><a class="link" href="#_asciidoctor">Asciidoctor</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/" class="bare">docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/</a></p>
+</div>
+<div class="sect2">
+<h3 id="_asciidoctor_processors"><a class="anchor" href="#_asciidoctor_processors"></a><a class="link" href="#_asciidoctor_processors"><a href="https://docs.asciidoctor.org/">Asciidoctor Processors</a></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoctor/latest/">Asciidoctor</a> - Ruby</p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoctor.js/latest/">Asciidoctor.js</a> - JavaScript</p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoctorj/latest/">AsciidoctorJ</a> - Java/JVM</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-08 23:21:17 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>

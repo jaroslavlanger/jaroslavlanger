@@ -5,6 +5,7 @@
  * . Verbatim looks awful.
  * . There should be a space before (above) the figure name.
  */
+@import "data/asciidoc/asciidoctor.css";
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 
 * {
