@@ -1,0 +1,59 @@
+= tmux
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+:experimental:
+:source-highlighter: highlight.js
+
+* https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/[A Quick and Easy Guide to tmux (Ham Vocke)]
+
+.Install tmux and work with sessions
+[source, shell]
+----
+# Install tmux (ubuntu)
+sudo apt-get install tmux
+
+# Create tmux session
+tmux
+# Create named session
+tmux new -s SESSION_NAME
+
+# List all tmux sessions
+tmux ls
+
+# Attach to the first session
+tmux attach -t 0
+# Attach to the named session
+tmux attach -t SESSION_NAME
+----
+
+.Work with tabs
+|===
+| Keystrokes     | Action
+
+| kbd:[Ctrl+B+D] | Detach from current session.
+| kbd:[Ctrl+B+C] | Create new tab.
+| kbd:[Ctrl+B+,] | Rename current tab.
+| kbd:[Ctrl+B+4] | Change to the fourth tab.
+| kbd:[Ctrl+D]   | Close current tab.
+|===
+
+.Splitting the screen
+|===
+| Keystrokes      | Action
+
+| kbd:[Ctrl+B+%]  | Split screen horizontally.
+| kbd:[Ctrl+B+"]  | Split screen vertically.
+| kbd:[Ctrl+B+Up] | Change to upper section.
+|===
+
+.Scroll up the terminal
+|===
+| Keystrokes     | Action
+
+| kbd:[Ctrl+B+[] | Start the scrolling mode.
+| kbd:[PgUp]     | Scroll up.
+| kbd:[Ctrl+C]   | Exit the scrolling mode.
+|===
+
+* https://unix.stackexchange.com/questions/81540/how-can-i-page-up-or-down-in-tmux-with-terminal-app[How can I page up or down in tmux with Terminal.app?]

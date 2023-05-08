@@ -1,21 +1,6 @@
-html {
-    display: inline;
-}
-#tree {
-    width: 8em;
-}
-/*
-    margin: 0;
-    background: #dddddd;
-    height: 100%;
-    text-decoration: none;
-    display: inline;
-    box-sizing: unset;
-*/
-
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-/*
-@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
 html{font-family:sans-serif;-webkit-text-size-adjust:100%}
 a{background:none}
 a:focus{outline:thin dotted}
@@ -439,7 +424,3 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer{background:none}
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-*/
-/*
-ul {list-style-type: none;}
-*/

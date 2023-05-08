@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>tmux</title>
+<link rel="stylesheet" href="./../../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>tmux</h1>
+</div>
+<div id="content">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">A Quick and Easy Guide to tmux (Ham Vocke)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Install tmux and work with sessions</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Install tmux (ubuntu)
+sudo apt-get install tmux
+
+# Create tmux session
+tmux
+# Create named session
+tmux new -s SESSION_NAME
+
+# List all tmux sessions
+tmux ls
+
+# Attach to the first session
+tmux attach -t 0
+# Attach to the named session
+tmux attach -t SESSION_NAME</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Work with tabs</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keystrokes</th>
+<th class="tableblock halign-left valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>D</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detach from current session.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>C</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create new tab.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>,</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename current tab.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>4</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change to the fourth tab.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>D</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Close current tab.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Splitting the screen</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keystrokes</th>
+<th class="tableblock halign-left valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>%</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Split screen horizontally.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>"</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Split screen vertically.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>Up</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change to upper section.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Scroll up the terminal</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keystrokes</th>
+<th class="tableblock halign-left valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>[</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start the scrolling mode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>PgUp</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scroll up.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit the scrolling mode.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://unix.stackexchange.com/questions/81540/how-can-i-page-up-or-down-in-tmux-with-terminal-app">How can I page up or down in tmux with Terminal.app?</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-08 23:41:56 +0200
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>
