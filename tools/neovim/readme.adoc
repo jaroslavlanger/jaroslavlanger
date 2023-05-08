@@ -1,0 +1,102 @@
+= Neovim
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+:experimental:
+:source-highlighter: highlight.js
+:source-language: shell
+
+Neovim - Vim taken a step further.
+
+== http://vimcasts.org/episodes/meet-neovim/[Introduction]
+
+== References
+
+* https://www.youtube.com/watch?v=gnupOrSEikQ[How to Configure Vim like VSCode (benawad)]
+** https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f[init.vim file from Ben Awad]
+
+.Installation
+----
+sudo add-apt-repository ppa:neovim-ppa/stable       # version 0.4.4
+# sudo add-apt-repository ppa:neovim-ppa/unstable   # version 0.5.0-dev
+sudo apt-get update
+sudo apt-get install neovim
+----
+-- https://vi.stackexchange.com/questions/25192/how-to-install-stable-version-of-neovim-on-ubuntu-18-04[Install neovim ubuntu/linux mint]
+
+== System Settings
+
+Moving the screen with kbd:[Up]/kbd:[Down] (normal editors) or with kbd:[J]/kbd:[K] (vim) is not efficient.
+
+However we all do it sometimes.
+Why not to set shorter stroke rate so the screen moves faster.
+
+.Set key stroke rate
+[source, shell]
+----
+xset r rate 200 20
+----
+
+*Remap Caps lock to Escape*
+
+If case you wan to use vim / neovim / vi shell mode.
+I can not enough recommend you to remap caps lock key to escape.
+
+.Create Config File
+----
+# Do this only if the file does not exist already!
+mkdir -p ~/.config/nvim
+echo "\
+set tabstop=4
+set softtabstop=0
+set expandtab
+set shiftwidth=4
+set smarttab
+set list
+" > ~/.config/nvim/init.vim
+----
+
+.Create Space for Plugins
+----
+mkdir -p ~/.vim/plugins
+----
+
+.Install vim-plug Plugin Manager
+----
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+----
+-- https://www.linode.com/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/[Install vim-plugin manager]
+
+== Plugins
+
+=== https://github.com/neoclide/coc.nvim[Conquer of Completition]
+
+Install nodejs >= 10.12:
+
+----
+curl -sL install-node.now.sh/lts | bash
+----
+
+=== https://github.com/morhetz/gruvbox[morhetz/gruvbox theme]
+
+== Add Plugins in the Config File
+
+Usually this is the very first lines of the init.vim file.
+
+.init.vim
+[,vim]
+----
+call plug#begin('~/.vim/plugins')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+----
+
+Restart nvim and run `:PlugInstall`.
+
+.Neovim Diff
+----
+nvim -d file_1 file_2
+----

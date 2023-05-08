@@ -6,7 +6,7 @@
 :stylesheet: ./../style.css
 :linkcss:
 
-The art of using a computer like a human being
+The art of using a computer like a human.
 
 == Index
 
@@ -23,60 +23,105 @@ The art of using a computer like a human being
 * link:unix[]
 * link:vim[]
 
-== Overview
-
-. Operating system (linux, mac os, windows)
-    * Distribution (debian-testing, manjaro, mint, ubuntu)
-. Desktop environment (gnome, xfce, kde, mate)
-. Internet browser (google-chrome, chromium)
-. Terminal emulator (xterm, cygwin, kitty, putty, st)
-    * Window manager (tmux, i3, dwm)
-    * File manager (ranger, lf)
-. Shell (sh, bash, zsh)
-. Text Editor (vim, neovim, vs code, sublime text)
-. Text Specification, see link:../text[text]
-. Version control (git, github, gitlab)
-. Programming language, see link:../code[code]
-. Other (make, jupyter notebook, docker)
-
 == Operating System
 
-. Windows
-.. XP
-.. 7
-.. 8
-.. 10
-. Linux
-.. Debian
-.. Mint
-.. Manjaro
-.. Debian-Testing
+Right now I am using Debian GNU/Linux distribution "testing".
+It combines the availability of regular stuff with the power of rolling releases.
 
-=== Linux
+=== Debian
 
-*Type special characters*
+"Debian (/ˈdɛbiən/),[5][6] also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project, which was established by Ian Murdock on August 16, 1993."
+-- https://en.wikipedia.org/wiki/Debian
 
-Perhaps to write a dash, in linux there is a way to write unicode symbols.
+=== Debian Testing
 
-. press kbd:[Ctrl+Shift+U]
-. type the unicode code, perhaps kbd:[2,0,1,4]
-. press kbd:[Space]
+"Debian testing is the current development state of the next stable Debian distribution. It is also made available under the code name of the next stable release,"
+-- https://wiki.debian.org/DebianTesting
 
-== Desktop Environment
+=== Linux Mint
 
-. GNOME
-. MATE
-. XFCE
+"Linux Mint is a community-driven Linux distribution based on Ubuntu (which is in turn based on Debian), bundled with a variety of free and open-source applications."
+-- https://en.wikipedia.org/wiki/Linux_Mint
 
-I am planning to return to GNOME.
+=== Manjaro
+
+"Manjaro (/mænˈdʒɑːroʊ/ man-JAAR-oh) is a free and open-source Linux distribution based on the Arch Linux operating system that has a focus on user-friendliness and accessibility. It uses a rolling release update model and Pacman as its package manager."
+-- https://en.wikipedia.org/wiki/Manjaro
+
+=== Linux Kernel
+
+.Definition
+[%collapsible]
+====
+[quote, 'https://en.wikipedia.org/wiki/Kernel_(operating_system)']
+____
+The kernel is a computer program at the core of a computer's operating system and generally has complete control over everything in the system.[1] It is the portion of the operating system code that is always resident in memory[2] and facilitates interactions between hardware and software components. A full kernel controls all hardware resources (e.g. I/O, memory, cryptography) via device drivers, arbitrates conflicts between processes concerning such resources, and optimizes the utilization of common resources e.g. CPU & cache usage, file systems, and network sockets. On most systems, the kernel is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as memory, peripherals, and input/output (I/O) requests from software, translating them into data-processing instructions for the central processing unit.
+____
+====
+
+https://en.wikipedia.org/wiki/Linux_kernel
+
+=== GNU Core Utilities
+
+"The GNU Core Utilities or coreutils is a package of GNU software containing implementations for many of the basic tools, such as cat, ls, and rm, which are used on Unix-like operating systems."
+-- https://en.wikipedia.org/wiki/GNU_Core_Utilities
+
+== Desktop environment
+
+At this moment I am using Xfce and my plan is to switch back to GNOME.
+
+=== GNOME
+
+"GNOME (/ɡəˈnoʊm, ˈnoʊm/),[6][7][8] originally an acronym for GNU Network Object Model Environment, is a free and open-source desktop environment for Linux and other Unix-like[9] operating systems."
+-- https://en.wikipedia.org/wiki/GNOME
+
+=== Cinnamon
+
+"Cinnamon is a free and open-source desktop environment for Linux and Unix-like operating systems, deriving from GNOME 3 but following traditional desktop metaphor conventions."
+-- https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)
+
+=== Xfce
+
+"Xfce or XFCE (pronounced as four individual letters)[3] is a free and open-source desktop environment for Linux and other Unix-like operating systems."
+-- https://en.wikipedia.org/wiki/Xfce
+
+=== KDE
+
+"KDE Plasma 5 is the fifth and current generation of the graphical workspaces environment created by KDE primarily for Linux systems. KDE Plasma 5 is the successor of KDE Plasma 4 and was first released on 15 July 2014."
+-- https://en.wikipedia.org/wiki/KDE_Plasma_5
+
+== Terminal Emulator
+
+I just use what is installed.
+
+https://larbs.xyz/[Luke Smith] uses https://st.suckless.org/
+
+=== Window manager
+
+At this time I don't use any terminal window manager.
+
+* tmux
+* i3
+* dwm
+
+=== File manager
+
+I don't terminal file manager. With a little exception of *netrw* inside of neovim.
+
+* ranger
+* lf
 
 == Shell
 
+Currently I use bash and I my plan is to switch to zsh.
+
 . Bash
 
-I am planning to switch to zsh.
+== Text Editor / IDE
 
-== Text Editor
+For text editing and writing code I use Neovim.
+When I need an IDE I use VS Code.
+My favorite editor for Jupyter notebooks is Google Colaboratory.
 
 . NetBeans
 . Sublime Text
@@ -85,116 +130,31 @@ I am planning to switch to zsh.
 . Vim
 . Neovim
 
-Moving the screen with kbd:[Up]/kbd:[Down] (normal editors) or with kbd:[J]/kbd:[K] (vim) is not efficient.
-However we all do it sometimes.
-Why not to set shorter stroke rate so the screen moves faster.
+== Version control
 
-.Set key stroke rate
-[source, shell]
-----
-xset r rate 200 20
-----
+I use git with both github and gitlab hosting.
 
-*Remap Caps lock to Escape*
+== Markdown Format
 
-If case you wan to use vim / neovim / vi shell mode.
-I can not enough recommend you to remap caps lock key to escape.
+Currently I use Asciidoc for note taking. It has high expressive power while being well defined.
 
+== Internet browser
 
-== Terminal
+* google-chrome
+* chromium
 
-.Terminal shortcuts
-|===
-| shortcut        | action
+== Video Player
 
-| kbd:[Ctrl+Shift+T]    | Open new tab.
-| kbd:[Ctrl+Shift+W]    | Close current tab.
-| kbd:[Ctrl+PgUp]       | Go to upper (left) tab. kbd:[PgDn] goes to the right tab.
-| kbd:[Ctrl+1]          | Go to tab 1 (works for all numbers).
-| kbd:[Ctrl+Shift+PgUp] | Move the tab one up (left). kbd:[PgDn] moves to the right.
-| kbd:[Ctrl+K]          | Kill - cut the rest of the line from the cursor.
-| kbd:[Ctrl+W]          | Kill the word right before the cursor.
-| kbd:[Ctrl+U]          | Kill the begging of the line up to the cursor.
-| kbd:[Ctrl+Y]          | Yank - paste the text that was previously killed.
-| kbd:[Alt+Backspace]   | Delete by words, not by characters.
-| kbd:[Ctrl+Shift+C]    | Copies from terminal the highlighted text.
-| kbd:[Ctrl+Shift+V]    | Paste to the terminal the most recently copied text.
-|===
+https://www.videolan.org/vlc/
 
-== Other
+== Eye Strain
 
-=== Eye Strain
+I use following settings to lower my eye strain.
 
-Following settings might lower your eye strain.
-
-. Use light themes instead of dark themes.
-    * It's way less cool and that's the point _wink_.
-. Set exponential brightness step count in power manager.
+. Light theme instead of a dark theme.
+    * It's way less *cool* and that's the point _wink_.
+. Exponential brightness step count in power manager.
     * It allows you to set the display really dim during nights.
 . Use a software which lowers the screen temperature.
     * http://jonls.dk/redshift/
     * https://justgetflux.com/
-
-=== Video Player
-
-https://www.videolan.org/vlc/
-
-== Terminal Window Manger
-
-At this time I don't use any terminal window manager.
-A little exception is *netrw* inside of neovim.
-
-=== tmux
-
-* https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/[A Quick and Easy Guide to tmux (Ham Vocke)]
-
-.Install tmux and work with sessions
-[source, shell]
-----
-# Install tmux (ubuntu)
-sudo apt-get install tmux
-
-# Create tmux session
-tmux
-# Create named session
-tmux new -s SESSION_NAME
-
-# List all tmux sessions
-tmux ls
-
-# Attach to the first session
-tmux attach -t 0
-# Attach to the named session
-tmux attach -t SESSION_NAME
-----
-
-.Work with tabs
-|===
-| Keystrokes     | Action
-
-| kbd:[Ctrl+B+D] | Detach from current session.
-| kbd:[Ctrl+B+C] | Create new tab.
-| kbd:[Ctrl+B+,] | Rename current tab.
-| kbd:[Ctrl+B+4] | Change to the fourth tab.
-| kbd:[Ctrl+D]   | Close current tab.
-|===
-
-.Splitting the screen
-|===
-| Keystrokes      | Action
-
-| kbd:[Ctrl+B+%]  | Split screen horizontally.
-| kbd:[Ctrl+B+"]  | Split screen vertically.
-| kbd:[Ctrl+B+Up] | Change to upper section.
-|===
-
-.Scroll up the terminal
-|===
-| Keystrokes     | Action
-
-| kbd:[Ctrl+B+[] | Start the scrolling mode.
-| kbd:[PgUp]     | Scroll up.
-| kbd:[Ctrl+C]   | Exit the scrolling mode.
-|===
-
-* https://unix.stackexchange.com/questions/81540/how-can-i-page-up-or-down-in-tmux-with-terminal-app[How can I page up or down in tmux with Terminal.app?]
