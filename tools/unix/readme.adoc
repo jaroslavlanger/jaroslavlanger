@@ -25,7 +25,9 @@ uname -a
 [bibliography]
 == References
 
+* [[[unix-programming-enviornment]]] https://archive.org/details/UnixProgrammingEnviornment/[The UNIX Programming Enviornment by Brian W. Kernigan, Rob Pike]
 * [[[POSIX-2017]]] https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/[POSIX.1-2017]
+* [[[gnu-packages]]] https://www.gnu.org/manual/[GNU Manuals Online]
 * [[[coreutils]]] https://www.gnu.org/software/coreutils/manual/coreutils.html[GNU Coreutils 9.3]
 * [[[findutils]]] https://www.gnu.org/software/findutils/manual/html_mono/find.html[GNU Findutils 4.9.0]
 
