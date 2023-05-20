@@ -12,6 +12,7 @@ Neovim - Vim taken a step further.
 
 == References
 
+* https://neovim.io/doc/user/
 * https://www.youtube.com/watch?v=gnupOrSEikQ[How to Configure Vim like VSCode (benawad)]
 ** https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f[init.vim file from Ben Awad]
 
