@@ -14,12 +14,14 @@
 .TODO
 [%collapsible]
 ====
-* https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
-* `ls | xargs -I {} echo {}`
-
-.https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
-[,console]
-uname -a
+. xargs
+** `ls | xargs -I {} echo {}`
+. https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
+** `+uname -a+`
+. https://github.com/junegunn/fzf[fzf command-line fuzzy finder]
+. https://www.debian.org/doc/manuals/debian-reference/
+. https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
+. https://suckless.org/[suckless.org software for X window system]
 ====
 
 [bibliography]
