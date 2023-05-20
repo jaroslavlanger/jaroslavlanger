@@ -28,6 +28,26 @@ The art of using a computer like a human.
 Right now I am using Debian GNU/Linux distribution "testing".
 It combines the availability of regular stuff with the power of rolling releases.
 
+=== Linux Kernel
+
+.Definition
+[%collapsible]
+====
+[quote, 'https://en.wikipedia.org/wiki/Kernel_(operating_system)']
+____
+The kernel is a computer program at the core of a computer's operating system and generally has complete control over everything in the system.[1] It is the portion of the operating system code that is always resident in memory[2] and facilitates interactions between hardware and software components. A full kernel controls all hardware resources (e.g. I/O, memory, cryptography) via device drivers, arbitrates conflicts between processes concerning such resources, and optimizes the utilization of common resources e.g. CPU & cache usage, file systems, and network sockets. On most systems, the kernel is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as memory, peripherals, and input/output (I/O) requests from software, translating them into data-processing instructions for the central processing unit.
+____
+====
+
+https://en.wikipedia.org/wiki/Linux_kernel
+
+=== GNU Core Utilities
+
+"The GNU Core Utilities or coreutils is a package of GNU software containing implementations for many of the basic tools, such as cat, ls, and rm, which are used on Unix-like operating systems."
+-- https://en.wikipedia.org/wiki/GNU_Core_Utilities
+
+== GNU/Linux Distributions
+
 === Debian
 
 "Debian (/ˈdɛbiən/),[5][6] also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project, which was established by Ian Murdock on August 16, 1993."
@@ -48,23 +68,18 @@ It combines the availability of regular stuff with the power of rolling releases
 "Manjaro (/mænˈdʒɑːroʊ/ man-JAAR-oh) is a free and open-source Linux distribution based on the Arch Linux operating system that has a focus on user-friendliness and accessibility. It uses a rolling release update model and Pacman as its package manager."
 -- https://en.wikipedia.org/wiki/Manjaro
 
-=== Linux Kernel
+== Windowing system
 
-.Definition
-[%collapsible]
-====
-[quote, 'https://en.wikipedia.org/wiki/Kernel_(operating_system)']
-____
-The kernel is a computer program at the core of a computer's operating system and generally has complete control over everything in the system.[1] It is the portion of the operating system code that is always resident in memory[2] and facilitates interactions between hardware and software components. A full kernel controls all hardware resources (e.g. I/O, memory, cryptography) via device drivers, arbitrates conflicts between processes concerning such resources, and optimizes the utilization of common resources e.g. CPU & cache usage, file systems, and network sockets. On most systems, the kernel is one of the first programs loaded on startup (after the bootloader). It handles the rest of startup as well as memory, peripherals, and input/output (I/O) requests from software, translating them into data-processing instructions for the central processing unit.
-____
-====
+"In computing, a windowing system (or window system) is software that manages separately different parts of display screens.[1] It is a type of graphical user interface (GUI) which implements the WIMP (windows, icons, menus, pointer) paradigm for a user interface."
+-- https://en.wikipedia.org/wiki/Windowing_system
 
-https://en.wikipedia.org/wiki/Linux_kernel
+Currently I use the https://www.x.org/wiki/[X11], I am curious about the https://wayland.freedesktop.org/[Wayland].
 
-=== GNU Core Utilities
-
-"The GNU Core Utilities or coreutils is a package of GNU software containing implementations for many of the basic tools, such as cat, ls, and rm, which are used on Unix-like operating systems."
--- https://en.wikipedia.org/wiki/GNU_Core_Utilities
+.Tell me which Display Server is running?
+[source,sh]
+----
+echo $XDG_SESSION_TYPE
+----
 
 == Desktop environment
 
