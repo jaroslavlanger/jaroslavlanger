@@ -2,6 +2,30 @@
 :source-highlighter: highlight.js
 :stylesheet: ../../style.css
 :linkcss:
+:hide-uri-scheme:
+
+"GitHub is where over 100 million developers shape the future of software, together."
+-- https://github.com/
+
+.Find Most Starred Projects by Language (Haskell example)
+....
+https://github.com/search?q=stars%3A%3E1000&type=Repositories&l=Haskell&s=stars&o=desc
+....
+
+.Simple querying by language and sorting by stars does not work well.
+[%collapsible]
+====
+* When language is in the query, most of the projects are missing, e.g.
+`+https://github.com/search?q=language%3AHaskell&type=Repositories&s=stars&o=desc+`
+* Google results gives you
+https://github.com/search?q=stars:%3E1&s=stars&type=Repositories[most starred repositories]
+which points to
+`+https://github.com/search?q=stars:%3E1&s=stars&type=Repositories+`.
+** Unfortunately querying projects with at least one star
+and sorting them by the amount of stars does not work good either.
+** E.g. following query gave for stars `+:>1+` and `+:>10000+` different results:
+`+https://github.com/search?q=stars%3A%3E1&type=Repositories&l=Python&s=stars&o=desc+`
+====
 
 .jekyll-gh-pages.yml
 [source, yml]

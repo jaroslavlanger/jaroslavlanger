@@ -14,6 +14,51 @@
 <h1>GitHub</h1>
 </div>
 <div id="content">
+<div class="quoteblock">
+<blockquote>
+GitHub is where over 100 million developers shape the future of software, together.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://github.com/" class="bare">github.com/</a>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">Find Most Starred Projects by Language (Haskell example)</div>
+<div class="content">
+<pre>https://github.com/search?q=stars%3A%3E1000&amp;type=Repositories&amp;l=Haskell&amp;s=stars&amp;o=desc</pre>
+</div>
+</div>
+<details>
+<summary class="title">Simple querying by language and sorting by stars does not work well.</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>When language is in the query, most of the projects are missing, e.g.
+<code>https://github.com/search?q=language%3AHaskell&amp;type=Repositories&amp;s=stars&amp;o=desc</code></p>
+</li>
+<li>
+<p>Google results gives you
+<a href="https://github.com/search?q=stars:%3E1&amp;s=stars&amp;type=Repositories">most starred repositories</a>
+which points to
+<code>https://github.com/search?q=stars:%3E1&amp;s=stars&amp;type=Repositories</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Unfortunately querying projects with at least one star
+and sorting them by the amount of stars does not work good either.</p>
+</li>
+<li>
+<p>E.g. following query gave for stars <code>:&gt;1</code> and <code>:&gt;10000</code> different results:
+<code>https://github.com/search?q=stars%3A%3E1&amp;type=Repositories&amp;l=Python&amp;s=stars&amp;o=desc</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</details>
 <div class="listingblock">
 <div class="title">jekyll-gh-pages.yml</div>
 <div class="content">
@@ -72,7 +117,7 @@ jobs:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-18 23:28:41 +0200
+Last updated 2023-05-21 15:18:23 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
