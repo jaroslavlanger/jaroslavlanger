@@ -368,14 +368,21 @@ https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html[Prelude]::
 
 https://hackage.haskell.org/package/base[base: Basic libraries]::
 This package contains the Standard Haskell Prelude and its support libraries, and a large collection of useful libraries ranging from data structures to parsing combinators and debugging utilities.
+
 https://hackage.haskell.org/package/containers[containers: Assorted concrete container types]::
 This package contains efficient general-purpose implementations of various immutable container types including sets, maps, sequences, trees, and graphs.
+
 https://hackage.haskell.org/package/safe[safe: Library of safe (exception free) functions]::
 A library wrapping Prelude/Data.List functions that can throw exceptions, such as head and !!. Each unsafe function has up to four variants
+
 https://hackage.haskell.org/package/lens[lens: Lenses, Folds and Traversals]::
 The combinators in Control.Lens provide a highly generic toolbox for composing families of getters, folds, isomorphisms, traversals, setters and lenses and their indexed variants.
+
 https://hackage.haskell.org/package/repa[repa: High performance, regular, shape polymorphic parallel arrays.]::
 Repa provides high performance, regular, multi-dimensional, shape polymorphic parallel arrays.
+
+https://hackage.haskell.org/package/array-0.5.5.0[array: Mutable and immutable arrays]::
+In addition to providing the Data.Array module as specified in the Haskell 2010 Language Report, this package also defines the classes IArray of immutable arrays and MArray of arrays mutable within appropriate monads, as well as some instances of these classes.
 
 == Category Theory
 
@@ -434,4 +441,10 @@ class Functor f => Applicative f where
 ----
 class Applicative m => Monad m where
         (>>=) :: forall a b. m a -> (a -> m b) -> m b
+----
+
+.https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html#v:ap[ap]
+----
+ap                :: (Monad m) => m (a -> b) -> m a -> m b
+ap m1 m2          = do { x1 <- m1; x2 <- m2; return (x1 x2) }
 ----
