@@ -83,10 +83,13 @@ https://en.wikipedia.org/wiki/Evaluation_strategy[Evaluation strategy]::
 
 == Languages Worth Mentioning
 
-Assembly language::
+=== https://en.wikipedia.org/wiki/Assembly_language[Assembly language]
+
 First abstraction above machine code.
 
-C::
+=== https://en.wikipedia.org/wiki/System_programming_language[System languages]
+
+https://en.wikipedia.org/wiki/C_(programming_language)[C]::
 One of the most successful languages of all time.
 I believe, most of the programming languages are written in the C language.
 You can sense C's at the time popularity from the song https://youtu.be/1S1fISh-pag[Write in C].
@@ -100,27 +103,39 @@ The most loved programming language.
 Memory safety is done by borrow checker.
 Is another language that made it to the Linux kernel source code.
 
+=== https://en.wikipedia.org/wiki/List_of_command-line_interpreters[Command-line interpreters]
+
 link:zsh[Z shell]::
 Z Shell is a great option for interactive login shell, extends the Bourne Shell.
 
-JavaScript::
+=== https://en.wikipedia.org/wiki/JavaScript[JavaScript]
+
 The programming language of the web.
+
+=== https://en.wikipedia.org/wiki/General-purpose_programming_language[General-purpose programming language]
+
+https://www.python.org/[Python]::
+Second most used programming language with very pleasant syntax.
 
 https://www.typescriptlang.org/[TypeScript]::
 Typed superset of JavaScript developed by Microsoft.
 
+https://www.raku.org/[Raku]::
+Formerly called Perl 6.
+When regular expressions are not powerful enough, look at Raku's https://docs.raku.org/language/grammar_tutorial.html[Grammars].
+
+=== https://en.wikipedia.org/wiki/Purely_functional_programming[Purely functional]
+
 link:haskell[Haskell]::
 Lazily evaluated purely-functional language with type classes.
 
-https://www.python.org/[Python]::
-Second most used programming language with very pleasant syntax.
+https://www.idris-lang.org/[Idris2]::
+Idris is a programming language designed to encourage Type-Driven Development.
+
+=== https://en.wikipedia.org/wiki/Array_programming[Array oriented]
 
 https://julialang.org/[Julia]::
 Great (array) language for mathematics that runs fast (jit).
 
 link:bqn[BQN]::
 Iversonian language, by Marshall Lochbaum who started in J and implemented a lot of Dyalog APL himself.
-
-https://www.raku.org/[Raku]::
-Formerly called Perl 6.
-When regular expressions are not powerful enough, look at Raku's https://docs.raku.org/language/grammar_tutorial.html[Grammars].
