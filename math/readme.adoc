@@ -1,0 +1,52 @@
+= Mathematics
+:stylesheet: ../style.css
+:linkcss:
+:hide-uri-scheme:
+
+.TODO
+[%collapsible]
+====
+
+. https://datacollection.jrc.ec.europa.eu/wordef/coefficient-of-variation[Coefficient of Variation]
+. https://en.wikipedia.org/wiki/Coefficient_of_variation
+. https://www.statisticshowto.com/relative-variance/
+
+++++
+Expectation, E X = x_1*P(x_1) + ... + x_n*P(x_n) = Sum (i IN is) (x_i*P(x_i))
+
+Covariance,  Cov (X, Y)              = E ((X - E X)*(Y - E Y))
+Variance,    Var X = E ((X - E X)^2) = E ((X - E X)*(X - E X)) = Cov (X, X)
+Standard
+deviation    Std X = Sqrt (Var X)
+++++
+
+
+++++
+. NOT| Cov(X, Y, Z) = E[(X-EX)*(Y-EY)*(Z-EZ)]
+. NOT| Cov(X) = E[X-EX] = 0
+
+. MY | Sum (i In is) (Abs(x_i - m_i)) / Size is
+
+. E[|X-EX|]
+
+|a + a| = a + b <=> a > 0 And b > 0
+|a - b| = a - b <=> a > 0 And b > 0 And a > b
+
+|a + b| = |a| + |b| <=> a*b > 0
+|a - b| = |a| - |b| <=> a*b > 0
+
+|a + b| = |a| + |b|
+
+. Sample mean we say every point has probability 1/n so
+.. sample_mean = Sum (i In is) (x_i * 1/n)
+++++
+
+. https://en.wikipedia.org/wiki/Monad_(category_theory)
+
+====
+
+.Partial function, total function
+[quote,'https://en.wikipedia.org/wiki/Partial_function']
+____
+a *partial function* f from a set X to a set Y is a function from a subset S of X (possibly the whole X itself) to Y. The subset S, that is, the domain of f viewed as a function, is called the domain of definition or natural domain of f. If S equals X, that is, if f is defined on every element in X, then f is said to be a *total function*.
+____
