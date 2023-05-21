@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jaroslav Langer " />
+  <title>Algebra</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Algebra</h1>
+<p class="author">Jaroslav Langer <a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p class="date">Říjen 2020</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Definice, věty a poznámky z předmětu NI-MPI.</p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#algebra-1.">Algebra 1.</a>
+<ul>
+<li><a href="#úvod">Úvod</a></li>
+<li><a href="#hierarchie">Hierarchie</a></li>
+<li><a href="#neutrální-a-inverzní-prvky">Neutrální a inverzní
+prvky</a></li>
+<li><a href="#znázornění-grup">Znázornění grup</a></li>
+</ul></li>
+<li><a href="#algebra-2.">Algebra 2.</a>
+<ul>
+<li><a href="#podgrupy">Podgrupy</a></li>
+<li><a href="#lagrangeova-věta">Lagrangeova věta</a></li>
+<li><a href="#generující-množiny-a-generátor-grup">Generující množiny a
+generátor grup</a></li>
+<li><a href="#cyklické-grupy">Cyklické grupy</a></li>
+<li><a href="#malá-fermatova-věta">(Malá) Fermatova věta</a></li>
+</ul></li>
+<li><a href="#algebra-3.">Algebra 3.</a>
+<ul>
+<li><a href="#homomorfismy-a-izomorfismy">Homomorfismy a
+izomorfismy</a></li>
+<li><a href="#aplikace-teorie-grup-v-kryptografii">Aplikace teorie grup
+v kryptografii</a></li>
+</ul></li>
+<li><a href="#algebra-4.">Algebra 4.</a>
+<ul>
+<li><a href="#množiny-se-dvěma-binárními-operacemi">Množiny se dvěma
+binárními operacemi</a></li>
+<li><a href="#okruhy-polynomů">Okruhy polynomů</a></li>
+<li><a href="#konečná-tělesa">Konečná tělesa</a></li>
+<li><a href="#aplikace-konečných-těles-v-kryptografii">Aplikace
+konečných těles v kryptografii</a></li>
+</ul></li>
+<li><a href="#algebra-5.">Algebra 5.</a>
+<ul>
+<li><a href="#aritmetické-operace-v-konečném-tělese-gfpn">Aritmetické
+operace v konečném tělese <span
+class="math inline">\(GF(p^n)\)</span></a></li>
+<li><a href="#hledání-izomorfismů-mezi-dvěma-konečnými-tělesy">Hledání
+izomorfismů mezi dvěma konečnými tělesy</a></li>
+<li><a href="#soustavy-lineárních-rovnic-v-mathbbz_n">Soustavy
+lineárních rovnic v <span
+class="math inline">\(\mathbb{Z}^+_n\)</span></a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="algebra-1.">Algebra 1.</h1>
+<h2 id="úvod">Úvod</h2>
+<h3 class="unnumbered" id="věta-1.1">Věta 1.1</h3>
+<p>Pro všechna <span class="math inline">\(b,c \in R \setminus
+\emptyset\)</span> pro rovnici <span class="math inline">\(b \cdot x =
+c\)</span> existuje právě jedno řešení <span class="math inline">\(x =
+\frac{c}{b}\)</span></p>
+<h3 class="unnumbered" id="poznámka">Poznámka</h3>
+<p>Dvojici <span class="math inline">\((M, \circ), \textrm{kde} \quad
+\circ: M \times M \to M\)</span>, <span
+class="math inline">\(\circ\)</span> je asociativní na M, neutrální
+prvek náleží M a pro každý prvek M inverzní prvek náleží M, říkáme
+grupa.</p>
+<h2 id="hierarchie">Hierarchie</h2>
+<h3 class="unnumbered" id="definice-2.1">Definice 2.1</h3>
+<p><strong>Grupoid (magma)</strong> je uspořádaná dvojice <span
+class="math inline">\((M, \circ)\)</span>, kde <span
+class="math inline">\(M\)</span> je neprázdná množina a <span
+class="math inline">\(\circ\)</span> je binární operace na <span
+class="math inline">\(M\)</span>.</p>
+<ul>
+<li><p><strong>Pologrupa</strong> (semigrupa) je grupoid <span
+class="math inline">\((M, \circ)\)</span>, kde operace <span
+class="math inline">\(\circ\)</span> je asociativní pro všechny prvky
+<span class="math inline">\(M\)</span>.</p></li>
+<li><p><strong>Monoid</strong> je pologrupa <span
+class="math inline">\((M, \circ)\)</span>, kde <span
+class="math inline">\(\exists e, \forall a, \quad e,a \in M,\)</span>
+<span class="math display">\[a \circ e = e \circ a =
+a.\]</span></p></li>
+<li><p><strong>Grupa</strong> je monoid <span class="math inline">\((M,
+\circ)\)</span> a <span class="math inline">\(e \in M\)</span> je
+neutrální prvek, kde <span class="math inline">\(\forall a \exists
+a^{-1}, \quad e,a \in M,\)</span> <span class="math display">\[a \circ
+a^{-1} = a^{-1} \circ a = e.\]</span></p></li>
+<li><p><strong>Komutativní (abelovská) grupa</strong> je grupa <span
+class="math inline">\((M, \circ)\)</span>, kde operace <span
+class="math inline">\(\circ\)</span> je komutativní na <span
+class="math inline">\(M\)</span>.</p></li>
+</ul>
+<h3 class="unnumbered" id="poznámka-1">Poznámka</h3>
+<p>O množině <span class="math inline">\(M\)</span> mluvíme také jako o
+<em>nosiči</em> grupy <span class="math inline">\((M,
+\circ)\)</span></p>
+<h3 class="unnumbered" id="poznámka-2">Poznámka</h3>
+<p>Binární operace je <em>na</em> <span class="math inline">\(M\)</span>
+což znamená, že <span class="math inline">\(\circ: M \times M \to
+M\)</span>, také můžeme říci, že množina <span
+class="math inline">\(M\)</span> ja uzavřená vůči operaci <span
+class="math inline">\(\circ\)</span>.</p>
+<h2 id="neutrální-a-inverzní-prvky">Neutrální a inverzní prvky</h2>
+<h3 class="unnumbered" id="věta-4.1">Věta 4.1</h3>
+<p>V monoidu existuje právě jeden neutrální prvek.</p>
+<h3 class="unnumbered" id="věta-4.2">Věta 4.2</h3>
+<p>V grupě má každý prvek právě jeden inverzní prvek.</p>
+<h2 id="znázornění-grup">Znázornění grup</h2>
+<h3 class="unnumbered" id="poznámka-3">Poznámka</h3>
+<p>Pokud má množina M konečný počet prvků, pak strukturu dvojic <span
+class="math inline">\((M, \circ)\)</span>, lze kompletně zachytit
+Cayleyho tabulkou. Cayleyho tabulka pro <span class="math inline">\((M,
+\circ), |M|=n\)</span> je tabulka <span class="math inline">\(n \times
+n\)</span>, kde záhlaví sloupců i řádků jsou stejně seřazené prvky <span
+class="math inline">\(M\)</span>, políčko <span
+class="math inline">\(p_{a,b}\)</span> pro <span
+class="math inline">\(a\)</span>-tý řádek a <span
+class="math inline">\(b\)</span>-tý sloupec má hodnotu <span
+class="math inline">\(a \circ b\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-4">Poznámka</h3>
+<p>Latinský čtverec pro <span class="math inline">\(n\)</span> prvkovou
+množinu <span class="math inline">\(M\)</span> je tabulka <span
+class="math inline">\(n \times n\)</span>, kde v každém řádku a sloupci,
+je každý prvek <span class="math inline">\(M\)</span> právě jednou.</p>
+<h3 class="unnumbered" id="věta-5.2">Věta 5.2</h3>
+<p>Cayleyho tabulka každé grupy tvoří latinský čtverec.</p>
+<h3 class="unnumbered" id="věta-5.3">Věta 5.3</h3>
+<p>V každé grupě <span class="math inline">\((M, \circ)\)</span> jde
+jednoznačně dělit. Tzn. <span class="math inline">\(\forall a,b \in
+M\)</span> mají rovnice <span class="math display">\[a \circ x = b,
+\quad y \circ a = b\]</span> jediné řešení.</p>
+<h3 class="unnumbered" id="poznámka-5">Poznámka</h3>
+<p>Grupu <span class="math inline">\((M, \circ)\)</span> s konečným
+počtem prvků <span class="math inline">\(M\)</span> lze vizualizovat
+pomocí <em>Cayleyho orientovaného grafu</em>. Cayleyho orientovaný graf
+<span class="math display">\[(V,E), \quad V=M, \quad E=\{(a,b): b=a
+\circ c, \quad \forall a \in M, \forall c \in N \subset V\}\]</span></p>
+<h1 id="algebra-2.">Algebra 2.</h1>
+<h2 id="podgrupy">Podgrupy</h2>
+<h3 class="unnumbered" id="poznámka-6">Poznámka</h3>
+<p>Hledáme-li podgrupu <span class="math inline">\((N, \circ)\)</span>
+grupy <span class="math inline">\((M, \circ)\)</span> tak aby obsahovala
+prvek <span class="math inline">\(m\)</span>, těleso musí zůstat grupou,
+proto musí také obsahovat všechny prvky tak, aby množina <span
+class="math inline">\(N\)</span> byla uzavřená na operaci <span
+class="math inline">\(\circ\)</span>, dále musí obsahovat neutrální
+prvek <span class="math inline">\(e\)</span>, a inverzní prvek pro
+všechny prvky <span class="math inline">\(N\)</span>. Takovou podgrupu
+nazýváme <strong>podgrupa generovaná množinou <span
+class="math inline">\(\{m\}\)</span></strong>.</p>
+<h3 class="unnumbered"
+id="definice-6.2-podgrupa-subgroup-n-circ">Definice 6.2 Podgrupa
+(subgroup) <span class="math inline">\((N, \circ)\)</span></h3>
+<p>Buď grupa <span class="math inline">\(G = (M, \circ)\)</span>,
+podgrupa <span class="math inline">\(H = (N, \circ)\)</span> je
+libovolná dvojice, kde</p>
+<ul>
+<li><p><span class="math inline">\(N \subset M\)</span></p></li>
+<li><p><span class="math inline">\((N, \circ)\)</span> je
+grupa.</p></li>
+</ul>
+<h3 class="unnumbered" id="poznámka-7">Poznámka</h3>
+<p>Každá grupa <span class="math inline">\((M, \circ)\)</span>, kde
+<span class="math inline">\(|M| \geq 2\)</span> má vždy podrgrupy</p>
+<ul>
+<li><p><span class="math inline">\((\{e\}, \circ), e \in
+M\)</span></p></li>
+<li><p><span class="math inline">\((N, \circ), N = M\)</span></p></li>
+</ul>
+<p>těmto dvěma podgrupám říkáme <strong>triviální podgrupy</strong>.
+Ostatní podgrupy nazýváme <strong>valstní (proper)</strong>.</p>
+<h3 class="unnumbered" id="věta-6.3">Věta 6.3</h3>
+<p>Buď grupa <span class="math inline">\(G = (M, \circ)\)</span>, pro
+každé <span class="math inline">\(i\)</span> z indexové množiny <span
+class="math inline">\(I\)</span> buď <span
+class="math inline">\(H_{i}\)</span> podgrupa <span
+class="math inline">\(G\)</span>, pak <span
+class="math display">\[H&#39; = \bigcap_{i \in I} H_i\]</span> je také
+podgrupa <span class="math inline">\(G\)</span>.</p>
+<h3 class="unnumbered" id="věta-6.4">Věta 6.4</h3>
+<p>Buď grupa <span class="math inline">\(G = (M, \circ), N \subset M
+\wedge N \neq \emptyset\)</span>, pak libovolná dvojice <span
+class="math inline">\((N, \circ)\)</span> je podgrupa právě tehdy když
+<span class="math display">\[\forall a,b \in N, a \circ b^{-1} \in
+N\]</span></p>
+<h2 id="lagrangeova-věta">Lagrangeova věta</h2>
+<h3 class="unnumbered" id="definice-7.1-řád-order">Definice 7.1 Řád
+(order)</h3>
+<p><strong>Řádem grupy</strong> <span class="math inline">\(G = (M,
+\circ)\)</span> nazýváme počet prvků <span
+class="math inline">\(M\)</span>, jeli počet prvků nekonečný, i řád je
+nekonečný, podle řádů rozdělujeme grupy na <strong>konečné</strong> a
+<strong>nekonečné.</strong> Řád grupy <span
+class="math inline">\(G\)</span> značíme <span
+class="math inline">\(\#G\)</span> (nebo také <span
+class="math inline">\(|G| = ord(G)\)</span>).</p>
+<h3 class="unnumbered" id="věta-7.3-lagrangeova">Věta 7.3
+Lagrangeova</h3>
+<p>Buď <span class="math inline">\(H = (N, \circ)\)</span> podgrupa
+konečné grupy <span class="math inline">\(G = (M, \circ)\)</span>, potom
+řád <span class="math inline">\(H\)</span> dělí řád <span
+class="math inline">\(G\)</span>.</p>
+<h3 class="unnumbered" id="věta-7.4-sylowova">Věta 7.4 Sylowova</h3>
+<p>Buď grupa konečná <span class="math inline">\(G\)</span> řádu <span
+class="math inline">\(n\)</span> a <span
+class="math inline">\(p\)</span> prvočíselný dělitel <span
+class="math inline">\(n\)</span>. Pokud <span
+class="math inline">\(p^k\)</span> dělí <span
+class="math inline">\(n\)</span> (pro <span
+class="math inline">\(k\)</span> přírozená), potom existuje podgrupa
+<span class="math inline">\(G\)</span> řádu <span
+class="math inline">\(p^k\)</span>. (Pro <span class="math inline">\(k =
+1\)</span> též Cauchyho věta).</p>
+<h2 id="generující-množiny-a-generátor-grup">Generující množiny a
+generátor grup</h2>
+<h3 class="unnumbered" id="věta-8.1">Věta 8.1</h3>
+<p>Buď grupa <span class="math inline">\(G = (M, \circ)\)</span> a <span
+class="math inline">\(N \subset M \wedge N \neq \emptyset\)</span>, pak
+množina <span class="math display">\[\langle N \rangle = \bigcap\{H:
+\textrm{$H$ je podgrupa grupy $G$ obsahující $N$}\}\]</span> spolu s
+operací <span class="math inline">\(\circ\)</span> tvoří podgrupu grupy
+<span class="math inline">\(G\)</span> obsahující prvek <span
+class="math inline">\(N\)</span>.</p>
+<h3 class="unnumbered" id="věta-8.2">Věta 8.2</h3>
+<p>Podgrupu <span class="math inline">\(\langle N \rangle\)</span> grupy
+<span class="math inline">\(G = (M, \circ), N \subset M \wedge N \neq
+\emptyset\)</span> nazýváme <strong>podgrupou generovanou množinou <span
+class="math inline">\(N\)</span></strong>. O množinu <span
+class="math inline">\(N\)</span> pak nazýváme jako <strong>generující
+množinu</strong> grupy <span class="math inline">\(\langle N
+\rangle\)</span>. V případě jednoprvkové generující množiny zavádíme
+značení <span class="math inline">\(\langle a \rangle = \langle \{ a \}
+\rangle\)</span> nazýváme jednoprvkovou množinu
+<strong>generátor</strong> grupy <span class="math inline">\(\langle a
+\rangle\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-8">Poznámka</h3>
+<p>Pro grupu <span class="math inline">\(G = (M, \circ)\)</span> s
+neutrálním prvkem <span class="math inline">\(e \in M\)</span> pro každý
+prvek <span class="math inline">\(g \in M\)</span> a <span
+class="math inline">\(n \in \mathbb{N}\)</span> zavádíme <span
+class="math inline">\(n\)</span>-tou a <span
+class="math inline">\(-n\)</span>-tou mocninu takto.</p>
+<p><span class="math display">\[\begin{aligned}
+    &amp;g^0 = e \\
+    &amp;g^1 = g \\
+    &amp;g^2 = g \circ g \\
+    &amp;g^n = g \circ g \circ g ... \circ g \quad \textrm{($n$-krát)}
+\\
+    &amp;g^{-2} = g^{-1} \circ g^{-1} \\
+    &amp;g^{-n} = (g^{-1})^{n}\end{aligned}\]</span></p>
+<h3 class="unnumbered" id="věta-8.5">Věta 8.5</h3>
+<p>Buď grupa <span class="math inline">\(G = (M, \circ)\)</span> a
+podmnožina <span class="math inline">\(N \subset M \wedge N \neq
+\emptyset\)</span>, potom všechny prvky grupy <span
+class="math inline">\(\langle N \rangle\)</span> lze získat pomocí
+grupového obalu <span class="math display">\[\langle N \rangle =
+\{a_{1}^{k_1} \circ a_{2}^{k_2} \circ ... a_{n}^{k_n} \circ: n \in
+\mathbb{N}, k_i \in \mathbb{Z}, a_i \in N\}\]</span></p>
+<h3 class="unnumbered" id="důsledek">Důsledek</h3>
+<p><span class="math inline">\(\langle N \rangle = \{a^k: k \in
+\mathbb{Z}\}\)</span></p>
+<h2 id="cyklické-grupy">Cyklické grupy</h2>
+<h3 class="unnumbered" id="věta-9.1">Věta 9.1</h3>
+<p>Grupa <span class="math inline">\(\mathbb{Z}^+_n\)</span> je rovna
+<span class="math inline">\(\langle k \rangle, k \in
+\mathbb{Z}^+_n\)</span> tehdy a jen tehdy, když <span
+class="math inline">\(k\)</span> a <span
+class="math inline">\(n\)</span> jsou nesoudělná čísla.</p>
+<h3 class="unnumbered"
+id="definice-9.4-cyklická-grupa-cyclic-group">Definice 9.4 Cyklická
+grupa (cyclic group)</h3>
+<p>Grupa <span class="math inline">\(G = (M, \circ)\)</span> se nazývá
+<strong>cyklická</strong>, pokud existuje <span class="math inline">\(a
+\in M, \langle a \rangle = G\)</span>. Prvek <span
+class="math inline">\(a\)</span> se nazývá <strong>generátor</strong>
+cyklické grupy <span class="math inline">\(G\)</span>.</p>
+<h3 class="unnumbered" id="definice-9.5">Definice 9.5</h3>
+<p>Buď <span class="math inline">\(g\)</span> prvek grupy <span
+class="math inline">\(G = (M, \circ)\)</span>, existuje-li <span
+class="math inline">\(m \in \mathbb{N}\)</span> takové, že <span
+class="math inline">\(g^m = e\)</span>, pak nejmenší takové <span
+class="math inline">\(m\)</span> nazýváme <strong>řádem prvku
+g</strong>. Neexistuje-li takové <span class="math inline">\(m\)</span>,
+pak prvek <span class="math inline">\(g\)</span> má řád nekonečno. Řád
+prvku <span class="math inline">\(g\)</span> značíme <span
+class="math inline">\(ord(g)\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-9">Poznámka</h3>
+<p>Řád prvku <span class="math inline">\(g\)</span> se rovná řádu
+množiny generované <span class="math inline">\(g\)</span>, platí tedy
+rovnost <span class="math display">\[ord(g) = \#\langle g
+\rangle\]</span> Dále platí, že <span class="math inline">\(g^k = e
+\Leftrightarrow k = l \cdot ord(g), l \in \mathbb{Z}\)</span></p>
+<h3 class="unnumbered" id="věta-9.6">Věta 9.6</h3>
+<p>Grupa <span class="math inline">\(\mathbb{Z}^{\times}_{n}\)</span> je
+cyklická právě tehdy když <span class="math inline">\(n \in \{2, 4, p^k,
+2p^k\}, k \in \mathbb{N}\)</span> a <span
+class="math inline">\(p\)</span> je liché prvočíslo.</p>
+<h3 class="unnumbered" id="poznámka-10">Poznámka</h3>
+<p>Obecně najít generátor grupy není jednoduché, (třeba pro grupy <span
+class="math inline">\(\mathbb{Z}^{\times}_{n}\)</span>). Pokud však
+jeden známe, je jednoduché najít všechny ostatní.</p>
+<h3 class="unnumbered" id="věta-9.7">Věta 9.7</h3>
+<p>Je-li <span class="math inline">\(G = (M, \circ)\)</span> cyklická
+grupa řádu <span class="math inline">\(n\)</span> a <span
+class="math inline">\(a\)</span> nějaký její generátor. Potom <span
+class="math inline">\(a^k\)</span> je také její tehdy a jen tehdy, když
+<span class="math inline">\(n\)</span> a <span
+class="math inline">\(k\)</span> jsou nesoudělné, tedy <span
+class="math inline">\(gcd(n,k) = 1\)</span></p>
+<h3 class="unnumbered" id="důkaz">Důkaz</h3>
+<p><strong>!!! brutus !!!</strong></p>
+<h3 class="unnumbered" id="poznámka-11">Poznámka</h3>
+<p><span class="math inline">\(\varphi(n)\)</span> je <strong>Eulerova
+funkce</strong>, každému <span class="math inline">\(n \in
+\mathbb{N}\)</span> přiřazuje počet přirozených čísel z rozmezí <span
+class="math inline">\(\langle 1;n)\)</span>, která jsou s ním
+nesoudělná.</p>
+<h3 class="unnumbered" id="věta-9.8">Věta 9.8</h3>
+<p>V cyklické grupě řádu <span class="math inline">\(n\)</span> je počet
+generátorů roven <span class="math inline">\(\varphi(n)\)</span>.</p>
+<h3 class="unnumbered" id="věta-9.9">Věta 9.9</h3>
+<p>Libovolná podgrupa cyklické grupy je opět cyklická grupa.</p>
+<h2 id="malá-fermatova-věta">(Malá) Fermatova věta</h2>
+<h3 class="unnumbered" id="věta-10.1">Věta 10.1</h3>
+<p>V grupě <span class="math inline">\(G = (M, \circ)\)</span> řádu
+<span class="math inline">\(n\)</span> pro libovolný prvek <span
+class="math inline">\(a \in M\)</span> platí <span
+class="math inline">\(a^n = e\)</span>, kde <span
+class="math inline">\(e\)</span> je neutrální prvek.</p>
+<h3 class="unnumbered" id="poznámka-12">Poznámka</h3>
+<p>Grupa <span class="math inline">\(\mathbb{Z}^{\times}_{p}\)</span> je
+cyklická a řádu <span class="math inline">\(p - 1\)</span>.</p>
+<h3 class="unnumbered" id="věta-10.2">Věta 10.2</h3>
+<p>Pro libovolné <span class="math inline">\(p\)</span> a libovolné
+<span class="math inline">\(1 &lt; a &lt; p\)</span> <span
+class="math display">\[a^{p-1} \equiv 1 (mod \quad p). \quad (a^n \equiv
+a (mod \quad p))\]</span></p>
+<h1 id="algebra-3.">Algebra 3.</h1>
+<h2 id="homomorfismy-a-izomorfismy">Homomorfismy a izomorfismy</h2>
+<h3 class="unnumbered" id="definice-11.1">Definice 11.1</h3>
+<p>Buď <span class="math inline">\(G = (M, \circ_G), H = (N,
+\circ_H)\)</span> dva grupoidy, zobrazení <span class="math inline">\(h:
+M \to N\)</span>, nazveme <strong>homomorfismem G do H</strong>,
+jestliže <span class="math display">\[\forall a,b \in M, h(a \circ_G b)
+= h(a) \circ_H h(b)\]</span> Je-li navíc <span
+class="math inline">\(h\)</span> injektivní, resp. surjektivní, resp.
+bijektivní, říkáme, že jde o <strong>monomorfismus</strong>, resp.
+<strong>epimorfismus</strong>, resp. <strong>izomorfismus</strong>.</p>
+<h3 class="unnumbered" id="definice-11.2">Definice 11.2</h3>
+<p>Grupy <span class="math inline">\(G = (M, \circ_G), H = (N,
+\circ_H)\)</span> nazýváme <strong>izomorfní</strong>, právě tehdy když
+existuje izomorfismus <span class="math inline">\(h: M \to N\)</span>,
+také říkáme, že G je izomorfní s H.</p>
+<h3 class="unnumbered" id="poznámka-13">Poznámka</h3>
+<p>Vlastnost dvou grup být izomorfní je relace ekvivalence na množině
+všech grup.</p>
+<h3 class="unnumbered" id="věta-11.3">Věta 11.3</h3>
+<p>Buď homomorfismus grupy <span class="math inline">\(G = (M,
+\circ_G)\)</span> do grupoidu <span class="math inline">\(H = (N,
+\circ_H)\)</span> <span class="math inline">\(h: M \to N\)</span>, potom
+<span class="math inline">\(h(G) = (h(M), \circ_H)\)</span> je
+grupa.</p>
+<p><strong>Důsledky</strong>: Je-li <span
+class="math inline">\(H\)</span> grupa, potom</p>
+<ul>
+<li><p>neutrální prvek G se zobrazí na neutrální prvek H</p></li>
+<li><p>inverzní prvek se zobrazí na inverzní prvek H <span
+class="math inline">\(h(x^{-1}) = h(x)^{-1}\)</span></p></li>
+<li><p>je-li <span class="math inline">\(h\)</span> homomorfismus z
+<span class="math inline">\(G \to H\)</span>, <span
+class="math inline">\(h(G)\)</span> je podgrupa <span
+class="math inline">\(H\)</span></p></li>
+</ul>
+<h3 class="unnumbered" id="věta-11.4">Věta 11.4</h3>
+<p>Libovolné dvě nekonečné cyklické grupy jsou izomorfní. Pro každé
+<span class="math inline">\(n \in \mathbb{N}\)</span> jsou libovolné dvě
+cyklické grupy řádu <span class="math inline">\(n\)</span>
+izomorfní.</p>
+<h3 class="unnumbered" id="poznámka-14">Poznámka</h3>
+<p><span class="math inline">\((\mathbb{Z},+), (\mathbb{Z},+_n)\)</span>
+jsou jediné cyklické grupy až na izomorfismus.</p>
+<h3 class="unnumbered" id="poznámka-kleinova-grupa">Poznámka Kleinova
+grupa</h3>
+<p><span class="math inline">\((\mathbb{Z}_2 \times \mathbb{Z}_2,
+\circ)\)</span>, kde <span class="math display">\[\mathbb{Z}_2 \times
+\mathbb{Z}_2 = \{(0,0), (0,1), (1,0), (1,1)\}\]</span> <span
+class="math inline">\(\circ\)</span> je modulo <span
+class="math inline">\(2\)</span> po složkách <span
+class="math inline">\((1,0) \circ (1,1) = (0,1)\)</span> Kleinova grupa
+není cyklická, nemůže být tedy izomorfní s <span
+class="math inline">\(\mathbb{Z}^+_4\)</span></p>
+<h3 class="unnumbered" id="věta-11.6">Věta 11.6</h3>
+<p>Existují pouze dvě neizomorfní grupy řádu 4.</p>
+<h3 class="unnumbered" id="poznámka-symetrická-grupa">Poznámka
+(Symetrická grupa)</h3>
+<p>Symetrickou grupou množiny <span
+class="math inline">\(\{1,2,...,n\}\)</span> nazveme množinu všech
+permutací s operací skládání zobrazení a značíme ji <span
+class="math inline">\(S_n\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-15">Poznámka</h3>
+<p>Permutace můžeme zadat výčtem hodnot <span
+class="math display">\[\begin{pmatrix}
+    1 &amp; 2 &amp; ... &amp; n\\
+    \pi(1) &amp; \pi(2) &amp; ... &amp; \pi(n)
+\end{pmatrix}\]</span> první řádek můžeme navíc vynechat.
+<strong>Skládání permutací</strong> <span
+class="math display">\[\begin{pmatrix} 1 &amp; 2 &amp; 4 &amp; 3 &amp; 5
+\end{pmatrix} \circ
+    \begin{pmatrix} 2 &amp; 1 &amp; 3 &amp; 5 &amp; 4 \end{pmatrix} =
+    \begin{pmatrix} 2 &amp; 1 &amp; 4 &amp; 5 &amp; 3
+\end{pmatrix}\]</span> Skládání zobrazení je asociativní, matice <span
+class="math display">\[\begin{pmatrix} 1 &amp; 2 &amp; ... &amp; n
+\end{pmatrix}\]</span> je neutrální prvek a inverzní prvek je inverzní
+zobrazení, <span class="math inline">\(S_n\)</span> je tedy opravdu
+grupa a má řád <span class="math inline">\(n!\)</span></p>
+<h3 class="unnumbered" id="poznámka-16">Poznámka</h3>
+<p>Podgrupy symetrické grupy <span class="math inline">\(S_n\)</span>
+nazýváme <strong>grupami permutací</strong>.</p>
+<h3 class="unnumbered" id="věta-11.8-cayleyova">Věta 11.8
+(Cayleyova)</h3>
+<p>Každá konečná grupa <span class="math inline">\(G\)</span> je
+izomorfní s nějakou grupou permutací.</p>
+<h2 id="aplikace-teorie-grup-v-kryptografii">Aplikace teorie grup v
+kryptografii</h2>
+<h3 class="unnumbered"
+id="definice-12.1-problém-diskrétního-logaritmu-na-grupě-g-m-cdot">Definice
+12.1 (Problém diskrétního logaritmu na grupě <span
+class="math inline">\(G = (M, \cdot)\)</span>)</h3>
+<p>Buď <span class="math inline">\(G = (M, \cdot)\)</span> cyklická
+grupa řádu <span class="math inline">\(n\)</span>, <span
+class="math inline">\(\alpha\)</span> její generátor a <span
+class="math inline">\(\beta\)</span> její prvek. Řešit problém
+diskrétního logaritmu znamená najít číslo <span class="math inline">\(1
+\leq k \leq n\)</span>, takové, že <span class="math display">\[\alpha^k
+= \beta\]</span>.</p>
+<h3 class="unnumbered"
+id="definice-12.2-problém-diskrétního-logaritmu-na-grupě-g-m">Definice
+12.2 (Problém diskrétního logaritmu na grupě <span
+class="math inline">\(G = (M, +)\)</span>)</h3>
+<p>Buď <span class="math inline">\(G = (M, +)\)</span> cyklická grupa
+řádu <span class="math inline">\(n\)</span>, <span
+class="math inline">\(\alpha\)</span> nějaký její generátor a <span
+class="math inline">\(\beta\)</span> její prvek. Řešit problém
+diskrétního logaritmu znamená najít číslo <span class="math inline">\(1
+\leq k \leq n\)</span>, takové, že <span class="math display">\[k \times
+\alpha = \beta\]</span>.</p>
+<h3 class="unnumbered" id="poznámka-17">Poznámka</h3>
+<p>Zahodíme li požadavek na cykličnost grupy <span
+class="math inline">\(G\)</span>, problém má řešení pouze pokud, prvek
+<span class="math inline">\(\beta\)</span> patří do cyklické podgrupy
+<span class="math inline">\(\langle \alpha \rangle\)</span> generované
+<span class="math inline">\(\alpha\)</span>.</p>
+<h3 class="unnumbered" id="příklad-kde-to-lze-snadno">Příklad, kde to
+lze snadno</h3>
+<p>Mějme grupu <span class="math inline">\(\mathbb{Z}^+_p\)</span>,
+generátor <span class="math inline">\(\alpha\)</span>, prvek <span
+class="math inline">\(\beta\)</span>, řešíme <span
+class="math display">\[k \times \alpha = \beta \mod p\]</span> Pomůžeme
+si grupou <span class="math inline">\(\mathbb{Z}^\times_p\)</span>, kde
+řešením bude, <span class="math display">\[k = \beta \cdot \alpha^{-1}
+\mod p\]</span></p>
+<h3 class="unnumbered" id="obecně">Obecně</h3>
+<p>Není znám rozumně rychlý algoritmus řešící problém diskrétního
+logaritmu.</p>
+<p>V případě grupy <span
+class="math inline">\(\mathbb{Z}^\times_p\)</span> znám algoritmus
+úměrný <span class="math inline">\(\sqrt{p}\)</span>. Inverzní operaci,
+tedy mocnění umíme naopak velmi rychle (metoda opakovaných čtverců).</p>
+<p>Dostáváme tedy <strong>jednosměrnou (one-way) funkci</strong>, kterou
+lze použít pro kryptografii. Spočítat <span class="math inline">\(\beta
+= \alpha^x \mod p\)</span> je snadné, známe-li <span
+class="math inline">\(x, \alpha, p\)</span>, naopak spočítat <span
+class="math inline">\(x\)</span> známe-li <span
+class="math inline">\(\alpha, \beta, p\)</span> je velmi obtížné.</p>
+<p><strong>Poznámka</strong>: Pro konstrukci RSA šifry bylo použita
+jednosměrná funkce násobení prvočísel. Vynásobit dvě velká prvočísla je
+snadný úkol. Rozložit velké číslo na dvě prvočísla je velmi obtížné.</p>
+<h3 class="unnumbered" id="diffie-hellman-key-exchange">Diffie-Hellman
+Key Exchange</h3>
+<ol>
+<li><p>Inicializace: Alice zveřejní generátor <span
+class="math inline">\(\alpha\)</span> a prvočíslo <span
+class="math inline">\(p\)</span>. Alice si zvolí <span
+class="math inline">\(x\)</span> a spočítá svůj veřejný klíč <span
+class="math inline">\(A = \alpha^x \mod p\)</span>. Bob si zvolí tajný
+klíč <span class="math inline">\(y\)</span> a spočítá svůj veřejný klíč
+<span class="math inline">\(B = \alpha^y \mod p\)</span>. Výměna
+klíčů.</p></li>
+<li><p>Komunikace: Alice počítá zprávu jako <span
+class="math inline">\(k_{AB} = B^x \mod p\)</span>. Bob počítá zprávu
+jako <span class="math inline">\(k_{AB} = A^y \mod p\)</span>.</p></li>
+</ol>
+<p><strong>Fakta</strong></p>
+<ul>
+<li><p>Operace mocnění je v <span
+class="math inline">\(\mathbb{Z}^\times_p\)</span> komutativní a tedy
+vypočtené <span class="math inline">\(k_{AB}\)</span> je pro oba stejné,
+protože <span class="math inline">\(k_{AB} \equiv \left( \alpha^{y}
+\right)^x \equiv \left( \alpha^{x} \right)^y \mod p\)</span></p></li>
+<li><p>Mocnění není výpočetně náročné (square nad multiply).</p></li>
+<li><p>Řešení diskrétního logaritmu je velmi náročné.</p></li>
+</ul>
+<h1 id="algebra-4.">Algebra 4.</h1>
+<h2 id="množiny-se-dvěma-binárními-operacemi">Množiny se dvěma binárními
+operacemi</h2>
+<h3 class="unnumbered" id="definice-13.1-okruh-ring">Definice 13.1 Okruh
+(Ring)</h3>
+<p>Buď <span class="math inline">\(M\)</span> neprázdná množina a <span
+class="math inline">\(+\)</span> a <span
+class="math inline">\(\cdot\)</span> binární operace na <span
+class="math inline">\(M\)</span>. Trojice <span class="math inline">\(R
+= (M,+,\cdot)\)</span> je <strong>okruh</strong>, pokud</p>
+<ul>
+<li><p><span class="math inline">\((M,+)\)</span> je <strong>abelovská
+grupa</strong>,</p></li>
+<li><p><span class="math inline">\((M,\cdot)\)</span> je
+<strong>monoid</strong>,</p></li>
+<li><p>platí (levý a pravý) <strong>distributivní zákon</strong> <span
+class="math display">\[(\forall a,b,c \in M) \left( a(b+c)= ab + ac
+\land (b+c)a = ba + ca \right)\]</span></p></li>
+</ul>
+<h3 class="unnumbered" id="názvosloví">Názvosloví</h3>
+<p>Buď <span class="math inline">\(R = (M,+,\cdot)\)</span> okruh</p>
+<ul>
+<li><p>je-li <span class="math inline">\(\cdot\)</span> komutativní,
+nazýváme <span class="math inline">\(R\)</span> <strong>komutativní
+okruh</strong></p></li>
+<li><p><span class="math inline">\((M,+)\)</span> se nazývá
+<strong>aditivní grupa</strong> okruhu <span
+class="math inline">\(R\)</span>,</p></li>
+<li><p><span class="math inline">\((M,\cdot)\)</span> se nazývá
+<strong>multiplikativní monoid</strong> okruhu <span
+class="math inline">\(R\)</span>,</p></li>
+<li><p>neutrální prvek <span class="math inline">\(M\)</span> se nazývá
+<strong>nulový prvek</strong> a značí se <span
+class="math inline">\(0\)</span>, inverzní prvek <span
+class="math inline">\(a^{-1}\)</span> vůči operaci <span
+class="math inline">\(+, a \in M\)</span>, značíme <span
+class="math inline">\(-a\)</span>,</p></li>
+<li><p>v okruhu můžeme definovat operaci odečítání <span
+class="math inline">\(-\)</span> předpisem <span
+class="math display">\[a - b = a + (-b)\]</span></p></li>
+<li><p>neutrálnímu prvku multiplikativního monoidu budeme zpravidla
+říkat <strong>jednička</strong> a značit jej <span
+class="math inline">\(1\)</span>.</p></li>
+</ul>
+<h3 class="unnumbered" id="základní-vlastnost-okruhů">Základní vlastnost
+okruhů</h3>
+<ul>
+<li><p>Násobení nulovým prvkem dává opět nulový prvek</p></li>
+<li><p>Levý i pravý distributivní zákon pro odečítání</p></li>
+</ul>
+<h3 class="unnumbered"
+id="definice-13.2-obor-integrity-integral-domain">Definice 13.2 Obor
+integrity (Integral domain)</h3>
+<p>Nenulové prvky <span class="math inline">\(a,b \in M\)</span> z
+okruhu <span class="math inline">\((M,+,\cdot)\)</span> nazýváme
+<strong>dělitelé nuly</strong> právě tehdy když, <span
+class="math inline">\(a \cdot b = b \cdot a = 0\)</span>. <strong>Obor
+integrity</strong> je komutativní okruh ve kterém neexistují dělitelé
+nuly.</p>
+<h3 class="unnumbered" id="definice-13.3-těleso-field">Definice 13.3
+Těleso (Field)</h3>
+<p>Okruh <span class="math inline">\(T = (M,+,\cdot)\)</span> se nazývá
+těleso, pokud <span class="math inline">\((M \setminus
+\{0\},\cdot)\)</span> je abelovská grupa. Tuto grupu nazýváme
+multiplikativní grupou tělesa <span
+class="math inline">\(T\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-18">Poznámka</h3>
+<ul>
+<li><p>Z množiny <span class="math inline">\(M\)</span> multiplikativní
+grupy tělesa <span class="math inline">\(T\)</span> musíme odebrat prvek
+<span class="math inline">\(0\)</span>, protože <span
+class="math inline">\(a \cdot 0 = 0 \cdot a = 0\)</span> a tedy k nule
+neexistuje inverzní prvek, tj. nelze dělit nulou.</p></li>
+<li><p>všemi ostatnímy prvky dělit umíme. dělení = násobení inverzním
+prvkem <span class="math display">\[\frac{a}{b} = a \cdot b^{-1}, \quad
+\forall a,b \in M \setminus \{0\}\]</span></p></li>
+</ul>
+<h3 class="unnumbered" id="příklady-těles">Příklady těles</h3>
+<ul>
+<li><p><span class="math inline">\((\mathbb{Z},+,\cdot)\)</span> není
+těleso,</p></li>
+<li><p><span class="math inline">\((\mathbb{Q},+,\cdot)\)</span> je
+nejmenší těleso s běžnými operacemi <span
+class="math inline">\(+\)</span> a <span
+class="math inline">\(\cdot\)</span>,</p></li>
+<li><p>nejmenší těleso je tzv. <strong>triviální těleso</strong> <span
+class="math display">\[(\{0,1\},+_2,\cdot_2)\]</span></p></li>
+</ul>
+<h3 class="unnumbered" id="některé-vlastnosti-těles">Některé vlastnosti
+těles</h3>
+<p>Každé těleso má definované aritmetické operace sčítání, odčítání,
+násobení, dělení a všechny operace z nich odvozené jako například
+mocnění, odmocňování, logaritmování.</p>
+<p>Triviální těleso má tyto operace definované nad jedním bitem. Lze je
+rozšířit na libovolný počet bitů.</p>
+<h3 class="unnumbered" id="věta-13.4">Věta 13.4</h3>
+<p>Mějme těleso <span class="math inline">\(T\)</span>, pokud <span
+class="math inline">\(ab = 0, a,b\in T\)</span> pak <span
+class="math inline">\(a = 0 \lor b = 0\)</span>.</p>
+<p>Každé těleso je tedy oborem integrity.</p>
+<h3 class="unnumbered" id="definice-13.5">Definice 13.5</h3>
+<p>Zobrazení <span class="math inline">\(h\)</span> z okruhu (resp.
+tělesa) R do okruhu (resp. tělesa) S, je <strong>homomorfismem</strong>
+z R na S, pokud je <span class="math inline">\(h\)</span> homomorfismem
+příslušných aditivních a multiplikativních grupoidů (resp. grup) a platí
+<span class="math inline">\(h(1_R) = 1_S\)</span>.</p>
+<p>Je-li navíc zobrazneí <span class="math inline">\(h\)</span> bijekcí
+(prosté a na), jedná se o <strong>izomorfismus</strong> z <span
+class="math inline">\(R\)</span> na <span
+class="math inline">\(S\)</span>.</p>
+<h3 class="unnumbered" id="definice-13.6">Definice 13.6</h3>
+<p>Tělesa <span class="math inline">\(T\)</span> a <span
+class="math inline">\(K\)</span> nazýváme <strong>izomorfní</strong>,
+právě tehdy když existuje izomorfismus z <span
+class="math inline">\(R\)</span> na <span
+class="math inline">\(S\)</span>. V tom případě říkáme, že těleso <span
+class="math inline">\(T\)</span> <strong>je izomorfní s</strong> tělesem
+<span class="math inline">\(K\)</span>.</p>
+<h3 class="unnumbered" id="poznámka-19">Poznámka</h3>
+<p>Relace "být izomorfní" na množině všech těles je relace ekvivalence.
+Podmínka <span class="math inline">\(h(1_R) = 1_S\)</span> u
+homomorfismů okruhů je nutná abychom měli korektně homomorfismus
+monoidů. U těles ji můžeme vypustit.</p>
+<h2 id="okruhy-polynomů">Okruhy polynomů</h2>
+<h3 class="unnumbered" id="definice-13.6-1">Definice 13.6</h3>
+<p>Mějme okruh <span class="math inline">\(R\)</span> a prvky <span
+class="math inline">\(a_i \in R, i \in \{0,1,2,\dots,n\}\)</span>.
+Formální výraz tvaru <span class="math display">\[P(x) =
+\sum^n_{i=1}a_ix^i\]</span> nazýváme <strong>polynomem nad okruhem <span
+class="math inline">\(R\)</span></strong>.</p>
+<ul>
+<li><p>Prvky <span class="math inline">\(a_i \in R, i \in
+\{0,1,2,\dots,n\}\)</span> nazýváme <strong>koeficienty</strong>
+polynomu <span class="math inline">\(P(x)\)</span>.</p></li>
+<li><p>x nazýváme <strong>formální proměnnou</strong> polynomu <span
+class="math inline">\(P(x)\)</span>.</p></li>
+<li><p>Pokud pro polynom <span class="math inline">\(P(x)\)</span>
+existuje <span class="math inline">\(k \in \{0,1,2,\dots,n\}, a_k \neq
+0\)</span>, pak nejvyšší z těchto k nazýváme <strong>stupněm
+polynomu</strong>.</p></li>
+<li><p>Polynom <span class="math inline">\(P(x) = 0\)</span> nazýváme
+<strong>nulovým polynomem</strong> a jeho stupeň nedefinujeme.</p></li>
+</ul>
+<h3 class="unnumbered"
+id="věta-14.2-okruh-polynomů-polynomial-ring">Věta 14.2 Okruh polynomů
+(polynomial ring)</h3>
+<p>... tvoří <strong>okruh polynomů nad okruhem <span
+class="math inline">\(R\)</span></strong>.</p>
+<p>Tento okruh zančíme <span class="math inline">\(R[x]\)</span>.</p>
+<h3 class="unnumbered" id="lemma-14.3-o-dělení-polynomů">Lemma 14.3 (o
+dělení polynomů)</h3>
+<h3 class="unnumbered" id="věta-14.4-bézoutova-věta-pro-polynomy">Věta
+14.4 (Bézoutova věta pro polynomy)</h3>
+<h3 class="unnumbered" id="lemma-14.5-o-násobení-polynomů">Lemma 14.5 (o
+násobení polynomů)</h3>
+<h3 class="unnumbered" id="definice-14.6">Definice 14.6</h3>
+<p>... Řekneme, že <span class="math inline">\(P(x)\)</span> je
+<strong>ireducibilní nad okruhem K</strong>, jestliže</p>
+<h3 class="unnumbered" id="věta-14.7">Věta 14.7</h3>
+<p>...</p>
+<p>kde <span class="math inline">\(\mu\)</span> je Möbiova funkce</p>
+<p>a <strong>monický</strong> polynom je takový, který má u koeficient u
+nejvyšší mocniny jedničku.</p>
+<h2 id="konečná-tělesa">Konečná tělesa</h2>
+<h3 class="unnumbered"
+id="definice-15.1-konečné-těleso-finite-field">Definice 15.1 Konečné
+těleso (finite field)</h3>
+<p>Těleso, které má konečný počet prvků se nazývá
+<strong>konečné</strong>.</p>
+<p><strong>Řádem</strong> tělesa se podobně jako u řádu grup nazývá
+počet prvků tělesa. Konečná tělesa mají i konečný řad.</p>
+<h3 class="unnumbered" id="o-tělese-mathbbz-cdot">O tělese <span
+class="math inline">\((\mathbb{Z}, +, \cdot)\)</span></h3>
+<h3 class="unnumbered" id="věta-15.3">Věta 15.3</h3>
+<p>Řádem konečného tělesa musí být mocnina prvočísla, neboli číslo
+zapsatelné jako <span class="math inline">\(p^n\)</span>, kde <span
+class="math inline">\(p\)</span> je prvočíslo a <span
+class="math inline">\(n\)</span> je kladné celé číslo. Navíc platí, že
+všechna tělesa řádu <span class="math inline">\(p^n\)</span> jsou
+<strong>navzájem izomorfní</strong>.</p>
+<h3 class="unnumbered" id="definice-15.4">Definice 15.4</h3>
+<p>Těleso s řádem <span class="math inline">\(p^n\)</span> nazýváme
+<strong>Galois field</strong> a značíme ho <span
+class="math inline">\(GF(p^n)\)</span> prvočíslo <span
+class="math inline">\(p\)</span> se nazývá
+<strong>charakteristikou</strong> tělesa <span
+class="math inline">\(GF(p^n)\)</span>.</p>
+<h3 class="unnumbered" id="gfpn-aditivní-grupa"><span
+class="math inline">\(GF(p^n)\)</span>: aditivní grupa</h3>
+<h3 class="unnumbered" id="gfpn-multiplikativní-grupa"><span
+class="math inline">\(GF(p^n)\)</span>: multiplikativní grupa</h3>
+<h2 id="aplikace-konečných-těles-v-kryptografii">Aplikace konečných
+těles v kryptografii</h2>
+<h3 class="unnumbered" id="bloková-šifra-aes">Bloková šifra AES</h3>
+<h3 class="unnumbered" id="eliptická-křivka">Eliptická křivka</h3>
+<h3 class="unnumbered" id="definice-16.1">Definice 16.1</h3>
+<p>Pro dva body</p>
+<h3 class="unnumbered" id="definice-16.2">Definice 16.2</h3>
+<p>Eliptickou křivkou rozumíme množinu bodů splňující rovnici</p>
+<h1 id="algebra-5.">Algebra 5.</h1>
+<h2 id="aritmetické-operace-v-konečném-tělese-gfpn">Aritmetické operace
+v konečném tělese <span class="math inline">\(GF(p^n)\)</span></h2>
+<h3 class="unnumbered" id="eea-ukázka-v-gf33">EEA: ukázka v <span
+class="math inline">\(GF(3^3)\)</span></h3>
+<h2 id="hledání-izomorfismů-mezi-dvěma-konečnými-tělesy">Hledání
+izomorfismů mezi dvěma konečnými tělesy</h2>
+<h2 id="soustavy-lineárních-rovnic-v-mathbbz_n">Soustavy lineárních
+rovnic v <span class="math inline">\(\mathbb{Z}^+_n\)</span></h2>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>z přednášek NI-MPI/FIT/ČVUT<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
