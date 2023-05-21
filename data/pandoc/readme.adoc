@@ -1,0 +1,60 @@
+= Pandoc
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+:toc:
+
+"Pandoc a universal document converter"
+-- https://pandoc.org/
+
+== References
+
+* https://pandoc.org/MANUAL.html
+* https://github.com/jgm/pandoc
+
+.Installation
+[source, shell]
+----
+wget "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb"
+sudo dpkg -i pandoc-2.11.4-1-amd64.deb
+----
+
+https://github.com/jgm/pandoc/releases/[Pandoc releases (github.com)]
+
+*Basic usage*
+
+* https://pandoc.org/demos.html[Demos (pandoc.org)]
+
+.Convert markdown to PDF
+[source, shell]
+----
+pandoc report.md --pdf-engine=xelatex -o report.pdf
+----
+
+.Convert markdown to HTML
+[source, shell]
+----
+# HTML fragment (plain html)
+pandoc page.md -o page.html
+
+# HTML with style (-s for standalone)
+pandoc -s page.md -o page.html
+
+# Add advanced LaTeX math
+pandoc -s page.md --mathjax -o page.html
+----
+
+* https://tex.stackexchange.com/questions/551960/pandoc-cannot-parse-equation-with-a-fraction[use --mathjax (tex.stackexchange.com)]
+* https://www.mathjax.org/[MathJax: Beautiful and accessible math in all browsers]
+
+.Example of LaTeX to HTML Conversion
+[,console]
+----
+pandoc \
+--standalone \
+--toc --toc-depth=2 \
+--mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js \
+--css="../../style.css" \
+-o index.html \
+readme.tex
+----

@@ -1,12 +1,29 @@
-=== Pentaho Data Integration
+= Pentaho Data Integration
+:stylesheet: ../../style.css
+:linkcss:
 
-* https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf
-* https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download
+"Pentaho Data Integration(PDI) provides the Extract, Transform, and Load (ETL) capabilities that facilitate the process of capturing, cleansing, and storing data using a uniform and consistent format that is accessible and relevant to end users and IoT technologies."
+-- <<pdi-documentation>>
+
+[bibliography]
+== References
+
+* [[[pdi-documentation]]] https://help.hitachivantara.com/Documentation/Pentaho/8.3/Products/Pentaho_Data_Integration[Pentaho Data Integration Documentation]
+* https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download[Download PDI Community Edition 6.0.0.0-353]
+* https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf[Installing PDI Community Edition]
+* https://help.hitachivantara.com/Documentation/Pentaho/8.2/Products/Data_Integration/Data_Integration_Perspective/Run_Modifiers/Variables[PDI Variables]
+
+== TL;DR
 
 Create connection between elements::
 Hold kbd:[shift], right click element FROM, right click element TO.
 Align elements::
 Select elements with mouse. Press kbd:[ctrl+up] (or other direction).
+
+*Database connections*
+
+. New
+. Share
 
 *Transformations*
 

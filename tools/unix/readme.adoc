@@ -14,18 +14,22 @@
 .TODO
 [%collapsible]
 ====
-* https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
-* `ls | xargs -I {} echo {}`
-
-.https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
-[,console]
-uname -a
+. xargs
+** `ls | xargs -I {} echo {}`
+. https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
+** `+uname -a+`
+. https://github.com/junegunn/fzf[fzf command-line fuzzy finder]
+. https://www.debian.org/doc/manuals/debian-reference/
+. https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
+. https://suckless.org/[suckless.org software for X window system]
 ====
 
 [bibliography]
 == References
 
+* [[[unix-programming-enviornment]]] https://archive.org/details/UnixProgrammingEnviornment/[The UNIX Programming Enviornment by Brian W. Kernigan, Rob Pike]
 * [[[POSIX-2017]]] https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/[POSIX.1-2017]
+* [[[gnu-packages]]] https://www.gnu.org/manual/[GNU Manuals Online]
 * [[[coreutils]]] https://www.gnu.org/software/coreutils/manual/coreutils.html[GNU Coreutils 9.3]
 * [[[findutils]]] https://www.gnu.org/software/findutils/manual/html_mono/find.html[GNU Findutils 4.9.0]
 

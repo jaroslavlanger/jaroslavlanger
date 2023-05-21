@@ -45,38 +45,5 @@ Good format specification allows to convert the document from one format to anot
 It can be done automatically using a conversion tool.
 When the target format has equal or greater expression power the conversion is lossless.
 
-=== https://pandoc.org/[Pandoc a universal document converter]
-
-.Installation
-[source, shell]
-----
-wget "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb"
-sudo dpkg -i pandoc-2.11.4-1-amd64.deb
-----
-
-https://github.com/jgm/pandoc/releases/[Pandoc releases (github.com)]
-
-*Basic usage*
-
-* https://pandoc.org/demos.html[Demos (pandoc.org)]
-
-.Convert markdown to PDF
-[source, shell]
-----
-pandoc report.md --pdf-engine=xelatex -o report.pdf
-----
-
-.Convert markdown to HTML
-[source, shell]
-----
-# HTML fragment (plain html)
-pandoc page.md -o page.html
-
-# HTML with style (-s for standalone)
-pandoc -s page.md -o page.html
-
-# Add advanced LaTeX math
-pandoc -s page.md --mathjax -o page.html
-----
-
-* https://tex.stackexchange.com/questions/551960/pandoc-cannot-parse-equation-with-a-fraction[use --mathjax (tex.stackexchange.com)]
+link:pandoc[Pandoc]::
+A universal document converter.

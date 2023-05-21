@@ -12,13 +12,70 @@
 <body class="article">
 <div id="header">
 <h1>PostgreSQL</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_references">References</a></li>
+<li><a href="#_installation">Installation</a></li>
+<li><a href="#_psql">PSQL</a></li>
+<li><a href="#_authentication">Authentication</a>
+<ul class="sectlevel2">
+<li><a href="#_encryption">Encryption</a></li>
+</ul>
+</li>
+<li><a href="#_sql_commands">SQL Commands</a></li>
+<li><a href="#_sql_language">SQL Language</a>
+<ul class="sectlevel2">
+<li><a href="#_ddl">DDL</a></li>
+<li><a href="#_functions_and_operators">Functions and Operators</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>The World&#8217;s Most Advanced Open Source Relational Database</p>
+<div class="quoteblock">
+<blockquote>
+The World&#8217;s Most Advanced Open Source Relational Database
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.postgresql.org/" class="bare">https://www.postgresql.org/</a>
 </div>
+</div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://www.postgresql.org/docs/current/sql-set-constraints.html">SET CONSTRAINTS — set constraint check timing for the current transaction</a></p>
+</li>
+<li>
+<p><a href="https://www.postgresql.org/message-id/9CEBD523D1CD4916AE46EC487323B524@eng02">ENABLE / DISABLE ALL TRIGGERS IN DATABASE</a></p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist bibliography">
+<ul class="bibliography">
+<li>
+<p><a id="documentation"></a>[documentation] <a href="https://www.postgresql.org/docs/current/">PostgreSQL Documentation</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation">Installation</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="title">Install postgresql on using apt</div>
 <div class="content">
@@ -34,54 +91,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_encryption">Encryption</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For compatibility with older software
-you might need to change encryption from <code>scram-sha-256</code> to <code>md5</code>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Set password_encryption in /etc/postgresql/VERSION/main/postgresql.conf</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">password_encryption = md5	# scram-sha-256 or md5</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Default /etc/postgresql/VERSION/main/pg_hba.conf</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
-host    all             all             127.0.0.1/32            scram-sha-256
-# IPv6 local connections:
-host    all             all             ::1/128                 scram-sha-256</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">md5 /etc/postgresql/VERSION/main/pg_hba.conf</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
-host    all             all             127.0.0.1/32            md5
-# IPv6 local connections:
-host    all             all             ::1/128                 md5</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">After these changes start and stop (or restart) posgresql</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo systemctl stop postgresql
-sudo systemctl start postgresql
-sudo systemctl restart postgresql</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Show current password encryption</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-psql hljs" data-lang="psql">show password_encryption;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_psql">PSQL</h2>
+<h2 id="_psql"><a href="https://www.postgresql.org/docs/current/app-psql.html">PSQL</a></h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="title">Set password for user postgres</div>
@@ -148,21 +158,191 @@ sudo systemctl restart postgresql</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sql">SQL</h2>
+<h2 id="_authentication">Authentication</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_encryption">Encryption</h3>
+<div class="paragraph">
+<p>For compatibility with older software
+you might need to change encryption from <code>scram-sha-256</code> to <code>md5</code>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">pg_hba.conf</a></dt>
+<dd>
+<p>host-based authentication configuration file.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">Set password_encryption in /etc/postgresql/VERSION/main/postgresql.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">password_encryption = md5	# scram-sha-256 or md5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Default /etc/postgresql/VERSION/main/pg_hba.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
+host    all             all             127.0.0.1/32            scram-sha-256
+# IPv6 local connections:
+host    all             all             ::1/128                 scram-sha-256</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">md5 /etc/postgresql/VERSION/main/pg_hba.conf</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt"># IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">After these changes start and stop (or restart) posgresql</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">sudo systemctl stop postgresql
+sudo systemctl start postgresql
+sudo systemctl restart postgresql</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Show current password encryption</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-psql hljs" data-lang="psql">show password_encryption;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sql_commands">SQL Commands</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Basic Commands</div>
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-createdatabase.html">CREATE DATABASE — create a new database</a></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create database DATABASE_NAME;
-create user USER_NAME with encrypted password 'SOME PASSWORD';
-drop database DATABASE_NAME;
-drop user USER_NAME;</code></pre>
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create database DATABASE_NAME;</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Grant user the permission to create tables.</div>
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-createuser.html">CREATE USER — define a new database role</a></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">grant all on schema public to USER_NAME;</code></pre>
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create user USER_NAME with encrypted password 'SOME PASSWORD';</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-createschema.html">CREATE SCHEMA — define a new schema</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create schema SCHEMA_NAME;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-grant.html">GRANT — define access privileges</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- Grant user the permission to create tables.
+grant all on schema SCHEMA_NAME to USER_NAME;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-createsequence.html">CREATE SEQUENCE — define a new sequence generator</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- Get the current state of a sequence generator.
+select * from SEQUENCE_NAME;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE — change the definition of a table</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- Disable all trigers for table TABLE_NAME.
+alter table TABLE_NAME disable trigger all;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-insert.html">INSERT — create new rows in a table</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">insert into TABLE_NAME values
+    ('abc', 123);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-delete.html">DELETE — delete rows of a table</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">delete from TABLE_NAME;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.postgresql.org/docs/current/sql-droptable.html">DROP TABLE — remove a table</a></p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-dropschema.html">DROP SCHEMA — remove a schema</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">drop schema SCHEMA_NAME cascade;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-alterdatabase.html">ALTER DATABASE — change a database</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">alter database OLD_NAME rename to NEW_NAME;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-dropuser.html">DROP USER — remove a database role</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">drop user USER_NAME;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">DROP DATABASE — remove a database</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">drop database DATABASE_NAME;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sql_language">SQL Language</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Key words and unquoted identifiers are case insensitive.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS" class="bare">https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- This is a standard SQL comment
+
+/* multiline comment
+ * with nesting: /* nested block comment */
+ */</code></pre>
+</div>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS" class="bare">https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ddl">DDL</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.postgresql.org/docs/current/ddl-schemas.html" class="bare">https://www.postgresql.org/docs/current/ddl-schemas.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_functions_and_operators">Functions and Operators</h3>
+<div class="listingblock">
+<div class="title"><a href="https://www.postgresql.org/docs/current/functions-info.html" class="bare">https://www.postgresql.org/docs/current/functions-info.html</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">select current_user;</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -170,7 +350,7 @@ drop user USER_NAME;</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-04 13:55:25 +0200
+Last updated 2023-05-22 00:35:37 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

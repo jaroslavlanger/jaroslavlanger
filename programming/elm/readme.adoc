@@ -2,6 +2,7 @@
 :hide-uri-scheme:
 :stylesheet: ../../style.css
 :linkcss:
+:toc:
 
 "Elm is a functional programming language for declaratively creating web browser based graphical user interfaces."
 -- https://en.wikibooks.org/wiki/Elm_programming_language
@@ -14,7 +15,13 @@
 * Elm is inserted as bundle into a div.
 * Elm compiler is implemented in haskell.
 * https://www.schoolofhaskell.com/user/griba/elm-from-a-haskell-perspective
+* https://gist.github.com/yang-wei/4f563fbf81ff843e8b1e[Elm Destructuring (or Pattern Matching) cheatsheet]
+* http://sporto.github.io/elm-patterns/
 ====
+
+== References
+
+* https://guide.elm-lang.org/
 
 == https://elm-lang.org/try[Try Elm! Online Editor]
 
@@ -30,29 +37,31 @@ npm install -g elm-format
 
 == https://elm-lang.org/docs/syntax[Syntax]
 
-== https://package.elm-lang.org/packages/elm/core/latest/[Core Libraries]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/Basics[Basics]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/Tuple[Tuple]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/Maybe[Maybe]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/List[List]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/String[String]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/Dict[Dict]
-
-=== https://package.elm-lang.org/packages/elm/core/latest/Debug[Debug]
-
 == Packages
+
+=== https://package.elm-lang.org/packages/elm/core/latest/[Core Libraries]
+
+* https://package.elm-lang.org/packages/elm/core/latest/Basics[Basics]
+* https://package.elm-lang.org/packages/elm/core/latest/Tuple[Tuple]
+* https://package.elm-lang.org/packages/elm/core/latest/Maybe[Maybe]
+* https://package.elm-lang.org/packages/elm/core/latest/List[List]
+* https://package.elm-lang.org/packages/elm/core/latest/String[String]
+* https://package.elm-lang.org/packages/elm/core/latest/Dict[Dict]
+* https://package.elm-lang.org/packages/elm/core/latest/Debug[Debug]
 
 === https://package.elm-lang.org/packages/elm/json/latest/[JSON in Elm]
 
-=== https://package.elm-lang.org/packages/elm/parser/latest/Parser[Parser]
+=== https://package.elm-lang.org/packages/elm/parser/latest/[Parser]
 
-=== https://package.elm-lang.org/packages/elm/html/latest/Html[Html]
+=== https://package.elm-lang.org/packages/elm/html/latest/[Html]
+
+=== https://package.elm-lang.org/packages/elm/http/latest/[Http]
+
+=== https://package.elm-lang.org/packages/elm/url/latest/[Work with URLs]
+
+=== https://package.elm-lang.org/packages/elm/browser/latest/[Browser]
+
+=== https://package.elm-lang.org/packages/EdutainmentLIVE/elm-dropdown/latest/[EdutainmentLIVE/elm-dropdown]
 
 == Project
 

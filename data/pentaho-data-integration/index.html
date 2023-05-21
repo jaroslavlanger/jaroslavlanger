@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>Pentaho Data Integration</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Pentaho Data Integration</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Pentaho Data Integration(PDI) provides the Extract, Transform, and Load (ETL) capabilities that facilitate the process of capturing, cleansing, and storing data using a uniform and consistent format that is accessible and relevant to end users and IoT technologies.
+</blockquote>
+<div class="attribution">
+&#8212; <a href="#pdi-documentation">[pdi-documentation]</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist bibliography">
+<ul class="bibliography">
+<li>
+<p><a id="pdi-documentation"></a>[pdi-documentation] <a href="https://help.hitachivantara.com/Documentation/Pentaho/8.3/Products/Pentaho_Data_Integration">Pentaho Data Integration Documentation</a></p>
+</li>
+<li>
+<p><a href="https://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.0.0-353.zip/download">Download PDI Community Edition 6.0.0.0-353</a></p>
+</li>
+<li>
+<p><a href="https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf">Installing PDI Community Edition</a></p>
+</li>
+<li>
+<p><a href="https://help.hitachivantara.com/Documentation/Pentaho/8.2/Products/Data_Integration/Data_Integration_Perspective/Run_Modifiers/Variables">PDI Variables</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tldr">TL;DR</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Create connection between elements</dt>
+<dd>
+<p>Hold kbd:[shift], right click element FROM, right click element TO.</p>
+</dd>
+<dt class="hdlist1">Align elements</dt>
+<dd>
+<p>Select elements with mouse. Press kbd:[ctrl+up] (or other direction).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Database connections</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>New</p>
+</li>
+<li>
+<p>Share</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Transformations</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use variables in filenames e.g. <code>${root_path}/</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit &#8594; Set environment variables</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In transformation, right click &#8594; properties &#8594; miscellaneous</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check: Make the transformation database transactional.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Pentaho always searches for the minimal value of a sequence.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When having new table, add dummy line with sequence number set to 0.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Input &#8594; CSV file input</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Lazy conversion - turn off (when troubles with conversions try switching it).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Input &#8594; Table input</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Get SQL select statement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Transformation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8594; Value mapper</p>
+</li>
+<li>
+<p>&#8594; Select values</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Press Get fields to select</p>
+</li>
+<li>
+<p>Selects subset of fields and renames them (do based on Logical Data Map).</p>
+</li>
+<li>
+<p>Delete unwanted fields using kdb:[del].</p>
+</li>
+<li>
+<p>Reorder the fields using kdb:[ctrl+up] (or down).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Data Warehouse</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>&#8594; Dimension lookup/update</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For historization</p>
+</li>
+<li>
+<p>Last update field - type of dimensions update = date of last update.</p>
+</li>
+<li>
+<p>Technical key, Use sequence</p>
+</li>
+<li>
+<p>Stream datefield, use it when you want historize dates based on data
+just the date of the transformation run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Output &#8594; Table output</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For stage database set Truncate table ON</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Jobs</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Design &#8594; General</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>&#8594; START</p>
+</li>
+<li>
+<p>&#8594; Transformation</p>
+</li>
+<li>
+<p>&#8594; Success</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-22 00:04:39 +0200
+</div>
+</div>
+</body>
+</html>

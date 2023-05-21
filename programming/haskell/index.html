@@ -755,6 +755,10 @@ Hackage is the Haskell community&#8217;s central package archive of open source 
 <dd>
 <p>Repa provides high performance, regular, multi-dimensional, shape polymorphic parallel arrays.</p>
 </dd>
+<dt class="hdlist1"><a href="https://hackage.haskell.org/package/array-0.5.5.0">array: Mutable and immutable arrays</a></dt>
+<dd>
+<p>In addition to providing the Data.Array module as specified in the Haskell 2010 Language Report, this package also defines the classes IArray of immutable arrays and MArray of arrays mutable within appropriate monads, as well as some instances of these classes.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -832,13 +836,20 @@ Hackage is the Haskell community&#8217;s central package archive of open source 
         (&gt;&gt;=) :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title"><a href="https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html#v:ap">ap</a></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-haskell hljs" data-lang="haskell">ap                :: (Monad m) =&gt; m (a -&gt; b) -&gt; m a -&gt; m b
+ap m1 m2          = do { x1 &lt;- m1; x2 &lt;- m2; return (x1 x2) }</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-08 09:43:48 +0200
+Last updated 2023-05-21 15:08:30 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

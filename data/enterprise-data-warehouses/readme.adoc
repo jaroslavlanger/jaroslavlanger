@@ -30,8 +30,6 @@ include::architecture.adoc[]
 
 include::etl-tools.adoc[]
 
-include::pentaho-data-integration.adoc[]
-
 include::visualization-tools.adoc[]
 
 == Glossary
