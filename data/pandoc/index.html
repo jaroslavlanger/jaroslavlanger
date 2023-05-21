@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>Pandoc</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Pandoc</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+Pandoc a universal document converter
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://pandoc.org/" class="bare">pandoc.org/</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pandoc.org/MANUAL.html" class="bare">pandoc.org/MANUAL.html</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jgm/pandoc" class="bare">github.com/jgm/pandoc</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Installation</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">wget "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb"
+sudo dpkg -i pandoc-2.11.4-1-amd64.deb</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jgm/pandoc/releases/">Pandoc releases (github.com)</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Basic usage</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pandoc.org/demos.html">Demos (pandoc.org)</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Convert markdown to PDF</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pandoc report.md --pdf-engine=xelatex -o report.pdf</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Convert markdown to HTML</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"># HTML fragment (plain html)
+pandoc page.md -o page.html
+
+# HTML with style (-s for standalone)
+pandoc -s page.md -o page.html
+
+# Add advanced LaTeX math
+pandoc -s page.md --mathjax -o page.html</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://tex.stackexchange.com/questions/551960/pandoc-cannot-parse-equation-with-a-fraction">use --mathjax (tex.stackexchange.com)</a></p>
+</li>
+<li>
+<p><a href="https://www.mathjax.org/">MathJax: Beautiful and accessible math in all browsers</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example of LaTeX to HTML Conversion</div>
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">pandoc \
+--standalone \
+--toc --toc-depth=2 \
+--mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js \
+--css="../../style.css" \
+-o index.html \
+readme.tex</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-21 14:48:46 +0200
+</div>
+</div>
+</body>
+</html>
