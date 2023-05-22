@@ -141,6 +141,12 @@ insert into TABLE_NAME values
     ('abc', 123);
 ----
 
+.https://www.postgresql.org/docs/current/sql-copy.html[COPY — copy data between a file and a table]
+----
+-- Export table to csv file with a header.
+copy TABLE_NAME to 'path/file.csv' delimiter ',' csv header;
+----
+
 .https://www.postgresql.org/docs/current/sql-delete.html[DELETE — delete rows of a table]
 ----
 delete from TABLE_NAME;
