@@ -321,6 +321,83 @@ is a family of standards specified by the IEEE Computer Society for maintaining 
 <div class="paragraph">
 <p>Sometimes I will use the <code>#</code> sign to show you the command&#8217;s output. It is ignored, so it does not matter if you copy-past the lines with it or not.</p>
 </div>
+<details>
+<summary class="title">Motivation to use the terminal</summary>
+<div class="content">
+<div class="listingblock">
+<div class="title">How many visible files are under this directory?</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">find . -type f | grep -v '/\.' | wc -l</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can read it from the back as "Count how many (<code>wc -l</code>) visible (<code>grep -v '/\.'</code>) files are under this directory (<code>find . -type f</code>)".
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Text</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command find, searches for files and directories.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.</code> means "current path", in find "search from current path".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-type f</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find&#8217;s argument to search only files.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipe, passes command&#8217;s output as an input to the next command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grep</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command grep, filters out lines which don&#8217;t match given pattern.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grep&#8217;s argument to filter the matching lines and keep others.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>'/\.'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pattern for a "hidden" file or directory (begins with a dot).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipe again.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command to count lines, words and bytes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wc&#8217;s argument to output only the number of lines.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
 <div class="paragraph">
 <p><strong>command exit</strong></p>
 </div>
@@ -1969,7 +2046,7 @@ sed is a stream editor. A stream editor is used to perform basic text transforma
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-20 19:27:20 +0200
+Last updated 2023-05-22 12:07:10 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

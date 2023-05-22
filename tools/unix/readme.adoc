@@ -110,6 +110,33 @@ Everything between a hash sign `#` and the end of the line is ignored. So it is 
 
 Sometimes I will use the `#` sign to show you the command's output. It is ignored, so it does not matter if you copy-past the lines with it or not.
 
+.Motivation to use the terminal
+[%collapsible]
+====
+.How many visible files are under this directory?
+----
+find . -type f | grep -v '/\.' | wc -l
+----
+
+NOTE: You can read it from the back as "Count how many (`+wc -l+`) visible (`+grep -v '/\.'+`) files are under this directory (`+find . -type f+`)".
+
+|===
+| Text        | Explanation
+
+| `+find+`    | Command find, searches for files and directories.
+| `+.+`       | `+.+` means "current path", in find "search from current path".
+| `+-type f+` | find's argument to search only files.
+| `+\|+`      | Pipe, passes command's output as an input to the next command.
+| `+grep+`    | Command grep, filters out lines which don't match given pattern.
+| `+-v+`      | grep's argument to filter the matching lines and keep others.
+| `+'/\.'+`   | Pattern for a "hidden" file or directory (begins with a dot).
+| `+\|+`      | Pipe again.
+| `+wc+`      | Command to count lines, words and bytes.
+| `+-l+`      | wc's argument to output only the number of lines.
+|===
+
+====
+
 **command exit**
 
 `exit` command terminates current shell. If you run only one shell, it also close the terminal. Shell is case-sensitive, so while `exit` followed by enter closes the terminal, `Exit` only tells you that `Exit: command not found`.
