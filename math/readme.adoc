@@ -2,6 +2,8 @@
 :stylesheet: ../style.css
 :linkcss:
 :hide-uri-scheme:
+:toc:
+:stem:
 
 .TODO
 [%collapsible]
@@ -42,8 +44,118 @@ deviation    Std X = Sqrt (Var X)
 ++++
 
 . https://en.wikipedia.org/wiki/Monad_(category_theory)
-
 ====
+
+== Spaces
+
+=== https://en.wikipedia.org/wiki/Countable_set[Cardinality]
+
+Set S is countable if::
+Its cardinality |S| is less or equal to *aleph-null*, the cardinality of natural numbers.
+
+....
+|{finite}| <= |{countable}| < |{infinite}|
+....
+
+=== https://en.wikipedia.org/wiki/Field_of_sets[Field of Sets]
+
+(X, F)::
+* X is a set
+* F (*algebra over X*) is a collection of subsets of X, that
+.. contains empty set
+.. is closed under complement in X
+.. is closed under *finite* unions
+.. is closed under *finite* intersections.
+
+Note: "is a non empty collection" equals to "contains empty set".
+
+=== https://en.wikipedia.org/wiki/Measurable_space[Measurable Space (Borel Space)]
+
+(X, A)::
+* X is a set
+* A (*sigma-algebra*, or sigma-field) on X is a collection of subsets of X, that
+.. contains empty set
+.. is closed under complement ix X
+.. is closed under *countable* unions
+.. is closed under *countable* intersections
+
+*sigma-algebra* on X is a subset of *algebra over X*.
+
+.https://www.quora.com/What-is-an-example-of-algebra-which-is-not-a-sigma-algebra-in-a-context-of-measure-theory[Example of algebra over X that is not a sigma-algebra over X]
+....
+A = {A ⊆ X; A finite or A^c finite},
+....
+
+=== https://en.wikipedia.org/wiki/Measure_space[Measure Space]
+
+(X, A, mu)::
+* (X, A) is a measurable space
+* mu is a measure over (X, A)
+
+=== https://en.wikipedia.org/wiki/Metric_space[Metric Space]
+
+(M, d)::
+* M is a set
+* d: M -> M -> R, for each x,y,z in M
+.. d(x,x) == 0
+.. if x /= y then d(x,y) > 0    -- Positivity
+.. d(x,y) == d(y,x)             -- Symmetry
+.. d(x,z) <= d(x,y) + d(y,z)    -- Triangle inequality
+
+=== Set Types in a Metric Space
+
+https://en.wikipedia.org/wiki/Open_set[Open Set]::
+In a Metric space (M, d) an open set with point P is a set that contains every element whose distance to P is smaller than some value depending on P.
+
+Closed::
+Set whose complement is open an open set is closed.
+
+Neither::
+The interval [0,1) in the real numbers isn't either closed or open.
+
+https://en.wikipedia.org/wiki/Clopen_set[Clopen (closed-open)]
+
+=== https://en.wikipedia.org/wiki/Topological_space[Topological Space (Topology)]
+
+*theta* (also *topology*) on set X is a collection of subsets of X called *open sets*
+
+. empty set and X belongs to theta
+. any *arbitrary* (finite or infinite) union of theta members belongs to theta
+. any *finite* intersection of theta members belongs to theta
+
+Every member of a *theta* is an *open set* (definition).
+
+A subset C of X is closed in (X, theta) if its complement X \\ C is an open set.
+
+"every metric _d_ on a set X generates a topology theta_d on the set"
+-- https://math.stackexchange.com/questions/1621595/is-topological-space-a-metric-space
+
+=== https://en.wikipedia.org/wiki/Borel_set[Borel Set]
+
+[quote,'https://en.wikipedia.org/wiki/Borel_set']
+____
+Borel set is any set in a topological space that can be formed from *open sets* (or, equivalently, from closed sets) through the operations of *countable union*, *countable intersection*, and *relative complement*.
+
+For a topological space X, the collection of all Borel sets on X forms a σ-algebra, known as the Borel algebra or Borel σ-algebra.
+____
+
+=== Borel Space
+
+Is a space that can be created from collection of open (or closed) sets by countable union, intersection relative complement.
+
+=== Central moments in metric spaces
+
+* Let (M, d) be a metric space
+* B(M) be the Borel σ-algebra on M
+
+*p-th central moment* of a measure *mu* on the measurable space *(M, B(M))* about a given point x_0 ∈ M is defined to be
+
+[stem]
+++++
+\int _{M}d\left(x,x_{0}\right)^{p}\, d \mu (x)
+++++
+
+== Partial function, total function
 
 .Partial function, total function
 [quote,'https://en.wikipedia.org/wiki/Partial_function']

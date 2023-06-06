@@ -11,8 +11,30 @@
 <body class="article">
 <div id="header">
 <h1>Mathematics</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_spaces">Spaces</a>
+<ul class="sectlevel2">
+<li><a href="#_cardinality">Cardinality</a></li>
+<li><a href="#_field_of_sets">Field of Sets</a></li>
+<li><a href="#_measurable_space_borel_space">Measurable Space (Borel Space)</a></li>
+<li><a href="#_measure_space">Measure Space</a></li>
+<li><a href="#_metric_space">Metric Space</a></li>
+<li><a href="#_set_types_in_a_metric_space">Set Types in a Metric Space</a></li>
+<li><a href="#_topological_space_topology">Topological Space (Topology)</a></li>
+<li><a href="#_borel_set">Borel Set</a></li>
+<li><a href="#_borel_space">Borel Space</a></li>
+<li><a href="#_central_moments_in_metric_spaces">Central moments in metric spaces</a></li>
+</ul>
+</li>
+<li><a href="#_partial_function_total_function">Partial function, total function</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
 <details>
 <summary class="title">TODO</summary>
 <div class="content">
@@ -61,6 +83,270 @@ deviation    Std X = Sqrt (Var X)
 </div>
 </div>
 </details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spaces">Spaces</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cardinality"><a href="https://en.wikipedia.org/wiki/Countable_set">Cardinality</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Set S is countable if</dt>
+<dd>
+<p>Its cardinality |S| is less or equal to <strong>aleph-null</strong>, the cardinality of natural numbers.</p>
+</dd>
+</dl>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|{finite}| &lt;= |{countable}| &lt; |{infinite}|</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_field_of_sets"><a href="https://en.wikipedia.org/wiki/Field_of_sets">Field of Sets</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">(X, F)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>X is a set</p>
+</li>
+<li>
+<p>F (<strong>algebra over X</strong>) is a collection of subsets of X, that</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>contains empty set</p>
+</li>
+<li>
+<p>is closed under complement in X</p>
+</li>
+<li>
+<p>is closed under <strong>finite</strong> unions</p>
+</li>
+<li>
+<p>is closed under <strong>finite</strong> intersections.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Note: "is a non empty collection" equals to "contains empty set".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_measurable_space_borel_space"><a href="https://en.wikipedia.org/wiki/Measurable_space">Measurable Space (Borel Space)</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">(X, A)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>X is a set</p>
+</li>
+<li>
+<p>A (<strong>sigma-algebra</strong>, or sigma-field) on X is a collection of subsets of X, that</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>contains empty set</p>
+</li>
+<li>
+<p>is closed under complement ix X</p>
+</li>
+<li>
+<p>is closed under <strong>countable</strong> unions</p>
+</li>
+<li>
+<p>is closed under <strong>countable</strong> intersections</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>sigma-algebra</strong> on X is a subset of <strong>algebra over X</strong>.</p>
+</div>
+<div class="literalblock">
+<div class="title"><a href="https://www.quora.com/What-is-an-example-of-algebra-which-is-not-a-sigma-algebra-in-a-context-of-measure-theory">Example of algebra over X that is not a sigma-algebra over X</a></div>
+<div class="content">
+<pre>A = {A ⊆ X; A finite or A^c finite},</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_measure_space"><a href="https://en.wikipedia.org/wiki/Measure_space">Measure Space</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">(X, A, mu)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>(X, A) is a measurable space</p>
+</li>
+<li>
+<p>mu is a measure over (X, A)</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metric_space"><a href="https://en.wikipedia.org/wiki/Metric_space">Metric Space</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">(M, d)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>M is a set</p>
+</li>
+<li>
+<p>d: M &#8594; M &#8594; R, for each x,y,z in M</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>d(x,x) == 0</p>
+</li>
+<li>
+<p>if x /= y then d(x,y) &gt; 0   &#8201;&#8212;&#8201;Positivity</p>
+</li>
+<li>
+<p>d(x,y) == d(y,x)            &#8201;&#8212;&#8201;Symmetry</p>
+</li>
+<li>
+<p>d(x,z) &#8656; d(x,y) + d(y,z)   &#8201;&#8212;&#8201;Triangle inequality</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_types_in_a_metric_space">Set Types in a Metric Space</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://en.wikipedia.org/wiki/Open_set">Open Set</a></dt>
+<dd>
+<p>In a Metric space (M, d) an open set with point P is a set that contains every element whose distance to P is smaller than some value depending on P.</p>
+</dd>
+<dt class="hdlist1">Closed</dt>
+<dd>
+<p>Set whose complement is open an open set is closed.</p>
+</dd>
+<dt class="hdlist1">Neither</dt>
+<dd>
+<p>The interval [0,1) in the real numbers isn&#8217;t either closed or open.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/Clopen_set">Clopen (closed-open)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_topological_space_topology"><a href="https://en.wikipedia.org/wiki/Topological_space">Topological Space (Topology)</a></h3>
+<div class="paragraph">
+<p><strong>theta</strong> (also <strong>topology</strong>) on set X is a collection of subsets of X called <strong>open sets</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>empty set and X belongs to theta</p>
+</li>
+<li>
+<p>any <strong>arbitrary</strong> (finite or infinite) union of theta members belongs to theta</p>
+</li>
+<li>
+<p>any <strong>finite</strong> intersection of theta members belongs to theta</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Every member of a <strong>theta</strong> is an <strong>open set</strong> (definition).</p>
+</div>
+<div class="paragraph">
+<p>A subset C of X is closed in (X, theta) if its complement X \\ C is an open set.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+every metric <em>d</em> on a set X generates a topology theta_d on the set
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://math.stackexchange.com/questions/1621595/is-topological-space-a-metric-space" class="bare">math.stackexchange.com/questions/1621595/is-topological-space-a-metric-space</a>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_borel_set"><a href="https://en.wikipedia.org/wiki/Borel_set">Borel Set</a></h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Borel set is any set in a topological space that can be formed from <strong>open sets</strong> (or, equivalently, from closed sets) through the operations of <strong>countable union</strong>, <strong>countable intersection</strong>, and <strong>relative complement</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For a topological space X, the collection of all Borel sets on X forms a σ-algebra, known as the Borel algebra or Borel σ-algebra.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://en.wikipedia.org/wiki/Borel_set" class="bare">en.wikipedia.org/wiki/Borel_set</a>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_borel_space">Borel Space</h3>
+<div class="paragraph">
+<p>Is a space that can be created from collection of open (or closed) sets by countable union, intersection relative complement.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_central_moments_in_metric_spaces">Central moments in metric spaces</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Let (M, d) be a metric space</p>
+</li>
+<li>
+<p>B(M) be the Borel σ-algebra on M</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>p-th central moment</strong> of a measure <strong>mu</strong> on the measurable space <strong>(M, B(M))</strong> about a given point x_0 ∈ M is defined to be</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\$\int _{M}d\left(x,x_{0}\right)^{p}\, d \mu (x)\$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_partial_function_total_function">Partial function, total function</h2>
+<div class="sectionbody">
 <div class="quoteblock">
 <div class="title">Partial function, total function</div>
 <blockquote>
@@ -73,10 +359,36 @@ deviation    Std X = Sqrt (Var X)
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-21 15:22:17 +0200
+Last updated 2023-06-06 09:03:48 +0200
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
