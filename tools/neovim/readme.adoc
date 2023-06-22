@@ -8,6 +8,12 @@
 
 Neovim - Vim taken a step further.
 
+.TODO
+[%collapsible]
+====
+. https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern
+====
+
 == http://vimcasts.org/episodes/meet-neovim/[Introduction]
 
 == References
@@ -101,3 +107,10 @@ Restart nvim and run `:PlugInstall`.
 ----
 nvim -d file_1 file_2
 ----
+
+== Regular Expressions
+
+.Substitute 00: hours to 12: hours in CSV, keep beginning of the line untouched
+....
+:%s/\(^[^,]*,[^,]* \)00:/\112:/
+....
