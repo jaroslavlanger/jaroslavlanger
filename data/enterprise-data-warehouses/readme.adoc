@@ -9,9 +9,9 @@
 .TODO
 [%collapsible]
 ====
-Historization - Slowly changing dimensions
-* Punch through, Kimball type 1, SCD 1
-* Insert, Kimball type 2, SCD 2
+. Historization - Slowly changing dimensions
+** Punch through, Kimball type 1, SCD 1
+** Insert, Kimball type 2, SCD 2
 
 .Conceptual Model
 --
@@ -32,6 +32,44 @@ include::etl-tools.adoc[]
 
 include::visualization-tools.adoc[]
 
+== Related Technologies
+
+=== Datalake
+
+It is not part of data warehouse, its and additional source.
+
+Unstructured data, across the source, landing layer and staging layer.
+
+Examples::
+* Hadoop (hadoop filesystem)
+* data brics (lakehouse)
+
+Usage::
+* For ad hoc reports
+* input for stage
+* For ai and analytics
+
+Similar to analytical sandbox.
+
+=== Column oriented storage
+
+Specialized::
+* Snowflake
+* Google BigQuery
+* Azure Synapse
+Supports::
+* Microsoft SQL Server
+* Oracle
+* Teradata
+* PosgreSQL
+
+=== Massive Parallel Processing Databases
+
+=== Data cubes (OLAP)
+
+* Vertica
+* Teradata
+
 == Glossary
 
 TOGAF:: The Open Group Architecture Framework
@@ -42,17 +80,3 @@ SCM:: Supply Chain Management
 EDW:: Enterprise Data Warehouse
 ETL:: Extract, transform, load
 OLAP:: Online analytical, processing
-
-== Term Project
-
-1. You got data and business questions
-2. Reporting
-3. Answer the business questions
-
-=== First Milestone
-
-* Technical documentation of data sources and processing flow.
-* Create entities model.
-* Logical database model
-* Create a database model using a CASE tool.
-** CASE capable of generating the create and insert scripts for PostgreSQL.
