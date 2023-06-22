@@ -160,18 +160,24 @@ correlation = sorted(correlation.items(), key = lambda kv:(kv[1]), reverse=True)
 
 ## How to start
 
+My current best practise (which is probably also the officially recommended one)
+is to install all needed python versions to the system.
+For every project create its virtual environment using "venv".
+And manage the modules using "pip" with "requirements.txt" file.
+
+### Python Versions
+
+TODO
+
 ### Installation
 
-#### Venv
+TODO
 
-```sh
-# Activate environment
-source .env_name/source/activate
-# deactivate
-deactivate
-```
+### Package Manager - pip
 
-#### pip
+pip package manager allows you to install packages.
+Mostly you install the packages from the [Python Package Index (PyPI)](https://pypi.org/),
+pip can install packages from source as well.
 
 ```sh
 # Install package
@@ -181,6 +187,30 @@ pip3 show package_name
 # Update package
 pip3 install --upgrade package_name
 ```
+
+### [Venv](https://docs.python.org/3/library/venv.html)
+
+Venv is a python module to manage python virtual environments.
+
+```sh
+# Activate environment
+source .env_name/source/activate
+# deactivate
+deactivate
+```
+
+* [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
+* [Requirements File Format](https://pip.pypa.io/en/latest/reference/requirements-file-format/)
+
+### Conda
+
+Conda is a tool to manage environments and package dependencies for multiple languages including python.
+
+My personal experience is that I don't want to use Conda for managing python dependencies.
+The reason for it is, conda officially supports only some packages and their versions.
+So if I used conda, I would install a lot of things with pip anyway.
+Conda supports installing any module with pip.
+But to me, it just feels like adding a lot of complexity for a little benefit.
 
 ### Run python
 
