@@ -13,6 +13,9 @@
 ====
 . https://www.postgresql.org/docs/current/sql-set-constraints.html[SET CONSTRAINTS — set constraint check timing for the current transaction]
 . https://www.postgresql.org/message-id/9CEBD523D1CD4916AE46EC487323B524@eng02[ENABLE / DISABLE ALL TRIGGERS IN DATABASE]
+. pgAdmin
+.. https://www.pgadmin.org/download/pgadmin-4-apt/
+.. https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/
 ====
 
 [bibliography]
