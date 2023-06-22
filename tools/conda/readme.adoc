@@ -6,6 +6,8 @@
 "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, Fortran, and more."
 -- https://docs.conda.io/en/latest/
 
+== https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html[Conda Cheatsheet]
+
 == https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html[Installation]
 
 .Anaconda or Miniconda?

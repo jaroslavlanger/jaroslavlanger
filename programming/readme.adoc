@@ -8,16 +8,17 @@
 .TODO
 [%collapsible]
 ====
-* https://dl.acm.org/doi/10.1145/359576.359579[1978, John Backus, Can programming be liberated from the von Neumann style?: a functional style and its algebra of programs]
-* https://dl.acm.org/doi/10.1145/358896.358899[1980, Kenneth E. Iverson, Notation as a tool of thought]
-* https://dl.acm.org/doi/10.1145/3520306.3534504[2022, Conor Hoekstra, Combinatory logic and combinators in array languages]
-* https://youtube.com/playlist?list=PLVFrD1dmDdvdvWFK8brOVNL7bKHpE-9w0[Structure and Interpretation of Computer Programs - YouTube playlist by @code_report]
-* https://youtube.com/playlist?list=PLVFrD1dmDdvcjCQDPhExqP56jqxp0Ssn_[Category Theory for Programmers - YouTube playlist by @code_report]
-* https://youtube.com/playlist?list=PLVFrD1dmDdvdv7trr5j9ir7qrFK5K80X0[Seven Languages in Seven Weeks - YouTube playlist by @code_report]
-* https://en.wikipedia.org/wiki/Type_class
-* https://en.wikipedia.org/wiki/Tacit_programming
-* https://aplwiki.com/wiki/Train
-* https://docs.modular.com/mojo/
+. https://en.wikipedia.org/wiki/History_of_programming_languages
+. https://dl.acm.org/doi/10.1145/359576.359579[1978, John Backus, Can programming be liberated from the von Neumann style?: a functional style and its algebra of programs]
+. https://dl.acm.org/doi/10.1145/358896.358899[1980, Kenneth E. Iverson, Notation as a tool of thought]
+. https://dl.acm.org/doi/10.1145/3520306.3534504[2022, Conor Hoekstra, Combinatory logic and combinators in array languages]
+. https://youtube.com/playlist?list=PLVFrD1dmDdvdvWFK8brOVNL7bKHpE-9w0[Structure and Interpretation of Computer Programs - YouTube playlist by @code_report]
+. https://youtube.com/playlist?list=PLVFrD1dmDdvcjCQDPhExqP56jqxp0Ssn_[Category Theory for Programmers - YouTube playlist by @code_report]
+. https://youtube.com/playlist?list=PLVFrD1dmDdvdv7trr5j9ir7qrFK5K80X0[Seven Languages in Seven Weeks - YouTube playlist by @code_report]
+. https://en.wikipedia.org/wiki/Type_class
+. https://en.wikipedia.org/wiki/Tacit_programming
+. https://aplwiki.com/wiki/Train
+. https://docs.modular.com/mojo/
 ====
 
 == Start Programming

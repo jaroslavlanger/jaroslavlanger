@@ -129,8 +129,3 @@ EDW as a Source of Information
 * Physical model
     * Specific implementation of logical model
     * e.g. data segmentation, indexes, partitioning
-
-=== pgAdmin
-
-. https://www.pgadmin.org/download/pgadmin-4-apt/
-. https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/

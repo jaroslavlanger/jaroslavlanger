@@ -13,9 +13,7 @@ An advanced, purely functional programming language
 [%collapsible]
 ====
 . https://hackage.haskell.org/package/data-aviary-0.4.0/docs/Data-Aviary-Birds.html
-. https://wiki.haskell.org/Fold
 . https://stackoverflow.com/questions/39628091/defining-a-function-for-multiple-types
-. https://wiki.haskell.org/$
 . http://learnyouahaskell.com/types-and-typeclasses
 . https://wiki.haskell.org/Constructor
 . https://en.wikibooks.org/wiki/Haskell/Variables_and_functions
@@ -50,9 +48,7 @@ An advanced, purely functional programming language
 . https://hoogle.haskell.org/
 . https://hackage.haskell.org/package/probability-0.2.8/docs/Numeric-Probability-Distribution.html
 . https://dennybritz.com/posts/probability-monads-from-scratch/
-. https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Maybe.html
 . https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell/13-the-list-monad
-. https://wiki.haskell.org/Monad
 . https://wiki.haskell.org/All_About_Monads
 . https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf[Monads for functional programming by Philip Wadler]
 . https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
@@ -143,6 +139,33 @@ ghci> :type 0
 [source,console]
 ghci> :type [1,2,3]
 [1,2,3] :: Num a => [a]
+
+*https://en.wikipedia.org/wiki/Kind_(type_theory)[Kinds]*
+
+.Nullary kind
+[source,console]
+ghci> :kind Bool
+Bool :: *
+ghci> :kind [Bool]
+[Bool] :: *
+ghci> :kind [] Bool
+[] Bool :: *
+ghci> :kind (Bool -> Bool)
+(Bool -> Bool) :: *
+ghci> :kind (->) Bool Bool
+(->) Bool Bool :: *
+
+.Unary kind
+[source,console]
+ghci> :kind []
+[] :: * -> *
+ghci> :kind (->) Bool
+(->) Bool :: * -> *
+
+.Binary kind
+[source,console]
+ghci> :kind (->)
+(->) :: * -> * -> *
 
 == Lazy Evaluation
 
@@ -320,23 +343,6 @@ ghci> 1 /// 2 * 3
         cannot mix ‘///’ [infixr 7] and ‘*’ [infixl 7] in the same infix expression
 ----
 
-== Do Expressions
-
-[quote,'<<haskell-2010>>' 3.14 Do Expressions]
-____
-A do expression provides a more conventional syntax for monadic programming. It allows an expression such as
-
-  putStr "x: "    >>
-  getLine         >>= \l ->
-  return (words l)
-
-to be written in a more traditional way as:
-
-  do putStr "x: "
-     l <- getLine
-     return (words l)
-____
-
 == Modules
 
 "A Haskell program is a collection of modules, one of which, by convention, must be called Main and must export the value main."
@@ -357,17 +363,118 @@ This exact header is inserted as a first line, if other header is omitted.
 
 For more information, see https://en.wikibooks.org/wiki/Haskell/Modules.
 
-https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html[Prelude]::
+== https://hackage.haskell.org/package/base[base: Basic libraries]
+This package contains the Standard Haskell Prelude and its support libraries, and a large collection of useful libraries ranging from data structures to parsing combinators and debugging utilities.
+
+=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Prelude.html[Prelude]
 "There is one distinguished module, Prelude, which is imported into all modules by default"
 -- <<haskell-2010>> Chapter 5 Modules
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Maybe.html[*Data.Maybe*]
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Function.html[*Data.Function*]
+
+Simple combinators working solely on and with functions.
+
+. Identity function `+id+`
+. Constant function `+const+`
+. Function composition. `+(.)+`
+. Flip function `+flip+`
+. Function application operator https://wiki.haskell.org/$[`+($)+`]
+. Reverse application operator `+(&)+`
+. `+fix+` is the least defined x such that f x = x
+. `+on b u x y+` runs the binary function b on the results of applying unary function u to two arguments x and y.
+
+To understand `+fix+` I recommend reading https://en.wikibooks.org/wiki/Haskell/Fix_and_recursion and https://en.wikibooks.org/wiki/Haskell/Denotational_semantics.
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Functor.html[*Functor*]
+
+.Minimal complete definition: `+fmap+`
+----
+class Functor f where
+        fmap :: (a -> b) -> f a -> f b
+----
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Applicative.html[*Applicative*]
+
+.A minimal complete definition must include implementations of pure and of either <*> or liftA2
+----
+class Functor f => Applicative f where
+        pure :: a -> f a
+        (<*>) :: f (a -> b) -> f a -> f b
+----
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html[*Monad*]
+
+.Minimal complete definition `+(>>=)+`
+----
+class Applicative m => Monad m where
+        (>>=) :: forall a b. m a -> (a -> m b) -> m b
+----
+
+*Do Expressions*
+
+[quote,'<<haskell-2010>>' 3.14 Do Expressions]
+____
+A do expression provides a more conventional syntax for monadic programming. It allows an expression such as
+
+  putStr "x: "    >>
+  getLine         >>= \l ->
+  return (words l)
+
+to be written in a more traditional way as:
+
+  do putStr "x: "
+     l <- getLine
+     return (words l)
+____
+
+https://wiki.haskell.org/Monad
+
+.https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html#v:ap[ap]
+----
+ap                :: (Monad m) => m (a -> b) -> m a -> m b
+ap m1 m2          = do { x1 <- m1; x2 <- m2; return (x1 x2) }
+----
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Semigroup.html[*Semigroup*]
+
+.Minimal complete definition: `+(<>) | sconcat+`
+----
+class Semigroup a where
+        (<>) :: a -> a -> a
+----
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Monoid.html[*Monoid*]
+
+.Minimal complete definition: `+mempty | mconcat+`
+----
+class Semigroup a => Monoid a where
+        mempty :: a
+----
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Foldable.html[*Foldable*]
+
+.Minimal complete definition `+foldMap | foldr+`
+----
+class Foldable t where
+        foldMap :: Monoid m => (a -> m) -> t a -> m
+----
+
+https://wiki.haskell.org/Fold
+
+https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Traversable.html[*Traversable*]
+
+.Minimal complete definition `+traverse | sequenceA+`
+----
+class (Functor t, Foldable t) => Traversable t where
+        traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+----
 
 == Packages
 
 "Hackage is the Haskell community's central package archive of open source software. Hackage has been online since January 2007 and is constantly growing."
 -- https://hackage.haskell.org/
-
-https://hackage.haskell.org/package/base[base: Basic libraries]::
-This package contains the Standard Haskell Prelude and its support libraries, and a large collection of useful libraries ranging from data structures to parsing combinators and debugging utilities.
 
 https://hackage.haskell.org/package/containers[containers: Assorted concrete container types]::
 This package contains efficient general-purpose implementations of various immutable container types including sets, maps, sequences, trees, and graphs.
@@ -383,68 +490,3 @@ Repa provides high performance, regular, multi-dimensional, shape polymorphic pa
 
 https://hackage.haskell.org/package/array-0.5.5.0[array: Mutable and immutable arrays]::
 In addition to providing the Data.Array module as specified in the Haskell 2010 Language Report, this package also defines the classes IArray of immutable arrays and MArray of arrays mutable within appropriate monads, as well as some instances of these classes.
-
-== Category Theory
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Semigroup.html[Semigroup]
-
-.Minimal complete definition: `+(<>) | sconcat+`
-----
-class Semigroup a where
-        (<>) :: a -> a -> a
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Monoid.html[Monoid]
-
-.Minimal complete definition: `+mempty | mconcat+`
-----
-class Semigroup a => Monoid a where
-        mempty :: a
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Foldable.html[Foldable]
-
-.Minimal complete definition `+foldMap | foldr+`
-----
-class Foldable t where
-        foldMap :: Monoid m => (a -> m) -> t a -> m
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Functor.html[Functor]
-
-.Minimal complete definition: `+fmap+`
-----
-class Functor f where
-        fmap :: (a -> b) -> f a -> f b
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Data-Traversable.html[Traversable]
-
-.Minimal complete definition `+traverse | sequenceA+`
-----
-class (Functor t, Foldable t) => Traversable t where
-        traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Applicative.html[Applicative]
-
-.A minimal complete definition must include implementations of pure and of either <*> or liftA2
-----
-class Functor f => Applicative f where
-        pure :: a -> f a
-        (<*>) :: f (a -> b) -> f a -> f b
-----
-
-=== https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html[Monad]
-
-.Minimal complete definition `+(>>=)+`
-----
-class Applicative m => Monad m where
-        (>>=) :: forall a b. m a -> (a -> m b) -> m b
-----
-
-.https://hackage.haskell.org/package/base-4.18.0.0/docs/Control-Monad.html#v:ap[ap]
-----
-ap                :: (Monad m) => m (a -> b) -> m a -> m b
-ap m1 m2          = do { x1 <- m1; x2 <- m2; return (x1 x2) }
-----

@@ -1,0 +1,95 @@
+= Neo4j
+:stylesheet: ../../style.css
+:linkcss:
+
+== References
+
+* https://neo4j.com/docs/
+* https://neo4j.com/docs/cypher-cheat-sheet/current/neo4j-community/
+* https://neo4j.com/docs/getting-started/
+* https://neo4j.com/docs/getting-started/cypher-intro/
+* https://neo4j.com/docs/getting-started/cypher-intro/large-statements/
+* https://neo4j.com/docs/getting-started/cypher-intro/subqueries/
+* https://neo4j.com/docs/cypher-manual/current/introduction/
+* https://neo4j.com/docs/cypher-manual/current/introduction/cypher_overview/
+* https://neo4j.com/docs/cypher-manual/current/syntax/comments/
+* https://neo4j.com/docs/cypher-manual/current/syntax/expressions/
+* https://neo4j.com/docs/cypher-manual/current/clauses/where/
+* https://neo4j.com/docs/cypher-manual/current/clauses/unwind/
+* https://neo4j.com/docs/cypher-manual/current/clauses/call/
+* https://neo4j.com/docs/cypher-manual/current/clauses/call-subquery/
+* https://neo4j.com/docs/cypher-manual/current/clauses/union/
+* https://neo4j.com/docs/cypher-manual/current/functions/scalar/
+* https://neo4j.com/docs/cypher-manual/current/functions/aggregating/
+* https://neo4j.com/docs/cypher-manual/current/functions/list/
+* https://neo4j.com/docs/browser-manual/current/visual-tour/
+* https://neo4j.com/docs/operations-manual/current/reference/procedures/
+* https://neo4j.com/docs/graph-data-science/current/management-ops/graph-catalog-ops/
+* https://neo4j.com/docs/graph-data-science/current/common-usage/running-algos/
+* https://neo4j.com/docs/graph-data-science/current/graph-catalog-node-ops/#utility-functions-catalog
+* https://neo4j.com/docs/graph-data-science/current/algorithms/page-rank/
+
+== Create Project
+
+. Left -> Project -> New -> Create Project
+. Project
+.. Add -> Local DBMS
+... Fill the Name and Password
+.. Click on Database
+... Right -> Plugins -> Graph Data Science Library -> Install
+... ... -> Terminal
+.... Import Graph
+.... Edit conf/neo4j.conf
+... Start
+... Open -> Neo4j Browser
+.... Create Database
+.... Left -> Database Information -> Use database -> GRAPH_NAME
+
+.Edit conf/neo4j.conf
+In case you would need more RAM, being in the neo4j terminal, open the conf/neo4j.conf file and edit the `+dbms.memory.heap.max_size+` field to `+=6G+` perhaps.
+
+.Import Graph
+[,console]
+----
+$BASE_PATH=/path/to/graphs
+
+bin/neo4j-admin database import full \
+--nodes="$BASE_PATH/nodes-a.neo4j.csv" \
+--nodes="$BASE_PATH/nodes-b.neo4j.csv" \
+--relationships="$BASE_PATH/relationships.neo4j.csv" \
+GRAPH_NAME
+----
+
+.Create Database
+----
+create database GRAPH_NAME
+----
+
+== https://neo4j.com/docs/getting-started/cypher-intro/[Cypher] query language
+
+.https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise/[Read Query Structure]
+----
+[USE]
+[MATCH [WHERE]]
+[OPTIONAL MATCH [WHERE]]
+[WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]]
+RETURN [ORDER BY] [SKIP] [LIMIT]
+----
+
+.Example
+----
+match (v1) -[e1]- (v2)
+where v1.name = 'iPhone'
+return v2.name as names
+limit 10
+----
+
+|===
+| Function
+
+| distinct
+| labels
+| count
+| id
+| https://neo4j.com/docs/cypher-manual/current/functions/string/#functions-split[split]
+|===

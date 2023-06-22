@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Neo4j</title>
+<link rel="stylesheet" href="./../../style.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Neo4j</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://neo4j.com/docs/" class="bare">https://neo4j.com/docs/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-cheat-sheet/current/neo4j-community/" class="bare">https://neo4j.com/docs/cypher-cheat-sheet/current/neo4j-community/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/getting-started/" class="bare">https://neo4j.com/docs/getting-started/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/getting-started/cypher-intro/" class="bare">https://neo4j.com/docs/getting-started/cypher-intro/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/getting-started/cypher-intro/large-statements/" class="bare">https://neo4j.com/docs/getting-started/cypher-intro/large-statements/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/getting-started/cypher-intro/subqueries/" class="bare">https://neo4j.com/docs/getting-started/cypher-intro/subqueries/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/introduction/" class="bare">https://neo4j.com/docs/cypher-manual/current/introduction/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/introduction/cypher_overview/" class="bare">https://neo4j.com/docs/cypher-manual/current/introduction/cypher_overview/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/syntax/comments/" class="bare">https://neo4j.com/docs/cypher-manual/current/syntax/comments/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/syntax/expressions/" class="bare">https://neo4j.com/docs/cypher-manual/current/syntax/expressions/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/clauses/where/" class="bare">https://neo4j.com/docs/cypher-manual/current/clauses/where/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/clauses/unwind/" class="bare">https://neo4j.com/docs/cypher-manual/current/clauses/unwind/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/clauses/call/" class="bare">https://neo4j.com/docs/cypher-manual/current/clauses/call/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/clauses/call-subquery/" class="bare">https://neo4j.com/docs/cypher-manual/current/clauses/call-subquery/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/clauses/union/" class="bare">https://neo4j.com/docs/cypher-manual/current/clauses/union/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/functions/scalar/" class="bare">https://neo4j.com/docs/cypher-manual/current/functions/scalar/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/" class="bare">https://neo4j.com/docs/cypher-manual/current/functions/aggregating/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/cypher-manual/current/functions/list/" class="bare">https://neo4j.com/docs/cypher-manual/current/functions/list/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/browser-manual/current/visual-tour/" class="bare">https://neo4j.com/docs/browser-manual/current/visual-tour/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/operations-manual/current/reference/procedures/" class="bare">https://neo4j.com/docs/operations-manual/current/reference/procedures/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/management-ops/graph-catalog-ops/" class="bare">https://neo4j.com/docs/graph-data-science/current/management-ops/graph-catalog-ops/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/common-usage/running-algos/" class="bare">https://neo4j.com/docs/graph-data-science/current/common-usage/running-algos/</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/graph-catalog-node-ops/#utility-functions-catalog" class="bare">https://neo4j.com/docs/graph-data-science/current/graph-catalog-node-ops/#utility-functions-catalog</a></p>
+</li>
+<li>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/algorithms/page-rank/" class="bare">https://neo4j.com/docs/graph-data-science/current/algorithms/page-rank/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_project">Create Project</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Left &#8594; Project &#8594; New &#8594; Create Project</p>
+</li>
+<li>
+<p>Project</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add &#8594; Local DBMS</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Fill the Name and Password</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click on Database</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Right &#8594; Plugins &#8594; Graph Data Science Library &#8594; Install</p>
+</li>
+<li>
+<p>&#8230;&#8203; &#8594; Terminal</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>Import Graph</p>
+</li>
+<li>
+<p>Edit conf/neo4j.conf</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Start</p>
+</li>
+<li>
+<p>Open &#8594; Neo4j Browser</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>Create Database</p>
+</li>
+<li>
+<p>Left &#8594; Database Information &#8594; Use database &#8594; GRAPH_NAME</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Edit conf/neo4j.conf</div>
+<p>In case you would need more RAM, being in the neo4j terminal, open the conf/neo4j.conf file and edit the <code>dbms.memory.heap.max_size</code> field to <code>=6G</code> perhaps.</p>
+</div>
+<div class="listingblock">
+<div class="title">Import Graph</div>
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$BASE_PATH=/path/to/graphs
+
+bin/neo4j-admin database import full \
+--nodes="$BASE_PATH/nodes-a.neo4j.csv" \
+--nodes="$BASE_PATH/nodes-b.neo4j.csv" \
+--relationships="$BASE_PATH/relationships.neo4j.csv" \
+GRAPH_NAME</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create Database</div>
+<div class="content">
+<pre>create database GRAPH_NAME</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cypher_query_language"><a href="https://neo4j.com/docs/getting-started/cypher-intro/">Cypher</a> query language</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><a href="https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise/">Read Query Structure</a></div>
+<div class="content">
+<pre>[USE]
+[MATCH [WHERE]]
+[OPTIONAL MATCH [WHERE]]
+[WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]]
+RETURN [ORDER BY] [SKIP] [LIMIT]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre>match (v1) -[e1]- (v2)
+where v1.name = 'iPhone'
+return v2.name as names
+limit 10</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">distinct</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">count</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://neo4j.com/docs/cypher-manual/current/functions/string/#functions-split">split</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-05-28 19:29:26 +0200
+</div>
+</div>
+</body>
+</html>

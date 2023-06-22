@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="keywords" content="data, database, data-warehouse, data-lake, EDW, business-intelligence, BI">
 <title>Enterprise Data Warehouses</title>
 <link rel="stylesheet" href="./../../style.css">
@@ -25,11 +25,7 @@
 </li>
 <li><a href="#_stories">Stories</a></li>
 <li><a href="#_history">History</a></li>
-<li><a href="#_database_model">Database Model</a>
-<ul class="sectlevel2">
-<li><a href="#_pgadmin">pgAdmin</a></li>
-</ul>
-</li>
+<li><a href="#_database_model">Database Model</a></li>
 <li><a href="#_data_warehouse_architecture">Data Warehouse Architecture</a></li>
 <li><a href="#_integrated_data_layer_modeling">Integrated Data Layer Modeling</a></li>
 <li><a href="#_independent_data_marts">Independent Data Marts</a></li>
@@ -58,12 +54,15 @@
 <li><a href="#_r_markdown">R Markdown</a></li>
 </ul>
 </li>
-<li><a href="#_glossary">Glossary</a></li>
-<li><a href="#_term_project">Term Project</a>
+<li><a href="#_related_technologies">Related Technologies</a>
 <ul class="sectlevel2">
-<li><a href="#_first_milestone">First Milestone</a></li>
+<li><a href="#_datalake">Datalake</a></li>
+<li><a href="#_column_oriented_storage">Column oriented storage</a></li>
+<li><a href="#_massive_parallel_processing_databases">Massive Parallel Processing Databases</a></li>
+<li><a href="#_data_cubes_olap">Data cubes (OLAP)</a></li>
 </ul>
 </li>
+<li><a href="#_glossary">Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -73,10 +72,22 @@
 <details>
 <summary class="title">TODO</summary>
 <div class="content">
-<div class="paragraph">
-<p>Historization - Slowly changing dimensions
-* Punch through, Kimball type 1, SCD 1
-* Insert, Kimball type 2, SCD 2</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Historization - Slowly changing dimensions</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Punch through, Kimball type 1, SCD 1</p>
+</li>
+<li>
+<p>Insert, Kimball type 2, SCD 2</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="openblock">
 <div class="title">Conceptual Model</div>
@@ -528,19 +539,6 @@ On update it reloads the data.</p>
 <p>e.g. data segmentation, indexes, partitioning</p>
 </li>
 </ul>
-</div>
-<div class="sect2">
-<h3 id="_pgadmin">pgAdmin</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://www.pgadmin.org/download/pgadmin-4-apt/" class="bare">www.pgadmin.org/download/pgadmin-4-apt/</a></p>
-</li>
-<li>
-<p><a href="https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/" class="bare">www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/</a></p>
-</li>
-</ol>
-</div>
 </div>
 </div>
 </div>
@@ -1087,13 +1085,31 @@ On update it reloads the data.</p>
 <div class="paragraph">
 <p>Talend + Postgres</p>
 </div>
-<div class="paragraph">
-<p>ETLs:
-* talend (good)
-* click
-* azure data factory
-* ssis (only when skilled person)
-* pentaho</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ETLs</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>talend (good)</p>
+</li>
+<li>
+<p>click</p>
+</li>
+<li>
+<p>azure data factory</p>
+</li>
+<li>
+<p>ssis (only when skilled person)</p>
+</li>
+<li>
+<p>pentaho</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -1136,7 +1152,10 @@ On update it reloads the data.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>, m language, dax, slicer, treemap</p>
+<p>Search for: m language, dax.</p>
+</div>
+<div class="paragraph">
+<p>Useful visualizations: slicer, treemap.</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -1174,6 +1193,115 @@ Your data tells a story. Tell it with R Markdown. Turn your analyses into high q
 <div class="attribution">
 &#8212; <a href="https://rmarkdown.rstudio.com/index.html" class="bare">rmarkdown.rstudio.com/index.html</a>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_related_technologies">Related Technologies</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_datalake">Datalake</h3>
+<div class="paragraph">
+<p>It is not part of data warehouse, its and additional source.</p>
+</div>
+<div class="paragraph">
+<p>Unstructured data, across the source, landing layer and staging layer.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Examples</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Hadoop (hadoop filesystem)</p>
+</li>
+<li>
+<p>data brics (lakehouse)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Usage</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>For ad hoc reports</p>
+</li>
+<li>
+<p>input for stage</p>
+</li>
+<li>
+<p>For ai and analytics</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Similar to analytical sandbox.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_column_oriented_storage">Column oriented storage</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Specialized</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Snowflake</p>
+</li>
+<li>
+<p>Google BigQuery</p>
+</li>
+<li>
+<p>Azure Synapse</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Supports</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Microsoft SQL Server</p>
+</li>
+<li>
+<p>Oracle</p>
+</li>
+<li>
+<p>Teradata</p>
+</li>
+<li>
+<p>PosgreSQL</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_massive_parallel_processing_databases">Massive Parallel Processing Databases</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_data_cubes_olap">Data cubes (OLAP)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Vertica</p>
+</li>
+<li>
+<p>Teradata</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1219,54 +1347,10 @@ Your data tells a story. Tell it with R Markdown. Turn your analyses into high q
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_term_project">Term Project</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You got data and business questions</p>
-</li>
-<li>
-<p>Reporting</p>
-</li>
-<li>
-<p>Answer the business questions</p>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="_first_milestone">First Milestone</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Technical documentation of data sources and processing flow.</p>
-</li>
-<li>
-<p>Create entities model.</p>
-</li>
-<li>
-<p>Logical database model</p>
-</li>
-<li>
-<p>Create a database model using a CASE tool.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>CASE capable of generating the create and insert scripts for PostgreSQL.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-20 19:29:45 +0200
+Last updated 2023-06-22 17:28:37 +0200
 </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>Neovim</title>
 <link rel="stylesheet" href="./../../style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
@@ -19,6 +19,18 @@
 <div class="paragraph">
 <p>Neovim - Vim taken a step further.</p>
 </div>
+<details>
+<summary class="title">TODO</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern" class="bare">vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern</a></p>
+</li>
+</ol>
+</div>
+</div>
+</details>
 </div>
 </div>
 <div class="sect1">
@@ -164,10 +176,21 @@ call plug#end()</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_regular_expressions">Regular Expressions</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="title">Substitute 00: hours to 12: hours in CSV, keep beginning of the line untouched</div>
+<div class="content">
+<pre>:%s/\(^[^,]*,[^,]* \)00:/\112:/</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-16 20:49:04 +0200
+Last updated 2023-05-27 13:42:51 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

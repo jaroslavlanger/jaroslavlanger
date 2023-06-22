@@ -415,3 +415,4 @@ ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=1))
 
 - plt.show()
 - fig.show()
+* https://matplotlib.org/stable/users/explain/backends.html

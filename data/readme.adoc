@@ -47,3 +47,27 @@ When the target format has equal or greater expression power the conversion is l
 
 link:pandoc[Pandoc]::
 A universal document converter.
+
+== How to Organize Data
+
+Tree::
+Overview of directories, high level overview.
+Directory/Folder::
+Container for related files and subdirectories.
+Index::
+File describing the directory.
+Labels/Tags/Keywords::
+Metadata attached to files or directories, useful for cross directory orientation.
+Contents/Table of Contents::
+Overview of document sections, also useful for orientation and quick summary.
+Links/References::
+Useful for cross document orientation.
+Composition/Includes::
+Useful for full body search, big overview and export purposes.
+Tool Automations::
+* Tree generated based on the structure of the directories.
+* Index generated based on the files in the directory.
+* Contents generated based on the document headers.
+* Label search for files and directories.
+* Composition of multiple documents.
+* Document export into different formats.
