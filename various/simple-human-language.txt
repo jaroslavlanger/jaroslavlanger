@@ -1,0 +1,71 @@
+. Simple Human Language
+
+. and
+. negation (not)
+. opposite
+. warning
+. question (what)
+
+. i
+. you
+. it
+
+. person
+. eye
+. ear
+. hand
+. leg
+. belly
+. head
+
+. need
+. sleep
+. go
+. restroom
+. exchange
+. have
+. feel
+. grow
+. live
+
+. same (equal)
+. good
+. before
+. now
+. in
+. many
+
+. temperature
+. size
+. time
+. place
+. action
+. food
+. day
+. year
+. sound
+. light
+. end
+
+. sweet
+. salty
+. sour
+. bitter
+
+. green
+. blue
+. brown
+. red
+. yellow
+
+. number
+. zero
+. one
+. two
+. three
+. four
+. five
+. six
+. seven
+. eight
+. nine
