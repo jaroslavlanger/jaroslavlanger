@@ -2,11 +2,17 @@
 
 Great language for prototyping, scripting, machine learning and anything else.
 
-## Tutorials
+## References
+
+### Tutorials
 
 * [Tutorial place](https://realpython.com/)
 - Consider [the Little Book of Python Anti-Patterns](https://docs.quantifiedcode.com/python-anti-patterns/)
 * [Tutorials in Czech language (by Jiří Znamenáček)](http://vyuka.ookami.cz/index.python.html)
+
+### Python Enhancement Proposals (PEPs)
+
+* [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 
 ## TODO
 
