@@ -537,6 +537,10 @@ ghci&gt; powerOf2 3
 <p><code>(-42)</code> equals to <code>-42</code> not to a function that subtracts <code>42</code>.
 In order to get the later, write <code>(subtract 42)</code></p>
 </dd>
+<dt class="hdlist1">WARNING</dt>
+<dd>
+<p><code>(&gt; 3)</code> and <code>((&gt;) 3)</code> are different things, see <code>filter (&gt; 3) [1..5]</code> and <code>filter ((&gt;) 3) [1..5]</code>.</p>
+</dd>
 </dl>
 </div>
 <div class="quoteblock">
@@ -730,7 +734,7 @@ There is one distinguished module, Prelude, which is imported into all modules b
 <p>Constant function <code>const</code></p>
 </li>
 <li>
-<p>Function composition. <code>(.)</code></p>
+<p>Function composition. <code>(.) :: (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c</code></p>
 </li>
 <li>
 <p>Flip function <code>flip</code></p>
@@ -910,7 +914,7 @@ Hackage is the Haskell community&#8217;s central package archive of open source 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-06-22 07:00:32 +0200
+Last updated 2023-08-23 18:44:41 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

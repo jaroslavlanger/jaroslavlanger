@@ -267,6 +267,8 @@ ghci> powerOf2 3
 WARNING:: `+(-42)+` equals to `+-42+` not to a function that subtracts `+42+`.
 In order to get the later, write `+(subtract 42)+`
 
+WARNING:: `+(> 3)+` and `+((>) 3)+` are different things, see `+filter (> 3) [1..5]+` and `+filter ((>) 3) [1..5]+`.
+
 "There are very few predefined “operators” in Haskell - most that do look predefined are actually syntax (e.g., “=”). Instead, operators are simply functions that take two arguments and have special syntax support."
 -- <<cheatsheet>>
 
@@ -378,7 +380,7 @@ Simple combinators working solely on and with functions.
 
 . Identity function `+id+`
 . Constant function `+const+`
-. Function composition. `+(.)+`
+. Function composition. `+(.) :: (b -> c) -> (a -> b) -> a -> c+`
 . Flip function `+flip+`
 . Function application operator https://wiki.haskell.org/$[`+($)+`]
 . Reverse application operator `+(&)+`
