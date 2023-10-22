@@ -17,6 +17,7 @@
 * https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
 * box-sizing: border-box;
 * https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+. https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
 ----
 .header{
     backround: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
