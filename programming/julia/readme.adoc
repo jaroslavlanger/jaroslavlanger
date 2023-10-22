@@ -1,0 +1,10 @@
+= Julia
+
+.TODO
+[%collapsible]
+====
+. https://colab.research.google.com/github/ageron/julia_notebooks/blob/master/Julia_Colab_Notebook_Template.ipynb
+====
+
+* https://julialang.org/
+* https://en.wikipedia.org/wiki/Julia_(programming_language)
