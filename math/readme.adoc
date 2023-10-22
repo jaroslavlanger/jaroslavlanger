@@ -46,6 +46,10 @@ deviation    Std X = Sqrt (Var X)
 . https://en.wikipedia.org/wiki/Monad_(category_theory)
 ====
 
+== References
+
+* https://en.wikipedia.org/wiki/Principia_Mathematica
+
 == Spaces
 
 === https://en.wikipedia.org/wiki/Countable_set[Cardinality]
