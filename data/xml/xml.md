@@ -1,5 +1,9 @@
 # XML
 
+## TODO
+
+* [SVG: Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG)
+
 ## What is xml
 
 https://www.w3schools.com/xml/xml_whatis.asp
