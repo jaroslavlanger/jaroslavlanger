@@ -10,6 +10,17 @@
 .TODO
 [%collapsible]
 ====
+. https://www.youtube.com/watch?v=XpDsk374LDE[Elm Europe 2017 - Evan Czaplicki - The life of a file]
+. https://www.youtube.com/watch?v=IcgmSRJHu_8["Making Impossible States Impossible" by Richard Feldman]
+. https://github.com/elm/editor-plugins
+. https://package.elm-lang.org/packages/elm/core/latest/Task
+. https://package.elm-lang.org/packages/elm/time/latest/
+. https://package.elm-lang.org/packages/elm/svg/latest/
+. https://package.elm-lang.org/packages/NoRedInk/elm-json-decode-pipeline/latest
+. https://package.elm-lang.org/packages/terezka/elm-charts/latest
+. https://package.elm-lang.org/packages/rtfeldman/elm-css/latest/
+. https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/
+. https://www.youtube.com/watch?v=Ie-gqwSHQr0["Building a Toolkit for Design" by Matthew Griffith]
 * https://semver.org/[Semantic Versioning 2.0.0]
 * Redux pattern.
 * Elm is inserted as bundle into a div.
@@ -61,6 +72,10 @@ npm install -g elm-format
 
 === https://package.elm-lang.org/packages/elm/browser/latest/[Browser]
 
+=== https://package.elm-lang.org/packages/elm/file/latest/[File]
+
+=== https://package.elm-lang.org/packages/elm-community/list-extra/latest[List.Extra]
+
 === https://package.elm-lang.org/packages/EdutainmentLIVE/elm-dropdown/latest/[EdutainmentLIVE/elm-dropdown]
 
 == Project
@@ -74,4 +89,15 @@ elm init
 ----
 # Let's for example install package elm/parser
 elm install elm/parser
+----
+
+.Run Elm
+----
+elm reactor
+----
+
+== Main Module
+
+----
+module Main exposing (..)
 ----
