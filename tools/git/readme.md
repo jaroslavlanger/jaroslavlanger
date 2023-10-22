@@ -54,6 +54,7 @@ How to use git successfully even with a little background knowledge.
 * [Undo git filter-branch](https://stackoverflow.com/questions/14542326/undo-git-filter-branch)
 * https://git-scm.com/docs/git-ls-tree
 * [Learn the workings of Git, not just the commands (IBM)](https://developer.ibm.com/tutorials/d-learn-workings-git/)
+* <https://git-scm.com/book/en/v2/Git-Basics-Tagging>
 
 ## Basic Information
 
