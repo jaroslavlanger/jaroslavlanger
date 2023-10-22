@@ -25,4 +25,8 @@ arm::
 "ARM (stylised in lowercase as arm, formerly an acronym for Advanced RISC Machines and originally Acorn RISC Machine) is a family of reduced instruction set computer (RISC) instruction set architectures for computer processors"
 -- https://en.wikipedia.org/wiki/ARM_architecture_family
 
+== https://en.wikipedia.org/wiki/Automata_theory
+
+* https://en.wikipedia.org/wiki/Chomsky_hierarchy
+
 == https://amturing.acm.org/byyear.cfm[Chronological listing of A.M. Turing Award winners]
