@@ -24,6 +24,7 @@
 . https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
 . https://suckless.org/[suckless.org software for X window system]
 . https://www.pcre.org/[PCRE - Perl Compatible Regular Expressions]
+** `+git status | pcre2grep -o2 '\t(.*:\h+)?(.*)' | xargs stat --format='%y %n' | sort+`
 ====
 
 [bibliography]
