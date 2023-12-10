@@ -30,3 +30,12 @@ arm::
 * https://en.wikipedia.org/wiki/Chomsky_hierarchy
 
 == https://amturing.acm.org/byyear.cfm[Chronological listing of A.M. Turing Award winners]
+
+== Books
+
+. Structure and Interpretation of Computer Programs by Gerald Jay Sussman, Hal Abelson, and Julie Sussman
+. The Unix Programming Environment by Brian Kernighan and Rob Pike
+. The C Programming Language by Brian Kernighan and Dennis Ritchie
+. A Tour of C++ by Bjarne Stroustrup
+. Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, John Vlissides, Richard Helm and Ralph Johnson
+. Compilers: Principles, Techniques, and Tools by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman
