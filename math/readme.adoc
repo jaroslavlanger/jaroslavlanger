@@ -9,6 +9,9 @@
 [%collapsible]
 ====
 
+. https://en.wikibooks.org/wiki/Haskell/The_Curry%E2%80%93Howard_isomorphism
+. https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory
+. https://philosophy.stackexchange.com/questions/87027/set-theory-vs-type-theory-vs-category-theory
 . https://datacollection.jrc.ec.europa.eu/wordef/coefficient-of-variation[Coefficient of Variation]
 . https://en.wikipedia.org/wiki/Coefficient_of_variation
 . https://www.statisticshowto.com/relative-variance/
