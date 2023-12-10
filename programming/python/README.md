@@ -4,6 +4,8 @@ Great language for prototyping, scripting, machine learning and anything else.
 
 ## References
 
+* https://packaging.python.org/en/latest/
+
 ### Tutorials
 
 * [Tutorial place](https://realpython.com/)
