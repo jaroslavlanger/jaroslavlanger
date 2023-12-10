@@ -1,0 +1,6 @@
+lowercase Hay Baby
+uppercase this is not uppercase
+no space               i      said     no      spaces
+slugify               these ě š č ř ž ý á í é should be readable
+one-space     just    one     delimiting     space
+csv           example.csv

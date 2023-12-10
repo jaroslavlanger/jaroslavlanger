@@ -1,20 +1,41 @@
 # Rust
 
-## TODO
-* https://doc.rust-lang.org/std/marker/struct.PhantomData.html
-* mutex, rwlock - https://docs.rs/parking_lot/latest/parking_lot/
-* function composition
-
-## References
+## Read First
 * en.wikipedia.org/wiki/Rust_(programming_language)
 * the book - doc.rust-lang.org/book
 * https://doc.rust-lang.org/rust-by-example/
-* https://doc.rust-lang.org/cargo/
-* linting - doc.rust-lang.org/stable/clippy
-* ide for rust - areweideyet.com
 * create std - doc.rust-lang.org/std
+* crates by popularity - https://crates.io/crates?sort=downloads
+* crate api guidelines - https://rust-lang.github.io/api-guidelines/
+
+## TODO
+* https://doc.rust-lang.org/cargo/
+* ide for rust - areweideyet.com
+* https://rust-lang.github.io/async-book/
+* rust announcements - https://blog.rust-lang.org/
+* https://braiins-uni.mag.wiki/async.html
 * reference - doc.rust-lang.org/stable/reference/
-* https://crates.io/crates?sort=downloads
+* formating - https://rust-lang.github.io/rustfmt/
+* linting - doc.rust-lang.org/stable/clippy
+* https://doc.rust-lang.org/rustdoc/
+* https://rust-lang.github.io/rustup/
+* rustonomicon (unsafe book) - https://doc.rust-lang.org/nomicon/
+* background code checker - https://github.com/Canop/bacon
+* https://nnethercote.github.io/perf-book/
+
+## Crates
+* https://tokio.rs/
+** https://tokio.rs/tokio/tutorial
+* https://docs.rs/flume/latest/flume/
+* https://lib.rs/
+* https://github.com/hyperium/hyper/tree/master/examples
+* https://crates.io/crates/futures
+* https://github.com/awesome-rust-com/awesome-rust
+* https://doc.rust-lang.org/std/marker/struct.PhantomData.html
+* mutex, rwlock - https://docs.rs/parking_lot/latest/parking_lot/
+* https://github.com/spacejam/sled
+* https://github.com/JasonShin/fp-core.rs
+* https://crates.io/crates/cargo-audit
 
 ## Cargo
 ```sh
