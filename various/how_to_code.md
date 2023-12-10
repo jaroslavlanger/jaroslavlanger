@@ -135,3 +135,7 @@ google-chrome report.pdf
 
 - [link](https://code.visualstudio.com/docs/cpp/config-linux)
 
+## Profiling
+
+When writing an optimized code, find appropriate profiling tool.
+For a quick start `time` command will work, or look at <https://crates.io/crates/hyperfine>.
