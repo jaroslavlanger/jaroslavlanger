@@ -55,6 +55,7 @@ An advanced, purely functional programming language
 . https://wiki.haskell.org/Debugging
 . https://downloads.haskell.org/~ghc/8.6.5/docs/html/users_guide/ghci.html#the-ghci-debugger
 . https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/pattern_synonyms.html
+. https://willamette.edu/~fruehr/haskell/evolution.html
 ====
 
 [bibliography]
