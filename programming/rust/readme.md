@@ -1,44 +1,48 @@
 # Rust
 
-## Read First
+## Introduction
 * en.wikipedia.org/wiki/Rust_(programming_language)
-* the book - doc.rust-lang.org/book
+* [The Rust Programming Language](doc.rust-lang.org/book) or simply The Book
 * https://doc.rust-lang.org/rust-by-example/
-* crate api guidelines - https://rust-lang.github.io/api-guidelines/
-* https://rust-unofficial.github.io/patterns/
-
-## TODO
-* https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md
-* https://rust-lang.github.io/async-book/
 * https://google.github.io/comprehensive-rust/
-    * https://google.github.io/comprehensive-rust/exercises/concurrency/solutions-afternoon.html#broadcast-chat-application
-* ide for rust - areweideyet.com
-* rust announcements - https://blog.rust-lang.org/
-* https://braiins-uni.mag.wiki/async.html
-* reference - doc.rust-lang.org/stable/reference/
-* formating - https://rust-lang.github.io/rustfmt/
-* linting - doc.rust-lang.org/stable/clippy
-* https://doc.rust-lang.org/rustdoc/
-* https://rust-lang.github.io/rustup/
-* rustonomicon (unsafe book) - https://doc.rust-lang.org/nomicon/
-* background code checker - https://github.com/Canop/bacon
-* https://nnethercote.github.io/perf-book/
-* https://github.com/rust-lang/rustlings
+* https://braiins-uni.mag.wiki/choosing-rust.html
 
 ## Rust Language
-* https://doc.rust-lang.org/core/
+* [The Rust Reference](doc.rust-lang.org/stable/reference/)
+* [Loops and other breakable expressions](https://doc.rust-lang.org/reference/expressions/loop-expr.html)
+* [The Rust Core Library](https://doc.rust-lang.org/core/)
 * Enum - https://en.wikipedia.org/wiki/Tagged_union
 * Does not have variadic functions -> macros.
 
 ### Comments
 * inner doc comments (starting with `//!` or `/*!`) can only appear before [items](https://doc.rust-lang.org/stable/reference/items.html)
 
-### Data Types
-* https://doc.rust-lang.org/std/mem/fn.size_of.html
-* https://doc.rust-lang.org/std/primitive.str.html
-* https://doc.rust-lang.org/rust-by-example/primitives/array.html
-* https://doc.rust-lang.org/stable/std/primitive.slice.html
-* https://doc.rust-lang.org/book/ch04-03-slices.html
+### [Primitive Data Types](https://doc.rust-lang.org/core/#primitives)
+* https://doc.rust-lang.org/core/primitive.array.html
+  * https://doc.rust-lang.org/rust-by-example/primitives/array.html
+* https://doc.rust-lang.org/core/primitive.str.html
+* https://doc.rust-lang.org/core/primitive.slice.html
+  * https://doc.rust-lang.org/book/ch04-03-slices.html
+
+### [Modules](https://doc.rust-lang.org/core/#modules)
+* https://doc.rust-lang.org/core/option/
+* https://doc.rust-lang.org/core/result/
+* https://doc.rust-lang.org/core/iter/
+* https://doc.rust-lang.org/core/clone/
+* https://doc.rust-lang.org/core/convert/
+* https://doc.rust-lang.org/core/default/
+* https://doc.rust-lang.org/core/ops/
+  * https://doc.rust-lang.org/rust-by-example/trait/ops.html
+
+### Traits
+* https://doc.rust-lang.org/core/fmt/trait.Debug.html
+* https://doc.rust-lang.org/core/fmt/trait.Display.html
+
+### [Macros](https://doc.rust-lang.org/core/index.html#macros)
+* https://doc.rust-lang.org/core/macro.assert.html
+* https://doc.rust-lang.org/core/macro.assert_eq.html
+* https://doc.rust-lang.org/core/macro.todo.html
+* https://doc.rust-lang.org/core/macro.write.html
 
 ### Ownership
 * https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
@@ -49,74 +53,36 @@
 * https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 * Automatic dereferencing
 * `&&T -> &T`
-* https://doc.rust-lang.org/std/ops/trait.Deref.html
+* https://doc.rust-lang.org/core/ops/trait.Deref.html
 
 ### shadowing
 * `let name: &str = name.trim();`
 
-### loops
-```
- = 'myloop loop {
-    break 'myloop 10
- }
- ```
-
-### Modules
-* `mod greetings {}`
-
-### Operator Overloading
-* https://doc.rust-lang.org/rust-by-example/trait/ops.html
-* https://doc.rust-lang.org/core/ops/#traits
-
 ## [Standard Library](https://doc.rust-lang.org/std/)
-
-### Option
-* https://doc.rust-lang.org/std/option/index.html
-
-### Result
-* https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map
-
-### Vector Collection
-* https://doc.rust-lang.org/std/vec/struct.Vec.html
-* https://doc.rust-lang.org/rust-by-example/fn/diverging.html
-
-### String
-* https://doc.rust-lang.org/std/string/struct.String.html
-* https://doc.rust-lang.org/std/primitive.str.html#method.split
-* https://doc.rust-lang.org/std/primitive.slice.html#method.join
-* https://doc.rust-lang.org/std/primitive.str.html#method.trim_matches
-
-### Format
-* https://doc.rust-lang.org/std/fmt/
-
-### Iterator
-* https://doc.rust-lang.org/std/iter/
-* https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.map
-* https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flatten
-* https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.chain
-* https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.min
-* https://doc.rust-lang.org/std/ops/struct.Range.html
-
-### Default
-* https://doc.rust-lang.org/std/default/trait.Default.html
-
-## Practices
-
-### Error handling
-* https://doc.rust-lang.org/book/ch09-00-error-handling.html
-* https://doc.rust-lang.org/std/macro.panic.html
-* https://users.rust-lang.org/t/how-to-exit-on-error/64858/2
-* https://docs.rs/anyhow/latest/anyhow/
-* https://docs.rs/thiserror/latest/thiserror/
-
-### Input and Output (IO)
 * https://doc.rust-lang.org/std/macro.println.html
-* https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line
-* https://doc.rust-lang.org/std/io/trait.BufRead.html#method.lines
+* https://doc.rust-lang.org/std/vec/
+* https://doc.rust-lang.org/std/string/
+* https://doc.rust-lang.org/std/fmt/
+* https://doc.rust-lang.org/std/io/
+  * https://doc.rust-lang.org/std/io/trait.BufRead.html
+  * https://doc.rust-lang.org/std/io/struct.BufReader.html
+* https://doc.rust-lang.org/std/env/
+  * https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
 
-### Command line arguments
-* https://doc.rust-lang.org/std/env/struct.Args.html
-* https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
+## Guidelines
+* crate api guidelines - https://rust-lang.github.io/api-guidelines/
+* https://rust-unofficial.github.io/patterns/
+
+## [Cargo](https://doc.rust-lang.org/cargo/)
+```sh
+cargo new
+cargo check
+cargo clean
+cargo run
+cargo doc --open
+cargo clippy
+cargo fmt
+```
 
 ## Crates
 * crates by popularity - https://crates.io/crates?sort=downloads
@@ -133,14 +99,23 @@
 * https://github.com/spacejam/sled
 * https://github.com/JasonShin/fp-core.rs
 * https://crates.io/crates/cargo-audit
+* https://docs.rs/genawaiter/latest/genawaiter/
 
 ### Regex
 * https://docs.rs/regex/1.4.2/regex/struct.Regex.html#method.split
 
-### [Tokio](https://tokio.rs/)
-* Asynchrony - IO bound then message passing (oneshot::channel) otherwise sharded mutex.
-* Always bound everything with reasonable numbers.
+### Error handling
+* https://doc.rust-lang.org/book/ch09-00-error-handling.html
+* https://doc.rust-lang.org/std/error/
+* https://docs.rs/anyhow/latest/anyhow/
+* https://docs.rs/thiserror/latest/thiserror/
+* https://doc.rust-lang.org/std/process/trait.Termination.html
+
+### Tokio
+* https://tokio.rs/
 * https://tokio.rs/tokio/tutorial
+  * Asynchrony - IO bound then message passing (oneshot::channel) otherwise sharded mutex.
+  * Always bound everything with reasonable numbers.
 * https://github.com/tokio-rs/mini-redis/blob/master/src/lib.rs
 * https://github.com/tokio-rs/mini-redis/blob/master/src/db.rs
 * https://github.com/tokio-rs/tokio/blob/master/examples/chat.rs
@@ -157,19 +132,24 @@
 ### Itertools
 * https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.collect_tuple
 
-## [Cargo](https://doc.rust-lang.org/cargo/)
-```sh
-cargo new
-cargo check
-cargo clean
-cargo run
-cargo doc --open
-cargo clippy
-cargo fmt
-```
-
-## Functional rust
-* https://stackoverflow.com/questions/63967743/what-is-the-correct-syntax-to-return-a-function-in-rust
-
 ## Nightly
 * https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse
+
+## Extra
+* rust announcements - https://blog.rust-lang.org/
+* https://rust-lang.github.io/async-book/
+* formating - https://rust-lang.github.io/rustfmt/
+* linting - doc.rust-lang.org/stable/clippy
+* https://doc.rust-lang.org/rustdoc/
+* https://rust-lang.github.io/rustup/
+* https://nnethercote.github.io/perf-book/
+* [Rustonomicon (unsafe rust)](https://doc.rust-lang.org/nomicon/)
+* https://without.boats/blog/why-async-rust/
+* [The Rust I Wanted Had No Future by Graydon Hoare](https://graydon2.dreamwidth.org/307291.html)
+
+## TODO
+* https://google.github.io/comprehensive-rust/exercises/concurrency/solutions-afternoon.html#broadcast-chat-application
+* https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md
+* https://github.com/rust-lang/rustlings
+* ide for rust - areweideyet.com
+* background code checker - https://github.com/Canop/bacon
