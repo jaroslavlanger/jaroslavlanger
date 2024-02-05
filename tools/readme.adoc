@@ -173,3 +173,7 @@ I use following settings to lower my eye strain.
 . Use a software which lowers the screen temperature.
     * http://jonls.dk/redshift/
     * https://justgetflux.com/
+
+== Presentations
+
+* https://revealjs.com/
