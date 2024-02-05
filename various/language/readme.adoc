@@ -1,0 +1,16 @@
+= Languages
+
+* https://www.youtube.com/playlist?list=PLp17O33E3qFw9Rh1XrZHVfsfK8lhFawJ0[Lsci 3: Introduction to Linguistics by Richard Futrell]
+* https://ohiostatepress.org/books/titles/9780814258354.html[Language Files book]
+
+== Terms
+Lexicon[https://en.wikipedia.org/wiki/Lexicon]:: the vocabulary of a language
+Part of speech[https://en.wikipedia.org/wiki/Part_of_speech]:: category of words that have similar grammatical properties, e.g. noun, verb, adjective etc.
+Word order[https://en.wikipedia.org/wiki/Word_order]:: the order of the syntactic constituents of a language, e.g. SVO (subject-verb-object)
+Analytic language[https://en.wikipedia.org/wiki/Analytic_language]:: analytic languages typically use word order, context, and auxiliary words (such as prepositions and articles) to convey grammatical relationships. In contrast to synthetic languages, rarely use affixes
+
+== International Phonetic Alphabet
+* https://www.internationalphoneticassociation.org/content/ipa-chart
+* https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html
+* http://ipa-reader.xyz/
+* https://learnipa.group.shef.ac.uk/
