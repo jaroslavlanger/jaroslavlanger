@@ -51,6 +51,7 @@ deviation    Std X = Sqrt (Var X)
 
 == References
 
+* https://mathworld.wolfram.com/
 * https://en.wikipedia.org/wiki/Principia_Mathematica
 
 == Spaces
