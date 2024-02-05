@@ -2,7 +2,9 @@
 
 Docker - How to use it, what’s all that ([best link](https://blog.sourcerer.io/a-crash-course-on-docker-learn-to-swim-with-the-big-fish-6ff25e8958b0))
 
-Install docker - ALREADY DONE, READ SOMEWHERE
+## Install
+
+* https://docs.docker.com/engine/install/debian/
 
 Adding user to docker group
 
@@ -23,23 +25,31 @@ su - ${USER}
 
 ## Basic commands
 
-* ps - Lists running containers, optional -a flag to list all containers.
+```sh
+# Lists running containers.
+docker ps # -a flag to list all containers.
 
-* create - Creates a container from an image.
+docker rm CONTAINER [CONTAINER...] # Remove one or more containers.
 
-* start - Starts a created container.
+docker create # Creates a container from an image.
 
-* run - Creates and starts the container
+docker start # Starts a created container.
 
-* attach - Attaches the terminal’s standard input and output to a running container, literally connecting you to the container as you would to any virtual machine.
+docker run # Creates and starts the container
 
-* exit - exits and stops the container
+docker attach # Attaches the terminal’s standard input and output to a running container, literally connecting you to the container as you would to any virtual machine.
 
-* build - builds an image
+docker exit # exits and stops the container
 
-* images - lists all images
+docker build # builds an image
 
-* system - manage Docker
+docker images # lists all images
+
+docker system # manage Docker
+
+# Execute a bash terminal from a running container.
+docker exec -it CONTAINER bash
+```
 
 ```sh
 docker system prune -A 
