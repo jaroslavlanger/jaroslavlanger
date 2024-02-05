@@ -1,6 +1,10 @@
 = Bayesian Statistics
 :toc: right
 
+== References
+
+. https://gitlab.fit.cvut.cz/dedeckam/ni-lsm-cviceni
+
 == Definitions
 
 In Kolmogorov definition.
