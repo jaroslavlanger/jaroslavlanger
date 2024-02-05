@@ -4,161 +4,80 @@ Great language for prototyping, scripting, machine learning and anything else.
 
 ## References
 
-* https://packaging.python.org/en/latest/
-
-### Tutorials
-
-* [Tutorial place](https://realpython.com/)
-- Consider [the Little Book of Python Anti-Patterns](https://docs.quantifiedcode.com/python-anti-patterns/)
-* [Tutorials in Czech language (by Jiří Znamenáček)](http://vyuka.ookami.cz/index.python.html)
+* <https://docs.python.org/3/>
+* <https://docs.python.org/3/reference/>
+* <https://docs.python.org/3/library/>
+* <https://packaging.python.org/en/latest/>
+* <https://pypi.org/>
+* <https://setuptools.pypa.io/en/latest/setuptools.html>
+* <https://docs.python.org/3/howto/functional.html>
+* <https://docs.python.org/3/howto/argparse.html>
+* <https://docs.python.org/3/tutorial/errors.html>
 
 ### Python Enhancement Proposals (PEPs)
 
+* [PEP 263 – Defining Python Source Code Encodings](https://peps.python.org/pep-0263/)
 * [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
-
-## TODO
-
-* ?Change python markdowns to jupyter notebooks?
-
-* **maxsize**
-
-```py
-import sys
-sys.maxsize
-```
-
-* [maxsize](https://stackoverflow.com/questions/38314118/overflowerror-python-int-too-large-to-convert-to-c-long-on-windows-but-not-ma)
-
-* **Map, filter, reduce**
-
-* [Map, filter, reduce](https://book.pythontips.com/en/latest/map_filter.html)
-
-* **Sort dictionaries (homework from python)**
-
-```
-correlation = dict(zip(cor_matrix['survived'].index, abs(cor_matrix['survived'].values)))
-correlation = sorted(correlation.items(), key = lambda kv:(kv[1]), reverse=True)
-```
-* https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
-* https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
-
-* **Pickle**
-* https://docs.python.org/3/library/xml.etree.elementtree.html
-* https://stackoverflow.com/questions/13046240/parseerror-not-well-formed-invalid-token-using-celementtree
-* https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find
-* https://beautiful-soup-4.readthedocs.io/en/latest/
-* https://stackoverflow.com/questions/11465555/can-we-use-xpath-with-beautifulsoup
-* https://requests.readthedocs.io/en/master/
-* https://stackoverflow.com/questions/31205497/how-can-i-download-full-webpage-by-a-python-program
-* https://www.codementor.io/@aviaryan/downloading-files-from-urls-in-python-77q3bs0un
-* https://requests.readthedocs.io/en/master/user/quickstart/
-* [pathlib Path](https://docs.python.org/3/library/pathlib.html)
-
-* [list comprehension, flattening list :oooooooooooo](https://stackoverflow.com/questions/952914/how-to-make-a-flat-list-out-of-list-of-lists)
-* [dict comprehension](https://www.datacamp.com/community/tutorials/python-dictionary-comprehension)
-* [exceptions](https://docs.python.org/3.3/tutorial/errors.html)
-* [raising exceptions](https://www.kite.com/python/answers/how-to-raise-a-valueerror-in-python)
-* [standard exceptions](https://docs.python.org/3/library/exceptions.html)
-* [not implemented](https://stackoverflow.com/questions/44315961/when-to-use-raise-notimplementederror)
-* [dict.items()](https://realpython.com/iterate-through-dictionary-python/)
-* [detect last iteration of for i in dict.items()](https://stackoverflow.com/questions/6090417/detect-last-iteration-over-dictionary-iteritems-in-python)
-* [argparse](https://docs.python.org/3/howto/argparse.html)
-* [argparse doc](https://docs.python.org/3/library/argparse.html#module-argparse)
-* [argparse optional stdin stdout](https://stackoverflow.com/questions/7576525/optional-stdin-in-python-with-argparse)
-* [argparse optional stdin stdout doc](https://docs.python.org/dev/library/argparse.html#nargs)
-* [stdout.write vs print() vs print(sth, file=...)](https://stackoverflow.com/questions/3263672/the-difference-between-sys-stdout-write-and-print)
-* [print file param](https://www.geeksforgeeks.org/python-file-parameter-print/)
-* [call function based on argparse](https://stackoverflow.com/questions/27529610/call-function-based-on-argparse)
-* [locals() globals()](https://stackoverflow.com/questions/3061/calling-a-function-of-a-module-by-using-its-name-a-string)
-* [argparse subparsers](https://docs.python.org/3/library/argparse.html)
-* [*args, **kwargs](https://www.geeksforgeeks.org/args-kwargs-python/)
-* [namespace object vars()](https://stackoverflow.com/questions/20828277/what-is-a-namespace-object)
-* [argparse case insensitive](https://medium.com/python-in-plain-english/python-case-in-sensitive-argparse-choices-a380e9169fff)
-* [argparse aliases](https://docs.python.org/3/library/argparse.html)
-* [argparse set defaults](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.set_defaults)
-* [compare string to bool](https://stackoverflow.com/questions/715417/converting-from-a-string-to-boolean-in-python)
-* [how to parameters, optional, then positional, last not required, default...]
-* [nargs='?' '*'](https://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments)
-* [parser print help, when nohing selected](https://stackoverflow.com/questions/3636967/python-argparse-how-can-i-display-help-automatically-on-error)
-* closures
-
-## How to start
-
-My current best practise (which is probably also the officially recommended one)
-is to install all needed python versions to the system.
-For every project create its virtual environment using "venv".
-And manage the modules using "pip" with "requirements.txt" file.
-
-### Python Versions
-
-TODO
-
-### Installation
-
-TODO
-
-### Package Manager - pip
-
-pip package manager allows you to install packages.
-Mostly you install the packages from the [Python Package Index (PyPI)](https://pypi.org/),
-pip can install packages from source as well.
-
-```sh
-# Install package
-pip3 install package_name
-# Show package info
-pip3 show package_name
-# Update package
-pip3 install --upgrade package_name
-```
-
-### [Venv](https://docs.python.org/3/library/venv.html)
-
-Venv is a python module to manage python virtual environments.
-
-```sh
-# Activate environment
-source .env_name/source/activate
-# deactivate
-deactivate
-```
-
 * [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
-* [Requirements File Format](https://pip.pypa.io/en/latest/reference/requirements-file-format/)
 
-### Conda
+### Tutorials
 
-Conda is a tool to manage environments and package dependencies for multiple languages including python.
+* <https://realpython.com/>
+* <https://book.pythontips.com/en/latest/index.html>
+* <https://docs.quantifiedcode.com/python-anti-patterns/>
+* <http://vyuka.ookami.cz/index.python.html>
 
-My personal experience is that I don't want to use Conda for managing python dependencies.
-The reason for it is, conda officially supports only some packages and their versions.
-So if I used conda, I would install a lot of things with pip anyway.
-Conda supports installing any module with pip.
-But to me, it just feels like adding a lot of complexity for a little benefit.
+## Installation Versions and Packages
 
-### Run python
+My current practice is to install all required python versions to the system (in different directories, called with aliases).
+To manage packages, I create a virtual environments using [venv](https://docs.python.org/3/library/venv.html)
+and install them using <https://pip.pypa.io/en/stable/> with [`requirements.txt`](https://pip.pypa.io/en/latest/reference/requirements-file-format/).
+[pyenv](https://github.com/pyenv/pyenv) appears to be the best of all worlds, although I haven't used it yet (TODO).
+From my personal experience with [Conda](https://docs.conda.io/en/latest/), it solves many problems but introduces new ones
+(supports only certain packages and their versions, leading to installing packages with pip anyway).
 
-#### Terminal
+## Scripts
 
-#### Scripts
+When writing a script, it's recommended to define a `main` function and call it with `if __name__ == "__main__":`,
+as per [idiomatic usage](https://docs.python.org/3/library/__main__.html#idiomatic-usage).
+For unix scripts, use `#!/usr/bin/env python3` as the first line. More details can be found [here](https://docs.python.org/3/using/unix.html#miscellaneous).
 
-Python is and excellent language for writing scripts.
-- Every linux script should start with shebang.
-  - Otherwise, there will be misunderstanding between python 2 and python 3.
+## [Python Standard Library](https://docs.python.org/3/library/index.html)
 
-```py
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-```
+### [Built-in Functions](https://docs.python.org/3/library/functions.html)
 
-Following construct is highly recommend for scripts.
+* [dict](https://docs.python.org/3/library/functions.html#func-dict)
+* [dir](https://docs.python.org/3/library/functions.html#dir)
+* [enumerate](https://docs.python.org/3/library/functions.html#enumerate)
+* [filter](https://docs.python.org/3/library/functions.html#filter)
+* [globals](https://docs.python.org/3/library/functions.html#globals)
+* [int](https://docs.python.org/3/library/functions.html#int)
+* [locals](https://docs.python.org/3/library/functions.html#locals)
+* [map](https://docs.python.org/3/library/functions.html#map)
 
-```py
-if __name__ == "__main__":
-    #This code will be executed only, if the file was called as a script, not imported
-```
+### [itertools](https://docs.python.org/3/library/itertools.html)
+
+### [functools](https://docs.python.org/3/library/functools.html)
+
+* [lru_cache](https://docs.python.org/3/library/functools.html#functools.lru_cache)
+* [partial](https://docs.python.org/3/library/functools.html#functools.partial)
+* [reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
+* [singledispatch](https://docs.python.org/3/library/functools.html#functools.singledispatch)
+* [wraps](https://docs.python.org/3/library/functools.html#functools.wraps)
+
+### [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
+
+### [argparse — Parser for command-line options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
+
+### [xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/3/library/xml.etree.elementtree.html)
+
+### [sys — System-specific parameters and functions](https://docs.python.org/3/library/sys.html)
+
+* [sys.maxsize](https://docs.python.org/3/library/sys.html#sys.maxsize)
 
 ## Basics
+
+* https://docs.python.org/3/reference/index.html
 
 ### First things first
 
@@ -1105,7 +1024,11 @@ print(time.time() - start)
 
 * [measure-time-taken-between-lines (stackoverflow.com)](https://stackoverflow.com/questions/14452145/how-to-measure-time-taken-between-lines-of-code-in-python)
 * [timeit — Measure execution time of small code snippet (docs.python.org)](https://docs.python.org/3/library/timeit.html)
-* [Profiling Python using cProfile: a concrete case (julien.danjou.info)](https://julien.danjou.info/guide-to-python-profiling-cprofile-concrete-case-carbonara/)
+
+```sh
+python3 -m cProfile -o tmp module-to-test.py
+python3 -c "import pstats; pstats.Stats('tmp').sort_stats(pstats.SortKey.CUMULATIVE).print_stats()" > profile-output
+```
 
 ### underscored names in python
 
@@ -1199,3 +1122,33 @@ c_fun("super unicode".encode())
 >>> 16**(1/2)
 1
 ```
+
+## TODO
+
+* https://stackoverflow.com/questions/13046240/parseerror-not-well-formed-invalid-token-using-celementtree
+* https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find
+* https://beautiful-soup-4.readthedocs.io/en/latest/
+* https://stackoverflow.com/questions/11465555/can-we-use-xpath-with-beautifulsoup
+* https://requests.readthedocs.io/en/master/
+* https://stackoverflow.com/questions/31205497/how-can-i-download-full-webpage-by-a-python-program
+* https://www.codementor.io/@aviaryan/downloading-files-from-urls-in-python-77q3bs0un
+* https://requests.readthedocs.io/en/master/user/quickstart/
+* [list comprehension, flattening list :oooooooooooo](https://stackoverflow.com/questions/952914/how-to-make-a-flat-list-out-of-list-of-lists)
+* [dict comprehension](https://www.datacamp.com/community/tutorials/python-dictionary-comprehension)
+* [raising exceptions](https://www.kite.com/python/answers/how-to-raise-a-valueerror-in-python)
+* [not implemented](https://stackoverflow.com/questions/44315961/when-to-use-raise-notimplementederror)
+* [dict.items()](https://realpython.com/iterate-through-dictionary-python/)
+* [detect last iteration of for i in dict.items()](https://stackoverflow.com/questions/6090417/detect-last-iteration-over-dictionary-iteritems-in-python)
+* [argparse optional stdin stdout](https://stackoverflow.com/questions/7576525/optional-stdin-in-python-with-argparse)
+* [stdout.write vs print() vs print(sth, file=...)](https://stackoverflow.com/questions/3263672/the-difference-between-sys-stdout-write-and-print)
+* [print file param](https://www.geeksforgeeks.org/python-file-parameter-print/)
+* [call function based on argparse](https://stackoverflow.com/questions/27529610/call-function-based-on-argparse)
+* [*args, **kwargs](https://www.geeksforgeeks.org/args-kwargs-python/)
+* [namespace object vars()](https://stackoverflow.com/questions/20828277/what-is-a-namespace-object)
+* [argparse case insensitive](https://medium.com/python-in-plain-english/python-case-in-sensitive-argparse-choices-a380e9169fff)
+* [compare string to bool](https://stackoverflow.com/questions/715417/converting-from-a-string-to-boolean-in-python)
+* [how to parameters, optional, then positional, last not required, default...]
+* [nargs='?' '*'](https://stackoverflow.com/questions/4480075/argparse-optional-positional-arguments)
+* [parser print help, when nohing selected](https://stackoverflow.com/questions/3636967/python-argparse-how-can-i-display-help-automatically-on-error)
+* closures
+* https://mathieularose.com/function-composition-in-python
