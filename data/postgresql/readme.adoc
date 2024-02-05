@@ -16,6 +16,7 @@
 . pgAdmin
 .. https://www.pgadmin.org/download/pgadmin-4-apt/
 .. https://www.rosehosting.com/blog/install-pgadmin-4-on-debian-10/
+. https://hashrocket.com/blog/posts/modeling-polymorphic-associations-in-a-relational-database
 ====
 
 [bibliography]
@@ -39,13 +40,14 @@ sudo systemctl status postgresql
 [source, console]
 sudo passwd postgres
 
-.Login as a postgres user
+.Run the psql command as user postgres
 [source, console]
-su – postgres
-
-.Start psql
-[source, console]
+su - postgres
 psql
+
+.Start psql connect as user postgres
+[source, console]
+psql -U postgres
 
 .PSQL Commands
 |===
@@ -55,6 +57,7 @@ psql
 | `+\c DB+`   | Connect to database DB.
 | `+\d+`      | List tables (relations).
 | `+\du+`     | List users.
+| `+\e+`      | Edit the query buffer in editor.
 | `+\i FILE+` | Execute commands from FILE.
 | `+\! CMD+`  | Execute shell command CMD.
 |===
@@ -193,13 +196,35 @@ ____
 ----
 ____
 
-=== DDL
+.https://www.postgresql.org/docs/current/datatype.html
+|===
+| bigint | int8 | signed eight-byte integer
+| bigserial | serial8 | autoincrementing eight-byte integer
+| bytea | | data (“byte array”)
+| serial | serial4 | autoincrementing four-byte integer
+| text | | variable-length character string
+| timestamp [ (p) ] [ without time zone ] | | date and time (no time zone)
+|===
 
-* https://www.postgresql.org/docs/current/ddl-schemas.html
+=== https://www.postgresql.org/docs/current/ddl.html[Data Definition]
 
-=== Functions and Operators
+. https://www.postgresql.org/docs/current/ddl-constraints.html
+. https://www.postgresql.org/docs/current/ddl-schemas.html
+
+=== https://www.postgresql.org/docs/current/dml.html[Data Manipulation]
+
+. https://www.postgresql.org/docs/current/dml-returning.html
+
+=== https://www.postgresql.org/docs/current/functions.html[Functions and Operators]
+
+.https://www.postgresql.org/docs/current/functions-datetime.html
+----
+select current_timestamp;
+----
 
 .https://www.postgresql.org/docs/current/functions-info.html
 ----
 select current_user;
 ----
+
+=== https://www.postgresql.org/docs/current/sql-keywords-appendix.html
