@@ -1,5 +1,7 @@
 # Statistics
 
+* https://www.probabilitycourse.com/
+
 * probability: mathematical modelling of randomness
 * statistics: estimating probability to observations
 * measurable (Borel) space:  $(X, \sigma\text{-algebra of }X)$
