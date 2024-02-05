@@ -66,8 +66,10 @@
 * https://doc.rust-lang.org/std/io/
   * https://doc.rust-lang.org/std/io/trait.BufRead.html
   * https://doc.rust-lang.org/std/io/struct.BufReader.html
+* https://doc.rust-lang.org/std/path/
 * https://doc.rust-lang.org/std/env/
   * https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
+* https://doc.rust-lang.org/std/borrow/
 
 ## Guidelines
 * crate api guidelines - https://rust-lang.github.io/api-guidelines/
@@ -96,6 +98,7 @@ cargo fmt
 * https://github.com/hyperium/hyper/tree/master/examples
 * https://doc.rust-lang.org/std/marker/struct.PhantomData.html
 * mutex, rwlock - https://docs.rs/parking_lot/latest/parking_lot/
+* https://docs.rs/auto_enums/latest/auto_enums/
 * https://github.com/spacejam/sled
 * https://github.com/JasonShin/fp-core.rs
 * https://crates.io/crates/cargo-audit
@@ -145,6 +148,7 @@ cargo fmt
 * https://nnethercote.github.io/perf-book/
 * [Rustonomicon (unsafe rust)](https://doc.rust-lang.org/nomicon/)
 * https://without.boats/blog/why-async-rust/
+* [The History of Rust by Steve Klabnik](https://youtu.be/79PSagCD_AY)
 * [The Rust I Wanted Had No Future by Graydon Hoare](https://graydon2.dreamwidth.org/307291.html)
 
 ## TODO
