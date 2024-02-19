@@ -1,6 +1,7 @@
 # Statistics
 
 * https://www.probabilitycourse.com/
+* https://onlinestatbook.com/
 
 * probability: mathematical modelling of randomness
 * statistics: estimating probability to observations
