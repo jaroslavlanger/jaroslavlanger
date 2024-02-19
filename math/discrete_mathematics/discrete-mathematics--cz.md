@@ -1,5 +1,7 @@
 # Diskrétní matematika
 
+* [Invitation to Discrete Mathematics by Jiří Matoušek and Jaroslav Nešetřil](https://global.oup.com/academic/product/invitation-to-discrete-mathematics-9780198570431)
+
 ## Obsah
 - [Dělitelnost, gcd a lcm a jejich vlastnosti, (rozšířený) Euklidův algoritmus, prvočísla a faktorizace, kongruence modulo m](#dělitelnost,-gcd-a-lcm-a-jejich-vlastnosti,-(rozšířený)-Euklidův-algoritmus,-prvočísla-a-faktorizace,-kongruence-modulo-m)
 - [Inverze v modulární aritmetice, vlastnosti prvočísel, Malá Fermatova a Eulerova věta a jejich použití, výpočet velkých mocnin modulo m, úvod k lineárním diofantickým rovnicím](#inverze-v-modulární-aritmetice,-vlastnosti-prvočísel,-Malá-Fermatova-a-Eulerova-věta-a-jejich-použití,-výpočet-velkých-mocnin-modulo-m,-úvod-k-lineárním-diofantickým-rovnicím)

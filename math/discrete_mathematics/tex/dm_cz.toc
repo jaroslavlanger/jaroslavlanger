@@ -1,6 +1,0 @@
-\contentsline {section}{\numberline {1}Přednáška 1.}{2}
-\contentsline {section}{\numberline {2}Přednáška 5.}{2}
-\contentsline {section}{\numberline {3}Přednáška 10.}{2}
-\contentsline {subsection}{\numberline {3.1}Základy teorie čísel}{2}
-\contentsline {subsection}{\numberline {3.2}Dělitelnost}{2}
-\contentsline {subsection}{\numberline {3.3}Modulární aritmetika}{2}
