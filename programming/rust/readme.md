@@ -95,10 +95,13 @@ cargo fmt
 * https://crates.io/crates/futures
 * https://docs.rs/argon2/latest/argon2/
 * https://docs.rs/flume/latest/flume/
-* https://github.com/hyperium/hyper/tree/master/examples
 * https://doc.rust-lang.org/std/marker/struct.PhantomData.html
 * mutex, rwlock - https://docs.rs/parking_lot/latest/parking_lot/
 * https://docs.rs/auto_enums/latest/auto_enums/
+* https://docs.rs/slog/latest/slog/
+* https://docs.rs/pyo3/latest/pyo3/
+* https://docs.rs/ndarray/latest/ndarray/
+* https://github.com/hyperium/hyper/tree/master/examples
 * https://github.com/spacejam/sled
 * https://github.com/JasonShin/fp-core.rs
 * https://crates.io/crates/cargo-audit
@@ -157,3 +160,5 @@ cargo fmt
 * https://github.com/rust-lang/rustlings
 * ide for rust - areweideyet.com
 * background code checker - https://github.com/Canop/bacon
+* https://docs.rs/ndarray/latest/ndarray/doc/ndarray_for_numpy_users/index.html
+* https://pyo3.rs/v0.20.2/python_from_rust
