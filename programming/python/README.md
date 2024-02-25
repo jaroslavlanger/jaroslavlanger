@@ -19,6 +19,9 @@ Great language for prototyping, scripting, machine learning and anything else.
 * [PEP 263 – Defining Python Source Code Encodings](https://peps.python.org/pep-0263/)
 * [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 * [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
+* [PEP 3113 – Removal of Tuple Parameter Unpacking](https://peps.python.org/pep-3113/)
+* [PEP 345 – Metadata for Python Software Packages 1.2](https://peps.python.org/pep-0345/)
+* [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 
 ### Tutorials
 
@@ -55,19 +58,35 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 * [locals](https://docs.python.org/3/library/functions.html#locals)
 * [map](https://docs.python.org/3/library/functions.html#map)
 
-### [itertools](https://docs.python.org/3/library/itertools.html)
+### [Built-in Types](https://docs.python.org/3/library/stdtypes.html)
 
-### [functools](https://docs.python.org/3/library/functools.html)
+### Data Types
+* [collections — Container datatypes](https://docs.python.org/3/library/collections.html)
+* [copy — Shallow and deep copy operations](https://docs.python.org/3/library/copy.html)
+* [enum — Support for enumerations](https://docs.python.org/3/library/enum.html)
 
-* [lru_cache](https://docs.python.org/3/library/functools.html#functools.lru_cache)
-* [partial](https://docs.python.org/3/library/functools.html#functools.partial)
-* [reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
-* [singledispatch](https://docs.python.org/3/library/functools.html#functools.singledispatch)
-* [wraps](https://docs.python.org/3/library/functools.html#functools.wraps)
+### Text Processing Services
+* [string — Common string operations](https://docs.python.org/3/library/string.html)
+  * [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
+* [re — Regular expression operations](https://docs.python.org/3/library/re.html)
 
-### [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
+### Functional Programming Modules
+* [itertools — Functions creating iterators for efficient looping](https://docs.python.org/3/library/itertools.html)
+* [functools — Higher-order functions and operations on callable objects](https://docs.python.org/3/library/functools.html)
+  * [lru_cache](https://docs.python.org/3/library/functools.html#functools.lru_cache)
+  * [partial](https://docs.python.org/3/library/functools.html#functools.partial)
+  * [reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
+  * [singledispatch](https://docs.python.org/3/library/functools.html#functools.singledispatch)
+  * [wraps](https://docs.python.org/3/library/functools.html#functools.wraps)
+* [operator — Standard operators as functions](https://docs.python.org/3/library/operator.html)
 
-### [argparse — Parser for command-line options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
+### File and Directory Access
+* [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
+
+### Generic Operating System Services
+* [time — Time access and conversions](https://docs.python.org/3/library/time.html)
+* [argparse — Parser for command-line options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
+* [logging — Logging facility for Python](https://docs.python.org/3/library/logging.html)
 
 ### [xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/3/library/xml.etree.elementtree.html)
 
@@ -77,7 +96,9 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 
 ## Basics
 
-* https://docs.python.org/3/reference/index.html
+* [The Python Language Reference](https://docs.python.org/3/reference/index.html)
+  * [2. Lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)
+  * [7. Simple statements](https://docs.python.org/3/reference/simple_stmts.html)
 
 ### First things first
 
@@ -834,6 +855,9 @@ import pdb; pdb.set_trace()
 ```sh
 # Command line debugging
 python3 -m pdb ./my_script.py
+
+# Start debbuger on exception
+python3 -m pdb -c continue my_script.py
 ```
 
 * [pdb (docs)](https://docs.python.org/3/library/pdb.html)
@@ -1152,3 +1176,4 @@ c_fun("super unicode".encode())
 * [parser print help, when nohing selected](https://stackoverflow.com/questions/3636967/python-argparse-how-can-i-display-help-automatically-on-error)
 * closures
 * https://mathieularose.com/function-composition-in-python
+* https://docs.python.org/3/library/doctest.html
