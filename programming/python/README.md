@@ -98,6 +98,7 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 
 * [The Python Language Reference](https://docs.python.org/3/reference/index.html)
   * [2. Lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)
+  * [4. Execution model](https://docs.python.org/3/reference/executionmodel.html)
   * [7. Simple statements](https://docs.python.org/3/reference/simple_stmts.html)
 
 ### First things first
