@@ -552,24 +552,6 @@ tail file
 tail -f
 ----
 
-=== Standard input, standard output, standard error output (Stdin, stdout, stderr)
-
-```bash
-# 0<      1> >>   2>
-# 1> where_to     2>&1
-# &> where_to
-
-# Take output of command and writes it to the file
-# COMMAND > FILE
-echo Hello world! > file_example.txt
-
-# Take output of command and writes it at the end of file
-# COMMAND >> APPENDED_FILE
-echo Hello another world! >> file_example.txt
-```
-
-* https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux[what-are-stdin-stdout-and-stderr-on-linux]
-
 === Pipe - command output redirection
 
 Connects standard output of one command to the standard input of another command.

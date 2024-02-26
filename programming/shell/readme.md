@@ -2,7 +2,15 @@
 
 ## References
 
+* [Shell Command Language by opengroup.org](https://pubs.opengroup.org/onlinepubs/9699919799/idx/shell.html)
 * <https://www.gnu.org/software/bash/manual/bash.html>
+* [Advanced Bash-Scripting Guide An in-depth exploration of the art of shell scripting by Mendel Cooper](https://tldp.org/LDP/abs/html/)
+
+## Redirections
+
+* <https://www.gnu.org/software/bash/manual/bash.html#Redirections>
+* <https://tldp.org/LDP/abs/html/io-redirection.html>
+* [2.7 Redirection (opengroup.org)](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07)
 
 ## Introduction
 
