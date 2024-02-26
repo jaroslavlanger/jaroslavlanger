@@ -9,6 +9,7 @@
 [%collapsible]
 ====
 . https://en.wikipedia.org/wiki/History_of_programming_languages
+. [The Architecture of Open Source Applications](https://aosabook.org/en/)
 . https://exercism.org/
 . https://www.cs.rochester.edu/~scott/pragmatics/[Programming Language Pragmatics]
 . https://dl.acm.org/doi/10.1145/359576.359579[1978, John Backus, Can programming be liberated from the von Neumann style?: a functional style and its algebra of programs]
