@@ -410,6 +410,8 @@ In case you do not have the push rights in order to merge your changes to the re
 ```sh
 # Show information about files in the index and the working tree
 git ls-files
+# Check if file is tracked by git.
+git ls-files --error-unmatch FILENAME
 ```
 
 For example, I got this error:
