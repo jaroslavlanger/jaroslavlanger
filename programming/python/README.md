@@ -7,6 +7,7 @@ Great language for prototyping, scripting, machine learning and anything else.
 * <https://docs.python.org/3/>
 * <https://docs.python.org/3/reference/>
 * <https://docs.python.org/3/library/>
+* <https://docs.python.org/3/using/unix.html>
 * <https://packaging.python.org/en/latest/>
 * <https://pypi.org/>
 * <https://setuptools.pypa.io/en/latest/setuptools.html>
@@ -32,9 +33,20 @@ Great language for prototyping, scripting, machine learning and anything else.
 
 ## Installation Versions and Packages
 
-My current practice is to install all required python versions to the system (in different directories, called with aliases).
+My current practice is to install all desired python versions to different directories.
+First, you need to find the right version <https://www.python.org/downloads/> and download the tarball (.tar.xz).
+```
+tar -xJvf Python-$VERSION.tar.xz    # Extract the source
+cd Python-$VERSION
+less README.rst                     # Read the steps
+./configure --enable-optimizations --with-lto
+make
+make test
+sudo make altinstall                # Installing an alternative to the main python
+```
 To manage packages, I create a virtual environments using [venv](https://docs.python.org/3/library/venv.html)
 and install them using <https://pip.pypa.io/en/stable/> with [`requirements.txt`](https://pip.pypa.io/en/latest/reference/requirements-file-format/).
+Also, once the environment is activated, you can use command `python` instead of, for example, `python3.11.8`, which you created the environment with.
 [pyenv](https://github.com/pyenv/pyenv) appears to be the best of all worlds, although I haven't used it yet (TODO).
 From my personal experience with [Conda](https://docs.conda.io/en/latest/), it solves many problems but introduces new ones
 (supports only certain packages and their versions, leading to installing packages with pip anyway).
@@ -1178,3 +1190,4 @@ c_fun("super unicode".encode())
 * closures
 * https://mathieularose.com/function-composition-in-python
 * https://docs.python.org/3/library/doctest.html
+* <https://virtualenv.pypa.io/en/latest/>
