@@ -559,12 +559,13 @@ Connects standard output of one command to the standard input of another command
 
 ```bash
 # any_command | sort, uniq, less, head
-# tee
 # file
 
 # Sort output
 sudo du -a | sort -n -r | head -n 20
 ```
+
+* [tee](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tee.html)
 
 Named pipes (Advanced)
 
