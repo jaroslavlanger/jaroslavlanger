@@ -317,13 +317,14 @@ realpath .  # /home/USER/Desktop/DIR
 realpath .. # /home/User/Desktop
 ```
 
-Change current Directory (`cd`)
+Change the working Directory (`cd`)[https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html]
 
 ```sh
 cd /home/username/path/to/the/directory
 
 cd   # Plain cd moves to the home directory i.e. works same as cd ~
-cd - # Goes to the direcotry you was previously in.
+# Go to the previous directory.
+cd - # same as: cd "$OLDPWD" && pwd
 ```
 
 ### Manipulation with files and directories
@@ -611,6 +612,13 @@ diff -y --suppress-common-lines FILE_A FILE_B | wc -l
 ----
 
 * https://community.spiceworks.com/topic/85704-how-can-i-make-diff-only-show-differences-between-two-files[How can i make "Diff" only show differences between two files? (community.spiceworks.com)]
+
+==== [patch - apply changes to files](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/patch.html)
+
+```
+diff -u original changed > changes.patch
+patch original changes.patch -o changed
+```
 
 **Command cmp**
 
@@ -1029,7 +1037,7 @@ Press `Ctrl+a+OPTION`
 
 === SSHFS
 
-=== Mount local direcotry to remote directory
+=== Mount local directory to remote directory
 
 ----
 sshfs $USER@remote.example.com:/home/$USER/code ~/remote_code
