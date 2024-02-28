@@ -15,8 +15,6 @@
 [%collapsible]
 ====
 . `file -bi FILE`
-. xargs
-** `ls | xargs -I {} echo {}`
 . https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
 ** `+uname -a+`
 . https://github.com/junegunn/fzf[fzf command-line fuzzy finder]
@@ -24,7 +22,6 @@
 . https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
 . https://suckless.org/[suckless.org software for X window system]
 . https://www.pcre.org/[PCRE - Perl Compatible Regular Expressions]
-** `+git status | pcre2grep -o2 '\t(.*:\h+)?(.*)' | xargs stat --format='%y %n' | sort+`
 ====
 
 [bibliography]
@@ -626,6 +623,13 @@ patch original changes.patch -o changed
 ----
 cmp file1 file2
 ----
+
+=== [xargs - construct argument lists and invoke utility](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)
+
+* `+ls | xargs -I {} echo {}+`
+* `+git status | pcre2grep -o2 '\t(.*:\h+)?(.*)' | xargs stat --format='%y %n' | sort+`
+* `+git status | grep results/ | xargs -i echo \"{}\"+`
+* `+git status | grep results/ | xargs -i xdg-open {}+`
 
 === Linux Directory Structure
 
