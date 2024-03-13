@@ -22,6 +22,9 @@
 . https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
 . https://suckless.org/[suckless.org software for X window system]
 . https://www.pcre.org/[PCRE - Perl Compatible Regular Expressions]
+. `+grep -I -r 'word' dir/ | grep -v 'filename' | cut -d ':' -f 1 | uniq+`
+. https://wiki.linuxfoundation.org/networking/net-tools[net-tools - hostname, netstat]
+. `+{ time -p echo 'test' > exp.out ; } 2>&1 | tr '\n' ',' | tr -d ' ' | xargs printf "$(hostname -f),%s\n"+`
 ====
 
 [bibliography]
@@ -73,9 +76,13 @@ First letters of the command-line that are static (does not change by typing).
 "is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems.[1] POSIX defines both the system and user-level application programming interfaces (APIs), along with command line shells and utility interfaces"
 -- https://en.wikipedia.org/wiki/POSIX
 
-== https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/shell.html[Shell Command Language]
+== https://pubs.opengroup.org/onlinepubs/9699919799/idx/shell.html[Shell Command Language]
 
-== https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/idx/utilities.html[POSIX Utilities]
+=== https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_02[2.2 Quoting]
+
+=== https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_04[2.4 Reserved Words]
+
+== https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html[Utilities]
 
 == Introduction
 
@@ -195,15 +202,15 @@ There are several command types:
 |===
 | Type       | Description
 
-| unknown    |
 | builtin    | use `enable` or `compgen -b`
 | executable | files in `/bin` or `/usr/bin`
 | functions  | defined functions (by user)
 | aliases    | concatenating more commands
+| keyword    |
+| unknown    |
 |===
 
-
-**command type**
+**command type[https://pubs.opengroup.org/onlinepubs/9699919799/utilities/type.html]**
 
 Let's check the type of the `echo` command.
 
@@ -616,6 +623,9 @@ diff -y --suppress-common-lines FILE_A FILE_B | wc -l
 ```
 diff -u original changed > changes.patch
 patch original changes.patch -o changed
+
+# -U 1 for smaller context, --label to replace PATH TIMESTAMP in the diff
+diff -U 1 PATH1 --label LABEL1 PATH2 --label - > NAME.patch
 ```
 
 **Command cmp**
@@ -1311,3 +1321,18 @@ set -o vi
 
 "sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors."
 -- https://www.gnu.org/software/sed/manual/sed.html
+
+== network
+
+```
+ls /etc/NetworkManager/system-connections/
+$EDITOR /run/systemd/resolve/resolv.conf
+ls -l /etc/resolv.conf
+ping XXX.0.0.YYY
+sudo netstat -tnlp
+ip a
+less /var/log/syslog
+host some.name.domain
+cp name.ovpn /etc/openvpn/
+sudo systemctl status systemd-resolved.service
+```
