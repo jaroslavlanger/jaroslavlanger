@@ -5,24 +5,46 @@ Great language for prototyping, scripting, machine learning and anything else.
 ## References
 
 * <https://docs.python.org/3/>
+* <https://docs.python.org/3/glossary.html>
 * <https://docs.python.org/3/reference/>
 * <https://docs.python.org/3/library/>
 * <https://docs.python.org/3/using/unix.html>
 * <https://packaging.python.org/en/latest/>
 * <https://pypi.org/>
 * <https://setuptools.pypa.io/en/latest/setuptools.html>
+* <https://www.python.org/download/releases/2.3/mro/>
+
+### [The Python Tutorial](https://docs.python.org/3/tutorial/)
+
+* [7. Input and Output](https://docs.python.org/3/tutorial/inputoutput.html)
+* [8. Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
+* [9. Classes](https://docs.python.org/3/tutorial/classes.html)
+* [15. Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)
+
+### [Python HOWTOs](https://docs.python.org/3/howto/)
+
+* <https://docs.python.org/3/howto/enum.html>
 * <https://docs.python.org/3/howto/functional.html>
+* <https://docs.python.org/3/howto/logging.html>
+* <https://docs.python.org/3/howto/logging-cookbook.html>
+* <https://docs.python.org/3/howto/regex.html>
+* <https://docs.python.org/3/howto/sorting.html>
+* <https://docs.python.org/3/howto/unicode.html>
 * <https://docs.python.org/3/howto/argparse.html>
-* <https://docs.python.org/3/tutorial/errors.html>
+* <https://docs.python.org/3/howto/annotations.html>
 
-### Python Enhancement Proposals (PEPs)
+### [PEP 0 – Index of Python Enhancement Proposals (PEPs)](https://peps.python.org/)
 
+* [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+* [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
+* [PEP 257 – Docstring Conventions](https://peps.python.org/pep-0257/)
 * [PEP 263 – Defining Python Source Code Encodings](https://peps.python.org/pep-0263/)
+* [PEP 285 – Adding a bool type](https://peps.python.org/pep-0285/)
+* [PEP 345 – Metadata for Python Software Packages 1.2](https://peps.python.org/pep-0345/)
+* [PEP 484 – Type Hints](https://peps.python.org/pep-0484/)
 * [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 * [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
 * [PEP 3113 – Removal of Tuple Parameter Unpacking](https://peps.python.org/pep-3113/)
-* [PEP 345 – Metadata for Python Software Packages 1.2](https://peps.python.org/pep-0345/)
-* [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 
 ### Tutorials
 
@@ -72,17 +94,22 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 
 ### [Built-in Types](https://docs.python.org/3/library/stdtypes.html)
 
-### Data Types
-* [collections — Container datatypes](https://docs.python.org/3/library/collections.html)
-* [copy — Shallow and deep copy operations](https://docs.python.org/3/library/copy.html)
-* [enum — Support for enumerations](https://docs.python.org/3/library/enum.html)
-
-### Text Processing Services
+### [Text Processing Services](https://docs.python.org/3/library/text.html)
 * [string — Common string operations](https://docs.python.org/3/library/string.html)
   * [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
 * [re — Regular expression operations](https://docs.python.org/3/library/re.html)
 
-### Functional Programming Modules
+### [Data Types](https://docs.python.org/3/library/datatypes.html)
+* [collections — Container datatypes](https://docs.python.org/3/library/collections.html)
+* [collections.abc — Abstract Base Classes for Containers](https://docs.python.org/3/library/collections.abc.html)
+* [copy — Shallow and deep copy operations](https://docs.python.org/3/library/copy.html)
+* [enum — Support for enumerations](https://docs.python.org/3/library/enum.html)
+
+### [Numeric and Mathematical Modules](https://docs.python.org/3/library/numeric.html)
+* [numbers — Numeric abstract base classes](https://docs.python.org/3/library/numbers.html)
+* [random — Generate pseudo-random numbers](https://docs.python.org/3/library/random.html)
+
+### [Functional Programming Modules](https://docs.python.org/3/library/functional.html)
 * [itertools — Functions creating iterators for efficient looping](https://docs.python.org/3/library/itertools.html)
 * [functools — Higher-order functions and operations on callable objects](https://docs.python.org/3/library/functools.html)
   * [lru_cache](https://docs.python.org/3/library/functools.html#functools.lru_cache)
@@ -95,16 +122,24 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 ### File and Directory Access
 * [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
 
-### Generic Operating System Services
+### [Generic Operating System Services](https://docs.python.org/3/library/allos.html)
 * [time — Time access and conversions](https://docs.python.org/3/library/time.html)
 * [argparse — Parser for command-line options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
 * [logging — Logging facility for Python](https://docs.python.org/3/library/logging.html)
 
-### [xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/3/library/xml.etree.elementtree.html)
+### [Structured Markup Processing Tools](https://docs.python.org/3/library/markup.html)
+* [xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/3/library/xml.etree.elementtree.html)
 
-### [sys — System-specific parameters and functions](https://docs.python.org/3/library/sys.html)
+### [Development Tools](https://docs.python.org/3/library/development.html)
+* [typing — Support for type hints](https://docs.python.org/3/library/typing.html)
 
-* [sys.maxsize](https://docs.python.org/3/library/sys.html#sys.maxsize)
+### [Python Runtime Services](https://docs.python.org/3/library/python.html)
+* [sys — System-specific parameters and functions](https://docs.python.org/3/library/sys.html)
+  * [sys.maxsize](https://docs.python.org/3/library/sys.html#sys.maxsize)
+* [`__main__` — Top-level code environment](https://docs.python.org/3/library/__main__.html)
+* [contextlib — Utilities for with-statement contexts](https://docs.python.org/3/library/contextlib.html)
+* [abc — Abstract Base Classes](https://docs.python.org/3/library/abc.html)
+* [inspect — Inspect live objects](https://docs.python.org/3/library/inspect.html)
 
 ## Basics
 
