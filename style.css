@@ -18,7 +18,7 @@
 }
 
 body {
-    margin: 1rem clamp(1rem, calc(40vw - 10rem), 40vw);
+    margin: 1rem clamp(1rem, calc(30vw - 10rem), 30vw);
     font-family: 'Lexend', sans-serif;
     line-height: 1.2;
     color: hwb(var(--root-hue) 0% 94%);
@@ -27,4 +27,46 @@ body {
 
 code {
     white-space: pre-wrap;
+}
+
+@media screen and (min-width: 768px) {
+    #TOC {
+        border-left: 1px solid #e7e7e9;
+        border-right-width: 0;
+        left: auto;
+        right: 0;
+        margin-top: 0 !important;
+        background: #f8f8f7;
+        font-size: .95rem;
+
+        position: fixed;
+        width: 15rem;
+        top: 0;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 1.25em 1rem;
+    }
+
+    #TOC a {
+        text-decoration: none;
+    }
+
+    #TOC ul {
+        font-family: "Open Sans","DejaVu Sans",sans-serif;
+    }
+
+    body {
+        margin: 1rem clamp(17rem, calc(30vw - 10rem), 30vw) 1rem clamp(1rem, calc(30vw - 10rem), 30vw);
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    #TOC {
+        width: 20rem;
+    }
+
+    body {
+        margin: 1rem clamp(22rem, calc(30vw - 10rem), 30vw) 1rem clamp(1rem, calc(30vw - 10rem), 30vw);
+    }
 }
