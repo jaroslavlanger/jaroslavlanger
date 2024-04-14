@@ -6,7 +6,7 @@
 :idseparator: -
 :linkcss:
 :stylesheet: ../../style.css
-:toc:
+:toc: right
 
 "Unix (/ˈjuːnɪks/; trademarked as UNIX) is a family of multitasking, multiuser computer operating systems that derive from the original AT&T Unix"
 -- https://en.wikipedia.org/wiki/Unix
@@ -25,6 +25,20 @@
 . `+grep -I -r 'word' dir/ | grep -v 'filename' | cut -d ':' -f 1 | uniq+`
 . https://wiki.linuxfoundation.org/networking/net-tools[net-tools - hostname, netstat]
 . `+{ time -p echo 'test' > exp.out ; } 2>&1 | tr '\n' ',' | tr -d ' ' | xargs printf "$(hostname -f),%s\n"+`
+. `+ssh-add+`
+. `+script -efq -c "git status" > out.txt; less -rf out.txt # preserves and shows color+`
+```sh
+[ -z ${readme+x} ] \
+|| (echo "already set: ${readme}" && false) \
+&& readme=README.md \
+&& pandoc -s --css ../../style.css --toc -o index.html --metadata title="$(head -n 1 ${readme} | cut -d ' ' -f 1  --complement)" ${readme} \
+&& unset readme
+. `&` - https://stackoverflow.com/questions/44222883/run-a-shell-script-and-immediately-background-it-however-keep-the-ability-to-in
+. https://en.wikipedia.org/wiki/Null_device
+. https://unicode.org/reports/tr10/[UNICODE COLLATION ALGORITHM Unicode® Technical Standard #10]
+. https://en.wikipedia.org/wiki/Unix-like
+. https://en.wikipedia.org/wiki/Util-linux[use `sudo dmesg` to get the reason why a process was Killed]
+```
 ====
 
 [bibliography]
@@ -76,11 +90,24 @@ First letters of the command-line that are static (does not change by typing).
 "is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems.[1] POSIX defines both the system and user-level application programming interfaces (APIs), along with command line shells and utility interfaces"
 -- https://en.wikipedia.org/wiki/POSIX
 
+== https://pubs.opengroup.org/onlinepubs/9699919799/idx/xbd.html[Base Definitions]
+
+"POSIX.1-2017 defines a standard operating system interface and environment, including a command interpreter (or "shell"), and common utility programs to support applications portability at the source code level. It is intended to be used by both application developers and system implementors."
+-- https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap01.html[1. Introduction]
+
+=== https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap07.html[7. Locale]
+
 == https://pubs.opengroup.org/onlinepubs/9699919799/idx/shell.html[Shell Command Language]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_02[2.2 Quoting]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_04[2.4 Reserved Words]
+
+=== https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09[2.9 Shell Commands]
+
+=== https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_14[2.14. Special Built-In Utilities]
+
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#set
 
 == https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html[Utilities]
 
@@ -475,7 +502,9 @@ ln FILENAME LINKNAME
 cp -l FILENAME LINKNAME
 ```
 
-### Globbing and Wildcards
+=== Globbing and Wildcards
+
+* [2.13. Pattern Matching Notation](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_13)
 
 Glob patterns specify sets of filenames with wildcard characters. Wildcards are symbols with special meaning. It is especially useful when we don't know the exact name or if we perhaps want to use more than one name to do something.
 
@@ -486,7 +515,8 @@ Glob patterns specify sets of filenames with wildcard characters. Wildcards are 
 # Single Asterisk
 * # Matches zero or more characters within one directory.
 
-## Double Asterisk
+# Double Asterisk
+# TODO: only globstar only bash
 ** # Matches matches zero or more characters across multiple directories.
 
 # Square Brackets Range
@@ -563,7 +593,10 @@ Connects standard output of one command to the standard input of another command
 
 ```bash
 # any_command | sort, uniq, less, head
-# file
+# cat file
+
+# Skip first 3 characters of a string
+echo "abcdefghij" | tail -c +4
 
 # Sort output
 sudo du -a | sort -n -r | head -n 20
@@ -891,7 +924,7 @@ paste -d ':' file1 file2 file3  #(explicitni definice oddelovace)
 paste -s file1 file2 file3      #(spoji obsahy jednotlivych souboru za sebou po radcich)
 ----
 
-.sort
+.https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html[sort]
 ----
 # Sort and merge multiple files
 sort file1 file2 file3 > file
@@ -917,6 +950,9 @@ sort -k 3.7nbr -k 3.1nbr -k 3.4nbr filename
 
 # (explicitni definice oddelovace)
 sort -t ':' -k 7 /etc/passwd
+
+# Setting LC_COLLATE
+(echo '01'; echo '02'; echo '1'; echo '10'; echo '2'; echo '_'; echo '_1'; echo '_2') | LC_COLLATE=POSIX sort
 ----
 
 .shuf
@@ -955,6 +991,8 @@ tput cols
 ----
 
 === Push process the background
+
+TODO: link to posix or bash
 
 "I have opened something with terminal, now i see the process and can not use the terminal anymore"
 
@@ -1301,6 +1339,10 @@ https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html
 
 == https://www.gnu.org/software/grep/manual/grep.html[Grep]
 
+```
+grep -iInr -v -A 3 'pattern' .
+```
+
 === https://www.gnu.org/software/grep/manual/grep.html#Regular-Expressions[Regular Expressions]
 
 `“regex” or “regexp”?  ->  /regexp?/`
@@ -1335,4 +1377,15 @@ less /var/log/syslog
 host some.name.domain
 cp name.ovpn /etc/openvpn/
 sudo systemctl status systemd-resolved.service
+```
+
+== systemctl
+
+```
+systemctl status $SERVICE
+systemctl stop $SERVICE
+systemctl start $SERVICE
+systemctl restart $SERVICE
+systemctl disable $SERVICE
+systemctl enable $SERVICE
 ```
