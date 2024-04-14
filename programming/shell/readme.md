@@ -3,7 +3,12 @@
 ## References
 
 * [Shell Command Language by opengroup.org](https://pubs.opengroup.org/onlinepubs/9699919799/idx/shell.html)
-* <https://www.gnu.org/software/bash/manual/bash.html>
+* [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
+  * [3.1.2 Quoting](https://www.gnu.org/software/bash/manual/bash.html#Quoting)
+  * [3.2.1 Reserved Words](https://www.gnu.org/software/bash/manual/bash.html#Reserved-Words)
+  * [3.2.5.3 Grouping Commands](https://www.gnu.org/software/bash/manual/bash.html#Command-Grouping)
+  * [4.3 Modifying Shell Behavior](https://www.gnu.org/software/bash/manual/bash.html#Modifying-Shell-Behavior)
+  * [6.9 Controlling the Prompt](https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt)
 * [Advanced Bash-Scripting Guide An in-depth exploration of the art of shell scripting by Mendel Cooper](https://tldp.org/LDP/abs/html/)
 
 ## Redirections
@@ -11,6 +16,11 @@
 * <https://www.gnu.org/software/bash/manual/bash.html#Redirections>
 * <https://tldp.org/LDP/abs/html/io-redirection.html>
 * [2.7 Redirection (opengroup.org)](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07)
+
+```sh
+# Redirect COMMAND's stdout and stderr to the same file ERROUT
+$COMMAND >>$ERROUT 2>&1
+```
 
 ## Introduction
 

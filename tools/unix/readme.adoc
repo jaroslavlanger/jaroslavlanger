@@ -14,6 +14,7 @@
 .TODO
 [%collapsible]
 ====
+. https://en.wikipedia.org/wiki/Signal_(IPC)
 . `file -bi FILE`
 . https://unix.stackexchange.com/questions/12453/how-to-determine-linux-kernel-architecture
 ** `+uname -a+`
@@ -103,7 +104,12 @@ First letters of the command-line that are static (does not change by typing).
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_04[2.4 Reserved Words]
 
+=== https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07[2.7 Redirection]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07_06[2.7.6 Duplicating an Output File Descriptor]
+
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09[2.9 Shell Commands]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_02[2.9.2 Pipelines]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_03[2.9.3 Lists]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_14[2.14. Special Built-In Utilities]
 
@@ -126,7 +132,7 @@ Example of common appearance could be:
 USER_NAME@HOSTNAME:PATH$
 ----
 
-### Shell principle - commands and keywords
+=== Shell principle - commands and keywords
 
 Shell is a scripting language, so you can do basically anything as in any other programming language. However shell is also a command language so most of the time you will run commands that someone already made for you. Once you will be able to use these commands, you will probably combine them into shell scripts.
 
@@ -134,7 +140,7 @@ Shell is a scripting language, so you can do basically anything as in any other 
 
 Many words have special meaning. Some words are reserved for the shell programming language, they are called **keywords**, multiple words are **built-in commands** and usually there are also many **executable commands** prepared for you.
 
-### Comments - tell shell to ignore it
+=== Comments - tell shell to ignore it
 
 Everything between a hash sign `#` and the end of the line is ignored. So it is perfect for making comments or remarks.
 
@@ -188,7 +194,7 @@ Let's start with printing "Hello world!". Type `echo Hello world!` and press ent
 echo Hello world! # Hello world!
 ```
 
-### Command Arguments and Options
+=== Command Arguments and Options
 
 You can pass arguments to the commands such you passed `Hello world!` to `echo` command. Commonly, the commands also have multiple options to be run with.
 
@@ -210,19 +216,19 @@ It is common there are two types of options.
 
 So the command structure look like this `command [-o | --options] [arguments]`.
 
-### USE TAB AUTOCOMPLETION
+=== USE TAB AUTOCOMPLETION
 
 Whenever, you press tab, the terminal autocomplete the word you are writing. If there is more than one posibility, nothing happens. Until you press tab twice.  Than it shows you the all the possible completions.
 
 **It's unbelievable great feature**.
 
-### USE SHELL HISTORY
+=== USE SHELL HISTORY
 
 It is a huge mistake to write commands more than once. Shell remembers what commands you have written, so you can just call them from the history. In case you used it as the previous command, press `[arrow up]`. In case you wrote it some commands ago, press `[ctrl-r]` and start typing, if the result is not what you want, you either press `[ctrl-r]` again for next match, or `[ecs]` to end the search.
 
 https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed[Search for a previous command with the prefix I just typed (unix.stackexchange.com)]
 
-### Command Types
+=== Command Types
 
 There are several command types:
 
@@ -271,7 +277,7 @@ alias my_alias='command_1; command_2'
 unalias
 ```
 
-### More information about commands
+=== More information about commands
 
 **command help, command info, command man, command apropos**
 
@@ -280,7 +286,7 @@ Show appropriate manual pages for given TERM
 man -k TERM     # Equivalent to command "apropos TERM"
 ```
 
-### Expansions and suppressions
+=== Expansions and suppressions
 
 Not everything you write to shell is interpreted as you wrote it. Some characters are suppressed and others are expanded.
 
@@ -314,9 +320,9 @@ echo '~   $USER    .'
 # ~   $USER    .
 ```
 
-## Files and directories
+== Files and directories
 
-### Paths
+=== Paths
 
 There is always a need to specify a path to the file a directory you want to work with.
 The file can be a document you want to read, an image or simply anything.
@@ -358,7 +364,7 @@ cd   # Plain cd moves to the home directory i.e. works same as cd ~
 cd - # same as: cd "$OLDPWD" && pwd
 ```
 
-### Manipulation with files and directories
+=== Manipulation with files and directories
 
 ```sh
 # Create new directory
@@ -390,7 +396,7 @@ rm -r   # Remove directory (recursively with all files)
 
 https://vitux.com/how-to-replace-spaces-in-filenames-with-underscores-on-the-linux-shell/[replace spaces link]
 
-### Information about files, directories
+=== Information about files, directories
 
 **Commands: ls, tree, du, wc, stat**
 
@@ -419,7 +425,7 @@ du -a
 stat file1
 ```
 
-### Compression and decompression
+=== Compression and decompression
 
 (Uploading and downloading in ohter way is **damn** slow)
 
@@ -687,13 +693,13 @@ cmp file1 file2
 
 https://linuxhandbook.com/linux-directory-structure/
 
-## Install Software
+== Install Software
 
 Every distribution family has its package manager.
 Debian based distributions have https://en.wikipedia.org/wiki/APT_(software).
 Arch based distros have https://en.wikipedia.org/wiki/Arch_Linux#Pacman.
 
-### Advanced Package Tool (apt)
+=== Advanced Package Tool (apt)
 
 Install a package using apt.
 
@@ -705,7 +711,7 @@ The packages are looked up in source repositories specified in /etc/apt/sources.
 
 https://wiki.debian.org/SourcesList
 
-### Install from package .deb
+=== Install from package .deb
 
 Works the same way for an update.
 
@@ -859,7 +865,7 @@ umask 0224 d- 777 f- 666
 chown USER[:GROUP] OBJECT
 ----
 
-## Useful commands
+== Useful commands
 
 .Get basic info about command
 ----
