@@ -1,8 +1,9 @@
-# Python
+<!-- Python
+-->
 
 Great language for prototyping, scripting, machine learning and anything else.
 
-## References
+# References
 
 * <https://docs.python.org/3/>
 * <https://docs.python.org/3/glossary.html>
@@ -12,16 +13,20 @@ Great language for prototyping, scripting, machine learning and anything else.
 * <https://packaging.python.org/en/latest/>
 * <https://pypi.org/>
 * <https://setuptools.pypa.io/en/latest/setuptools.html>
+* <https://wiki.python.org/moin/PythonSpeed>
 * <https://www.python.org/download/releases/2.3/mro/>
+* <https://typing.readthedocs.io/en/latest/index.html>
+  * <https://typing.readthedocs.io/en/latest/spec/protocol.html#protocols>
 
-### [The Python Tutorial](https://docs.python.org/3/tutorial/)
+## [The Python Tutorial](https://docs.python.org/3/tutorial/)
 
+* [6. Modules](https://docs.python.org/3/tutorial/modules.html)
 * [7. Input and Output](https://docs.python.org/3/tutorial/inputoutput.html)
 * [8. Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
 * [9. Classes](https://docs.python.org/3/tutorial/classes.html)
 * [15. Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)
 
-### [Python HOWTOs](https://docs.python.org/3/howto/)
+## [Python HOWTOs](https://docs.python.org/3/howto/)
 
 * <https://docs.python.org/3/howto/enum.html>
 * <https://docs.python.org/3/howto/functional.html>
@@ -33,7 +38,7 @@ Great language for prototyping, scripting, machine learning and anything else.
 * <https://docs.python.org/3/howto/argparse.html>
 * <https://docs.python.org/3/howto/annotations.html>
 
-### [PEP 0 – Index of Python Enhancement Proposals (PEPs)](https://peps.python.org/)
+## [PEP 0 – Index of Python Enhancement Proposals (PEPs)](https://peps.python.org/)
 
 * [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
 * [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
@@ -41,19 +46,29 @@ Great language for prototyping, scripting, machine learning and anything else.
 * [PEP 263 – Defining Python Source Code Encodings](https://peps.python.org/pep-0263/)
 * [PEP 285 – Adding a bool type](https://peps.python.org/pep-0285/)
 * [PEP 345 – Metadata for Python Software Packages 1.2](https://peps.python.org/pep-0345/)
+* [PEP 465 – A dedicated infix operator for matrix multiplication](https://peps.python.org/pep-0465/)
 * [PEP 484 – Type Hints](https://peps.python.org/pep-0484/)
 * [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
+* [PEP 646 – Variadic Generics](https://peps.python.org/pep-0646/)
 * [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
 * [PEP 3113 – Removal of Tuple Parameter Unpacking](https://peps.python.org/pep-3113/)
+* [PEP 3141 – A Type Hierarchy for Numbers](https://peps.python.org/pep-3141/)
+* [PEP 3147 – PYC Repository Directories](https://peps.python.org/pep-3147/)
 
-### Tutorials
+## Tutorials
 
 * <https://realpython.com/>
 * <https://book.pythontips.com/en/latest/index.html>
 * <https://docs.quantifiedcode.com/python-anti-patterns/>
 * <http://vyuka.ookami.cz/index.python.html>
 
-## Installation Versions and Packages
+## Style
+
+* <https://google.github.io/styleguide/pyguide.html>
+* <https://numpydoc.readthedocs.io/en/latest/format.html>
+* [What does "noqa" mean?](https://github.com/PyCQA/pycodestyle/issues/476)
+
+# Installation Versions and Packages
 
 My current practice is to install all desired python versions to different directories.
 First, you need to find the right version <https://www.python.org/downloads/> and download the tarball (.tar.xz).
@@ -73,15 +88,15 @@ Also, once the environment is activated, you can use command `python` instead of
 From my personal experience with [Conda](https://docs.conda.io/en/latest/), it solves many problems but introduces new ones
 (supports only certain packages and their versions, leading to installing packages with pip anyway).
 
-## Scripts
+# Scripts
 
 When writing a script, it's recommended to define a `main` function and call it with `if __name__ == "__main__":`,
 as per [idiomatic usage](https://docs.python.org/3/library/__main__.html#idiomatic-usage).
 For unix scripts, use `#!/usr/bin/env python3` as the first line. More details can be found [here](https://docs.python.org/3/using/unix.html#miscellaneous).
 
-## [Python Standard Library](https://docs.python.org/3/library/index.html)
+# [Python Standard Library](https://docs.python.org/3/library/index.html)
 
-### [Built-in Functions](https://docs.python.org/3/library/functions.html)
+## [Built-in Functions](https://docs.python.org/3/library/functions.html)
 
 * [dict](https://docs.python.org/3/library/functions.html#func-dict)
 * [dir](https://docs.python.org/3/library/functions.html#dir)
@@ -92,24 +107,24 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 * [locals](https://docs.python.org/3/library/functions.html#locals)
 * [map](https://docs.python.org/3/library/functions.html#map)
 
-### [Built-in Types](https://docs.python.org/3/library/stdtypes.html)
+## [Built-in Types](https://docs.python.org/3/library/stdtypes.html)
 
-### [Text Processing Services](https://docs.python.org/3/library/text.html)
+## [Text Processing Services](https://docs.python.org/3/library/text.html)
 * [string — Common string operations](https://docs.python.org/3/library/string.html)
   * [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
 * [re — Regular expression operations](https://docs.python.org/3/library/re.html)
 
-### [Data Types](https://docs.python.org/3/library/datatypes.html)
+## [Data Types](https://docs.python.org/3/library/datatypes.html)
 * [collections — Container datatypes](https://docs.python.org/3/library/collections.html)
 * [collections.abc — Abstract Base Classes for Containers](https://docs.python.org/3/library/collections.abc.html)
 * [copy — Shallow and deep copy operations](https://docs.python.org/3/library/copy.html)
 * [enum — Support for enumerations](https://docs.python.org/3/library/enum.html)
 
-### [Numeric and Mathematical Modules](https://docs.python.org/3/library/numeric.html)
+## [Numeric and Mathematical Modules](https://docs.python.org/3/library/numeric.html)
 * [numbers — Numeric abstract base classes](https://docs.python.org/3/library/numbers.html)
 * [random — Generate pseudo-random numbers](https://docs.python.org/3/library/random.html)
 
-### [Functional Programming Modules](https://docs.python.org/3/library/functional.html)
+## [Functional Programming Modules](https://docs.python.org/3/library/functional.html)
 * [itertools — Functions creating iterators for efficient looping](https://docs.python.org/3/library/itertools.html)
 * [functools — Higher-order functions and operations on callable objects](https://docs.python.org/3/library/functools.html)
   * [lru_cache](https://docs.python.org/3/library/functools.html#functools.lru_cache)
@@ -119,36 +134,46 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
   * [wraps](https://docs.python.org/3/library/functools.html#functools.wraps)
 * [operator — Standard operators as functions](https://docs.python.org/3/library/operator.html)
 
-### File and Directory Access
+## File and Directory Access
 * [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
 
-### [Generic Operating System Services](https://docs.python.org/3/library/allos.html)
+## [Generic Operating System Services](https://docs.python.org/3/library/allos.html)
 * [time — Time access and conversions](https://docs.python.org/3/library/time.html)
 * [argparse — Parser for command-line options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
 * [logging — Logging facility for Python](https://docs.python.org/3/library/logging.html)
 
-### [Structured Markup Processing Tools](https://docs.python.org/3/library/markup.html)
+## [Structured Markup Processing Tools](https://docs.python.org/3/library/markup.html)
 * [xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/3/library/xml.etree.elementtree.html)
 
-### [Development Tools](https://docs.python.org/3/library/development.html)
+## [Development Tools](https://docs.python.org/3/library/development.html)
 * [typing — Support for type hints](https://docs.python.org/3/library/typing.html)
 
-### [Python Runtime Services](https://docs.python.org/3/library/python.html)
+## [Python Runtime Services](https://docs.python.org/3/library/python.html)
 * [sys — System-specific parameters and functions](https://docs.python.org/3/library/sys.html)
   * [sys.maxsize](https://docs.python.org/3/library/sys.html#sys.maxsize)
 * [`__main__` — Top-level code environment](https://docs.python.org/3/library/__main__.html)
+* [warnings — Warning control](https://docs.python.org/3/library/warnings.html)
+* [dataclasses — Data Classes](https://docs.python.org/3/library/dataclasses.html)
 * [contextlib — Utilities for with-statement contexts](https://docs.python.org/3/library/contextlib.html)
 * [abc — Abstract Base Classes](https://docs.python.org/3/library/abc.html)
 * [inspect — Inspect live objects](https://docs.python.org/3/library/inspect.html)
 
-## Basics
+## Python Language Services
+* [py_compile — Compile Python source files](https://docs.python.org/3/library/py_compile.html)
+* [compileall — Byte-compile Python libraries](https://docs.python.org/3/library/compileall.html)
+* [dis — Disassembler for Python bytecode](https://docs.python.org/3/library/dis.html)
+
+# Basics
 
 * [The Python Language Reference](https://docs.python.org/3/reference/index.html)
   * [2. Lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)
   * [4. Execution model](https://docs.python.org/3/reference/executionmodel.html)
+  * [6. Expressions](https://docs.python.org/3/reference/expressions.html)
+    * [6.17. Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)
   * [7. Simple statements](https://docs.python.org/3/reference/simple_stmts.html)
+  https://docs.python.org/3/reference/expressions.html#operator-precedence
 
-### First things first
+## First things first
 
 Everything in a python is an **object**. String is an object, list is an object. 
 So almost anything has some methods already prepare for you. 
@@ -158,7 +183,7 @@ With `dir` function you can see all the attributes and methods of the object.
 dir(anything)
 ```
 
-### Comments
+## Comments
 
 ```py
 # One-line comment
@@ -172,7 +197,7 @@ multiline comment
 '''
 ```
 
-#### Docstrings
+### Docstrings
 
 Every file, class, function can have doc string (__doc__).
 Write docstrings, they are beautiful.
@@ -194,7 +219,7 @@ class cla:
     """class docstring"""
 ```
 
-### Printing
+## Printing
 
 Do not use variable printing for code debugging, use debugger instead!
 (However to use printing for local simple testing is absolutely great thing.)
@@ -238,7 +263,7 @@ var, 2, 3
 "len(my_array[2])": 4
 ```
 
-### Variables
+## Variables
 
 ```py
 # Integers
@@ -259,7 +284,7 @@ no_value = None
 del integer, million, decimal, Nan, string, boolean, false, no_value
 ```
 
-### String
+## String
 
 There is four types how to quote a string
 ```py
@@ -277,13 +302,13 @@ another multiline string
 
 * [string (docs.python.org)](https://docs.python.org/3/library/string.html)
 
-#### Raw string
+### Raw string
 
 ```py
 r'In this string, the \n character will stay as \n. It will not be expanded as newline'
 ```
 
-#### Format and f string
+### Format and f string
 
 ```py
 # Using string.format()
@@ -316,7 +341,7 @@ print(f'{20:08b}')      # 00010100
 * [Python string format cookbook](https://mkaz.blog/code/python-string-format-cookbook/)
 * [Convert to binary and keep leading zeros in Python](https://stackoverflow.com/questions/16926130/convert-to-binary-and-keep-leading-zeros-in-python)
 
-#### String functions
+### String functions
 
 ```py
 # Check whether string contains substring
@@ -360,9 +385,9 @@ question.count("coin") # 3
 * [Built-in Types (docs.python.org)](https://docs.python.org/3/library/stdtypes.html)
 * [is numeric (tutorials point)](https://www.tutorialspoint.com/python/string_isnumeric.htm)
 
-### Accessing Different data
+## Accessing Different data
 
-#### type and isinstance
+### type and isinstance
 
 Recognize type of a passed object
 
@@ -376,7 +401,7 @@ type(var) == type({}) # True
 isinstance(a, dict) # True
 ```
 
-#### Equality, Identity and ID
+### Equality, Identity and ID
 
 ```py
 a = [1,2]
@@ -391,11 +416,11 @@ True is 1   # False
 id(True)    # 10299104
 ```
 
-#### len()
+### len()
 
 A priceless method, can be used for number of characters of a string as well as number of elements of an array.
 
-#### Slices
+### Slices
 
 Basically anything that can be iterated retrieves a slice when applying operator `[ : ]`
 
@@ -421,7 +446,7 @@ Slice with step `[start : end : step]`
 text = text[len('<!DOCTYPE html>\n') :]
 ```
 
-### Bytes
+## Bytes
 
 ```py
 # Bytes from string (encode string to bytes)
@@ -434,6 +459,8 @@ b'some string'.decode()         # 'some string'
 ```
 
 * [Converting to Bytes (docs)](https://docs.python.org/3/howto/unicode.html#converting-to-bytes)
+
+## [8. Compound statements](https://docs.python.org/3/reference/compound_stmts.html)
 
 ### Conditions
 
@@ -451,9 +478,9 @@ for x in range(n):
 # 0, 1, 2, 3, 4
 ```
 
-### Collections
+## Collections
 
-#### Lists
+### Lists
 
 ```py
 list_1 = ["a", "b"]
@@ -492,7 +519,7 @@ cars.sort(reverse=True, key=lambda x: len(x))
 * [list methods (programiz)](https://www.programiz.com/python-programming/methods/list)
 * [sort example](https://www.w3schools.com/python/ref_list_sort.asp)
 
-#### Dictionary
+### Dictionary
 
 ```py
 dict_1 = {"Key": "value", "k": 1, "list": [1,2,3]}
@@ -524,7 +551,7 @@ for key, value in myDict.items():
     print(value)
 ```
 
-#### Set
+### Set
 
 ```py
 # Create a set
@@ -548,14 +575,14 @@ my_set                      # {'b', 'c'}
 
 * [class set([iterable]) (docs.python.org)](https://docs.python.org/3/library/stdtypes.html#set)
 
-#### Iteration over collection
+### Iteration over collection
 
 ```
 for x in iterable:
     print(x)
 ```
 
-#### Assignment vs. copy vs. deepcopy
+### Assignment vs. copy vs. deepcopy
 
 Actions in one collection may affect others if were not created wisely.
 
@@ -587,7 +614,7 @@ b['second'][0] = 9
 a['second']         # [2]
 ```
 
-#### Comprehensions
+### Comprehensions
 
 ```py
 crazy_big = 34526
@@ -605,7 +632,7 @@ my_set = {val for val in my_dict.values()}
 
 * [set comprehension](https://python-reference.readthedocs.io/en/latest/docs/comprehensions/set_comprehension.html)
 
-#### Collection functions
+### Collection functions
 
 ```py
 # Sorted - return list of sorted items from iterable object given
@@ -616,7 +643,7 @@ sorted({'d': 5, 'b': 1, 'c':2}) # ['b', 'c', 'd']
 
 * [sorting (docs)](https://docs.python.org/3/howto/sorting.html)
 
-### Functions
+## Functions
 
 ```py
 def fu(arg1, arg2=".", *args, **kwargs):
@@ -635,7 +662,7 @@ callable({}) # False
 
 * [callable() in Python (geeksforgeeks.org)](https://www.geeksforgeeks.org/callable-in-python/)
 
-### Classes and Objects
+## Classes and Objects
 
 Because everything in python is an object, it is essential to know, how to create your own objects.
 
@@ -673,7 +700,7 @@ class Data():
 * [multiple constructors (stackoverflow)](https://stackoverflow.com/questions/682504/what-is-a-clean-pythonic-way-to-have-multiple-constructors-in-python)
 * [repr (programiz)](https://www.programiz.com/python-programming/methods/built-in/repr)
 
-### Methods for loops
+## Methods for loops
 
 ```py
 # zip
@@ -689,7 +716,7 @@ galleries_without_number = ["Great Gallery", "Magnificent Gallery", "The Gallery
 id_gallery_dict = {-n: v for n,v in enumerate(galleries_without_number, start=1)}
 ```
 
-### Math
+## Math
 
 ```py
 # Round(float, precision)
@@ -711,7 +738,7 @@ ceil(2.1) == floor(3.9) # True
 * [Round function (w3school)](https://www.w3schools.com/python/ref_func_round.asp)
 * [Multiple comparison python 2.3 doc, still valid)](https://docs.python.org/2.3/ref/comparisons.html)
 
-#### Statistics
+### Statistics
 
 ```py
 from statistics import mean, median, mode
@@ -722,7 +749,7 @@ median(values)  # 32
 mode(values)    # 34
 ```
 
-### Random
+## Random
 
 ```py
 import random
@@ -750,14 +777,14 @@ names   # ['David', 'Thomas', 'Peter']
 
 * [Random library (python documentation)](https://docs.python.org/3/library/random.html)
 
-### Imports
+## Imports
 ```py
 from xy import xyz as x
 ```
 
-### Inputs, outputs
+## Inputs, outputs
 
-#### Input arguments
+### Input arguments
 
 ```py
 import sys
@@ -771,7 +798,7 @@ number of arguments
 print ("Number of arguments: {}".format(len(sys.argv[0])))
 ```
 
-#### Standard input
+### Standard input
 
 ```py
 import sys
@@ -780,7 +807,7 @@ for line in sys.stdin: # From standard input
     print(line) # to standard output
 ```
 
-### Files
+## Files
 
 ```py
 with open(PATH_TO_FILE, mode='r') as f:
@@ -794,7 +821,7 @@ with open("file_1.txt", mode="r") as f_in, open("file_2.txt", mode="w") as f_out
 
 * [Python File Write (w3school.com)](https://www.w3schools.com/python/python_file_write.asp)
 
-#### Modes
+### Modes
 
 - x: create file, error if already exists
 - r: 
@@ -811,7 +838,7 @@ with open("file_1.txt", mode="r") as f_in, open("file_2.txt", mode="w") as f_out
 
 * [File Handling in Python (stackabuse.com)](https://stackabuse.com/file-handling-in-python/)
 
-#### Text files
+### Text files
 
 ```py
 # Write xls from response.text to file #
@@ -821,7 +848,7 @@ with open(pathToNewFile, mode='tx') as newFile:
     newFile.write(response.text)
 ```
 
-#### Binary files
+### Binary files
 
 ```py
 with open('image.png', mode='rb') as f:
@@ -834,7 +861,7 @@ with open('image.png', mode='rb') as f:
 
 * [[CZ] files basics (vyuka.ookami.cz)](http://vyuka.ookami.cz/materialy/python/files/basics.xml)
 
-### os
+## os
 
 ```py
 import os
@@ -852,12 +879,12 @@ os.path.abspath("./build/knapsack.so")
 
 * [os.walk (tutorialspoint)](https://www.tutorialspoint.com/python/os_walk.htm)
 
-### Asserting
+## Asserting
 ```py
 assert(len(tables)==1), f"len(tables) = {len(tables)}"
 ```
 
-### Json
+## Json
 
 ```py
 import json
@@ -865,7 +892,7 @@ import json
 json_string = json.dumps({1: "yes", 2: "no", 3: "maybe"})
 ```
 
-### Exceptions
+## Exceptions
 
 ```py
 import json
@@ -892,9 +919,9 @@ except json.decoder.JSONDecodeError as e:
 
 * [exceptions (docs)](https://docs.python.org/3/library/exceptions.html)
 
-## Advanced
+# Advanced
 
-### pdb — The Python Debugger
+## pdb — The Python Debugger
 
 ```py
 import pdb; pdb.set_trace()
@@ -946,7 +973,7 @@ module.py 3< input_file
 
 * [Breakpoints (bashdb.sourceforge.net)](http://bashdb.sourceforge.net/pydb/pydb/lib/subsubsection-brkpts.html)
 
-### Regex
+## Regex
 
 ```py
 import re
@@ -959,19 +986,19 @@ x = re.findall(r'CAT.+?END','Cat \n eND',flags=re.I | re.DOTALL)
 * [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 * [re — Regular expression operations](https://docs.python.org/3/library/re.html)
 
-#### Match 
+### Match
 
 Matches from the beginning of the string.
 
-#### fullmatch
+### fullmatch
 
 Whole pattern must match.
 
-#### findall
+### findall
 
 Return all non-overlapping matches of pattern in string, as a list of strings.
 
-#### The special characters
+### The special characters
 
 | Pattern    | Match group                                                    |
 | ---        | ---                                                            |
@@ -994,7 +1021,7 @@ Return all non-overlapping matches of pattern in string, as a list of strings.
 | `(?<=...)` | Matches if the current position in the string is preceded by a match for ... that ends at the current position. |
 | `(?<!...)` | Matches if the current position in the string is not preceded by a match for .... |
 
-### Lambda
+## Lambda
 
 ```py
 candidates[DEGREE] = candidates[[DEGREE, DEGREE_TMP]].apply(lambda x:
@@ -1005,7 +1032,7 @@ candidates[DEGREE] = candidates[[DEGREE, DEGREE_TMP]].apply(lambda x:
 
 * [More information](https://thispointer.com/python-how-to-use-if-else-elif-in-lambda-functions/)
 
-### Datetime
+## Datetime
 
 
 ```py
@@ -1032,7 +1059,7 @@ print(datetime_object)  # printed in default format
 
 [work with datetime](https://www.journaldev.com/23365/python-string-to-datetime-strptime) string to datetime
 
-### pickle
+## pickle
 
 Serialize objects to files and load objects from files.
 
@@ -1049,7 +1076,7 @@ pickle.dump(MODELS, open(f"models/models_20_5.pkl", "wb"))
 models = pickle.load(open("models/models_20_5.pkl", "rb" ))
 ```
 
-### argparse
+## argparse
 
 ```py
 import argparse
@@ -1062,7 +1089,7 @@ if __name__ == "__main__":
 
 * [argparse (docs.python.org)](https://docs.python.org/3/library/argparse.html)
 
-### Compress, decompress, checksum
+## Compress, decompress, checksum
 
 ```py
 # Compute crc32 checksum
@@ -1078,7 +1105,7 @@ print(checksum, checksum_1)
 ```
 [python zlib](https://docs.python.org/3/library/zlib.html)
 
-### Time measurement
+## Time measurement
 
 ```py
 import time
@@ -1102,7 +1129,7 @@ python3 -m cProfile -o tmp module-to-test.py
 python3 -c "import pstats; pstats.Stats('tmp').sort_stats(pstats.SortKey.CUMULATIVE).print_stats()" > profile-output
 ```
 
-### underscored names in python
+## underscored names in python
 
 
 - `_single_leading_underscore`: weak "internal use" indicator. E.g. `from M import *` does not import objects whose names start with an underscore.
@@ -1114,7 +1141,7 @@ tkinter.Toplevel(master, class_='ClassName')
 
 - `__double_leading_and_trailing_underscore__`: "magic" objects or attributes that live in user-controlled namespaces. E.g. `__init__`, `__import__` or `__file__`. Never invent such names; only use them as documented.
 
-#### Dunders (double underscores)
+### Dunders (double underscores)
 
 ```py
 def getStuff(): return [1, "1", None, 4.5, {}];
@@ -1129,7 +1156,7 @@ if None.__class__ in types:
     print("Function getStuff is corrupted, returns None while it should not")
 ```
 
-### Python memory
+## Python memory
 
 ```
 import sys
@@ -1142,7 +1169,7 @@ sys.getsizeof(zero)     #  24
 sys.getsizeof(integer)  #  28
 ```
 
-### Garbage Collector
+## Garbage Collector
 
 ```py
 import gc
@@ -1152,7 +1179,7 @@ gc.collect() # returns number of the number of unreachable objects
 
 * [Garbage Collector interface (docs)](https://docs.python.org/3/library/gc.html)
 
-### base64 - base16, base32
+## base64 - base16, base32
 
 ```py
 import base64
@@ -1163,11 +1190,11 @@ base64.b32encode(b"some string")   # b'ONXW2ZJAON2HE2LOM4======'
 
 * [base64 — Base16, Base32, Base64, Base85 Data Encodings (docs)](https://docs.python.org/3/library/base64.html)
 
-### Hashlib
+## Hashlib
 
 * [hashlib (docs)](https://docs.python.org/3/library/hashlib.html)
 
-### ctypes
+## ctypes
 
 * [Calling C++ Classes from Python, with ctypes… (auctoris.co.uk)](https://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/)
 * [real python c binding](https://realpython.com/python-bindings-overview/)
@@ -1184,9 +1211,9 @@ c_fun("super unicode".encode())
 ```
 * [pass unicode as bytes](https://stackoverflow.com/questions/27285405/how-can-ctypes-be-used-to-parse-unicode-strings)
 
-### Python 2 differences
+## Python 2 differences
 
-#### Math in python 2 doesn't work well
+### Math in python 2 doesn't work well
 
 ```
 >>> 4**2
@@ -1195,8 +1222,9 @@ c_fun("super unicode".encode())
 1
 ```
 
-## TODO
+# TODO
 
+* <https://cython.org/>
 * https://stackoverflow.com/questions/13046240/parseerror-not-well-formed-invalid-token-using-celementtree
 * https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find
 * https://beautiful-soup-4.readthedocs.io/en/latest/
@@ -1226,3 +1254,6 @@ c_fun("super unicode".encode())
 * https://mathieularose.com/function-composition-in-python
 * https://docs.python.org/3/library/doctest.html
 * <https://virtualenv.pypa.io/en/latest/>
+* <https://typing.readthedocs.io/en/latest/spec/generics.html#self>
+* <https://wiki.python.org/moin/Pyrex>
+* <https://legacy.python.org/workshops/1998-11/proceedings/papers/montanaro/montanaro.html>
