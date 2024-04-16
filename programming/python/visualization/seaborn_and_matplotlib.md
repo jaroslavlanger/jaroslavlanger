@@ -2,53 +2,6 @@
 
 Python libraries for making visualizations.
 
-`2021 Feb 12, Jaroslav Langer`
-
-Libraries:  seaborn [0.11.0], matplotlib [3.3.3]
-
-## Contents
-
-<!-- TOC GFM -->
-
-* [Seaborn](#seaborn)
-    * [Introduction](#introduction)
-    * [Basics](#basics)
-        * [Import](#import)
-    * [Plotting Functions](#plotting-functions)
-    * [Bar Chart (barplot)](#bar-chart-barplot)
-        * [Percentages Over Bars](#percentages-over-bars)
-    * [Histogram (histplot, countplot)](#histogram-histplot-countplot)
-    * [Box Plot (boxplot)](#box-plot-boxplot)
-    * [Line Chart (lineplot)](#line-chart-lineplot)
-    * [Scatter Plot (scatterplot)](#scatter-plot-scatterplot)
-    * [Heat Map (heatmap)](#heat-map-heatmap)
-    * [Multi-plot Grids (pairplot, PairGrid, FacetGrid)](#multi-plot-grids-pairplot-pairgrid-facetgrid)
-        * [pairplot](#pairplot)
-        * [PairGrid](#pairgrid)
-        * [FacetGrid](#facetgrid)
-    * [Plot aesthetics (set_style, color_pallete, dash styles)](#plot-aesthetics-set_style-color_pallete-dash-styles)
-        * [Set style](#set-style)
-        * [Color palettes](#color-palettes)
-        * [Dash styles](#dash-styles)
-* [Matplotlib](#matplotlib)
-    * [Basics](#basics-1)
-        * [pyplot](#pyplot)
-        * [The Axes Class](#the-axes-class)
-        * [Figure Class](#figure-class)
-    * [Set title](#set-title)
-    * [Plot Multiple Graphs (subplots, subplot)](#plot-multiple-graphs-subplots-subplot)
-        * [subplots](#subplots)
-        * [subplot](#subplot)
-    * [Set Figure Size](#set-figure-size)
-    * [Legend](#legend)
-    * [Colors](#colors)
-    * [Save Image](#save-image)
-    * [Ticks (xtics, yticks)](#ticks-xtics-yticks)
-        * [Format time from seconds](#format-time-from-seconds)
-* [TODO](#todo)
-
-<!-- /TOC -->
-
 ## Seaborn
 
 Seaborn is a Python data visualization library based on matplotlib.
@@ -246,7 +199,7 @@ sns.relplot(...,  dashes=dash_styles,...)
 
 Module for ploting of all the graphs you can imagine.
 
-`2020/11/08, Jaroslav Langer`
+* [History of Matplotlib](https://matplotlib.org/stable/users/project/history.html)
 
 ### Basics
 
@@ -413,6 +366,11 @@ ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=1))
 
 ## TODO
 
-- plt.show()
-- fig.show()
-* https://matplotlib.org/stable/users/explain/backends.html
+* <https://matplotlib.org/stable/users/explain/backends.html>
+* [plt.show()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html)
+* [fig.show()](https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.show)
+* [plt.draw()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html)
+* [plt.pause()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pause.html)
+* [plt.close()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.close.html)
+* [Axes.clear](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.clear.html)
+* [Axes.redraw_in_frame](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.redraw_in_frame.html)
