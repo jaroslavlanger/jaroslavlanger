@@ -2,60 +2,6 @@
 
 How to use git successfully even with a little background knowledge.
 
-## Contents
-
-<!-- TOC GFM -->
-
-* [To Do](#to-do)
-* [Basic Information](#basic-information)
-* [Git Installation and Setup](#git-installation-and-setup)
-    * [Create a Git Account](#create-a-git-account)
-    * [Basic Git Configuration](#basic-git-configuration)
-* [Basic Commands](#basic-commands)
-    * [Git --help](#git---help)
-    * [Create a Project (git clone, git init, git fork)](#create-a-project-git-clone-git-init-git-fork)
-    * [See Status of the Index (git status)](#see-status-of-the-index-git-status)
-    * [File Changes (Differences) (git diff)](#file-changes-differences-git-diff)
-    * [Stage Changes to the Index (git add, git rm, git mv)](#stage-changes-to-the-index-git-add-git-rm-git-mv)
-    * [Commit Changes (git commit)](#commit-changes-git-commit)
-    * [Push Commits to the Remote Repository (git push)](#push-commits-to-the-remote-repository-git-push)
-* [Ignore Files from the Git Structure (.gitignore)](#ignore-files-from-the-git-structure-gitignore)
-* [Advanced Commands](#advanced-commands)
-    * [See Commits, Diffs and Messages (git log, git diff, git show)](#see-commits-diffs-and-messages-git-log-git-diff-git-show)
-    * [Branching (git branch, git checkout)](#branching-git-branch-git-checkout)
-    * [Merging (git merge)](#merging-git-merge)
-    * [Remote Repositories (git remote)](#remote-repositories-git-remote)
-    * [Download Remote Branch and Test It (git fetch, git checkout)](#download-remote-branch-and-test-it-git-fetch-git-checkout)
-    * [Pulling - Download from Remote and Merge (git pull)](#pulling---download-from-remote-and-merge-git-pull)
-    * [Get Information About git Files (git ls-files)](#get-information-about-git-files-git-ls-files)
-    * [Clean the Working Tree (git stash)](#clean-the-working-tree-git-stash)
-    * [Reset the Current Branch (HEAD) to Specific State (commit) (git reset)](#reset-the-current-branch-head-to-specific-state-commit-git-reset)
-    * [Remove (Revert) Changes After Push (git reset, git push, git revert)](#remove-revert-changes-after-push-git-reset-git-push-git-revert)
-* [Common Scenarios](#common-scenarios)
-    * [Duplicate a Repository](#duplicate-a-repository)
-    * [Move Repository form One Git Site to Another](#move-repository-form-one-git-site-to-another)
-    * [Change File (history) in Every Commit](#change-file-history-in-every-commit)
-* [Contribute to a Project](#contribute-to-a-project)
-    * [Contribute to Someone's Repository (with push rights)](#contribute-to-someones-repository-with-push-rights)
-    * [Contribute Without the Rights to Push (fork)](#contribute-without-the-rights-to-push-fork)
-* [Submodules](#submodules)
-* [Customizing Git](#customizing-git)
-    * [Git Editor and Diff Tool](#git-editor-and-diff-tool)
-
-<!-- /TOC -->
-
-## To Do
-
-* [How To: Merge a Git submodule into its main repository](https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c)
-* [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
-* [Splitting a subfolder out into a new repository](https://docs.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
-* [How to split and merge multiple git repositories while keeping the history](https://dev.to/itminds/how-to-split-and-merge-multiple-git-repositories-and-keep-the-history-2938)
-* [Merging Two Git Repositories Into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
-* [Undo git filter-branch](https://stackoverflow.com/questions/14542326/undo-git-filter-branch)
-* https://git-scm.com/docs/git-ls-tree
-* [Learn the workings of Git, not just the commands (IBM)](https://developer.ibm.com/tutorials/d-learn-workings-git/)
-* <https://git-scm.com/book/en/v2/Git-Basics-Tagging>
-
 ## Basic Information
 
 Git is a version control system. Probably the best way to learn it is just to read the [documentation](https://git-scm.com/doc). In case you do not have much time and just need to jump on the train, this document helps you to understand the basics fast.
@@ -633,3 +579,16 @@ git difftool
 ```
 
 * [Configure Git To Use Vimdiff (programster.org)](https://blog.programster.org/configure-git-to-use-vimdiff)
+
+## To Do
+
+* [A simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
+* [How To: Merge a Git submodule into its main repository](https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c)
+* [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+* [Splitting a subfolder out into a new repository](https://docs.github.com/en/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
+* [How to split and merge multiple git repositories while keeping the history](https://dev.to/itminds/how-to-split-and-merge-multiple-git-repositories-and-keep-the-history-2938)
+* [Merging Two Git Repositories Into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
+* [Undo git filter-branch](https://stackoverflow.com/questions/14542326/undo-git-filter-branch)
+* https://git-scm.com/docs/git-ls-tree
+* [Learn the workings of Git, not just the commands (IBM)](https://developer.ibm.com/tutorials/d-learn-workings-git/)
+* <https://git-scm.com/book/en/v2/Git-Basics-Tagging>

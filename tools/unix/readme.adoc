@@ -23,23 +23,23 @@
 . https://unix.stackexchange.com/questions/275684/how-do-i-automate-to-display-cursor-under-the-prompt-on-shell[Displey cursore under the prompt]
 . https://suckless.org/[suckless.org software for X window system]
 . https://www.pcre.org/[PCRE - Perl Compatible Regular Expressions]
-. `+grep -I -r 'word' dir/ | grep -v 'filename' | cut -d ':' -f 1 | uniq+`
 . https://wiki.linuxfoundation.org/networking/net-tools[net-tools - hostname, netstat]
 . `+{ time -p echo 'test' > exp.out ; } 2>&1 | tr '\n' ',' | tr -d ' ' | xargs printf "$(hostname -f),%s\n"+`
 . `+ssh-add+`
 . `+script -efq -c "git status" > out.txt; less -rf out.txt # preserves and shows color+`
-```sh
+----
 [ -z ${readme+x} ] \
 || (echo "already set: ${readme}" && false) \
 && readme=README.md \
 && pandoc -s --css ../../style.css --toc -o index.html --metadata title="$(head -n 1 ${readme} | cut -d ' ' -f 1  --complement)" ${readme} \
 && unset readme
-. `&` - https://stackoverflow.com/questions/44222883/run-a-shell-script-and-immediately-background-it-however-keep-the-ability-to-in
+----
 . https://en.wikipedia.org/wiki/Null_device
 . https://unicode.org/reports/tr10/[UNICODE COLLATION ALGORITHM Unicode® Technical Standard #10]
 . https://en.wikipedia.org/wiki/Unix-like
 . https://en.wikipedia.org/wiki/Util-linux[use `sudo dmesg` to get the reason why a process was Killed]
-```
+. `<exp_mean_2d_1f_i.out pcre2grep -o1 ' ([0-9]+)-evals' | python -c 'import sys; from statistics import mean; print(mean(map(int, sys.stdin.readlines())))'`
+. `+ls -lt --color=always | tail -n +2 | tr -s ' ' | cut -d ' ' -f 6-+`
 ====
 
 [bibliography]
@@ -50,6 +50,7 @@
 * [[[gnu-packages]]] https://www.gnu.org/manual/[GNU Manuals Online]
 * [[[coreutils]]] https://www.gnu.org/software/coreutils/manual/coreutils.html[GNU Coreutils 9.3]
 * [[[findutils]]] https://www.gnu.org/software/findutils/manual/html_mono/find.html[GNU Findutils 4.9.0]
+* [[[util-linux]]] https://en.wikipedia.org/wiki/Util-linux[util-linux]
 
 == Disclaimer
 
@@ -110,12 +111,26 @@ First letters of the command-line that are static (does not change by typing).
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09[2.9 Shell Commands]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_02[2.9.2 Pipelines]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_03[2.9.3 Lists]
+** `&` - https://stackoverflow.com/questions/44222883/run-a-shell-script-and-immediately-background-it-however-keep-the-ability-to-in
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_14[2.14. Special Built-In Utilities]
 
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#set
 
 == https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html[Utilities]
+
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/awk.html[awk - pattern scanning and processing language]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html[date - write the date and time]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/diff.html[diff - compare two files]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/kill.html[kill - terminate or signal processes]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ln.html[ln - link files]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html[ls - list directory contents]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/nohup.html[nohup - invoke a utility immune to hangups]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/paste.html[paste - merge corresponding or subsequent lines of files]
+** `+pcre2grep -o1 '^eval=([^|]+)' out$f | paste -sd+ - | bc+`
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html[printf - write formatted output]
+** `printf "%02d\n" 6`
+** `printf "%-64s%s\n" a b`
 
 == Introduction
 
@@ -569,6 +584,12 @@ find /  -name   "toBeFound"     ACTIONS -delete
         -user USERNAME
         -group
 ....
+
+.Examples
+----
+# Files matching regex which are not empty
+find -maxdepth 1 -type f -iregex '.*f.*e.*' ! -empty
+----
 
 === Read files
 
@@ -1126,6 +1147,8 @@ fusermount -u ~/mount/myprojects
 .shows processes
 ----
 top
+# or nicer
+htop
 ----
 
 .Find process
@@ -1345,9 +1368,13 @@ https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html
 
 == https://www.gnu.org/software/grep/manual/grep.html[Grep]
 
-```
+----
 grep -iInr -v -A 3 'pattern' .
-```
+
+# Examples
+grep -I -r 'word' dir/ | grep -v 'filename' | cut -d ':' -f 1 | uniq
+grep 'pattern' file_with_columns.txt | tr -s ' ' | cut -d ' ' -f 7
+----
 
 === https://www.gnu.org/software/grep/manual/grep.html#Regular-Expressions[Regular Expressions]
 
