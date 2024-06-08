@@ -9,10 +9,12 @@ Great language for prototyping, scripting, machine learning and anything else.
 * <https://docs.python.org/3/glossary.html>
 * <https://docs.python.org/3/reference/>
 * <https://docs.python.org/3/library/>
+* <https://docs.python.org/3/using/cmdline.html>
 * <https://docs.python.org/3/using/unix.html>
 * <https://packaging.python.org/en/latest/>
 * <https://pypi.org/>
 * <https://setuptools.pypa.io/en/latest/setuptools.html>
+  * <https://setuptools.pypa.io/en/latest/userguide/dependency_management.html>
 * <https://wiki.python.org/moin/PythonSpeed>
 * <https://www.python.org/download/releases/2.3/mro/>
 * <https://typing.readthedocs.io/en/latest/index.html>
@@ -48,6 +50,9 @@ Great language for prototyping, scripting, machine learning and anything else.
 * [PEP 345 – Metadata for Python Software Packages 1.2](https://peps.python.org/pep-0345/)
 * [PEP 465 – A dedicated infix operator for matrix multiplication](https://peps.python.org/pep-0465/)
 * [PEP 484 – Type Hints](https://peps.python.org/pep-0484/)
+* [PEP 508 – Dependency specification for Python Software Packages](https://peps.python.org/pep-0508/)
+* [PEP 570 – Python Positional-Only Parameters](https://peps.python.org/pep-0570/)
+* [PEP 616 – String methods to remove prefixes and suffixes](https://peps.python.org/pep-0616/)
 * [PEP 636 – Structural Pattern Matching: Tutorial](https://peps.python.org/pep-0636/)
 * [PEP 646 – Variadic Generics](https://peps.python.org/pep-0646/)
 * [PEP 668 – Marking Python base environments as “externally managed”](https://peps.python.org/pep-0668/)
@@ -119,6 +124,8 @@ For unix scripts, use `#!/usr/bin/env python3` as the first line. More details c
 * [collections.abc — Abstract Base Classes for Containers](https://docs.python.org/3/library/collections.abc.html)
 * [copy — Shallow and deep copy operations](https://docs.python.org/3/library/copy.html)
 * [enum — Support for enumerations](https://docs.python.org/3/library/enum.html)
+
+## [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html)
 
 ## [Numeric and Mathematical Modules](https://docs.python.org/3/library/numeric.html)
 * [numbers — Numeric abstract base classes](https://docs.python.org/3/library/numbers.html)
@@ -1224,7 +1231,10 @@ c_fun("super unicode".encode())
 
 # TODO
 
-* <https://cython.org/>
+* [cython - optimising static compiler](https://cython.org/)
+* [pypy - A fast, compliant alternative implementation of Python](https://www.pypy.org/)
+* [Poetry: Python packaging and dependency management made easy](https://python-poetry.org/)
+* <https://github.com/chrisgrimm/better_partial/tree/master>
 * https://stackoverflow.com/questions/13046240/parseerror-not-well-formed-invalid-token-using-celementtree
 * https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find
 * https://beautiful-soup-4.readthedocs.io/en/latest/
