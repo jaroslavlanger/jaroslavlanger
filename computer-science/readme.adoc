@@ -29,7 +29,7 @@ arm::
 
 * https://en.wikipedia.org/wiki/Chomsky_hierarchy
 
-== https://amturing.acm.org/byyear.cfm[Chronological listing of A.M. Turing Award winners]
+== https://amturing.acm.org/lectures.cfm[Turing Lectures of ACM A.M. Turing Award recipients]
 
 == Books
 
@@ -39,3 +39,7 @@ arm::
 . A Tour of C++ by Bjarne Stroustrup
 . Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, John Vlissides, Richard Helm and Ralph Johnson
 . Compilers: Principles, Techniques, and Tools by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman
+
+== Tutorials
+
+. https://llvm.org/docs/tutorial/[LLVM Tutorial]
