@@ -108,8 +108,8 @@ At this moment I am using Xfce and my plan is to switch back to GNOME.
 == Terminal Emulator
 
 I just use what is installed.
-
-https://larbs.xyz/[Luke Smith] uses https://st.suckless.org/
+https://larbs.xyz/[Luke Smith] uses https://st.suckless.org/.
+I am curious about https://github.com/alacritty/alacritty/[alacritty].
 
 === Window manager
 
@@ -121,7 +121,7 @@ At this time I don't use any terminal window manager.
 
 === File manager
 
-I don't terminal file manager. With a little exception of *netrw* inside of neovim.
+I don't typically use a terminal file manager, except for *netrw* within Neovim.
 
 * ranger
 * lf
@@ -131,6 +131,12 @@ I don't terminal file manager. With a little exception of *netrw* inside of neov
 Currently I use bash and I my plan is to switch to zsh.
 
 . Bash
+
+== Shell Prompt
+
+I use the default, modified with a git branch.
+
+* https://starship.rs/ seems interesting.
 
 == Text Editor / IDE
 
@@ -144,6 +150,7 @@ My favorite editor for Jupyter notebooks is Google Colaboratory.
 . VS Code
 . Vim
 . Neovim
+. https://github.com/zed-industries/zed[Zed] (TODO)
 
 == Version control
 
