@@ -58,3 +58,7 @@ pandoc \
 -o index.html \
 readme.tex
 ----
+
+== TODO
+
+* https://gist.github.com/killercup/5917178
