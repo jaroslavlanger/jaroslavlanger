@@ -1,0 +1,15 @@
+= Debian
+:toc:
+:hide-uri-scheme:
+:stylesheet: ../../style.css
+:linkcss:
+
+. https://www.debian.org/releases/
+. https://wiki.debian.org/DebianReleases
+** https://wiki.debian.org/DebianStable
+** https://wiki.debian.org/DebianUnstable
+** https://wiki.debian.org/DebianTesting
+. https://www.debian.org/security/faq
+
+"Compared to stable and unstable, next-stable testing has the worst security update speed. Don't prefer testing if security is a concern."
+-- https://wiki.debian.org/DebianTesting
