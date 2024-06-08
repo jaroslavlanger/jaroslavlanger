@@ -1,8 +1,8 @@
-= Jaroslav Langer
+= Jerry
 :stylesheet: style.css
 :linkcss:
 
-Welcome! My name is Jaroslav Langer. Here I share the things I do.
+Welcome!
 
 * link:programming[]
 * link:data[]
