@@ -1,0 +1,17 @@
+= Czech Language
+
+* https://en.wikipedia.org/wiki/Czech_orthography
+** https://en.wikipedia.org/wiki/Acute_accent
+** https://en.wikipedia.org/wiki/Caron
+** https://en.wikipedia.org/wiki/Ring_(diacritic)
+
+== Letter Ch
+* What is the origin of the Ch?
+** <https://en.wikipedia.org/wiki/Ch_(digraph)>
+* Would it be feasible to allow "X̌" as an alternative for "Ch"?
+** <https://fr.wikipedia.org/wiki/X%CC%8C>
+** <https://cs.wikipedia.org/wiki/X%CC%8C>
+
+== Letter ů
+* What is the history?
+* Where it would make sense to allow writing both "ú" and "ů"?
