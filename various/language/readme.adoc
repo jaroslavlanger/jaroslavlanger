@@ -14,3 +14,7 @@ Analytic language[https://en.wikipedia.org/wiki/Analytic_language]:: analytic la
 * https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html
 * http://ipa-reader.xyz/
 * https://learnipa.group.shef.ac.uk/
+
+== https://en.wikipedia.org/wiki/Romanization[Romanization]
+* https://en.wikipedia.org/wiki/Pinyin#Tones
+* https://en.wikipedia.org/wiki/Jyutping#Tones
