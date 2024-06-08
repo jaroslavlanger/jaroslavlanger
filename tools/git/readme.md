@@ -592,3 +592,4 @@ git difftool
 * https://git-scm.com/docs/git-ls-tree
 * [Learn the workings of Git, not just the commands (IBM)](https://developer.ibm.com/tutorials/d-learn-workings-git/)
 * <https://git-scm.com/book/en/v2/Git-Basics-Tagging>
+* `git -c color.ui=always status | less -R`
