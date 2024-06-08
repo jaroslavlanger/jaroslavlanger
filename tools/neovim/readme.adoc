@@ -11,6 +11,8 @@ Neovim - Vim taken a step further.
 .TODO
 [%collapsible]
 ====
+. https://rust-analyzer.github.io/manual.html#vimneovim
+.. https://gist.github.com/tivrfoa/e956f090ff549e9dd04c9ececd3912f1
 . https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern
 . https://github.com/stevearc/oil.nvim
 . `:tab split` + `leader n`
@@ -25,6 +27,7 @@ Neovim - Vim taken a step further.
 * https://neovim.io/doc/user/#_-basic-editing
 * https://neovim.io/doc/user/options.html
 * https://neovim.io/doc/user/windows.html
+* https://neovim.io/doc/user/pi_netrw.html#netrw-browsing
 * https://www.youtube.com/watch?v=gnupOrSEikQ[How to Configure Vim like VSCode (benawad)]
 ** https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f[init.vim file from Ben Awad]
 
