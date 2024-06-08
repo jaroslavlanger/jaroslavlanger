@@ -3,6 +3,7 @@
 
 == References
 
+. https://bookdown.org/kevin_davisross/bayesian-reasoning-and-methods/
 . https://gitlab.fit.cvut.cz/dedeckam/ni-lsm-cviceni
 
 == Definitions
