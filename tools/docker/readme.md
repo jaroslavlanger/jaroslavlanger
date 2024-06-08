@@ -182,3 +182,14 @@ docker-compose up (-d)
 docker-compose -f demo.detailed.yml up
 docker-compose -f demo.detailed.yml down
 ```
+
+## TODO
+
+* <https://hub.docker.com/_/debian>
+  * <https://jolthgs.wordpress.com/2019/09/25/create-a-debian-container-in-docker-for-development/>
+  1. `docker pull debian`
+  1. `docker run -it debian bash -l`
+  1. `apt update`
+  1. `apt list python3`
+* `docker inspect $container`
+* `docker update --restart=no $container`
