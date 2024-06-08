@@ -7,7 +7,9 @@
   * [3.1.2 Quoting](https://www.gnu.org/software/bash/manual/bash.html#Quoting)
   * [3.2.1 Reserved Words](https://www.gnu.org/software/bash/manual/bash.html#Reserved-Words)
   * [3.2.5.3 Grouping Commands](https://www.gnu.org/software/bash/manual/bash.html#Command-Grouping)
+  * [3.5.1 Brace Expansion](https://www.gnu.org/software/bash/manual/bash.html#Brace-Expansion)
   * [4.3 Modifying Shell Behavior](https://www.gnu.org/software/bash/manual/bash.html#Modifying-Shell-Behavior)
+  * [6.7 Arrays](https://www.gnu.org/software/bash/manual/bash.html#Arrays)
   * [6.9 Controlling the Prompt](https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt)
 * [Advanced Bash-Scripting Guide An in-depth exploration of the art of shell scripting by Mendel Cooper](https://tldp.org/LDP/abs/html/)
 
