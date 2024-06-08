@@ -13,6 +13,11 @@
 
 ## Dělitelnost, gcd a lcm a jejich vlastnosti, (rozšířený) Euklidův algoritmus, prvočísla a faktorizace, kongruence modulo m
 
+Nechť $a,b \in \mathbb{Z}$, $a$ dělí $b$, značíme $a \mid b$, pokud $\exists k \in \mathbb{Z}$ takové, že
+$b = k \cdot a$.
+Říkáme, že $a$ je \textbf{dělitel} $b$, nebo že $b$ je \textbf{násobek} $a$, nebo, že $b$ je \textbf{dělitelné} $a$.
+Pokud $a$ nedělí $b$, značíme $a \nmid b$
+
 ### LCM Nejmenší společný násobek
 
 - pokud
