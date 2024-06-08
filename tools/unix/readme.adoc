@@ -39,7 +39,7 @@
 . https://en.wikipedia.org/wiki/Unix-like
 . https://en.wikipedia.org/wiki/Util-linux[use `sudo dmesg` to get the reason why a process was Killed]
 . `<exp_mean_2d_1f_i.out pcre2grep -o1 ' ([0-9]+)-evals' | python -c 'import sys; from statistics import mean; print(mean(map(int, sys.stdin.readlines())))'`
-. `+ls -lt --color=always | tail -n +2 | tr -s ' ' | cut -d ' ' -f 6-+`
+. `+ls -lth --color=always | tail -n +2 | tr -s ' ' | cut -d ' ' -f 5-+`
 ====
 
 [bibliography]
@@ -122,6 +122,9 @@ First letters of the command-line that are static (does not change by typing).
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/awk.html[awk - pattern scanning and processing language]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html[date - write the date and time]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/diff.html[diff - compare two files]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html[find - find files]
+** `+find \( -path './*/*/*' -o -path '*/.*' \) -prune -o -exec ls -d --color=always {} \;+`
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/head.html[head - copy the first part of files]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/kill.html[kill - terminate or signal processes]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ln.html[ln - link files]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html[ls - list directory contents]
@@ -131,6 +134,9 @@ First letters of the command-line that are static (does not change by typing).
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html[printf - write formatted output]
 ** `printf "%02d\n" 6`
 ** `printf "%-64s%s\n" a b`
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html[sed - stream editor]
+** `+sed 'x;1!H;$!d;x'+` - reverse lines
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tail.html[tail - copy the last part of a file]
 
 == Introduction
 
