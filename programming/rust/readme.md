@@ -8,7 +8,7 @@
 * https://braiins-uni.mag.wiki/choosing-rust.html
 
 ## Rust Language
-* [The Rust Reference](doc.rust-lang.org/stable/reference/)
+* [The Rust Reference](doc.rust-lang.org/reference/)
 * [Loops and other breakable expressions](https://doc.rust-lang.org/reference/expressions/loop-expr.html)
 * [The Rust Core Library](https://doc.rust-lang.org/core/)
 * Enum - https://en.wikipedia.org/wiki/Tagged_union
@@ -142,6 +142,7 @@ cargo fmt
 * https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse
 
 ## Extra
+* rust-script - https://rust-script.org/
 * rust announcements - https://blog.rust-lang.org/
 * https://rust-lang.github.io/async-book/
 * formating - https://rust-lang.github.io/rustfmt/
@@ -154,11 +155,19 @@ cargo fmt
 * [The History of Rust by Steve Klabnik](https://youtu.be/79PSagCD_AY)
 * [The Rust I Wanted Had No Future by Graydon Hoare](https://graydon2.dreamwidth.org/307291.html)
 
+## RFC
+### Pre-RFC
+* <https://internals.rust-lang.org/t/pre-rfc-named-arguments/16413>
+
 ## TODO
+* [Rust Developer course texts](https://github.com/Global-rd/rust/)
 * https://google.github.io/comprehensive-rust/exercises/concurrency/solutions-afternoon.html#broadcast-chat-application
 * https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md
+* https://itnext.io/leaky-abstractions-and-a-rusty-pin-fbf3b84eea1f
 * https://github.com/rust-lang/rustlings
 * ide for rust - areweideyet.com
 * background code checker - https://github.com/Canop/bacon
+* https://github.com/rust-lang/a-mir-formality
 * https://docs.rs/ndarray/latest/ndarray/doc/ndarray_for_numpy_users/index.html
 * https://pyo3.rs/v0.20.2/python_from_rust
+* [Import sorting does not handle uppercase/lowercase consistently](https://github.com/rust-lang/rustfmt/issues/5269)
