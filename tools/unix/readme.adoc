@@ -120,6 +120,8 @@ First letters of the command-line that are static (does not change by typing).
 == https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html[Utilities]
 
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/awk.html[awk - pattern scanning and processing language]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/basename.html[basename - return non-directory portion of a pathname]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html[command - execute a simple command]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html[date - write the date and time]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/diff.html[diff - compare two files]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html[find - find files]
@@ -134,9 +136,11 @@ First letters of the command-line that are static (does not change by typing).
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html[printf - write formatted output]
 ** `printf "%02d\n" 6`
 ** `printf "%-64s%s\n" a b`
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pwd.html[pwd - return working directory name]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html[sed - stream editor]
 ** `+sed 'x;1!H;$!d;x'+` - reverse lines
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tail.html[tail - copy the last part of a file]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/type.html[type - write a description of command type]
 
 == Introduction
 
