@@ -13,3 +13,7 @@
 
 "Compared to stable and unstable, next-stable testing has the worst security update speed. Don't prefer testing if security is a concern."
 -- https://wiki.debian.org/DebianTesting
+
+== Dash
+
+* https://en.wikipedia.org/wiki/Almquist_shell#Dash
