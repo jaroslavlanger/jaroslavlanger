@@ -500,7 +500,7 @@ What function can and can not do
 - anything else as code outside of a function
 
 ```sh
-function name {
+function name () {
     commands;
 }
 
