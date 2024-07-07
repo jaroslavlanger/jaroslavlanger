@@ -1,0 +1,6 @@
+= Utilities
+
+* https://github.com/sharkdp/fd[fd - A simple, fast and user-friendly alternative to 'find']
+* https://github.com/BurntSushi/ripgrep[ripgrep recursively searches directories for a regex pattern while respecting your gitignore]
+* https://clang.llvm.org/[GCC-compatible compiler driver (clang)]
+* https://github.com/rui314/mold[Mold: A Modern Linker]
