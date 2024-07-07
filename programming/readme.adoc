@@ -32,6 +32,8 @@
 . https://aplwiki.com/wiki/Train
 . https://docs.modular.com/mojo/
 . https://www.uiua.org/
+. https://wiki.tcl-lang.org/
+. https://github.com/rust-lang/book/blob/fc4274d906bfcc526d2a19aba25f44bfaecd877a/first-edition/src/glossary.md#expression-oriented-language[Expression-Oriented Language]
 ====
 
 == Rankings
@@ -139,6 +141,8 @@ Formerly called Perl 6.
 When regular expressions are not powerful enough, look at Raku's https://docs.raku.org/language/grammar_tutorial.html[Grammars].
 
 === https://en.wikipedia.org/wiki/Purely_functional_programming[Purely functional]
+
+* https://www.cs.princeton.edu/~dpw/courses/cos326-12/[Functional Programming at Princeton by David Walker]
 
 link:haskell[Haskell]::
 Lazily evaluated purely-functional language with type classes.
