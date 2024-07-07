@@ -582,6 +582,7 @@ git difftool
 
 ## To Do
 
+* `git show --stat`
 * [A simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
 * [How To: Merge a Git submodule into its main repository](https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c)
 * [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
