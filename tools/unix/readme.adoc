@@ -24,6 +24,7 @@
 . https://suckless.org/[suckless.org software for X window system]
 . https://www.pcre.org/[PCRE - Perl Compatible Regular Expressions]
 . https://wiki.linuxfoundation.org/networking/net-tools[net-tools - hostname, netstat]
+. https://www.in-ulm.de/~mascheck/various/whatshell/
 . `+{ time -p echo 'test' > exp.out ; } 2>&1 | tr '\n' ',' | tr -d ' ' | xargs printf "$(hostname -f),%s\n"+`
 . `+ssh-add+`
 . `+script -efq -c "git status" > out.txt; less -rf out.txt # preserves and shows color+`
@@ -40,6 +41,20 @@
 . https://en.wikipedia.org/wiki/Util-linux[use `sudo dmesg` to get the reason why a process was Killed]
 . `<exp_mean_2d_1f_i.out pcre2grep -o1 ' ([0-9]+)-evals' | python -c 'import sys; from statistics import mean; print(mean(map(int, sys.stdin.readlines())))'`
 . `+ls -lth --color=always | tail -n +2 | tr -s ' ' | cut -d ' ' -f 5-+`
+. `+git diff --stat  HEAD^  | head -1 | cut -d ' ' -f 2 | xclip -selection c+`
+. `+echo "a,b,c,d,e" | fold -w1 | tac | paste -sd '' - | cut -d ',' -f 1 | fold -w1 | tac | paste -sd '' -+`
+. check if variable is set - posix
+----
+cat <<HEREDOC | xargs nvim -p
+    a.txt
+    b.txt
+    c.txt
+HEREDOC
+----
+. Shell command IO
+** Input - arguments, stdin, files, envvars
+** Output - stdout, stderr, files, envvars
+. stdin can be from file <file, or pipe |
 ====
 
 [bibliography]
@@ -109,9 +124,12 @@ First letters of the command-line that are static (does not change by typing).
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07_06[2.7.6 Duplicating an Output File Descriptor]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09[2.9 Shell Commands]
+* https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_01[2.9.1 Simple Commands]
+** `$0` may be set to the command name
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_02[2.9.2 Pipelines]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_03[2.9.3 Lists]
 ** `&` - https://stackoverflow.com/questions/44222883/run-a-shell-script-and-immediately-background-it-however-keep-the-ability-to-in
+
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_14[2.14. Special Built-In Utilities]
 
