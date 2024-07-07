@@ -12,10 +12,11 @@ Neovim - Vim taken a step further.
 [%collapsible]
 ====
 . https://rust-analyzer.github.io/manual.html#vimneovim
-.. https://gist.github.com/tivrfoa/e956f090ff549e9dd04c9ececd3912f1
+.. https://gist.github.com/tivrfoa/e956f090ff549e9dd04c9ececd3912f1[rust-analyzer with neovim for the Linux Kernel - Rust for Linux]
 . https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern
 . https://github.com/stevearc/oil.nvim
 . `:tab split` + `leader n`
+. https://vi.stackexchange.com/questions/29145/how-to-color-vim-cmd-output
 ====
 
 == http://vimcasts.org/episodes/meet-neovim/[Introduction]
