@@ -22,6 +22,8 @@ Markup formats::
 * rst
 * tex
 
+https://github.com/github/markup?tab=readme-ov-file#markups[GitHub supported markups]
+
 == File Encoding
 
 === BOM

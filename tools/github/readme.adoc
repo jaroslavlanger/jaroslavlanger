@@ -7,6 +7,12 @@
 "GitHub is where over 100 million developers shape the future of software, together."
 -- https://github.com/
 
+.TODO
+[%collapsible]
+====
+* https://github.com/github/markup?tab=readme-ov-file#markups[GitHub supported markups]
+====
+
 .Find Most Starred Projects by Language (Haskell example)
 ....
 https://github.com/search?q=stars%3A%3E1000&type=Repositories&l=Haskell&s=stars&o=desc
