@@ -13,6 +13,7 @@
 [%collapsible]
 ====
 * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
 ====
 
 [bibliography]
