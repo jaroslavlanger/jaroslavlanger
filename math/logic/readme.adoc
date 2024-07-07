@@ -1,0 +1,23 @@
+= Logic
+:toc:
+:stem: latexmath
+
+.TODO
+[%collapsible]
+====
+* https://en.wikipedia.org/wiki/Peano_axioms
+====
+
+.Material conditional (implication)
+[stem]
+++++
+a \implies b \equiv \lnot (a \land \lnot b)
+++++
+
+* https://en.wikipedia.org/wiki/Material_conditional
+
+.De Morgan's Law
+[stem]
+++++
+\lnot (a \land \lnot b) \equiv  \lnot a \lor b
+++++
