@@ -4,3 +4,4 @@
 * https://github.com/BurntSushi/ripgrep[ripgrep recursively searches directories for a regex pattern while respecting your gitignore]
 * https://clang.llvm.org/[GCC-compatible compiler driver (clang)]
 * https://github.com/rui314/mold[Mold: A Modern Linker]
+* https://gitlab.freedesktop.org/NetworkManager/NetworkManager[NetworkManager — network management daemon]
