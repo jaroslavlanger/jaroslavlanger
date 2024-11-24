@@ -1,0 +1,4 @@
+= Français
+:hide-uri-scheme:
+
+* https://en.wikipedia.org/wiki/Help:IPA/French
