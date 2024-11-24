@@ -17,6 +17,7 @@
 . https://www.statisticshowto.com/relative-variance/
 . https://en.wikipedia.org/wiki/Number_theory
 . https://en.wikipedia.org/wiki/Generalized_mean
+. https://en.wikipedia.org/wiki/Nicolas_Bourbaki
 
 ++++
 Expectation, E X = x_1*P(x_1) + ... + x_n*P(x_n) = Sum (i IN is) (x_i*P(x_i))
