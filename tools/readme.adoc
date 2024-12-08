@@ -25,6 +25,7 @@ The art of using a computer like a human.
 
 == Operating System
 
+* Ubuntu (Kubuntu)
 Right now I am using Debian GNU/Linux distribution "testing".
 It combines the availability of regular stuff with the power of rolling releases.
 
@@ -107,17 +108,28 @@ At this moment I am using Xfce and my plan is to switch back to GNOME.
 
 == Terminal Emulator
 
-I just use what is installed.
-https://larbs.xyz/[Luke Smith] uses https://st.suckless.org/.
-I am curious about https://github.com/alacritty/alacritty/[alacritty].
+* https://github.com/alacritty/alacritty/[alacritty].
+
+=== Font
+
+* [Commit Mono](https://commitmono.com/)
+
+* <https://www.nerdfonts.com/font-downloads>
+* <https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-1-release-archive-download>
+
+*Preferences*
+
+* 1l - l without bottom and higher than 1
+* 0O - 0 with dot
+* gq - g with a woble
+
+=== Prompt
+
+* <https://starship.rs/>
 
 === Window manager
 
-At this time I don't use any terminal window manager.
-
-* tmux
-* i3
-* dwm
+* [tmux](https://github.com/tmux/tmux/wiki)
 
 === File manager
 
@@ -152,18 +164,21 @@ My favorite editor for Jupyter notebooks is Google Colaboratory.
 . Neovim
 . https://github.com/zed-industries/zed[Zed] (TODO)
 
-== Version control
+== Version Control
 
 I use git with both github and gitlab hosting.
 
 == Markdown Format
 
-Currently I use Asciidoc for note taking. It has high expressive power while being well defined.
+* https://asciidoc.org/
 
-== Internet browser
+== Docker
 
-* google-chrome
-* chromium
+* https://github.com/jesseduffield/lazydocker
+
+== Internet Browser
+
+* https://www.mozilla.org/en-US/firefox/new/
 
 == Video Player
 
