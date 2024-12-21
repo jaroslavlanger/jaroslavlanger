@@ -71,7 +71,11 @@
   * https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
 * https://doc.rust-lang.org/std/borrow/
 
-## Guidelines
+## Recommended
+* https://os.phil-opp.com/async-await/
+* https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+* https://www.howtocodeit.com/articles/ultimate-guide-rust-newtypes
+* https://www.howtocodeit.com/articles/master-hexagonal-architecture-rust
 * crate api guidelines - https://rust-lang.github.io/api-guidelines/
 * https://rust-unofficial.github.io/patterns/
 
