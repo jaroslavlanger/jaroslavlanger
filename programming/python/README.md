@@ -22,6 +22,7 @@ Great language for prototyping, scripting, machine learning and anything else.
 
 ## [The Python Tutorial](https://docs.python.org/3/tutorial/)
 
+* [2. Using the Python Interpreter](https://docs.python.org/3/tutorial/interpreter.html)
 * [6. Modules](https://docs.python.org/3/tutorial/modules.html)
 * [7. Input and Output](https://docs.python.org/3/tutorial/inputoutput.html)
 * [8. Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
