@@ -221,6 +221,7 @@ git log
 
 # Show all commits that are fetched, graphically.
 git log --all --graph
+git log --graph --all --pretty=format:"%C(yellow)%h%C(reset) %C(yellow bold)%d%C(reset) %C(green)%ae%C(reset) %s"
 
 # Show commits affecting the a specific file (--oneline makes message and commit's hash shorter).
 git log --oneline path/to/file.sth
