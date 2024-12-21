@@ -114,11 +114,15 @@ First letters of the command-line that are static (does not change by typing).
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap07.html[7. Locale]
 
+=== https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap08.html[8. Environment Variables]
+
 == https://pubs.opengroup.org/onlinepubs/9699919799/idx/shell.html[Shell Command Language]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_02[2.2 Quoting]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_04[2.4 Reserved Words]
+
+=== https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_05[2.5 Parameters and Variables]
 
 === https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07[2.7 Redirection]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_07_06[2.7.6 Duplicating an Output File Descriptor]
@@ -148,12 +152,16 @@ First letters of the command-line that are static (does not change by typing).
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/kill.html[kill - terminate or signal processes]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ln.html[ln - link files]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html[ls - list directory contents]
+* https://pubs.opengroup.org/onlinepubs/9799919799/utilities/nl.html[nl — line numbering filter]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/nohup.html[nohup - invoke a utility immune to hangups]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/paste.html[paste - merge corresponding or subsequent lines of files]
 ** `+pcre2grep -o1 '^eval=([^|]+)' out$f | paste -sd+ - | bc+`
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html[printf - write formatted output]
 ** `printf "%02d\n" 6`
 ** `printf "%-64s%s\n" a b`
+** `printf '%.0s\n' 1 2 3 4 # print four lines`
+* https://pubs.opengroup.org/onlinepubs/9799919799/utilities/ps.html[ps — report process status]
+** `ps -p $$`
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pwd.html[pwd - return working directory name]
 * https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html[sed - stream editor]
 ** `+sed 'x;1!H;$!d;x'+` - reverse lines

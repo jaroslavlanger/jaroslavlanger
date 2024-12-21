@@ -2,13 +2,25 @@
 
 * [GNU Manuals Online](https://www.gnu.org/manual/)
 
+## Editors
+
+* [GNU Readline Library](https://tiswww.cwru.edu/php/chet/readline/readline.html)
+  * M-C-j (Ctrl+Alt+J)
+```~/.inputrc
+set editing-mode vi
+```
+
 ## Software development
 
 * [GNU Bash](https://www.gnu.org/software/bash/)
 * [GNU Coreutils](https://www.gnu.org/software/coreutils/manual/coreutils.html)
   * [14.3 `stat`: Report file or file system status](https://www.gnu.org/software/coreutils/manual/coreutils.html#stat-invocation)
+  * [15.3 yes: Print a string until interrupted](https://www.gnu.org/software/coreutils/manual/coreutils.html#yes-invocation)
+    * `yes '' | head -n $LINES # empty one terminal height`
   * [21.1 `date`: Print or set system date and time](https://www.gnu.org/software/coreutils/manual/coreutils.html#date-invocation)
     * `diff -u $file /dev/null | head -n 1 | cut -f 2 | xargs -I {} date -d {} +%s`
+  * [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/coreutils.html#env-invocation)
+    * `#!/usr/bin/env python3`
   * [26.3 `seq`: Print numeric sequences](https://www.gnu.org/software/coreutils/manual/coreutils.html#seq-invocation)
 * [GNU Findutils](https://www.gnu.org/software/findutils/manual/html_mono/find.html)
   * [8.4 Invoking `xargs`](https://www.gnu.org/software/findutils/manual/html_mono/find.html#Invoking-xargs)
